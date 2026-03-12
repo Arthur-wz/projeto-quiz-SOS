@@ -1,0 +1,58 @@
+🐍 COMANDOS GERAIS (Python + venv)
+---------------------------------
+# Criar ambiente virtual
+python -m venv venv
+
+# Ativar venv no Windows
+venv\Scripts\activate
+
+# Se der erro ao ativar venv (PowerShell), rodar este comando no PowerShell como administrador:
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
+# Atualizar pip
+python -m pip install --upgrade pip
+
+# Instalar Django
+pip install django
+
+# Ver versão do Django
+python -m django --version
+
+
+📂 GERENCIAR O PROJETO DJANGO
+---------------------------------
+# Criar projeto Django
+python -m django startproject escola .
+
+# Rodar servidor
+python manage.py runserver
+
+
+🧩 GERENCIAR APPS
+---------------------------------
+# Criar um app (ex: usuarios)
+python manage.py startapp usuarios
+
+
+🗃️ BANCO DE DADOS (SQLite por enquanto)
+---------------------------------
+# Criar migrações a partir dos models
+python manage.py makemigrations
+
+# Aplicar migrações (criar/atualizar tabelas no banco)
+python manage.py migrate
+
+python manage.py dumpdata --indent 4 > dados.json
+
+python manage.py loaddata backups/dados.json
+
+🔑 USUÁRIOS E AUTENTICAÇÃO
+---------------------------------
+# Criar superusuário (admin)
+python manage.py createsuperuser
+
+
+🛠️ OUTROS ÚTEIS
+---------------------------------
+# Sair do venv
+deactivate
