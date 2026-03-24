@@ -6,7 +6,7 @@ import random
 
 
 def home(request):
-    return render(request, "home.html")
+    return render(request, 'home.html')
 
 
 def login_view(request):
@@ -30,28 +30,22 @@ def jogo(request):
     perguntas = list(Pergunta.objects.all())
 
     if not perguntas:
-        return render(request, "jogo.html", {"pergunta": None})
-
-    pergunta = random.choice(perguntas)
-
-    return render(request, "jogo.html", {"pergunta": pergunta})
-@login_required
-def jogo(request):
-    perguntas = list(Pergunta.objects.all())
+        return render(request, 'jogo.html', {'pergunta': None})
 
     if 'pontos' not in request.session:
         request.session['pontos'] = 0
 
     if request.method == 'POST':
         resposta = request.POST.get('resposta')
-
         pergunta_id = request.session.get('pergunta_id')
-        pergunta = Pergunta.objects.get(id=pergunta_id)
 
-        if resposta == pergunta.resposta_correta:
-            request.session['pontos'] += 1
+        if pergunta_id:
+            pergunta_anterior = Pergunta.objects.get(id=pergunta_id)
+
+            if resposta == pergunta_anterior.resposta_correta:
+                request.session['pontos'] += 1
 
     pergunta = random.choice(perguntas)
     request.session['pergunta_id'] = pergunta.id
 
-    return render(request, "jogo.html", {"pergunta": pergunta})
+    return render(request, 'jogo.html', {'pergunta': pergunta})

@@ -2,22 +2,23 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz SOS</title>
 
     <style>
         body {
             margin: 0;
-            font-family: Arial;
+            font-family: Arial, sans-serif;
             background: #0f172a;
             color: white;
         }
 
-        /* HUD */
         .hud {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 20px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .score {
@@ -25,11 +26,11 @@
             color: #00ffcc;
         }
 
-        /* Pergunta */
         .container {
             text-align: center;
             margin-top: 50px;
             animation: fadeIn 0.5s ease-in-out;
+            padding: 20px;
         }
 
         .pergunta {
@@ -37,18 +38,19 @@
             margin-bottom: 30px;
         }
 
-        /* Botões */
         .opcao {
             display: block;
             margin: 10px auto;
             padding: 15px;
             width: 300px;
+            max-width: 90%;
             border: none;
             border-radius: 10px;
             background: #1e293b;
             color: white;
             cursor: pointer;
             transition: 0.3s;
+            font-size: 1rem;
         }
 
         .opcao:hover {
@@ -57,8 +59,14 @@
         }
 
         @keyframes fadeIn {
-            from {opacity: 0; transform: translateY(20px);}
-            to {opacity: 1; transform: translateY(0);}
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -70,21 +78,19 @@
 </div>
 
 <div class="container">
+    {% if pergunta %}
+        <div class="pergunta">{{ pergunta.pergunta }}</div>
 
-{% if pergunta %}
-    <div class="pergunta">{{ pergunta.pergunta }}</div>
-
-    <form method="POST">
-        {% csrf_token %}
-        <button name="resposta" value="a" class="opcao">{{ pergunta.alternativa_a }}</button>
-        <button name="resposta" value="b" class="opcao">{{ pergunta.alternativa_b }}</button>
-        <button name="resposta" value="c" class="opcao">{{ pergunta.alternativa_c }}</button>
-        <button name="resposta" value="d" class="opcao">{{ pergunta.alternativa_d }}</button>
-    </form>
-{% else %}
-    <p>Sem perguntas 😢</p>
-{% endif %}
-
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" name="resposta" value="a" class="opcao">{{ pergunta.alternativa_a }}</button>
+            <button type="submit" name="resposta" value="b" class="opcao">{{ pergunta.alternativa_b }}</button>
+            <button type="submit" name="resposta" value="c" class="opcao">{{ pergunta.alternativa_c }}</button>
+            <button type="submit" name="resposta" value="d" class="opcao">{{ pergunta.alternativa_d }}</button>
+        </form>
+    {% else %}
+        <p>Sem perguntas</p>
+    {% endif %}
 </div>
 
 </body>
