@@ -1,8 +1,91 @@
-<h2>{{ pergunta.pergunta }}</h2>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz SOS</title>
 
-<ul>
-<li>{{ pergunta.alternativa_a }}</li>
-<li>{{ pergunta.alternativa_b }}</li>
-<li>{{ pergunta.alternativa_c }}</li>
-<li>{{ pergunta.alternativa_d }}</li>
-</ul>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+        }
+
+        /* HUD */
+        .hud {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .score {
+            font-size: 1.2rem;
+            color: #00ffcc;
+        }
+
+        /* Pergunta */
+        .container {
+            text-align: center;
+            margin-top: 50px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .pergunta {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        /* Botões */
+        .opcao {
+            display: block;
+            margin: 10px auto;
+            padding: 15px;
+            width: 300px;
+            border: none;
+            border-radius: 10px;
+            background: #1e293b;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .opcao:hover {
+            background: #00c3ff;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+
+<div class="hud">
+    <div>🎮 Quiz SOS</div>
+    <div class="score">Pontuação: {{ request.session.pontos|default:0 }}</div>
+</div>
+
+<div class="container">
+
+{% if pergunta %}
+    <div class="pergunta">{{ pergunta.pergunta }}</div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button name="resposta" value="a" class="opcao">{{ pergunta.alternativa_a }}</button>
+        <button name="resposta" value="b" class="opcao">{{ pergunta.alternativa_b }}</button>
+        <button name="resposta" value="c" class="opcao">{{ pergunta.alternativa_c }}</button>
+        <button name="resposta" value="d" class="opcao">{{ pergunta.alternativa_d }}</button>
+    </form>
+{% else %}
+    <p>Sem perguntas 😢</p>
+{% endif %}
+
+</div>
+
+</body>
+</html>
