@@ -1,13 +1,13 @@
-🐍 COMANDOS GERAIS (Python + venv)
----------------------------------
+PASSO A PASSO DO PROJETO DJANGO
+USANDO SQLITE LOCAL E DADOS COMPARTILHADOS EM JSON
+
+1. PRIMEIRO USO NA MAQUINA
+
 # Criar ambiente virtual
 python -m venv venv
 
-# Ativar venv no Windows
+# Ativar ambiente virtual no Windows
 venv\Scripts\activate
-
-# Se der erro ao ativar venv (PowerShell), rodar este comando no PowerShell como administrador:
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 
 # Atualizar pip
 python -m pip install --upgrade pip
@@ -15,44 +15,92 @@ python -m pip install --upgrade pip
 # Instalar Django
 pip install django
 
-# Ver versão do Django
-python -m django --version
+# Se um dia o projeto tiver requirements.txt, usar:
+# pip install -r requirements.txt
 
 
-📂 GERENCIAR O PROJETO DJANGO
----------------------------------
-# Criar projeto Django
-python -m django startproject escola .
+2. SEMPRE QUE ABRIR O PROJETO
 
-# Rodar servidor
+# Ativar ambiente virtual
+venv\Scripts\activate
+
+
+3. CRIAR OU ATUALIZAR O BANCO LOCAL
+
+# Criar migrations a partir dos models
+python manage.py makemigrations
+
+# Aplicar migrations e montar o banco na sua maquina
+python manage.py migrate
+
+
+4. RODAR O PROJETO
+
 python manage.py runserver
 
 
-🧩 GERENCIAR APPS
----------------------------------
-# Criar um app (ex: usuarios)
-python manage.py startapp usuarios
+5. PASTA DE BACKUP
+
+# A pasta backups ja existe no projeto
+# Os arquivos de backup devem ficar dentro dela
 
 
-🗃️ BANCO DE DADOS (SQLite por enquanto)
----------------------------------
-# Criar migrações a partir dos models
-python manage.py makemigrations
+6. EXPORTAR OS DADOS PARA O GRUPO
 
-# Aplicar migrações (criar/atualizar tabelas no banco)
+# Recomendado: exportar so as perguntas do quiz
+python manage.py dumpdata quiz.Pergunta --indent 2 > backups\perguntas.json
+
+# Se quiser exportar o banco inteiro
+python manage.py dumpdata --indent 2 > backups\dados.json
+
+
+7. IMPORTAR OS DADOS EM OUTRA MAQUINA
+
+# Primeiro montar a estrutura do banco
 python manage.py migrate
 
-python manage.py dumpdata --indent 4 > dados.json
+# Depois carregar as perguntas
+python manage.py loaddata backups\perguntas.json
 
-python manage.py loaddata backups/dados.json
-
-🔑 USUÁRIOS E AUTENTICAÇÃO
----------------------------------
-# Criar superusuário (admin)
-python manage.py createsuperuser
+# Se o grupo estiver usando o banco inteiro em JSON
+python manage.py loaddata backups\dados.json
 
 
-🛠️ OUTROS ÚTEIS
----------------------------------
-# Sair do venv
-deactivate
+8. FLUXO CERTO PARA O GRUPO
+
+# Quem atualizou as perguntas:
+# 1. faz o dump para JSON
+# 2. sobe o arquivo JSON para o GitHub
+
+# Quem recebeu do GitHub:
+# 1. faz pull
+# 2. roda migrate
+# 3. roda loaddata
+
+
+9. O QUE VAI PARA O GITHUB
+
+# Vai para o GitHub:
+# - codigo
+# - migrations
+# - requirements.txt
+# - backups\perguntas.json
+# - ou backups\dados.json
+
+# Nao vai para o GitHub:
+# - db.sqlite3
+# - venv
+# - __pycache__
+
+
+10. RESUMO BEM CURTO
+
+# Cada pessoa cria o proprio banco com:
+python manage.py migrate
+
+# E coloca os mesmos dados com:
+python manage.py loaddata backups\perguntas.json
+
+# Assim:
+# db.sqlite3 fica local
+# perguntas.json vai para o GitHub
