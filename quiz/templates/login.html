@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #020617);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .box {
+        background: rgba(0,0,0,0.6);
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+        width: 320px;
+        max-width: 90%;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    input {
+        display: block;
+        margin: 12px auto;
+        padding: 10px;
+        width: 100%;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 12px;
+        width: 100%;
+        background: #00c3ff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #008cff;
+    }
+
+    .erro {
+        color: #ff4d4d;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Login</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Usuário" required>
+        <input type="password" name="password" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+    </form>
+
+    {% if erro %}
+        <p class="erro">{{ erro }}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
