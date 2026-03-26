@@ -1,89 +1,135 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #0f172a, #020617);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000814, #001133);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-    .box {
-        background: rgba(0,0,0,0.6);
-        padding: 40px;
-        border-radius: 15px;
-        text-align: center;
-        box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
-        width: 320px;
-        max-width: 90%;
-    }
+        /* container geral */
+        .container-login {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    h2 {
-        margin-bottom: 20px;
-    }
+        /* GIF */
+        .gif-topo {
+            width: 220px;
+            display: block;
+            margin: -70px auto 10px auto; /* CENTRALIZA */
+        }
 
-    input {
-        display: block;
-        margin: 12px auto;
-        padding: 10px;
-        width: 100%;
-        border-radius: 8px;
-        border: none;
-        outline: none;
-    }
+        /* caixa */
+        .box {
+            background: rgba(0, 0, 0, 0.441);
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 0 25px #ffbb24;
+            width: 460px;
+            max-width: 90%;
+        }
 
-    button {
-        margin-top: 10px;
-        padding: 12px;
-        width: 100%;
-        background: #00c3ff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: 0.3s;
-    }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
 
-    button:hover {
-        background: #008cff;
-    }
+        input {
+            display: block;
+            width: 100%;
+            margin: 15px 0;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            outline: none;
+            background: #d9dfeb;
+            color: black;
+        }
 
-    .erro {
-        color: #ff4d4d;
-        margin-top: 10px;
-    }
-</style>
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            background: #ffbb24;
+            color: black;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: whitesmoke;
+            transform: scale(1.02);
+        }
+
+        .criar-usuario {
+            display: inline-block;
+            margin-top: 15px;
+            color: whitesmoke;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .criar-usuario:hover {
+            text-decoration: underline;
+        }
+
+        .erro {
+            color: #ff4d4d;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-<div class="box">
-    <h2>Login</h2>
+    <div class="container-login">
 
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Usuário" required>
-        <input type="password" name="password" placeholder="Senha" required>
-        <button type="submit">Entrar</button>
-    </form>
+        <!-- GIF CENTRALIZADO -->
+        <img src="{% static 'css/login-top.gif' %}" class="gif-topo">
 
-    {% if erro %}
-        <p class="erro">{{ erro }}</p>
-    {% endif %}
-</div>
+        <!-- Caixa -->
+        <div class="box">
+            <h2>Login</h2>
+
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Usuário" required>
+                <input type="password" name="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+
+            <a href="/criar-usuario/" class="criar-usuario">Criar usuário</a>
+
+            {% if erro %}
+                <p class="erro">{{ erro }}</p>
+            {% endif %}
+        </div>
+
+    </div>
 
 </body>
 </html>
