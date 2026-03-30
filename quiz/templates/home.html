@@ -1,129 +1,82 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz SOS</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            position: relative;
-            color: white;
-            background: black;
-        }
-
-        /* vídeo de fundo */
-        #bg-video {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        /* sombra leve */
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.12);
-            z-index: -1;
-        }
-
-        /* texto do topo */
-        .hero {
-            position: absolute;
-            top: 22px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            width: 100%;
-            z-index: 5;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            margin-top: 8px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
-        }
-
-        /* botão */
-        .btn-jogar {
-            position: fixed;
-            bottom: 74px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #ff2b2b;
-            color: white;
-            text-decoration: none;
-            padding: 27px 22px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            z-index: 10;
-            transition: 0.3s ease;
-        }
-
-        .btn-jogar:hover {
-            background: #cc0000;
-            transform: translateX(-50%) scale(1.05);
-        }
-
-        /* celular */
-        @media (max-width: 768px) {
-            .hero {
-                top: 18px;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .hero p {
-                font-size: 1.15rem;
-            }
-
-            .btn-jogar {
-                bottom: 34px;
-                padding: 11px 20px;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
 </head>
 <body>
+    <main class="page-shell">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="{% static 'css/quiz-sos.mp4' %}" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
 
-    <video autoplay muted loop playsinline id="bg-video">
-        <source src="{% static 'css/quiz-sos.mp4' %}" type="video/mp4">
-        Seu navegador não conseguiu carregar o vídeo de fundo.
-    </video>
+        <section class="hero-content">
+            <div class="hero-card">
+                <div>
+                    <span class="eyebrow">Quiz educativo inspirado em programa de auditório</span>
+                    <h1 class="hero-title">Quiz SOS</h1>
+                    <p class="hero-copy">
+                        Responda 20 perguntas educativas em clima de jogo, use suas ajudas na hora certa
+                        e veja quantos pontos voce consegue acumular ate o fim da partida.
+                    </p>
 
-    <div class="overlay"></div>
+                    {% if messages %}
+                        <div class="alerts">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
 
-    
+                    <div class="hero-actions">
+                        {% if total_cadastradas >= total_perguntas %}
+                            <form method="post" action="{% url 'iniciar_jogo' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">
+                                    {% if partida_em_andamento %}Recomecar partida{% else %}Iniciar partida{% endif %}
+                                </button>
+                            </form>
+                        {% else %}
+                            <button type="button" class="btn btn-primary" disabled>Cadastre mais perguntas</button>
+                        {% endif %}
 
-    <a href="/login/" class="btn-jogar">Fazer Login para Jogar</a>
+                        {% if partida_em_andamento %}
+                            <a href="{% url 'jogo' %}" class="btn btn-secondary">Continuar partida</a>
+                        {% endif %}
 
+                        {% if partida_finalizada %}
+                            <a href="{% url 'resultado' %}" class="btn btn-ghost">Ver ultimo resultado</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <aside class="hero-panel">
+                    <span class="eyebrow">Modo solo V1</span>
+                    <div class="mini-grid">
+                        <div class="mini-card">
+                            <span class="mini-label">Perguntas por partida</span>
+                            <span class="mini-value">{{ total_perguntas }}</span>
+                        </div>
+                        <div class="mini-card">
+                            <span class="mini-label">Pontuacao por acerto</span>
+                            <span class="mini-value">10 pontos</span>
+                        </div>
+                        <div class="mini-card">
+                            <span class="mini-label">Banco atual</span>
+                            <span class="mini-value">{{ total_cadastradas }} cadastradas</span>
+                        </div>
+                        <div class="mini-card">
+                            <span class="mini-label">Ajudas da rodada</span>
+                            <span class="mini-value">Pular + Eliminar 2</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

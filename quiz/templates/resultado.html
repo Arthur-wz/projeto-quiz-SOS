@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado final | Quiz SOS</title>
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+</head>
+<body>
+    <main class="page-shell">
+        <section class="result-layout">
+            <article class="result-card">
+                <span class="eyebrow">Partida encerrada</span>
+                <h1 class="section-title">Seu placar final</h1>
+
+                <div class="score-ring">
+                    <div>
+                        <strong>{{ pontuacao }}</strong>
+                        <span>de {{ pontuacao_maxima }} pontos</span>
+                    </div>
+                </div>
+
+                <div class="summary-grid">
+                    <article class="status-card">
+                        <span class="status-label">Acertos</span>
+                        <span class="status-value">{{ acertos }}</span>
+                    </article>
+                    <article class="status-card">
+                        <span class="status-label">Erros</span>
+                        <span class="status-value">{{ erros }}</span>
+                    </article>
+                    <article class="status-card">
+                        <span class="status-label">Pulo</span>
+                        <span class="status-value">{% if pulo_usado %}Usado{% else %}Guardado{% endif %}</span>
+                    </article>
+                    <article class="status-card">
+                        <span class="status-label">Eliminar 2</span>
+                        <span class="status-value">{% if eliminar_usado %}Usado{% else %}Guardado{% endif %}</span>
+                    </article>
+                </div>
+
+                <div class="result-actions">
+                    <form method="post" action="{% url 'iniciar_jogo' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Jogar novamente</button>
+                    </form>
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Voltar ao inicio</a>
+                </div>
+            </article>
+
+            <article class="history-card">
+                <h2 class="section-title">Resumo das 20 perguntas</h2>
+                <div class="history-list">
+                    {% for item in historico %}
+                        <div class="history-item {% if item.acertou %}is-correct{% else %}is-wrong{% endif %}">
+                            <strong>{{ item.numero }}. {{ item.pergunta }}</strong>
+                            <p>
+                                {{ item.materia }} |
+                                marcou {{ item.resposta_marcada }} |
+                                correta {{ item.resposta_correta }} |
+                                {% if item.acertou %}acertou{% else %}errou{% endif %} |
+                                +{{ item.pontos }} pontos
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
