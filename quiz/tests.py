@@ -21,7 +21,7 @@ class QuizFlowTests(TestCase):
             )
 
     def iniciar_partida(self):
-        return self.client.post(reverse("iniciar_jogo"))
+        return self.client.post(reverse("iniciar_partida"))
 
     def test_nao_inicia_partida_sem_20_perguntas(self):
         self.criar_perguntas(total=19)
@@ -30,6 +30,7 @@ class QuizFlowTests(TestCase):
 
         self.assertRedirects(response, reverse("home"))
         self.assertNotIn(QUIZ_SESSION_KEY, self.client.session)
+        self.assertEqual(Partida.objects.count(), 0)
 
     def test_resposta_correta_soma_10_pontos(self):
         self.criar_perguntas()
@@ -42,6 +43,7 @@ class QuizFlowTests(TestCase):
         self.assertEqual(session["score"], 10)
         self.assertEqual(session["answered_count"], 1)
         self.assertEqual(session["correct_count"], 1)
+
         partida = Partida.objects.get(pk=session["partida_id"])
         resposta = RespostaPartida.objects.get(partida=partida, numero_pergunta=1)
         self.assertEqual(partida.pontuacao_total, 10)
@@ -67,11 +69,25 @@ class QuizFlowTests(TestCase):
         session = self.client.session[QUIZ_SESSION_KEY]
         self.assertEqual(session["score"], 5)
         self.assertEqual(session["answered_count"], 1)
+
         partida = Partida.objects.get(pk=session["partida_id"])
         resposta_db = RespostaPartida.objects.get(partida=partida, numero_pergunta=1)
         self.assertTrue(resposta_db.ajuda_utilizada)
         self.assertEqual(resposta_db.ajudas_utilizadas, "eliminate")
         self.assertEqual(resposta_db.valor_pergunta, 5)
+
+    def test_mensagem_de_acerto_com_ajuda_mostra_5_pontos(self):
+        self.criar_perguntas()
+        self.iniciar_partida()
+
+        self.client.post(reverse("jogo"), {"action": "eliminate"})
+        response = self.client.post(
+            reverse("jogo"),
+            {"action": "answer", "answer": "A"},
+            follow=True,
+        )
+
+        self.assertContains(response, "Resposta certa com ajuda! +5 pontos.")
 
     def test_pular_rotaciona_fila_e_marca_meia_pontuacao(self):
         self.criar_perguntas()
@@ -89,6 +105,7 @@ class QuizFlowTests(TestCase):
         self.assertTrue(session["current_is_halved"])
         self.assertEqual(session["queue"][0], segunda)
         self.assertEqual(session["queue"][-1], primeira)
+
         partida = Partida.objects.get(pk=session["partida_id"])
         self.assertTrue(partida.pulo_usado)
 
@@ -104,6 +121,7 @@ class QuizFlowTests(TestCase):
         self.assertEqual(session["score"], TOTAL_PERGUNTAS * 10)
         self.assertEqual(session["answered_count"], TOTAL_PERGUNTAS)
         self.assertEqual(session["correct_count"], TOTAL_PERGUNTAS)
+
         partida = Partida.objects.get(pk=session["partida_id"])
         self.assertEqual(partida.status, Partida.STATUS_FINALIZADA)
         self.assertEqual(partida.pontuacao_total, TOTAL_PERGUNTAS * 10)

@@ -10,7 +10,6 @@
 <body>
     <main class="page-shell">
         <section class="result-layout">
-
             <article class="result-card">
                 <span class="eyebrow">Partida encerrada</span>
                 <h1 class="section-title">Seu desempenho final</h1>
@@ -33,37 +32,33 @@
                         <span class="status-label">Acertos</span>
                         <span class="status-value">{{ acertos }}</span>
                     </article>
-
                     <article class="status-card">
                         <span class="status-label">Erros</span>
                         <span class="status-value">{{ erros }}</span>
                     </article>
-
                     <article class="status-card">
-                        <span class="status-label">Pulo</span>
-                        <span class="status-value">{% if pulo_usado %}Usado{% else %}Disponível{% endif %}</span>
+                        <span class="status-label">Pular</span>
+                        <span class="status-value">{% if pulo_usado %}Usado{% else %}Disponivel{% endif %}</span>
                     </article>
-
                     <article class="status-card">
                         <span class="status-label">Eliminar 2</span>
-                        <span class="status-value">{% if eliminar_usado %}Usado{% else %}Disponível{% endif %}</span>
+                        <span class="status-value">{% if eliminar_usado %}Usado{% else %}Disponivel{% endif %}</span>
                     </article>
                 </div>
 
                 <div class="result-actions">
-                    <form method="post" action="{% url 'iniciar_jogo' %}">
+                    <form method="post" action="{% url 'iniciar_partida' %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-primary">Jogar novamente</button>
                     </form>
-
-                    <a href="{% url 'home' %}" class="btn btn-secondary">Voltar ao início</a>
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Voltar ao inicio</a>
                 </div>
             </article>
 
             <article class="history-card">
                 <div class="history-header">
-                    <span class="eyebrow">Histórico da partida</span>
-                    <h2 class="section-title">Resumo das 20 perguntas</h2>
+                    <span class="eyebrow">Historico da partida</span>
+                    <h2 class="section-title">Resumo das {{ total_perguntas }} perguntas</h2>
                 </div>
 
                 <div class="history-list">
@@ -71,17 +66,24 @@
                         <div class="history-item {% if item.acertou %}is-correct{% else %}is-wrong{% endif %}">
                             <strong>{{ item.numero }}. {{ item.pergunta }}</strong>
                             <p>
-                                {{ item.materia }} |
+                                {{ item.materia }} | {{ item.serie }} |
                                 marcou {{ item.resposta_marcada }} |
                                 correta {{ item.resposta_correta }} |
                                 {% if item.acertou %}acertou{% else %}errou{% endif %} |
                                 +{{ item.pontos }} pontos
+                                {% if item.ajudas %}
+                                    | ajuda: {{ item.ajudas|join:", " }}
+                                {% endif %}
                             </p>
+                        </div>
+                    {% empty %}
+                        <div class="history-item">
+                            <strong>Nenhuma resposta registrada.</strong>
+                            <p>Finalize uma partida para ver o historico completo aqui.</p>
                         </div>
                     {% endfor %}
                 </div>
             </article>
-
         </section>
     </main>
 </body>

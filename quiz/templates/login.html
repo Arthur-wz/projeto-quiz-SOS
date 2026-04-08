@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Quiz SOS</title>
-
     <style>
         * {
             margin: 0;
@@ -20,7 +19,6 @@
             --text-main: #f5f7fb;
             --text-soft: rgba(245, 247, 251, 0.78);
             --accent: #ffbb24;
-            --accent-hover: #ffd269;
             --input-bg: rgba(255, 255, 255, 0.10);
             --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
         }
@@ -204,22 +202,21 @@
     </style>
 </head>
 <body>
-
     <div class="container-login">
         <img src="{% static 'css/login-top.gif' %}" class="gif-topo" alt="Identidade visual do Quiz">
 
         <div class="box">
             <div class="box-header">
                 <h1>Login</h1>
-                <p>Acesse sua conta para continuar sua experiência no Quiz SOS.</p>
+                <p>Acesse sua conta para continuar sua experiencia no Quiz SOS.</p>
             </div>
 
-            <form method="POST">
+            <form method="post">
                 {% csrf_token %}
 
                 <div class="form-group">
-                    <label for="username">Usuário</label>
-                    <input id="username" type="text" name="username" placeholder="Digite seu usuário" required>
+                    <label for="username">Usuario</label>
+                    <input id="username" type="text" name="username" placeholder="Digite seu usuario" required>
                 </div>
 
                 <div class="form-group">
@@ -231,8 +228,8 @@
             </form>
 
             <div class="links">
-                <a href="{% url 'criar_usuario' %}">Criar usuário</a>
-                <a href="{% url 'home' %}">Voltar ao início</a>
+                <a href="{% url 'criar_usuario' %}">Criar usuario</a>
+                <a href="{% url 'home' %}">Voltar ao inicio</a>
             </div>
 
             {% if erro %}
@@ -240,6 +237,5 @@
             {% endif %}
         </div>
     </div>
-
 </body>
 </html>

@@ -167,6 +167,12 @@ a {
     border: 1px solid rgba(248, 191, 75, 0.16);
 }
 
+.panel-note {
+    margin: 1rem 0 0;
+    color: var(--text-soft);
+    line-height: 1.6;
+}
+
 .mini-grid {
     display: grid;
     gap: 1rem;
@@ -388,6 +394,10 @@ a {
     margin: 0;
 }
 
+.option-form {
+    margin: 0;
+}
+
 .help-button {
     min-height: 3rem;
     padding: 0.75rem 1.1rem;
@@ -479,6 +489,10 @@ a {
     font-size: clamp(2rem, 7vw, 3rem);
 }
 
+.score-content {
+    text-align: center;
+}
+
 .score-ring span {
     display: block;
     text-align: center;
@@ -499,6 +513,13 @@ a {
 .history-list {
     display: grid;
     gap: 0.8rem;
+}
+
+.history-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 1rem;
 }
 
 .history-item {
