@@ -10,12 +10,19 @@
 <body>
     <main class="page-shell">
         <section class="result-layout">
+
             <article class="result-card">
                 <span class="eyebrow">Partida encerrada</span>
-                <h1 class="section-title">Seu placar final</h1>
+                <h1 class="section-title">Seu desempenho final</h1>
+
+                {% if partida %}
+                    <p class="hero-copy">
+                        Partida #{{ partida.id }} registrada com status {{ partida.get_status_display|lower }}.
+                    </p>
+                {% endif %}
 
                 <div class="score-ring">
-                    <div>
+                    <div class="score-content">
                         <strong>{{ pontuacao }}</strong>
                         <span>de {{ pontuacao_maxima }} pontos</span>
                     </div>
@@ -26,17 +33,20 @@
                         <span class="status-label">Acertos</span>
                         <span class="status-value">{{ acertos }}</span>
                     </article>
+
                     <article class="status-card">
                         <span class="status-label">Erros</span>
                         <span class="status-value">{{ erros }}</span>
                     </article>
+
                     <article class="status-card">
                         <span class="status-label">Pulo</span>
-                        <span class="status-value">{% if pulo_usado %}Usado{% else %}Guardado{% endif %}</span>
+                        <span class="status-value">{% if pulo_usado %}Usado{% else %}Disponível{% endif %}</span>
                     </article>
+
                     <article class="status-card">
                         <span class="status-label">Eliminar 2</span>
-                        <span class="status-value">{% if eliminar_usado %}Usado{% else %}Guardado{% endif %}</span>
+                        <span class="status-value">{% if eliminar_usado %}Usado{% else %}Disponível{% endif %}</span>
                     </article>
                 </div>
 
@@ -45,12 +55,17 @@
                         {% csrf_token %}
                         <button type="submit" class="btn btn-primary">Jogar novamente</button>
                     </form>
-                    <a href="{% url 'home' %}" class="btn btn-secondary">Voltar ao inicio</a>
+
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Voltar ao início</a>
                 </div>
             </article>
 
             <article class="history-card">
-                <h2 class="section-title">Resumo das 20 perguntas</h2>
+                <div class="history-header">
+                    <span class="eyebrow">Histórico da partida</span>
+                    <h2 class="section-title">Resumo das 20 perguntas</h2>
+                </div>
+
                 <div class="history-list">
                     {% for item in historico %}
                         <div class="history-item {% if item.acertou %}is-correct{% else %}is-wrong{% endif %}">
@@ -66,6 +81,7 @@
                     {% endfor %}
                 </div>
             </article>
+
         </section>
     </main>
 </body>

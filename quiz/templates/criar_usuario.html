@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Usuário</title>
-
+    <title>Criar Usuário | Quiz SOS</title>
     <style>
         * {
             margin: 0;
@@ -12,100 +11,213 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-soft: rgba(8, 18, 38, 0.42);
+            --border-soft: rgba(255, 255, 255, 0.12);
+            --text-main: #f5f7fb;
+            --text-soft: rgba(245, 247, 251, 0.78);
+            --accent: #ffbb24;
+            --input-bg: rgba(255, 255, 255, 0.10);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #001133, #000814);
-            color: white;
+            min-height: 100vh;
+            color: var(--text-main);
+            background:
+                radial-gradient(circle at top left, rgba(255, 187, 36, 0.10), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(82, 135, 255, 0.12), transparent 28%),
+                linear-gradient(135deg, #000814, #001133 55%, #071b36);
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            padding: 30px 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.18);
+            pointer-events: none;
         }
 
         .box {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 40px;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: 0 0 25px rgba(0, 195, 255, 0.45);
-            width: 460px;
-            max-width: 90%;
+            width: 100%;
+            max-width: 500px;
+            background: var(--bg-soft);
+            border: 1px solid var(--border-soft);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 28px;
+            padding: 36px 30px 28px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
         }
 
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 25px;
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--text-soft);
+            line-height: 1.5;
+            font-size: 0.97rem;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.92rem;
+            color: var(--text-soft);
+            font-weight: 600;
         }
 
         input {
-            display: block;
             width: 100%;
-            margin: 15px 0;
-            padding: 16px;
-            border: none;
+            padding: 15px 16px;
             border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            background: var(--input-bg);
+            color: white;
             font-size: 1rem;
             outline: none;
-            background: #d9dfeb;
-            color: black;
+            transition: 0.25s ease;
         }
 
-        button {
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        input:focus {
+            border-color: rgba(255, 187, 36, 0.55);
+            box-shadow: 0 0 0 4px rgba(255, 187, 36, 0.12);
+            background: rgba(255, 255, 255, 0.13);
+        }
+
+        .btn {
             width: 100%;
-            margin-top: 15px;
-            padding: 16px;
+            margin-top: 10px;
+            padding: 15px 18px;
             border: none;
             border-radius: 14px;
-            background: #19b5ea;
-            color: black;
-            font-size: 1.1rem;
-            font-weight: bold;
+            background: linear-gradient(135deg, var(--accent), #ffcf63);
+            color: #111;
+            font-size: 1rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.25s ease;
         }
 
-        button:hover {
-            background: #0c9fd1;
-            transform: scale(1.02);
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(255, 187, 36, 0.22);
         }
 
-        .voltar {
-            display: inline-block;
+        .mensagem {
             margin-top: 18px;
-            color: #19b5ea;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .voltar:hover {
-            text-decoration: underline;
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-align: center;
         }
 
         .erro {
-            color: #ff4d4d;
-            margin-top: 14px;
-            font-weight: bold;
+            color: #ff8a8a;
+            background: rgba(255, 77, 77, 0.10);
+            border: 1px solid rgba(255, 77, 77, 0.18);
+        }
+
+        .sucesso {
+            color: #80ffad;
+            background: rgba(97, 255, 139, 0.10);
+            border: 1px solid rgba(97, 255, 139, 0.18);
+        }
+
+        .footer-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer-link a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            opacity: 0.9;
+            transition: 0.2s ease;
+        }
+
+        .footer-link a:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        @media (max-width: 520px) {
+            .box {
+                padding: 28px 20px 24px;
+                border-radius: 22px;
+            }
+
+            .header h1 {
+                font-size: 1.7rem;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="box">
-        <h2>Criar Usuário</h2>
+        <div class="header">
+            <h1>Criar Usuário</h1>
+            <p>Cadastre sua conta para começar a jogar, acompanhar seu desempenho e evoluir no sistema.</p>
+        </div>
 
         <form method="POST">
             {% csrf_token %}
-            <input type="text" name="username" placeholder="Nome de usuário" required>
-            <input type="password" name="password" placeholder="Senha" required>
-            <input type="password" name="confirmar_password" placeholder="Confirmar senha" required>
-            <button type="submit">Cadastrar</button>
+
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input id="username" type="text" name="username" placeholder="Escolha um nome de usuário" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input id="password" type="password" name="password" placeholder="Crie uma senha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmar">Confirmar senha</label>
+                <input id="confirmar" type="password" name="confirmar" placeholder="Repita a senha" required>
+            </div>
+
+            <button type="submit" class="btn">Criar Conta</button>
         </form>
 
-        <a href="/login/" class="voltar">Voltar para login</a>
-
         {% if erro %}
-            <p class="erro">{{ erro }}</p>
+            <p class="mensagem erro">{{ erro }}</p>
         {% endif %}
+
+        {% if sucesso %}
+            <p class="mensagem sucesso">{{ sucesso }}</p>
+        {% endif %}
+
+        <div class="footer-link">
+            <a href="{% url 'login' %}">Voltar para login</a>
+        </div>
     </div>
 
 </body>

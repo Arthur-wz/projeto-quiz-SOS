@@ -1,97 +1,194 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partida em andamento | Quiz SOS</title>
-    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    <title>Jogo | Quiz SOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --text-main: #f5f7fb;
+            --text-soft: rgba(245, 247, 251, 0.76);
+            --accent: #ffbb24;
+            --panel-bg: rgba(7, 18, 37, 0.42);
+            --panel-border: rgba(255, 255, 255, 0.10);
+            --option-bg: rgba(255, 255, 255, 0.09);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.34);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            color: var(--text-main);
+            background:
+                radial-gradient(circle at top left, rgba(255, 187, 36, 0.10), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(82, 135, 255, 0.10), transparent 28%),
+                linear-gradient(135deg, #000814, #001133 55%, #071b36);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px 18px;
+        }
+
+        .box {
+            width: 100%;
+            max-width: 860px;
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 28px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .topo {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .info-card {
+            flex: 1;
+            min-width: 180px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .info-label {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--text-soft);
+            margin-bottom: 6px;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .pergunta-box {
+            margin-bottom: 24px;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .pergunta-box h2 {
+            font-size: 1.45rem;
+            line-height: 1.6;
+            font-weight: 700;
+        }
+
+        .alternativas {
+            display: grid;
+            gap: 12px;
+        }
+
+        .alternativa {
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            background: var(--option-bg);
+            color: white;
+            border-radius: 16px;
+            padding: 17px 18px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.5;
+            transition: 0.22s ease;
+        }
+
+        .alternativa strong {
+            color: var(--accent);
+        }
+
+        .alternativa:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 187, 36, 0.28);
+        }
+
+        .rodape {
+            margin-top: 24px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .voltar {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            opacity: 0.85;
+            transition: 0.2s ease;
+        }
+
+        .voltar:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        @media (max-width: 640px) {
+            .box {
+                padding: 20px;
+                border-radius: 22px;
+            }
+
+            .pergunta-box h2 {
+                font-size: 1.2rem;
+            }
+
+            .alternativa {
+                padding: 15px 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <main class="page-shell">
-        <section class="game-layout">
-            {% if messages %}
-                <div class="alerts">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
-                    {% endfor %}
-                </div>
-            {% endif %}
 
-            <div class="game-topbar">
-                <article class="status-card">
-                    <span class="status-label">Pergunta atual</span>
-                    <span class="status-value">{{ numero_pergunta }}/{{ total_perguntas }}</span>
-                </article>
-                <article class="status-card">
-                    <span class="status-label">Pontuacao</span>
-                    <span class="status-value">{{ pontuacao }} pts</span>
-                </article>
-                <article class="status-card">
-                    <span class="status-label">Valor da pergunta</span>
-                    <span class="status-value">{{ valor_pergunta }} pts</span>
-                </article>
-                <article class="status-card">
-                    <span class="status-label">Restantes</span>
-                    <span class="status-value">{{ restantes }} perguntas</span>
-                </article>
+    <div class="box">
+        <div class="topo">
+            <div class="info-card">
+                <span class="info-label">Progresso</span>
+                <span class="info-value">Pergunta {{ numero_pergunta }}/{{ total_perguntas }}</span>
             </div>
 
-            <section class="game-card">
-                <div class="progress-row">
-                    <strong>Rodada principal</strong>
-                    <span>{{ numero_pergunta }} de {{ total_perguntas }}</span>
-                </div>
-                <div class="progress-bar">
-                    <span style="width: {% widthratio numero_pergunta total_perguntas 100 %}%;"></span>
-                </div>
+            <div class="info-card">
+                <span class="info-label">Pontuação atual</span>
+                <span class="info-value">{{ pontuacao }}</span>
+            </div>
+        </div>
 
-                <div class="question-meta">
-                    <span class="chip chip-blue">{{ pergunta.materia }}</span>
-                    <span class="chip chip-blue">{{ pergunta.serie }}</span>
-                    <span class="chip chip-gold">
-                        {% if ajuda_ativa %}
-                            Ajuda ativa: esta pergunta vale 5 pontos
-                        {% else %}
-                            Pergunta cheia: vale 10 pontos
-                        {% endif %}
-                    </span>
-                </div>
+        <div class="pergunta-box">
+            <h2>{{ pergunta.pergunta }}</h2>
+        </div>
 
-                <h1 class="question-text">{{ pergunta.pergunta }}</h1>
+        <form method="POST" class="alternativas">
+            {% csrf_token %}
+            <button class="alternativa" type="submit" name="resposta" value="A"><strong>A.</strong> {{ pergunta.alternativa_a }}</button>
+            <button class="alternativa" type="submit" name="resposta" value="B"><strong>B.</strong> {{ pergunta.alternativa_b }}</button>
+            <button class="alternativa" type="submit" name="resposta" value="C"><strong>C.</strong> {{ pergunta.alternativa_c }}</button>
+            <button class="alternativa" type="submit" name="resposta" value="D"><strong>D.</strong> {{ pergunta.alternativa_d }}</button>
+            {% if pergunta.alternativa_e %}
+                <button class="alternativa" type="submit" name="resposta" value="E"><strong>E.</strong> {{ pergunta.alternativa_e }}</button>
+            {% endif %}
+        </form>
 
-                <div class="helper-row">
-                    <form method="post">
-                        {% csrf_token %}
-                        <button type="submit" name="action" value="skip" class="help-button" {% if not pulo_disponivel %}disabled{% endif %}>
-                            <strong>Pular</strong>
-                            <span>{% if pulo_disponivel %}Troca por outra pergunta e derruba o valor para 5{% else %}Ajuda ja usada{% endif %}</span>
-                        </button>
-                    </form>
+        <div class="rodape">
+            <a href="{% url 'home' %}" class="voltar">Voltar ao menu</a>
+        </div>
+    </div>
 
-                    <form method="post">
-                        {% csrf_token %}
-                        <button type="submit" name="action" value="eliminate" class="help-button {% if ajuda_ativa %}active{% endif %}" {% if not eliminar_disponivel %}disabled{% endif %}>
-                            <strong>Eliminar 2</strong>
-                            <span>{% if eliminar_disponivel %}Remove duas erradas e derruba o valor para 5{% else %}Ajuda ja usada{% endif %}</span>
-                        </button>
-                    </form>
-                </div>
-
-                <form method="post" class="options-grid">
-                    {% csrf_token %}
-                    <input type="hidden" name="action" value="answer">
-                    {% for opcao in opcoes %}
-                        {% if not opcao.eliminada %}
-                            <button type="submit" name="answer" value="{{ opcao.label }}" class="option-button">
-                                <span class="option-letter">{{ opcao.label }}</span>
-                                <span class="option-text">{{ opcao.texto }}</span>
-                            </button>
-                        {% endif %}
-                    {% endfor %}
-                </form>
-            </section>
-        </section>
-    </main>
 </body>
 </html>

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login | Quiz SOS</title>
 
     <style>
         * {
@@ -13,122 +13,232 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-dark: #06101f;
+            --bg-soft: rgba(8, 18, 38, 0.42);
+            --border-soft: rgba(255, 255, 255, 0.12);
+            --text-main: #f5f7fb;
+            --text-soft: rgba(245, 247, 251, 0.78);
+            --accent: #ffbb24;
+            --accent-hover: #ffd269;
+            --input-bg: rgba(255, 255, 255, 0.10);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #000814, #001133);
-            color: white;
+            min-height: 100vh;
+            color: var(--text-main);
+            background:
+                radial-gradient(circle at top left, rgba(255, 187, 36, 0.12), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(82, 135, 255, 0.12), transparent 28%),
+                linear-gradient(135deg, #000814, #001133 55%, #071b36);
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            padding: 32px 18px;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* container geral */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.18);
+            pointer-events: none;
+        }
+
         .container-login {
+            width: 100%;
+            max-width: 470px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 18px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* GIF */
         .gif-topo {
-            width: 220px;
+            width: 180px;
+            max-width: 60%;
             display: block;
-            margin: -70px auto 10px auto; /* CENTRALIZA */
+            object-fit: contain;
+            filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.28));
         }
 
-        /* caixa */
         .box {
-            background: rgba(0, 0, 0, 0.441);
-            padding: 40px;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: 0 0 25px #ffbb24;
-            width: 460px;
-            max-width: 90%;
+            width: 100%;
+            background: var(--bg-soft);
+            border: 1px solid var(--border-soft);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 26px;
+            padding: 34px 28px 28px;
+            box-shadow: var(--shadow);
         }
 
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
+        .box-header {
+            text-align: center;
+            margin-bottom: 26px;
+        }
+
+        .box-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            margin-bottom: 8px;
+        }
+
+        .box-header p {
+            color: var(--text-soft);
+            font-size: 0.97rem;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.92rem;
+            color: var(--text-soft);
+            font-weight: 600;
         }
 
         input {
-            display: block;
             width: 100%;
-            margin: 15px 0;
-            padding: 16px;
-            border: none;
+            padding: 15px 16px;
             border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            background: var(--input-bg);
+            color: white;
             font-size: 1rem;
             outline: none;
-            background: #d9dfeb;
-            color: black;
+            transition: 0.25s ease;
         }
 
-        button {
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        input:focus {
+            border-color: rgba(255, 187, 36, 0.55);
+            box-shadow: 0 0 0 4px rgba(255, 187, 36, 0.12);
+            background: rgba(255, 255, 255, 0.13);
+        }
+
+        .btn {
             width: 100%;
-            margin-top: 15px;
-            padding: 16px;
             border: none;
             border-radius: 14px;
-            background: #ffbb24;
-            color: black;
-            font-size: 1.1rem;
-            font-weight: bold;
+            padding: 15px 18px;
+            font-size: 1rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.25s ease;
         }
 
-        button:hover {
-            background: whitesmoke;
-            transform: scale(1.02);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #ffcf63);
+            color: #111;
+            margin-top: 10px;
         }
 
-        .criar-usuario {
-            display: inline-block;
-            margin-top: 15px;
-            color: whitesmoke;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.03);
+            box-shadow: 0 12px 24px rgba(255, 187, 36, 0.22);
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .links a {
+            color: var(--text-main);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.95rem;
+            opacity: 0.88;
+            transition: 0.2s ease;
         }
 
-        .criar-usuario:hover {
-            text-decoration: underline;
+        .links a:hover {
+            opacity: 1;
+            color: var(--accent);
         }
 
         .erro {
-            color: #ff4d4d;
-            margin-top: 12px;
-            font-weight: bold;
+            margin-top: 18px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(255, 77, 77, 0.10);
+            border: 1px solid rgba(255, 77, 77, 0.18);
+            color: #ff8a8a;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        @media (max-width: 520px) {
+            .box {
+                padding: 28px 20px 24px;
+                border-radius: 22px;
+            }
+
+            .box-header h1 {
+                font-size: 1.7rem;
+            }
+
+            .gif-topo {
+                width: 150px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container-login">
+        <img src="{% static 'css/login-top.gif' %}" class="gif-topo" alt="Identidade visual do Quiz">
 
-        <!-- GIF CENTRALIZADO -->
-        <img src="{% static 'css/login-top.gif' %}" class="gif-topo">
-
-        <!-- Caixa -->
         <div class="box">
-            <h2>Login</h2>
+            <div class="box-header">
+                <h1>Login</h1>
+                <p>Acesse sua conta para continuar sua experiência no Quiz SOS.</p>
+            </div>
 
             <form method="POST">
                 {% csrf_token %}
-                <input type="text" name="username" placeholder="Usuário" required>
-                <input type="password" name="password" placeholder="Senha" required>
-                <button type="submit">Entrar</button>
+
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input id="username" type="text" name="username" placeholder="Digite seu usuário" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Entrar</button>
             </form>
 
-            <a href="/criar-usuario/" class="criar-usuario">Criar usuário</a>
+            <div class="links">
+                <a href="{% url 'criar_usuario' %}">Criar usuário</a>
+                <a href="{% url 'home' %}">Voltar ao início</a>
+            </div>
 
             {% if erro %}
                 <p class="erro">{{ erro }}</p>
             {% endif %}
         </div>
-
     </div>
 
 </body>
