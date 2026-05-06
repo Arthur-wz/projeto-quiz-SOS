@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temas | Quiz SOS</title>
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    {% if tema_css_inline %}
+        <style>{{ tema_css_inline|safe }}</style>
+    {% endif %}
+</head>
+<body>
+    <main class="page-shell">
+        <section class="result-layout">
+            <article class="result-card">
+                <span class="eyebrow">Personalizacao</span>
+                <h1 class="section-title">Escolha o tema da sua experiencia</h1>
+                <p class="hero-copy">
+                    Todos os temas ficam liberados automaticamente para quem estiver logado.
+                </p>
+
+                {% if messages %}
+                    <div class="alerts">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="result-actions">
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Voltar ao inicio</a>
+                    {% if not request.user.is_authenticated %}
+                        <a href="{% url 'login' %}" class="btn btn-primary">Entrar para ativar</a>
+                    {% endif %}
+                </div>
+
+            </article>
+
+            <div class="themes-grid">
+                {% for item in catalogo_temas %}
+                    <article class="theme-card {% if item.ativo %}is-active{% endif %}">
+                        <div class="theme-head">
+                            <span class="eyebrow">{{ item.tema.nome }}</span>
+                            <span class="chip chip-blue">Disponivel</span>
+                        </div>
+
+                        <p class="theme-copy">{{ item.tema.descricao }}</p>
+
+                        <div class="theme-swatches">
+                            {% for cor in item.tema.preview_cores %}
+                                <span style="background: {{ cor }};"></span>
+                            {% endfor %}
+                        </div>
+
+                        <p class="panel-note">{{ item.tema.resumo }}</p>
+
+                        <div class="theme-actions">
+                            {% if item.ativo %}
+                                <span class="theme-status is-active">Tema ativo</span>
+                            {% elif request.user.is_authenticated and item.liberado %}
+                                <form method="post" action="{% url 'ativar_tema' item.tema.slug %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">Ativar tema</button>
+                                </form>
+                            {% else %}
+                                <span class="theme-status">Entre para personalizar</span>
+                            {% endif %}
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</body>
+</html>

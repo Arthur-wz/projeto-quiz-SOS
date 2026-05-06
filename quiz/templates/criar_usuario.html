@@ -19,16 +19,15 @@
             --accent: #ffbb24;
             --input-bg: rgba(255, 255, 255, 0.10);
             --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            --auth-background: radial-gradient(circle at top left, rgba(255, 187, 36, 0.10), transparent 28%), radial-gradient(circle at bottom right, rgba(82, 135, 255, 0.12), transparent 28%), linear-gradient(135deg, #000814, #001133 55%, #071b36);
+            --auth-overlay: rgba(0, 0, 0, 0.18);
         }
 
         body {
             font-family: Arial, sans-serif;
             min-height: 100vh;
             color: var(--text-main);
-            background:
-                radial-gradient(circle at top left, rgba(255, 187, 36, 0.10), transparent 28%),
-                radial-gradient(circle at bottom right, rgba(82, 135, 255, 0.12), transparent 28%),
-                linear-gradient(135deg, #000814, #001133 55%, #071b36);
+            background: var(--auth-background);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -41,7 +40,7 @@
             content: "";
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.18);
+            background: var(--auth-overlay);
             pointer-events: none;
         }
 
@@ -177,6 +176,9 @@
             }
         }
     </style>
+    {% if tema_css_inline %}
+        <style>{{ tema_css_inline|safe }}</style>
+    {% endif %}
 </head>
 <body>
     <div class="box">

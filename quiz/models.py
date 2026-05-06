@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.db import models
 
+from .themes import DEFAULT_THEME_SLUG, listar_slugs_temas_gratuitos, obter_tema_por_slug
+
 
 class Pergunta(models.Model):
     OPCOES_RESPOSTA = [(letra, letra) for letra in "ABCDE"]
@@ -104,3 +106,71 @@ class RespostaPartida(models.Model):
 
     def __str__(self):
         return f"Resposta #{self.numero_pergunta} da partida {self.partida_id}"
+
+
+class PerfilUsuario(models.Model):
+    usuario = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="perfil_quiz",
+    )
+    tema_ativo = models.CharField(max_length=50, default=DEFAULT_THEME_SLUG)
+    temas_liberados = models.JSONField(default=list, blank=True)
+
+    class Meta:
+        verbose_name = "Perfil de usuario"
+        verbose_name_plural = "Perfis de usuario"
+
+    def __str__(self):
+        return f"Perfil de {self.usuario.username}"
+
+    def listar_temas_liberados(self):
+        slugs = list(self.temas_liberados or [])
+
+        for slug in listar_slugs_temas_gratuitos():
+            if slug not in slugs:
+                slugs.append(slug)
+
+        validos = []
+        for slug in slugs:
+            if obter_tema_por_slug(slug) and slug not in validos:
+                validos.append(slug)
+
+        return validos
+
+    def sincronizar_temas_gratuitos(self):
+        temas_liberados = self.listar_temas_liberados()
+        alterado = temas_liberados != (self.temas_liberados or [])
+
+        if self.tema_ativo not in temas_liberados:
+            self.tema_ativo = DEFAULT_THEME_SLUG
+            alterado = True
+
+        if alterado:
+            self.temas_liberados = temas_liberados
+            self.save(update_fields=["tema_ativo", "temas_liberados"])
+
+    def tema_esta_liberado(self, slug):
+        return slug in self.listar_temas_liberados()
+
+    def liberar_tema(self, slug):
+        if not obter_tema_por_slug(slug):
+            return False
+
+        temas_liberados = self.listar_temas_liberados()
+        if slug not in temas_liberados:
+            temas_liberados.append(slug)
+            self.temas_liberados = temas_liberados
+            self.save(update_fields=["temas_liberados"])
+
+        return True
+
+    def ativar_tema(self, slug):
+        if not self.tema_esta_liberado(slug):
+            return False
+
+        if self.tema_ativo != slug:
+            self.tema_ativo = slug
+            self.save(update_fields=["tema_ativo"])
+
+        return True

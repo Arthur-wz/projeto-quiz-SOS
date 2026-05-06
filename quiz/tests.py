@@ -1,7 +1,12 @@
-from django.test import TestCase
-from django.urls import reverse
+from datetime import datetime, time, timedelta
 
-from .models import Partida, Pergunta, RespostaPartida
+from django.contrib.auth.models import User
+from django.test import TestCase, override_settings
+from django.urls import reverse
+from django.utils import timezone
+
+from .models import Partida, PerfilUsuario, Pergunta, RespostaPartida
+from .themes import DEFAULT_THEME_SLUG
 from .views import QUIZ_SESSION_KEY, TOTAL_PERGUNTAS
 
 
@@ -22,6 +27,19 @@ class QuizFlowTests(TestCase):
 
     def iniciar_partida(self):
         return self.client.post(reverse("iniciar_partida"))
+
+    def criar_partida_finalizada(self, *, usuario, pontuacao, acertos, encerrada_em):
+        partida = Partida.objects.create(
+            usuario=usuario,
+            status=Partida.STATUS_FINALIZADA,
+            total_perguntas=TOTAL_PERGUNTAS,
+            pontuacao_total=pontuacao,
+            acertos=acertos,
+            erros=TOTAL_PERGUNTAS - acertos,
+        )
+        Partida.objects.filter(pk=partida.pk).update(encerrada_em=encerrada_em)
+        partida.refresh_from_db()
+        return partida
 
     def test_nao_inicia_partida_sem_20_perguntas(self):
         self.criar_perguntas(total=19)
@@ -139,3 +157,180 @@ class QuizFlowTests(TestCase):
         self.assertRedirects(response, reverse("jogo"))
         primeira_partida = Partida.objects.get(pk=primeira_partida_id)
         self.assertEqual(primeira_partida.status, Partida.STATUS_ABANDONADA)
+
+    def test_ranking_agrega_pontos_semanal_e_mensal(self):
+        agora_local = timezone.localtime()
+        inicio_semana = agora_local.date() - timedelta(days=agora_local.weekday())
+        inicio_mes = agora_local.date().replace(day=1)
+        fuso = timezone.get_current_timezone()
+
+        def aware(data):
+            return timezone.make_aware(datetime.combine(data, time(hour=10)), fuso)
+
+        alice = User.objects.create_user(username="alice", password="senha123")
+        bruno = User.objects.create_user(username="bruno", password="senha123")
+        carla = User.objects.create_user(username="carla", password="senha123")
+
+        self.criar_partida_finalizada(
+            usuario=alice,
+            pontuacao=80,
+            acertos=8,
+            encerrada_em=aware(inicio_semana),
+        )
+        self.criar_partida_finalizada(
+            usuario=alice,
+            pontuacao=30,
+            acertos=3,
+            encerrada_em=aware(inicio_semana + timedelta(days=1)),
+        )
+        self.criar_partida_finalizada(
+            usuario=bruno,
+            pontuacao=90,
+            acertos=9,
+            encerrada_em=aware(inicio_mes),
+        )
+        self.criar_partida_finalizada(
+            usuario=carla,
+            pontuacao=120,
+            acertos=12,
+            encerrada_em=aware(inicio_mes - timedelta(days=1)),
+        )
+
+        response = self.client.get(reverse("ranking"))
+
+        self.assertEqual(response.status_code, 200)
+
+        ranking_semanal = response.context["ranking_semanal"]
+        ranking_mensal = response.context["ranking_mensal"]
+
+        self.assertEqual([item["usuario__username"] for item in ranking_semanal], ["alice"])
+        self.assertEqual(ranking_semanal[0]["total_pontos"], 110)
+        self.assertEqual(ranking_semanal[0]["partidas_jogadas"], 2)
+
+        self.assertEqual(
+            [item["usuario__username"] for item in ranking_mensal],
+            ["alice", "bruno"],
+        )
+        self.assertEqual(ranking_mensal[0]["total_pontos"], 110)
+        self.assertEqual(ranking_mensal[1]["total_pontos"], 90)
+
+    def test_ranking_ignora_partidas_anonimas_ou_nao_finalizadas(self):
+        agora = timezone.now()
+        usuario = User.objects.create_user(username="ranking", password="senha123")
+
+        self.criar_partida_finalizada(
+            usuario=usuario,
+            pontuacao=50,
+            acertos=5,
+            encerrada_em=agora,
+        )
+        self.criar_partida_finalizada(
+            usuario=None,
+            pontuacao=99,
+            acertos=9,
+            encerrada_em=agora,
+        )
+        Partida.objects.create(
+            usuario=usuario,
+            status=Partida.STATUS_EM_ANDAMENTO,
+            total_perguntas=TOTAL_PERGUNTAS,
+            pontuacao_total=200,
+            acertos=20,
+            erros=0,
+        )
+
+        response = self.client.get(reverse("ranking"))
+        ranking_semanal = response.context["ranking_semanal"]
+
+        self.assertEqual(len(ranking_semanal), 1)
+        self.assertEqual(ranking_semanal[0]["usuario__username"], "ranking")
+        self.assertEqual(ranking_semanal[0]["total_pontos"], 50)
+
+    def test_home_mostra_tema_padrao_para_visitante(self):
+        response = self.client.get(reverse("home"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Classico SOS")
+
+    def test_temas_libera_catalogo_gratuito_para_usuario_logado(self):
+        usuario = User.objects.create_user(username="temauser", password="senha123")
+        self.client.force_login(usuario)
+
+        response = self.client.get(reverse("temas"))
+
+        self.assertEqual(response.status_code, 200)
+        perfil = PerfilUsuario.objects.get(usuario=usuario)
+        self.assertEqual(perfil.tema_ativo, DEFAULT_THEME_SLUG)
+        self.assertIn("classico-sos", perfil.temas_liberados)
+        self.assertIn("oceano-vivo", perfil.temas_liberados)
+        self.assertIn("solar-premium", perfil.temas_liberados)
+        self.assertContains(response, "Oceano Vivo")
+        self.assertContains(response, "Solar Premium")
+
+    def test_usuario_pode_ativar_tema_gratuito(self):
+        usuario = User.objects.create_user(username="temaok", password="senha123")
+        self.client.force_login(usuario)
+
+        response = self.client.post(reverse("ativar_tema", args=["oceano-vivo"]), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+        perfil = PerfilUsuario.objects.get(usuario=usuario)
+        self.assertEqual(perfil.tema_ativo, "oceano-vivo")
+        self.assertContains(response, "Tema Oceano Vivo ativado com sucesso.")
+
+    def test_usuario_pode_ativar_solar_premium_com_catalogo_liberado(self):
+        usuario = User.objects.create_user(username="temasolar", password="senha123")
+        self.client.force_login(usuario)
+
+        response = self.client.post(reverse("ativar_tema", args=["solar-premium"]), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+        perfil = PerfilUsuario.objects.get(usuario=usuario)
+        self.assertEqual(perfil.tema_ativo, "solar-premium")
+        self.assertContains(response, "Tema Solar Premium ativado com sucesso.")
+
+    def test_login_indica_google_nao_configurado(self):
+        response = self.client.get(reverse("login"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "GOOGLE_CLIENT_ID")
+        self.assertNotContains(response, "Entrar com Google")
+
+    @override_settings(
+        SOCIALACCOUNT_PROVIDERS={
+            "google": {
+                "APP": {
+                    "client_id": "teste-client-id",
+                    "secret": "teste-secret",
+                    "key": "",
+                },
+                "SCOPE": ["profile", "email"],
+                "AUTH_PARAMS": {"prompt": "select_account"},
+            }
+        }
+    )
+    def test_login_exibe_botao_google_quando_configurado(self):
+        response = self.client.get(reverse("login"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Entrar com Google")
+        self.assertContains(response, reverse("google_login"))
+
+    @override_settings(
+        SOCIALACCOUNT_PROVIDERS={
+            "google": {
+                "APP": {
+                    "client_id": "teste-client-id",
+                    "secret": "teste-secret",
+                    "key": "",
+                },
+                "SCOPE": ["profile", "email"],
+                "AUTH_PARAMS": {"prompt": "select_account"},
+            }
+        }
+    )
+    def test_google_login_redireciona_para_oauth_quando_configurado(self):
+        response = self.client.post(reverse("google_login"))
+
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("accounts.google.com", response["Location"])

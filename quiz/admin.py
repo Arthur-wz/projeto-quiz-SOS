@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Partida, Pergunta, RespostaPartida
+from .models import Partida, PerfilUsuario, Pergunta, RespostaPartida
 
 
 @admin.register(Pergunta)
@@ -110,3 +110,13 @@ class RespostaPartidaAdmin(admin.ModelAdmin):
         "pontos_recebidos",
         "respondida_em",
     )
+
+
+@admin.register(PerfilUsuario)
+class PerfilUsuarioAdmin(admin.ModelAdmin):
+    list_display = ("usuario", "tema_ativo", "temas_liberados_resumo")
+    search_fields = ("usuario__username", "tema_ativo")
+
+    @admin.display(description="Temas liberados")
+    def temas_liberados_resumo(self, obj):
+        return ", ".join(obj.listar_temas_liberados())

@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado final | Quiz SOS</title>
     <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    {% if tema_css_inline %}
+        <style>{{ tema_css_inline|safe }}</style>
+    {% endif %}
 </head>
 <body>
     <main class="page-shell">

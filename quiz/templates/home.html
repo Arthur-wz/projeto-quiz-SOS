@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz SOS</title>
     <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    {% if tema_css_inline %}
+        <style>{{ tema_css_inline|safe }}</style>
+    {% endif %}
 </head>
 <body>
     <main class="page-shell">
@@ -47,6 +50,8 @@
                         {% endif %}
 
                         <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+                        <a href="{% url 'ranking' %}" class="btn btn-secondary">Ranking</a>
+                        <a href="{% url 'temas' %}" class="btn btn-secondary">Temas</a>
                         <a href="{% url 'criar_usuario' %}" class="btn btn-ghost">Criar usuario</a>
                     </div>
                 </div>
@@ -86,7 +91,12 @@
                         </p>
                     {% else %}
                         <p class="panel-note">
-                            As ajudas pular e eliminar 2 podem ser usadas uma vez cada.
+                            Tema atual: <strong>{{ tema_visual_atual.nome }}</strong>.
+                            {% if request.user.is_authenticated %}
+                                Abra a galeria para trocar o visual entre os temas disponiveis.
+                            {% else %}
+                                Entre com sua conta para personalizar o visual com os temas disponiveis.
+                            {% endif %}
                         </p>
                     {% endif %}
                 </aside>

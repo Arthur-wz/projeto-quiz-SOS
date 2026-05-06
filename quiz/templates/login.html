@@ -21,16 +21,15 @@
             --accent: #ffbb24;
             --input-bg: rgba(255, 255, 255, 0.10);
             --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            --auth-background: radial-gradient(circle at top left, rgba(255, 187, 36, 0.12), transparent 30%), radial-gradient(circle at bottom right, rgba(82, 135, 255, 0.12), transparent 28%), linear-gradient(135deg, #000814, #001133 55%, #071b36);
+            --auth-overlay: rgba(0, 0, 0, 0.18);
         }
 
         body {
             font-family: Arial, sans-serif;
             min-height: 100vh;
             color: var(--text-main);
-            background:
-                radial-gradient(circle at top left, rgba(255, 187, 36, 0.12), transparent 30%),
-                radial-gradient(circle at bottom right, rgba(82, 135, 255, 0.12), transparent 28%),
-                linear-gradient(135deg, #000814, #001133 55%, #071b36);
+            background: var(--auth-background);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -43,7 +42,7 @@
             content: "";
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.18);
+            background: var(--auth-overlay);
             pointer-events: none;
         }
 
@@ -152,6 +151,53 @@
             box-shadow: 0 12px 24px rgba(255, 187, 36, 0.22);
         }
 
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 22px 0 18px;
+            color: var(--text-soft);
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .btn-google {
+            background: rgba(255, 255, 255, 0.94);
+            color: #101828;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-google:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.16);
+        }
+
+        .google-mark {
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #4285f4, #34a853);
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 800;
+        }
+
         .links {
             display: flex;
             justify-content: center;
@@ -185,6 +231,18 @@
             text-align: center;
         }
 
+        .status-note {
+            margin-top: 18px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-soft);
+            font-size: 0.92rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
         @media (max-width: 520px) {
             .box {
                 padding: 28px 20px 24px;
@@ -200,6 +258,9 @@
             }
         }
     </style>
+    {% if tema_css_inline %}
+        <style>{{ tema_css_inline|safe }}</style>
+    {% endif %}
 </head>
 <body>
     <div class="container-login">
@@ -226,6 +287,23 @@
 
                 <button type="submit" class="btn btn-primary">Entrar</button>
             </form>
+
+            <div class="divider">ou</div>
+
+            {% if google_login_url and google_login_configured %}
+                <form method="post" action="{{ google_login_url }}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-google">
+                        <span class="google-mark">G</span>
+                        <span>Entrar com Google</span>
+                    </button>
+                </form>
+            {% else %}
+                <p class="status-note">
+                    Login com Google disponivel apos configurar
+                    <strong>GOOGLE_CLIENT_ID</strong> e <strong>GOOGLE_CLIENT_SECRET</strong>.
+                </p>
+            {% endif %}
 
             <div class="links">
                 <a href="{% url 'criar_usuario' %}">Criar usuario</a>

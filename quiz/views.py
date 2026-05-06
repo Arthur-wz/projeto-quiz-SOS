@@ -1,13 +1,19 @@
 import random
+from datetime import datetime, time, timedelta
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User
+from django.db.models import Count, Sum
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import NoReverseMatch, reverse
 from django.utils import timezone
 from django.views.decorators.http import require_POST
 
-from .models import Partida, Pergunta, RespostaPartida
+from django.conf import settings
+
+from .models import Partida, PerfilUsuario, Pergunta, RespostaPartida
+from .themes import DEFAULT_THEME_SLUG, listar_temas, obter_tema_por_slug
 
 QUIZ_SESSION_KEY = "quiz_state"
 TOTAL_PERGUNTAS = 20
@@ -15,6 +21,7 @@ PONTOS_POR_PERGUNTA = 10
 PONTOS_COM_AJUDA = 5
 HELP_SKIP = "skip"
 HELP_ELIMINATE = "eliminate"
+RANKING_LIMIT = 10
 
 
 def home(request):
@@ -47,7 +54,12 @@ def login_view(request):
 
         erro = "Usuario ou senha invalidos."
 
-    return render(request, "login.html", {"erro": erro})
+    context = {
+        "erro": erro,
+        "google_login_configured": _google_login_esta_configurado(),
+        "google_login_url": _obter_url_login_google(),
+    }
+    return render(request, "login.html", context)
 
 
 def criar_usuario(request):
@@ -117,6 +129,67 @@ def continuar_partida(request):
         return redirect("resultado")
 
     return redirect("jogo")
+
+
+def ranking(request):
+    inicio_semana = _inicio_semana_atual()
+    inicio_mes = _inicio_mes_atual()
+
+    context = {
+        "ranking_semanal": _montar_ranking(inicio_semana),
+        "ranking_mensal": _montar_ranking(inicio_mes),
+        "inicio_semana": timezone.localtime(inicio_semana).date(),
+        "inicio_mes": timezone.localtime(inicio_mes).date(),
+    }
+    return render(request, "ranking.html", context)
+
+
+def temas(request):
+    tema_ativo_slug = DEFAULT_THEME_SLUG
+    temas_liberados = set()
+
+    if request.user.is_authenticated:
+        perfil = _obter_perfil_usuario(request.user)
+        perfil.sincronizar_temas_gratuitos()
+        temas_liberados = set(perfil.listar_temas_liberados())
+        tema_ativo_slug = perfil.tema_ativo
+
+    catalogo_temas = []
+    for tema in listar_temas():
+        liberado = tema.slug in temas_liberados or not tema.premium
+        catalogo_temas.append(
+            {
+                "tema": tema,
+                "liberado": liberado,
+                "ativo": tema.slug == tema_ativo_slug,
+            }
+        )
+
+    context = {"catalogo_temas": catalogo_temas}
+    return render(request, "temas.html", context)
+
+
+@require_POST
+def ativar_tema(request, slug):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para escolher um tema personalizado.")
+        return redirect("login")
+
+    tema = obter_tema_por_slug(slug)
+    if not tema:
+        messages.error(request, "Tema nao encontrado.")
+        return redirect("temas")
+
+    perfil = _obter_perfil_usuario(request.user)
+    perfil.sincronizar_temas_gratuitos()
+
+    if not perfil.tema_esta_liberado(slug):
+        messages.warning(request, "Esse tema ainda nao esta liberado para a sua conta.")
+        return redirect("temas")
+
+    perfil.ativar_tema(slug)
+    messages.success(request, f"Tema {tema.nome} ativado com sucesso.")
+    return redirect("temas")
 
 
 @require_POST
@@ -418,3 +491,66 @@ def _adicionar_ajuda(ajudas_atuais, nova_ajuda):
     if nova_ajuda in ajudas_atuais:
         return list(ajudas_atuais)
     return [*ajudas_atuais, nova_ajuda]
+
+
+def _montar_ranking(inicio_periodo):
+    ranking = list(
+        Partida.objects.filter(
+            status=Partida.STATUS_FINALIZADA,
+            usuario__isnull=False,
+            encerrada_em__gte=inicio_periodo,
+        )
+        .values("usuario_id", "usuario__username")
+        .annotate(
+            total_pontos=Sum("pontuacao_total"),
+            total_acertos=Sum("acertos"),
+            partidas_jogadas=Count("id"),
+        )
+        .order_by("-total_pontos", "-total_acertos", "-partidas_jogadas", "usuario__username")[
+            :RANKING_LIMIT
+        ]
+    )
+
+    for posicao, item in enumerate(ranking, start=1):
+        item["posicao"] = posicao
+
+    return ranking
+
+
+def _inicio_semana_atual():
+    hoje = timezone.localdate()
+    inicio_semana = hoje - timedelta(days=hoje.weekday())
+    return _inicio_do_dia(inicio_semana)
+
+
+def _inicio_mes_atual():
+    hoje = timezone.localdate()
+    return _inicio_do_dia(hoje.replace(day=1))
+
+
+def _inicio_do_dia(data):
+    fuso = timezone.get_current_timezone()
+    return timezone.make_aware(datetime.combine(data, time.min), fuso)
+
+
+def _google_login_esta_configurado():
+    google_settings = getattr(settings, "SOCIALACCOUNT_PROVIDERS", {}).get("google", {})
+    app_settings = google_settings.get("APP", {})
+    return bool(app_settings.get("client_id") and app_settings.get("secret"))
+
+
+def _obter_url_login_google():
+    try:
+        return reverse("google_login")
+    except NoReverseMatch:
+        return None
+
+
+def _obter_perfil_usuario(usuario):
+    perfil, _ = PerfilUsuario.objects.get_or_create(
+        usuario=usuario,
+        defaults={
+            "temas_liberados": [],
+        },
+    )
+    return perfil

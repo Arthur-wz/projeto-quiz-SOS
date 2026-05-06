@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking | Quiz SOS</title>
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    {% if tema_css_inline %}
+        <style>{{ tema_css_inline|safe }}</style>
+    {% endif %}
+</head>
+<body>
+    <main class="page-shell">
+        <section class="result-layout">
+            <article class="result-card">
+                <span class="eyebrow">Ranking</span>
+                <h1 class="section-title">Destaques da semana e do mes</h1>
+                <p class="hero-copy">
+                    O ranking considera apenas partidas finalizadas por usuarios logados e soma
+                    os pontos acumulados em cada periodo.
+                </p>
+
+                <div class="ranking-meta">
+                    <span class="chip chip-blue">Semana desde {{ inicio_semana|date:"d/m/Y" }}</span>
+                    <span class="chip chip-gold">Mes desde {{ inicio_mes|date:"d/m/Y" }}</span>
+                </div>
+
+                <div class="result-actions">
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Voltar ao inicio</a>
+                    {% if not request.user.is_authenticated %}
+                        <a href="{% url 'login' %}" class="btn btn-ghost">Entrar para competir</a>
+                    {% endif %}
+                </div>
+            </article>
+
+            <article class="history-card ranking-card">
+                <div class="history-header">
+                    <span class="eyebrow">Semanal</span>
+                    <h2 class="section-title">Top {{ ranking_semanal|length }}</h2>
+                </div>
+
+                <div class="ranking-list">
+                    {% for item in ranking_semanal %}
+                        <div class="ranking-item {% if request.user.is_authenticated and request.user.id == item.usuario_id %}is-you{% endif %}">
+                            <div class="ranking-position">#{{ item.posicao }}</div>
+                            <div class="ranking-main">
+                                <strong>{{ item.usuario__username }}</strong>
+                                <p>{{ item.partidas_jogadas }} partida{{ item.partidas_jogadas|pluralize }} | {{ item.total_acertos }} acertos</p>
+                            </div>
+                            <div class="ranking-score">{{ item.total_pontos }} pts</div>
+                        </div>
+                    {% empty %}
+                        <div class="history-item">
+                            <strong>Nenhuma partida finalizada nesta semana.</strong>
+                            <p>Assim que os usuarios concluirem partidas, o ranking semanal aparece aqui.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </article>
+
+            <article class="history-card ranking-card">
+                <div class="history-header">
+                    <span class="eyebrow">Mensal</span>
+                    <h2 class="section-title">Top {{ ranking_mensal|length }}</h2>
+                </div>
+
+                <div class="ranking-list">
+                    {% for item in ranking_mensal %}
+                        <div class="ranking-item {% if request.user.is_authenticated and request.user.id == item.usuario_id %}is-you{% endif %}">
+                            <div class="ranking-position">#{{ item.posicao }}</div>
+                            <div class="ranking-main">
+                                <strong>{{ item.usuario__username }}</strong>
+                                <p>{{ item.partidas_jogadas }} partida{{ item.partidas_jogadas|pluralize }} | {{ item.total_acertos }} acertos</p>
+                            </div>
+                            <div class="ranking-score">{{ item.total_pontos }} pts</div>
+                        </div>
+                    {% empty %}
+                        <div class="history-item">
+                            <strong>Nenhuma partida finalizada neste mes.</strong>
+                            <p>Complete partidas logado para entrar no ranking mensal.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
