@@ -1,0 +1,893 @@
+GUIA DE SINTAXES DJANGO DO PROJETO
+FORMATO: ARQUIVO -> TRECHO -> EXPLICACAO
+
+Regra deste guia:
+- eu nao explico Python puro
+- eu explico o que e recurso, sintaxe ou estrutura do Django
+- quando a mesma ideia aparece de novo, eu evito repetir
+
+
+==================================================
+config/settings.py
+==================================================
+
+Trecho:
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.sites',
+    'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'quiz',
+]
+
+Explicacao:
+- `INSTALLED_APPS` e a lista de apps que o Django vai carregar.
+- tudo que esta aqui passa a existir no projeto: models, admin, migrations, templates, comandos e integracoes.
+
+
+Trecho:
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+Explicacao:
+- `MIDDLEWARE` define camadas globais que passam por toda requisicao e resposta.
+- neste projeto, por exemplo:
+  - `SessionMiddleware` ativa sessao
+  - `CsrfViewMiddleware` protege formularios POST
+  - `AuthenticationMiddleware` faz `request.user` existir
+  - `MessageMiddleware` faz o sistema de mensagens existir
+
+
+Trecho:
+ROOT_URLCONF = 'config.urls'
+
+Explicacao:
+- diz qual arquivo e o ponto principal das rotas do projeto.
+
+
+Trecho:
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'quiz.context_processors.theme_context',
+            ],
+        },
+    },
+]
+
+Explicacao:
+- `BACKEND` define o motor de template do Django.
+- `DIRS` adiciona pastas extras de templates.
+- `APP_DIRS = True` faz o Django procurar automaticamente por `templates/` dentro dos apps.
+- `context_processors` injeta variaveis globais em todos os templates.
+- `quiz.context_processors.theme_context` e um context processor criado no projeto.
+
+
+Trecho:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+Explicacao:
+- `DATABASES` define o banco principal usado pelo ORM do Django.
+- `ENGINE` escolhe o tipo do banco.
+
+
+Trecho:
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+Explicacao:
+- define quais mecanismos de autenticacao o Django aceita.
+- aqui o projeto aceita:
+  - autenticacao padrao do Django
+  - autenticacao do `allauth`
+
+
+Trecho:
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+Explicacao:
+- definem para onde o Django manda o usuario depois de entrar ou sair da conta.
+
+
+Trecho:
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'prompt': 'select_account'},
+    }
+}
+
+Explicacao:
+- configuracao do `django-allauth` para login social com Google.
+- `SCOPE` define quais dados o projeto pede ao Google.
+- `AUTH_PARAMS` ajusta o comportamento do fluxo OAuth.
+
+
+Trecho:
+AUTH_PASSWORD_VALIDATORS = [...]
+
+Explicacao:
+- lista de validadores de senha do Django.
+- essa parte faz o framework rejeitar senhas fracas conforme as regras configuradas.
+
+
+Trecho:
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+Explicacao:
+- configuracao de arquivos estaticos.
+- `STATIC_URL` e o prefixo das URLs dos arquivos CSS, JS, imagens e videos.
+- `STATICFILES_DIRS` diz onde esses arquivos estao no projeto.
+
+
+==================================================
+config/urls.py
+==================================================
+
+Trecho:
+path('admin/', admin.site.urls)
+
+Explicacao:
+- `path(...)` cria uma rota do Django.
+- `admin.site.urls` liga essa rota ao painel administrativo nativo do Django.
+
+
+Trecho:
+path('accounts/', include('allauth.urls'))
+
+Explicacao:
+- `include(...)` puxa rotas prontas de outro modulo.
+- aqui o projeto esta importando as rotas do `django-allauth`.
+
+
+Trecho:
+path('', include('quiz.urls'))
+
+Explicacao:
+- a raiz do site foi delegada para o arquivo de rotas do app `quiz`.
+
+
+==================================================
+quiz/urls.py
+==================================================
+
+Trecho:
+path("login/", views.login_view, name="login")
+
+Explicacao:
+- `views.login_view` e a view chamada quando a URL e acessada.
+- `name="login"` cria um nome interno para a rota.
+- esse nome depois pode ser usado em `redirect("login")`, `reverse("login")` e `{% url 'login' %}`.
+
+
+Trecho:
+path("temas/<slug:slug>/ativar/", views.ativar_tema, name="ativar_tema")
+
+Explicacao:
+- `<slug:slug>` cria um parametro dinamico de rota.
+- o primeiro `slug` e o tipo aceito.
+- o segundo `slug` e o nome do parametro recebido pela view.
+
+
+==================================================
+quiz/models.py
+==================================================
+
+Trecho:
+class Pergunta(models.Model):
+
+Explicacao:
+- `models.Model` transforma a classe em model do Django.
+- isso significa que ela passa a representar uma tabela do banco.
+
+
+Trecho:
+pergunta = models.TextField()
+
+Explicacao:
+- `TextField` e um tipo de campo do Django para texto maior.
+
+
+Trecho:
+alternativa_a = models.CharField(max_length=200)
+
+Explicacao:
+- `CharField` e um campo de texto curto.
+- `max_length` e obrigatorio nesse tipo.
+
+
+Trecho:
+resposta_correta = models.CharField(max_length=1, choices=OPCOES_RESPOSTA)
+
+Explicacao:
+- `choices=...` limita os valores aceitos no campo.
+- o Django usa isso tanto para validacao quanto para formularios e admin.
+
+
+Trecho:
+usuario = models.ForeignKey(
+    settings.AUTH_USER_MODEL,
+    on_delete=models.SET_NULL,
+    null=True,
+    blank=True,
+    related_name="partidas_quiz",
+)
+
+Explicacao:
+- `ForeignKey` cria uma relacao entre models.
+- `settings.AUTH_USER_MODEL` aponta para o model oficial de usuario do Django.
+- `on_delete=models.SET_NULL` significa que, se o usuario for apagado, a referencia vira nula.
+- `null=True` permite nulo no banco.
+- `blank=True` permite campo vazio em formularios.
+- `related_name="partidas_quiz"` cria o nome de acesso reverso da relacao.
+
+
+Trecho:
+partida = models.ForeignKey(Partida, on_delete=models.CASCADE, related_name="respostas")
+
+Explicacao:
+- `on_delete=models.CASCADE` significa que, se a partida for apagada, as respostas ligadas a ela tambem serao apagadas.
+- `related_name="respostas"` permite acessar `partida.respostas`.
+
+
+Trecho:
+usuario = models.OneToOneField(
+    settings.AUTH_USER_MODEL,
+    on_delete=models.CASCADE,
+    related_name="perfil_quiz",
+)
+
+Explicacao:
+- `OneToOneField` cria relacao um-para-um.
+- neste projeto, cada usuario tem um unico `PerfilUsuario`.
+
+
+Trecho:
+temas_liberados = models.JSONField(default=list, blank=True)
+
+Explicacao:
+- `JSONField` guarda dados em formato JSON.
+- aqui ele armazena a lista de temas liberados do usuario.
+
+
+Trecho:
+class Meta:
+    ordering = ["-iniciada_em"]
+
+Explicacao:
+- `Meta` guarda configuracoes internas do model.
+- `ordering` define a ordenacao padrao das consultas.
+- o `-` indica ordem decrescente.
+
+
+Trecho:
+class Meta:
+    verbose_name = "Perfil de usuario"
+    verbose_name_plural = "Perfis de usuario"
+
+Explicacao:
+- `verbose_name` e `verbose_name_plural` mudam como o model aparece no admin do Django.
+
+
+Trecho:
+constraints = [
+    models.UniqueConstraint(
+        fields=["partida", "numero_pergunta"],
+        name="unique_resposta_por_ordem_na_partida",
+    )
+]
+
+Explicacao:
+- `UniqueConstraint` cria uma regra de unicidade no banco.
+- aqui o Django impede duas respostas com o mesmo numero dentro da mesma partida.
+
+
+Trecho:
+def __str__(self):
+
+Explicacao:
+- o Django usa `__str__` para mostrar o objeto no admin e em varias representacoes internas.
+
+
+==================================================
+quiz/views.py
+==================================================
+
+Trecho:
+from django.contrib import messages
+
+Explicacao:
+- importa o framework de mensagens do Django.
+- ele e usado para avisos como sucesso, erro e informacao entre uma pagina e outra.
+
+
+Trecho:
+from django.contrib.auth import authenticate, login as auth_login
+
+Explicacao:
+- `authenticate(...)` verifica credenciais.
+- `login(...)` cria a sessao autenticada.
+
+
+Trecho:
+from django.shortcuts import get_object_or_404, redirect, render
+
+Explicacao:
+- `render(...)` devolve HTML pronto usando um template.
+- `redirect(...)` manda o usuario para outra rota.
+- `get_object_or_404(...)` busca um objeto e devolve erro 404 se ele nao existir.
+
+
+Trecho:
+from django.urls import NoReverseMatch, reverse
+
+Explicacao:
+- `reverse(...)` transforma nome de rota em URL real.
+- `NoReverseMatch` e a excecao do Django quando uma rota nomeada nao pode ser resolvida.
+
+
+Trecho:
+from django.utils import timezone
+
+Explicacao:
+- `timezone` fornece funcoes de data e hora alinhadas com a configuracao do Django.
+
+
+Trecho:
+from django.views.decorators.http import require_POST
+
+Explicacao:
+- `require_POST` e um decorador do Django que limita uma view a requisicoes POST.
+
+
+Trecho:
+state = request.session.get(QUIZ_SESSION_KEY, {})
+
+Explicacao:
+- `request.session` e a sessao do Django ligada ao usuario.
+- aqui o projeto tenta recuperar o estado da partida atual da sessao.
+
+
+Trecho:
+return render(request, "home.html", context)
+
+Explicacao:
+- manda o Django renderizar o template `home.html` com o dicionario `context`.
+
+
+Trecho:
+if request.method == "POST":
+
+Explicacao:
+- checa o metodo HTTP recebido pela view.
+- em Django isso e comum para separar comportamento de formulario entre GET e POST.
+
+
+Trecho:
+user = authenticate(request, username=username, password=password)
+
+Explicacao:
+- chama o sistema de autenticacao do Django para validar login e senha.
+
+
+Trecho:
+auth_login(request, user)
+
+Explicacao:
+- cria a sessao autenticada do usuario no Django.
+
+
+Trecho:
+return redirect("home")
+
+Explicacao:
+- redireciona pela rota nomeada, nao pela URL escrita manualmente.
+
+
+Trecho:
+@require_POST
+def iniciar_partida(request):
+
+Explicacao:
+- essa view so aceita POST.
+- se alguem tentar abrir por GET, o Django bloqueia.
+
+
+Trecho:
+messages.error(
+    request,
+    f"Cadastre pelo menos {TOTAL_PERGUNTAS} perguntas para iniciar uma partida completa.",
+)
+
+Explicacao:
+- cria uma mensagem de erro usando o framework de mensagens do Django.
+- essa mensagem sera exibida no template seguinte.
+
+
+Trecho:
+usuario=request.user if request.user.is_authenticated else None
+
+Explicacao:
+- `request.user` existe por causa do `AuthenticationMiddleware`.
+- `is_authenticated` verifica se o usuario esta logado.
+
+
+Trecho:
+response = self.client.get(reverse("ranking"))
+
+Explicacao:
+- a parte `reverse("ranking")` usa o nome da rota para montar a URL.
+- a mesma ideia aparece em views e testes.
+
+
+Trecho:
+perfil = _obter_perfil_usuario(request.user)
+
+Explicacao:
+- aqui nao ha sintaxe especial do Django na linha em si.
+- o importante e que a view trabalha com o usuario autenticado de `request.user`.
+
+
+Trecho:
+tema = obter_tema_por_slug(slug)
+if not tema:
+    messages.error(request, "Tema nao encontrado.")
+    return redirect("temas")
+
+Explicacao:
+- a view usa uma mensagem do Django e um redirecionamento nomeado quando o recurso nao existe.
+
+
+Trecho:
+pergunta = get_object_or_404(Pergunta, pk=queue[0])
+
+Explicacao:
+- busca uma `Pergunta` pelo `pk` usando atalho do Django.
+- se nao achar, o Django devolve resposta 404 automaticamente.
+
+
+Trecho:
+request.POST.get("action")
+
+Explicacao:
+- `request.POST` e o dicionario de dados enviados por formulario POST.
+
+
+Trecho:
+request.session[QUIZ_SESSION_KEY] = state
+
+Explicacao:
+- grava o estado atualizado da partida na sessao do Django.
+
+
+Trecho:
+RespostaPartida.objects.update_or_create(
+    partida=partida,
+    numero_pergunta=numero_pergunta,
+    defaults={...},
+)
+
+Explicacao:
+- `update_or_create(...)` e um recurso do ORM do Django.
+- ele atualiza se o registro ja existir ou cria se nao existir.
+
+
+Trecho:
+partida = _obter_partida_da_sessao(request, state)
+if not partida:
+    return None
+
+Explicacao:
+- aqui a parte Django relevante esta dentro do helper chamado depois, onde o model e buscado via ORM.
+
+
+Trecho:
+partida.save()
+
+Explicacao:
+- `save()` e o metodo do model do Django que persiste alteracoes no banco.
+
+
+Trecho:
+Partida.objects.get(pk=partida_id)
+
+Explicacao:
+- `objects.get(...)` busca um unico registro do model.
+- `pk` e atalho do Django para chave primaria.
+
+
+Trecho:
+except Partida.DoesNotExist:
+
+Explicacao:
+- `DoesNotExist` e a excecao criada automaticamente pelo Django para cada model.
+
+
+Trecho:
+Partida.objects.filter(
+    status=Partida.STATUS_FINALIZADA,
+    usuario__isnull=False,
+    encerrada_em__gte=inicio_periodo,
+)
+
+Explicacao:
+- `filter(...)` cria uma consulta do ORM.
+- `usuario__isnull=False` usa lookup do Django para campo nao nulo.
+- `encerrada_em__gte=...` usa lookup `gte`, que significa maior ou igual.
+
+
+Trecho:
+.values("usuario_id", "usuario__username")
+
+Explicacao:
+- `values(...)` faz o ORM devolver dicionarios em vez de objetos completos.
+- `usuario__username` atravessa a relacao com `usuario`.
+
+
+Trecho:
+.annotate(
+    total_pontos=Sum("pontuacao_total"),
+    total_acertos=Sum("acertos"),
+    partidas_jogadas=Count("id"),
+)
+
+Explicacao:
+- `annotate(...)` adiciona campos calculados na consulta.
+- `Sum` e `Count` sao funcoes de agregacao do ORM.
+
+
+Trecho:
+.order_by("-total_pontos", "-total_acertos", "-partidas_jogadas", "usuario__username")
+
+Explicacao:
+- `order_by(...)` define a ordenacao da consulta.
+- `-` indica ordem decrescente.
+
+
+Trecho:
+timezone.localdate()
+timezone.localtime(inicio_semana).date()
+timezone.make_aware(...)
+
+Explicacao:
+- funcoes de data/hora do Django respeitando a configuracao de timezone do projeto.
+
+
+Trecho:
+google_settings = getattr(settings, "SOCIALACCOUNT_PROVIDERS", {}).get("google", {})
+
+Explicacao:
+- a parte de Django aqui e `settings`, que da acesso as configuracoes carregadas do projeto.
+
+
+Trecho:
+return reverse("google_login")
+
+Explicacao:
+- usa o nome da rota do allauth para encontrar a URL correta de login com Google.
+
+
+Trecho:
+PerfilUsuario.objects.get_or_create(
+    usuario=usuario,
+    defaults={"temas_liberados": []},
+)
+
+Explicacao:
+- `get_or_create(...)` busca um registro.
+- se ele nao existir, o Django cria automaticamente.
+
+
+==================================================
+quiz/context_processors.py
+==================================================
+
+Trecho:
+def theme_context(request):
+
+Explicacao:
+- isso e um context processor do Django.
+- ele roda antes do template ser renderizado e adiciona dados globais ao contexto.
+
+
+Trecho:
+perfil, _ = PerfilUsuario.objects.get_or_create(...)
+
+Explicacao:
+- mesmo uso de ORM ja explicado acima.
+- aqui ele garante que o usuario sempre tenha um `PerfilUsuario`.
+
+
+Trecho:
+perfil.save(update_fields=["tema_ativo"])
+
+Explicacao:
+- `update_fields=[...]` manda o Django salvar apenas aqueles campos.
+
+
+Trecho:
+return {
+    "tema_visual_atual": tema,
+    "tema_css_inline": montar_css_tema(tema),
+}
+
+Explicacao:
+- tudo que o context processor devolve entra automaticamente em todos os templates.
+
+
+==================================================
+quiz/templates/home.html
+==================================================
+
+Trecho:
+{% load static %}
+
+Explicacao:
+- carrega a biblioteca de tags estaticas do Django.
+
+
+Trecho:
+{% static 'css/quiz.css' %}
+
+Explicacao:
+- gera a URL de um arquivo estatico conforme a configuracao `STATIC_URL`.
+
+
+Trecho:
+{{ total_perguntas }}
+
+Explicacao:
+- imprime uma variavel do contexto dentro do HTML.
+
+
+Trecho:
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+Explicacao:
+- `if` e `for` sao tags do motor de template do Django.
+- `messages` vem do framework de mensagens.
+- `message.tags` sao as classes associadas ao tipo da mensagem.
+- `|default:'info'` e um filtro do template do Django para valor padrao.
+
+
+Trecho:
+<form method="post" action="{% url 'iniciar_partida' %}">
+    {% csrf_token %}
+
+Explicacao:
+- `{% url 'iniciar_partida' %}` monta a URL pela rota nomeada.
+- `{% csrf_token %}` injeta o token CSRF exigido pelo Django em formularios POST.
+
+
+Trecho:
+{% if partida_em_andamento %}
+...
+{% elif partida_finalizada %}
+...
+{% else %}
+...
+{% endif %}
+
+Explicacao:
+- estrutura condicional do template engine do Django.
+
+
+Trecho:
+{{ tema_css_inline|safe }}
+
+Explicacao:
+- `|safe` e filtro do template do Django.
+- ele diz para nao escapar o conteudo.
+
+
+==================================================
+quiz/templates/temas.html
+==================================================
+
+Trecho:
+{% for item in catalogo_temas %}
+
+Explicacao:
+- percorre a lista enviada pela view no contexto.
+
+
+Trecho:
+{% url 'ativar_tema' item.tema.slug %}
+
+Explicacao:
+- monta URL de rota nomeada com parametro dinamico.
+
+
+Trecho:
+{% if item.ativo %}
+...
+{% elif request.user.is_authenticated and item.liberado %}
+...
+{% else %}
+...
+{% endif %}
+
+Explicacao:
+- usa condicional do template do Django.
+- `request` existe no template porque o context processor `request` esta ativo em `settings.py`.
+
+
+==================================================
+quiz/admin.py
+==================================================
+
+Trecho:
+@admin.register(Pergunta)
+class PerguntaAdmin(admin.ModelAdmin):
+
+Explicacao:
+- `@admin.register(...)` registra o model no admin do Django.
+- `ModelAdmin` personaliza como ele aparece.
+
+
+Trecho:
+list_display = ("pergunta_resumida", "materia", "serie", "resposta_correta")
+
+Explicacao:
+- define as colunas mostradas na listagem do admin.
+
+
+Trecho:
+list_filter = ("materia", "serie")
+
+Explicacao:
+- cria filtros laterais no admin.
+
+
+Trecho:
+search_fields = ("pergunta", "materia", "serie")
+
+Explicacao:
+- define os campos usados pela busca do admin.
+
+
+Trecho:
+fieldsets = (
+    ("Pergunta", {"fields": (...)}),
+    ("Alternativas", {"fields": (...)}),
+)
+
+Explicacao:
+- organiza os campos em grupos visuais dentro da tela do admin.
+
+
+Trecho:
+class RespostaPartidaInline(admin.TabularInline):
+
+Explicacao:
+- `TabularInline` exibe objetos relacionados dentro de outro model em formato de tabela.
+
+
+Trecho:
+readonly_fields = fields
+
+Explicacao:
+- marca aqueles campos como somente leitura no admin.
+
+
+Trecho:
+inlines = (RespostaPartidaInline,)
+
+Explicacao:
+- diz ao admin para mostrar aquele inline dentro da tela principal.
+
+
+Trecho:
+@admin.display(description="Pergunta")
+
+Explicacao:
+- personaliza como um metodo aparece no admin, incluindo o titulo da coluna.
+
+
+==================================================
+quiz/tests.py
+==================================================
+
+Trecho:
+class QuizFlowTests(TestCase):
+
+Explicacao:
+- `TestCase` e a base de testes do Django.
+- ele cria ambiente isolado de banco para cada teste.
+
+
+Trecho:
+response = self.client.get(reverse("ranking"))
+
+Explicacao:
+- `self.client` e o cliente de teste do Django.
+- ele simula requisicoes HTTP sem abrir navegador.
+- `reverse("ranking")` resolve o nome da rota para URL.
+
+
+Trecho:
+self.client.post(reverse("jogo"), {"action": "answer", "answer": "A"})
+
+Explicacao:
+- simula formulario POST no ambiente de teste do Django.
+
+
+Trecho:
+self.client.force_login(usuario)
+
+Explicacao:
+- loga um usuario diretamente no teste sem passar pela tela de login.
+
+
+Trecho:
+@override_settings(
+    SOCIALACCOUNT_PROVIDERS={...}
+)
+
+Explicacao:
+- altera settings do Django temporariamente durante aquele teste.
+
+
+Trecho:
+response.context["ranking_semanal"]
+
+Explicacao:
+- acessa o contexto que a view enviou ao template durante o teste.
+
+
+Trecho:
+session = self.client.session[QUIZ_SESSION_KEY]
+
+Explicacao:
+- acessa a sessao do Django dentro do teste.
+
+
+==================================================
+RESUMO FINAL
+==================================================
+
+Os blocos mais importantes de Django no seu projeto sao:
+- `INSTALLED_APPS`, `MIDDLEWARE`, `TEMPLATES`, `DATABASES` em `config/settings.py`
+- `path(...)` e `include(...)` em `config/urls.py` e `quiz/urls.py`
+- `models.Model`, `ForeignKey`, `OneToOneField`, `JSONField`, `Meta` em `quiz/models.py`
+- `request.session`, `request.user`, `render`, `redirect`, `messages`, `reverse`, `@require_POST` em `quiz/views.py`
+- tags de template como `{% url %}`, `{% csrf_token %}`, `{% if %}`, `{% for %}` e `{{ variavel }}` nos HTML
+- `ModelAdmin`, `TabularInline`, `@admin.register` em `quiz/admin.py`
+- `TestCase`, `self.client`, `override_settings` em `quiz/tests.py`

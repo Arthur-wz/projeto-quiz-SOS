@@ -1,7 +1,13 @@
+import uuid
+
 from django.conf import settings
 from django.db import models
 
 from .themes import DEFAULT_THEME_SLUG, listar_slugs_temas_gratuitos, obter_tema_por_slug
+
+
+def gerar_external_reference():
+    return str(uuid.uuid4())
 
 
 class Pergunta(models.Model):
