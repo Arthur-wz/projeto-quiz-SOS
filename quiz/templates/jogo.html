@@ -5,106 +5,175 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo | Quiz SOS</title>
+
     <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+
     {% if tema_css_inline %}
         <style>{{ tema_css_inline|safe }}</style>
     {% endif %}
+
+    <style>
+        .game-header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:24px;
+        }
+
+        .game-header h2{
+            color:#fff;
+            font-size:1.2rem;
+            font-weight:700;
+        }
+    </style>
 </head>
 <body>
-    <main class="page-shell">
-        <section class="game-layout">
-            {% if messages %}
-                <div class="alerts">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
-                    {% endfor %}
-                </div>
-            {% endif %}
 
-            <div class="game-topbar">
-                <article class="status-card">
-                    <span class="status-label">Pergunta</span>
-                    <span class="status-value">{{ numero_pergunta }}/{{ total_perguntas }}</span>
-                </article>
-                <article class="status-card">
-                    <span class="status-label">Pontuacao</span>
-                    <span class="status-value">{{ pontuacao }}</span>
-                </article>
-                <article class="status-card">
-                    <span class="status-label">Valor da rodada</span>
-                    <span class="status-value">{{ valor_pergunta }}</span>
-                </article>
-                <article class="status-card">
-                    <span class="status-label">Restantes</span>
-                    <span class="status-value">{{ restantes }}</span>
-                </article>
+<main class="page-shell">
+    <section class="game-layout">
+
+        <!-- Barra superior -->
+        <header class="game-header">
+            <a href="{% url 'home' %}" class="btn btn-secondary">
+                ← Voltar para o inicio
+            </a>
+
+            <h2>Quiz SOS</h2>
+        </header>
+
+        {% if messages %}
+            <div class="alerts">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags|default:'info' }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="game-topbar">
+            <article class="status-card">
+                <span class="status-label">Pergunta</span>
+                <span class="status-value">{{ numero_pergunta }}/{{ total_perguntas }}</span>
+            </article>
+
+            <article class="status-card">
+                <span class="status-label">Pontuação</span>
+                <span class="status-value">{{ pontuacao }}</span>
+            </article>
+
+            <article class="status-card">
+                <span class="status-label">Valor da rodada</span>
+                <span class="status-value">{{ valor_pergunta }}</span>
+            </article>
+
+            <article class="status-card">
+                <span class="status-label">Restantes</span>
+                <span class="status-value">{{ restantes }}</span>
+            </article>
+        </div>
+
+        <article class="game-card">
+
+            <div class="progress-row">
+                <span class="eyebrow">Modo Solo</span>
+
+                {% if ajuda_ativa %}
+                    <span class="chip chip-gold">
+                        Ajuda ativa: esta pergunta vale 5 pontos
+                    </span>
+                {% endif %}
             </div>
 
-            <article class="game-card">
-                <div class="progress-row">
-                    <span class="eyebrow">Modo solo</span>
-                    {% if ajuda_ativa %}
-                        <span class="chip chip-gold">Ajuda ativa: esta pergunta vale 5 pontos</span>
-                    {% endif %}
-                </div>
+            <div class="progress-bar">
+                <span style="width: {{ progresso }}%;"></span>
+            </div>
 
-                <div class="progress-bar">
-                    <span style="width: {{ progresso }}%;"></span>
-                </div>
+            <div class="question-meta">
+                <span class="chip chip-blue">{{ pergunta.materia }}</span>
+                <span class="chip chip-blue">{{ pergunta.serie }}</span>
+                <span class="chip chip-gold">
+                    Rodada valendo {{ valor_pergunta }} pontos
+                </span>
+            </div>
 
-                <div class="question-meta">
-                    <span class="chip chip-blue">{{ pergunta.materia }}</span>
-                    <span class="chip chip-blue">{{ pergunta.serie }}</span>
-                    <span class="chip chip-gold">Rodada valendo {{ valor_pergunta }} pontos</span>
-                </div>
+            <h1 class="question-text">
+                {{ pergunta.pergunta }}
+            </h1>
 
-                <h1 class="question-text">{{ pergunta.pergunta }}</h1>
+            <div class="helper-row">
 
-                <div class="helper-row">
-                    <form method="post">
+                <form method="post">
+                    {% csrf_token %}
+
+                    <button
+                        type="submit"
+                        name="action"
+                        value="skip"
+                        class="help-button"
+                        {% if not pulo_disponivel %}disabled{% endif %}
+                    >
+                        <strong>Pular</strong>
+                        <span>
+                            Troca a pergunta e reduz esta rodada para 5 pontos.
+                        </span>
+                    </button>
+
+                </form>
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <button
+                        type="submit"
+                        name="action"
+                        value="eliminate"
+                        class="help-button"
+                        {% if not eliminar_disponivel %}disabled{% endif %}
+                    >
+                        <strong>Eliminar 2</strong>
+                        <span>
+                            Remove duas alternativas erradas e reduz esta rodada para 5 pontos.
+                        </span>
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div class="options-grid">
+
+                {% for opcao in opcoes %}
+
+                    <form method="post" class="option-form">
+
                         {% csrf_token %}
-                        <button
-                            type="submit"
-                            name="action"
-                            value="skip"
-                            class="help-button"
-                            {% if not pulo_disponivel %}disabled{% endif %}
-                        >
-                            <strong>Pular</strong>
-                            <span>Troca a pergunta e reduz esta rodada para 5 pontos.</span>
+
+                        <input type="hidden" name="action" value="answer">
+                        <input type="hidden" name="answer" value="{{ opcao.label }}">
+
+                        <button type="submit" class="option-button">
+
+                            <span class="option-letter">
+                                {{ opcao.label }}
+                            </span>
+
+                            <span class="option-text">
+                                {{ opcao.texto }}
+                            </span>
+
                         </button>
+
                     </form>
 
-                    <form method="post">
-                        {% csrf_token %}
-                        <button
-                            type="submit"
-                            name="action"
-                            value="eliminate"
-                            class="help-button"
-                            {% if not eliminar_disponivel %}disabled{% endif %}
-                        >
-                            <strong>Eliminar 2</strong>
-                            <span>Remove duas alternativas erradas e reduz esta rodada para 5 pontos.</span>
-                        </button>
-                    </form>
-                </div>
+                {% endfor %}
 
-                <div class="options-grid">
-                    {% for opcao in opcoes %}
-                        <form method="post" class="option-form">
-                            {% csrf_token %}
-                            <input type="hidden" name="action" value="answer">
-                            <input type="hidden" name="answer" value="{{ opcao.label }}">
-                            <button type="submit" class="option-button">
-                                <span class="option-letter">{{ opcao.label }}</span>
-                                <span class="option-text">{{ opcao.texto }}</span>
-                            </button>
-                        </form>
-                    {% endfor %}
-                </div>
-            </article>
-        </section>
-    </main>
+            </div>
+
+        </article>
+
+    </section>
+</main>
+
 </body>
 </html>
