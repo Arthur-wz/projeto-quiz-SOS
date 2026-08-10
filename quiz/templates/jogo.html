@@ -1,109 +1,243 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo | Quiz SOS</title>
 
-    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    <meta
+        name="description"
+        content="Quiz SOS - Plataforma educacional gamificada."
+    >
+
+    <title>Quiz SOS | Jogo</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/quiz.css' %}"
+    >
 
     {% if tema_css_inline %}
-        <style>{{ tema_css_inline|safe }}</style>
+        <style>
+            {{ tema_css_inline|safe }}
+        </style>
     {% endif %}
 
     <style>
-        .game-header{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            margin-bottom:24px;
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+
+            margin-bottom: 24px;
         }
 
-        .game-header h2{
-            color:#fff;
-            font-size:1.2rem;
-            font-weight:700;
+        .game-header h2 {
+            margin: 0;
+
+            color: #ffffff;
+
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .question-text {
+            overflow-wrap: break-word;
+        }
+
+        .option-button:disabled,
+        .help-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 600px) {
+            .game-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .game-header h2 {
+                text-align: center;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<main class="page-shell">
-    <section class="game-layout">
+    <main class="game-page">
 
-        <!-- Barra superior -->
+        <!-- CABEÇALHO -->
         <header class="game-header">
-            <a href="{% url 'home' %}" class="btn btn-secondary">
-                ← Voltar para o inicio
+
+            <a
+                href="{% url 'home' %}"
+                class="btn btn-secondary"
+                aria-label="Voltar para a página inicial"
+            >
+                ← Voltar para o início
             </a>
 
             <h2>Quiz SOS</h2>
+
         </header>
 
+
+        <!-- MENSAGENS DO DJANGO -->
         {% if messages %}
-            <div class="alerts">
+
+            <section
+                class="alerts"
+                aria-live="polite"
+                aria-label="Mensagens"
+            >
+
                 {% for message in messages %}
-                    <div class="alert alert-{{ message.tags|default:'info' }}">
+
+                    <div
+                        class="alert alert-{{ message.tags|default:'info' }}"
+                        role="alert"
+                    >
                         {{ message }}
                     </div>
+
                 {% endfor %}
-            </div>
+
+            </section>
+
         {% endif %}
 
-        <div class="game-topbar">
-            <article class="status-card">
-                <span class="status-label">Pergunta</span>
-                <span class="status-value">{{ numero_pergunta }}/{{ total_perguntas }}</span>
-            </article>
+
+        <!-- INFORMAÇÕES DA PARTIDA -->
+        <section
+            class="game-topbar"
+            aria-label="Informações da partida"
+        >
 
             <article class="status-card">
-                <span class="status-label">Pontuação</span>
-                <span class="status-value">{{ pontuacao }}</span>
+
+                <span class="status-label">
+                    Pergunta
+                </span>
+
+                <span class="status-value">
+                    {{ numero_pergunta }}/{{ total_perguntas }}
+                </span>
+
             </article>
+
 
             <article class="status-card">
-                <span class="status-label">Valor da rodada</span>
-                <span class="status-value">{{ valor_pergunta }}</span>
+
+                <span class="status-label">
+                    Pontuação
+                </span>
+
+                <span class="status-value">
+                    {{ pontuacao }}
+                </span>
+
             </article>
+
 
             <article class="status-card">
-                <span class="status-label">Restantes</span>
-                <span class="status-value">{{ restantes }}</span>
-            </article>
-        </div>
 
+                <span class="status-label">
+                    Valor da rodada
+                </span>
+
+                <span class="status-value">
+                    {{ valor_pergunta }}
+                </span>
+
+            </article>
+
+
+            <article class="status-card">
+
+                <span class="status-label">
+                    Restantes
+                </span>
+
+                <span class="status-value">
+                    {{ restantes }}
+                </span>
+
+            </article>
+
+        </section>
+
+
+        <!-- CARD PRINCIPAL -->
         <article class="game-card">
 
+            <!-- PROGRESSO -->
             <div class="progress-row">
-                <span class="eyebrow">Modo Solo</span>
+
+                <span class="eyebrow">
+                    Modo Solo
+                </span>
 
                 {% if ajuda_ativa %}
+
                     <span class="chip chip-gold">
                         Ajuda ativa: esta pergunta vale 5 pontos
                     </span>
+
                 {% endif %}
+
             </div>
 
-            <div class="progress-bar">
+
+            <div
+                class="progress-bar"
+                role="progressbar"
+                aria-label="Progresso do quiz"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="{{ progresso }}"
+            >
                 <span style="width: {{ progresso }}%;"></span>
             </div>
 
+
+            <!-- INFORMAÇÕES DA PERGUNTA -->
             <div class="question-meta">
-                <span class="chip chip-blue">{{ pergunta.materia }}</span>
-                <span class="chip chip-blue">{{ pergunta.serie }}</span>
+
+                <span class="chip chip-blue">
+                    {{ pergunta.materia }}
+                </span>
+
+                <span class="chip chip-blue">
+                    {{ pergunta.serie }}
+                </span>
+
                 <span class="chip chip-gold">
                     Rodada valendo {{ valor_pergunta }} pontos
                 </span>
+
             </div>
 
+
+            <!-- PERGUNTA -->
             <h1 class="question-text">
                 {{ pergunta.pergunta }}
             </h1>
 
-            <div class="helper-row">
 
+            <!-- AJUDAS -->
+            <section
+                class="helper-row"
+                aria-label="Ajudas disponíveis"
+            >
+
+                <!-- PULAR -->
                 <form method="post">
+
                     {% csrf_token %}
 
                     <button
@@ -111,17 +245,28 @@
                         name="action"
                         value="skip"
                         class="help-button"
-                        {% if not pulo_disponivel %}disabled{% endif %}
+                        {% if not pulo_disponivel %}
+                            disabled
+                            aria-disabled="true"
+                        {% endif %}
                     >
-                        <strong>Pular</strong>
+
+                        <strong>
+                            Pular
+                        </strong>
+
                         <span>
                             Troca a pergunta e reduz esta rodada para 5 pontos.
                         </span>
+
                     </button>
 
                 </form>
 
+
+                <!-- ELIMINAR DUAS -->
                 <form method="post">
+
                     {% csrf_token %}
 
                     <button
@@ -129,32 +274,65 @@
                         name="action"
                         value="eliminate"
                         class="help-button"
-                        {% if not eliminar_disponivel %}disabled{% endif %}
+                        {% if not eliminar_disponivel %}
+                            disabled
+                            aria-disabled="true"
+                        {% endif %}
                     >
-                        <strong>Eliminar 2</strong>
+
+                        <strong>
+                            Eliminar 2
+                        </strong>
+
                         <span>
                             Remove duas alternativas erradas e reduz esta rodada para 5 pontos.
                         </span>
+
                     </button>
 
                 </form>
 
-            </div>
+            </section>
 
-            <div class="options-grid">
+
+            <!-- ALTERNATIVAS -->
+            <section
+                class="options-grid"
+                aria-label="Alternativas da pergunta"
+            >
 
                 {% for opcao in opcoes %}
 
-                    <form method="post" class="option-form">
+                    <form
+                        method="post"
+                        class="option-form"
+                    >
 
                         {% csrf_token %}
 
-                        <input type="hidden" name="action" value="answer">
-                        <input type="hidden" name="answer" value="{{ opcao.label }}">
+                        <input
+                            type="hidden"
+                            name="action"
+                            value="answer"
+                        >
 
-                        <button type="submit" class="option-button">
+                        <input
+                            type="hidden"
+                            name="answer"
+                            value="{{ opcao.label }}"
+                        >
 
-                            <span class="option-letter">
+
+                        <button
+                            type="submit"
+                            class="option-button"
+                            aria-label="Alternativa {{ opcao.label }}: {{ opcao.texto }}"
+                        >
+
+                            <span
+                                class="option-letter"
+                                aria-hidden="true"
+                            >
                                 {{ opcao.label }}
                             </span>
 
@@ -166,14 +344,20 @@
 
                     </form>
 
+                {% empty %}
+
+                    <p>
+                        Nenhuma alternativa disponível.
+                    </p>
+
                 {% endfor %}
 
-            </div>
+            </section>
 
         </article>
 
-    </section>
-</main>
+    </main>
 
 </body>
+
 </html>
