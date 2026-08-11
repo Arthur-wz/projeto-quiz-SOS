@@ -5,7 +5,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
@@ -26,68 +30,597 @@
     {% endif %}
 
     <style>
+
+        /* ==================================================
+           CABEÇALHO
+        ================================================== */
+
         .game-header {
+            position: relative;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 16px;
 
-            margin-bottom: 24px;
+            min-height: 95px;
+            margin-bottom: 0;
         }
 
-        .game-header h2 {
-            margin: 0;
 
-            color: #ffffff;
+        /* ==================================================
+           BOTÃO VOLTAR
+        ================================================== */
 
-            font-size: 1.2rem;
-            font-weight: 700;
+        .btn-voltar {
+            position: relative;
+            z-index: 2;
+
+            top: 12px;
+
+            padding: 6px 11px;
+
+            font-size: 0.78rem;
+            font-weight: 600;
+
+            white-space: nowrap;
         }
+
+
+        /* ==================================================
+           GIF CENTRAL
+        ================================================== */
+
+        .game-logo-gif {
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            width: 160px;
+            height: auto;
+
+            display: block;
+
+            transform: translate(-50%, -50%);
+
+            pointer-events: none;
+            user-select: none;
+        }
+
+
+        /* ==================================================
+           PERGUNTA
+        ================================================== */
 
         .question-text {
             overflow-wrap: break-word;
+
+            line-height: 1.35;
         }
+
+
+        /* ==================================================
+           BOTÕES DESABILITADOS
+        ================================================== */
 
         .option-button:disabled,
         .help-button:disabled {
             cursor: not-allowed;
-            opacity: 0.5;
         }
+
+
+        /* ==================================================
+           TRANSIÇÕES
+        ================================================== */
+
+        .option-button {
+            transition:
+                background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.2s ease,
+                box-shadow 0.25s ease,
+                opacity 0.25s ease;
+        }
+
+
+        /* ==================================================
+           RESPOSTA CORRETA
+        ================================================== */
+
+        .option-button.correct-answer {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(34, 197, 94, 0.95),
+                    rgba(21, 128, 61, 0.95)
+                ) !important;
+
+            border-color: #00b140 !important;
+
+            color: #ffffff !important;
+
+            box-shadow:
+                0 0 0 2px rgba(74, 222, 128, 0.15),
+                0 0 28px rgba(34, 197, 94, 0.45);
+
+            opacity: 1 !important;
+
+            transform: scale(1.02);
+        }
+
+        .option-button.correct-answer .option-letter {
+            background: #ffffff !important;
+
+            color: #00b140 !important;
+        }
+
+
+        /* ==================================================
+           RESPOSTA ERRADA
+        ================================================== */
+
+        .option-button.wrong-answer {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(239, 68, 68, 0.95),
+                    rgba(153, 27, 27, 0.95)
+                ) !important;
+
+            border-color: #f87171 !important;
+
+            color: #ffffff !important;
+
+            box-shadow:
+                0 0 0 2px rgba(248, 113, 113, 0.15),
+                0 0 28px rgba(239, 68, 68, 0.35);
+
+            opacity: 1 !important;
+        }
+
+        .option-button.wrong-answer .option-letter {
+            background: #ffffff !important;
+
+            color: #950606 !important;
+        }
+
+
+        /* ==================================================
+           ALTERNATIVAS NÃO ESCOLHIDAS
+        ================================================== */
+
+        .option-button.answer-disabled {
+            opacity: 0.4;
+        }
+
+
+        /* ==================================================
+           FEEDBACK
+        ================================================== */
+
+        .answer-feedback {
+            display: none;
+
+            margin-top: 24px;
+            padding: 20px;
+
+            border-radius: 16px;
+
+            text-align: center;
+
+            animation: feedbackEnter 0.35s ease;
+        }
+
+        .answer-feedback.show {
+            display: block;
+        }
+
+        .answer-feedback.correct {
+            background: rgba(34, 197, 94, 0.14);
+
+            border: 1px solid rgba(74, 222, 128, 0.55);
+        }
+
+        .answer-feedback.wrong {
+            background: rgba(239, 68, 68, 0.14);
+
+            border: 1px solid rgba(248, 113, 113, 0.55);
+        }
+
+
+        /* ==================================================
+           TEXTO DO FEEDBACK
+        ================================================== */
+
+        .feedback-title {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #ffffff;
+
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .feedback-description {
+            margin: 0;
+
+            color: rgba(255, 255, 255, 0.88);
+
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+
+        /* ==================================================
+           CONTAGEM
+        ================================================== */
+
+        .next-question-timer {
+            margin-top: 12px;
+
+            color: rgba(255, 255, 255, 0.7);
+
+            font-size: 0.9rem;
+        }
+
+        .next-question-timer strong {
+            color: #ffffff;
+        }
+
+
+        /* ==================================================
+           BARRA DE TEMPO
+        ================================================== */
+
+        .timer-progress {
+            position: relative;
+
+            width: 100%;
+            max-width: 400px;
+            height: 5px;
+
+            margin: 14px auto 0;
+
+            overflow: hidden;
+
+            border-radius: 999px;
+
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .timer-progress span {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            background: #ffffff;
+
+            transform-origin: left center;
+
+            animation: countdownBar 5s linear forwards;
+        }
+
+
+        /* ==================================================
+           MODAL DE CONFIRMAÇÃO DAS AJUDAS
+        ================================================== */
+
+        .help-confirm-overlay {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(0, 0, 0, 0.62);
+
+            backdrop-filter: blur(6px);
+        }
+
+        .help-confirm-overlay.show {
+            display: flex;
+
+            animation: overlayFade 0.2s ease;
+        }
+
+
+        .help-confirm-box {
+            width: 100%;
+            max-width: 390px;
+
+            padding: 26px;
+
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(7, 18, 38, 0.98),
+                    rgba(4, 11, 24, 0.98)
+                );
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.55),
+                0 0 35px rgba(255, 187, 36, 0.08);
+
+            text-align: center;
+
+            animation: modalEnter 0.25s ease;
+        }
+
+
+        .help-confirm-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 54px;
+            height: 54px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 187, 36, 0.12);
+
+            color: #ffbb24;
+
+            font-size: 1.7rem;
+            font-weight: 900;
+        }
+
+
+        .help-confirm-title {
+            margin: 0 0 10px;
+
+            color: #ffffff;
+
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+
+        .help-confirm-text {
+            margin: 0;
+
+            color: rgba(255, 255, 255, 0.72);
+
+            font-size: 0.94rem;
+            line-height: 1.5;
+        }
+
+
+        .help-confirm-warning {
+            display: block;
+
+            margin-top: 10px;
+
+            color: #ffbb24;
+
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+
+        .help-confirm-actions {
+            display: flex;
+            gap: 10px;
+
+            margin-top: 22px;
+        }
+
+
+        .help-confirm-actions button {
+            flex: 1;
+
+            min-height: 44px;
+
+            padding: 10px 14px;
+
+            border-radius: 12px;
+
+            font-size: 0.9rem;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease,
+                background 0.2s ease;
+        }
+
+
+        .help-confirm-actions button:hover {
+            transform: translateY(-1px);
+        }
+
+
+        .help-confirm-actions button:active {
+            transform: translateY(0);
+        }
+
+
+        .help-confirm-cancel {
+            border: 1px solid rgba(255, 255, 255, 0.16);
+
+            background: rgba(255, 255, 255, 0.08);
+
+            color: #ffffff;
+        }
+
+
+        .help-confirm-cancel:hover {
+            background: rgba(255, 255, 255, 0.13);
+        }
+
+
+        .help-confirm-accept {
+            border: none;
+
+            background: #ffbb24;
+
+            color: #07101f;
+        }
+
+
+        .help-confirm-accept:hover {
+            background: #ffd15c;
+        }
+
+
+        /* ==================================================
+           ANIMAÇÕES
+        ================================================== */
+
+        @keyframes countdownBar {
+
+            from {
+                transform: scaleX(1);
+            }
+
+            to {
+                transform: scaleX(0);
+            }
+
+        }
+
+
+        @keyframes feedbackEnter {
+
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @keyframes overlayFade {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+
+        @keyframes modalEnter {
+
+            from {
+                opacity: 0;
+                transform: scale(0.94) translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+
+        }
+
+
+        /* ==================================================
+           CELULAR
+        ================================================== */
 
         @media (max-width: 600px) {
+
             .game-header {
-                flex-direction: column;
-                align-items: stretch;
+                min-height: 90px;
             }
 
-            .game-header h2 {
-                text-align: center;
+            .btn-voltar {
+                top: 12px;
+
+                padding: 5px 9px;
+
+                font-size: 0.72rem;
             }
+
+            .game-logo-gif {
+                width: 135px;
+            }
+
+            .feedback-title {
+                font-size: 1.3rem;
+            }
+
+            .feedback-description {
+                font-size: 0.92rem;
+            }
+
+            .help-confirm-box {
+                max-width: 340px;
+
+                padding: 22px 18px;
+            }
+
+            .help-confirm-actions {
+                flex-direction: column-reverse;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <main class="game-page">
+    <main
+        class="game-page"
+        data-correct-answer="{{ pergunta.resposta_correta }}"
+    >
 
-        <!-- CABEÇALHO -->
+
+        <!-- ==================================================
+             CABEÇALHO
+        ================================================== -->
+
         <header class="game-header">
 
             <a
                 href="{% url 'home' %}"
-                class="btn btn-secondary"
+                class="btn btn-secondary btn-voltar"
                 aria-label="Voltar para a página inicial"
             >
                 ← Voltar para o início
             </a>
 
-            <h2>Quiz SOS</h2>
+
+            <img
+                src="{% static 'css/login-top.gif' %}"
+                class="game-logo-gif"
+                alt="Quiz SOS"
+            >
 
         </header>
 
 
-        <!-- MENSAGENS DO DJANGO -->
+        <!-- ==================================================
+             MENSAGENS DJANGO
+        ================================================== -->
+
         {% if messages %}
 
             <section
@@ -112,7 +645,10 @@
         {% endif %}
 
 
-        <!-- INFORMAÇÕES DA PARTIDA -->
+        <!-- ==================================================
+             INFORMAÇÕES DA PARTIDA
+        ================================================== -->
+
         <section
             class="game-topbar"
             aria-label="Informações da partida"
@@ -172,15 +708,23 @@
         </section>
 
 
-        <!-- CARD PRINCIPAL -->
+        <!-- ==================================================
+             CARD PRINCIPAL
+        ================================================== -->
+
         <article class="game-card">
 
-            <!-- PROGRESSO -->
+
+            <!-- ==================================================
+                 PROGRESSO
+            ================================================== -->
+
             <div class="progress-row">
 
                 <span class="eyebrow">
                     Modo Solo
                 </span>
+
 
                 {% if ajuda_ativa %}
 
@@ -201,11 +745,18 @@
                 aria-valuemax="100"
                 aria-valuenow="{{ progresso }}"
             >
-                <span style="width: {{ progresso }}%;"></span>
+
+                <span
+                    style="width: {{ progresso }}%;"
+                ></span>
+
             </div>
 
 
-            <!-- INFORMAÇÕES DA PERGUNTA -->
+            <!-- ==================================================
+                 INFORMAÇÕES DA PERGUNTA
+            ================================================== -->
+
             <div class="question-meta">
 
                 <span class="chip chip-blue">
@@ -223,28 +774,49 @@
             </div>
 
 
-            <!-- PERGUNTA -->
+            <!-- ==================================================
+                 PERGUNTA
+            ================================================== -->
+
             <h1 class="question-text">
                 {{ pergunta.pergunta }}
             </h1>
 
 
-            <!-- AJUDAS -->
+            <!-- ==================================================
+                 AJUDAS
+            ================================================== -->
+
             <section
                 class="helper-row"
                 aria-label="Ajudas disponíveis"
             >
 
+
                 <!-- PULAR -->
-                <form method="post">
+
+                <form
+                    method="post"
+                    action="{% url 'jogo' %}"
+                    class="help-form"
+                    data-help-type="skip"
+                    data-help-title="Pular esta pergunta?"
+                    data-help-message="A pergunta atual será trocada por outra."
+                    data-help-warning="Esta rodada passará a valer 5 pontos."
+                >
 
                     {% csrf_token %}
 
-                    <button
-                        type="submit"
+                    <input
+                        type="hidden"
                         name="action"
                         value="skip"
+                    >
+
+                    <button
+                        type="submit"
                         class="help-button"
+
                         {% if not pulo_disponivel %}
                             disabled
                             aria-disabled="true"
@@ -265,15 +837,29 @@
 
 
                 <!-- ELIMINAR DUAS -->
-                <form method="post">
+
+                <form
+                    method="post"
+                    action="{% url 'jogo' %}"
+                    class="help-form"
+                    data-help-type="eliminate"
+                    data-help-title="Eliminar duas alternativas?"
+                    data-help-message="Duas alternativas incorretas serão removidas desta pergunta."
+                    data-help-warning="Esta rodada passará a valer 5 pontos."
+                >
 
                     {% csrf_token %}
 
-                    <button
-                        type="submit"
+                    <input
+                        type="hidden"
                         name="action"
                         value="eliminate"
+                    >
+
+                    <button
+                        type="submit"
                         class="help-button"
+
                         {% if not eliminar_disponivel %}
                             disabled
                             aria-disabled="true"
@@ -292,10 +878,14 @@
 
                 </form>
 
+
             </section>
 
 
-            <!-- ALTERNATIVAS -->
+            <!-- ==================================================
+                 ALTERNATIVAS
+            ================================================== -->
+
             <section
                 class="options-grid"
                 aria-label="Alternativas da pergunta"
@@ -306,6 +896,7 @@
                     <form
                         method="post"
                         class="option-form"
+                        data-answer="{{ opcao.label }}"
                     >
 
                         {% csrf_token %}
@@ -326,6 +917,10 @@
                         <button
                             type="submit"
                             class="option-button"
+
+                            data-answer="{{ opcao.label }}"
+                            data-answer-text="{{ opcao.texto }}"
+
                             aria-label="Alternativa {{ opcao.label }}: {{ opcao.texto }}"
                         >
 
@@ -344,6 +939,7 @@
 
                     </form>
 
+
                 {% empty %}
 
                     <p>
@@ -354,9 +950,701 @@
 
             </section>
 
+
+            <!-- ==================================================
+                 FEEDBACK
+            ================================================== -->
+
+            <section
+                id="answerFeedback"
+                class="answer-feedback"
+                aria-live="assertive"
+            >
+
+                <strong
+                    id="feedbackTitle"
+                    class="feedback-title"
+                ></strong>
+
+
+                <p
+                    id="feedbackDescription"
+                    class="feedback-description"
+                ></p>
+
+
+                <p class="next-question-timer">
+
+                    Próxima pergunta em
+
+                    <strong id="countdown">
+                        5
+                    </strong>
+
+                    segundos...
+
+                </p>
+
+
+                <div
+                    class="timer-progress"
+                    aria-hidden="true"
+                >
+                    <span></span>
+                </div>
+
+            </section>
+
         </article>
 
     </main>
+
+
+    <!-- ==================================================
+         MODAL DE CONFIRMAÇÃO DAS AJUDAS
+    ================================================== -->
+
+    <div
+        id="helpConfirmOverlay"
+        class="help-confirm-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="helpConfirmTitle"
+        aria-describedby="helpConfirmText"
+    >
+
+        <div class="help-confirm-box">
+
+            <div
+                class="help-confirm-icon"
+                aria-hidden="true"
+            >
+                ?
+            </div>
+
+
+            <h2
+                id="helpConfirmTitle"
+                class="help-confirm-title"
+            >
+                Usar ajuda?
+            </h2>
+
+
+            <p
+                id="helpConfirmText"
+                class="help-confirm-text"
+            >
+                Tem certeza de que deseja utilizar esta ajuda?
+            </p>
+
+
+            <span
+                id="helpConfirmWarning"
+                class="help-confirm-warning"
+            ></span>
+
+
+            <div class="help-confirm-actions">
+
+                <button
+                    type="button"
+                    id="helpCancelButton"
+                    class="help-confirm-cancel"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    id="helpConfirmButton"
+                    class="help-confirm-accept"
+                >
+                    Confirmar ajuda
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                /* ==================================================
+                   ELEMENTOS DO JOGO
+                ================================================== */
+
+                const gamePage =
+                    document.querySelector(".game-page");
+
+
+                const optionForms =
+                    document.querySelectorAll(".option-form");
+
+
+                const optionButtons =
+                    document.querySelectorAll(".option-button");
+
+
+                const helpButtons =
+                    document.querySelectorAll(".help-button");
+
+
+                const feedback =
+                    document.getElementById("answerFeedback");
+
+
+                const feedbackTitle =
+                    document.getElementById("feedbackTitle");
+
+
+                const feedbackDescription =
+                    document.getElementById("feedbackDescription");
+
+
+                const countdownElement =
+                    document.getElementById("countdown");
+
+
+                /* ==================================================
+                   ELEMENTOS DO MODAL
+                ================================================== */
+
+                const helpForms =
+                    document.querySelectorAll(".help-form");
+
+
+                const helpOverlay =
+                    document.getElementById("helpConfirmOverlay");
+
+
+                const helpConfirmTitle =
+                    document.getElementById("helpConfirmTitle");
+
+
+                const helpConfirmText =
+                    document.getElementById("helpConfirmText");
+
+
+                const helpConfirmWarning =
+                    document.getElementById("helpConfirmWarning");
+
+
+                const helpConfirmButton =
+                    document.getElementById("helpConfirmButton");
+
+
+                const helpCancelButton =
+                    document.getElementById("helpCancelButton");
+
+
+                /* ==================================================
+                   VARIÁVEIS
+                ================================================== */
+
+                let answerSubmitted = false;
+
+                let pendingHelpForm = null;
+
+                let helpBeingSubmitted = false;
+
+
+                /* ==================================================
+                   RESPOSTA CORRETA
+                ================================================== */
+
+                const correctAnswer =
+                    (
+                        gamePage.dataset.correctAnswer || ""
+                    )
+                        .trim()
+                        .toUpperCase();
+
+
+                /* ==================================================
+                   ABRIR MODAL DAS AJUDAS
+                ================================================== */
+
+                helpForms.forEach(
+                    function (form) {
+
+
+                        form.addEventListener(
+                            "submit",
+                            function (event) {
+
+
+                                event.preventDefault();
+
+
+                                if (
+                                    answerSubmitted ||
+                                    helpBeingSubmitted
+                                ) {
+                                    return;
+                                }
+
+
+                                pendingHelpForm = form;
+
+
+                                helpConfirmTitle.textContent =
+                                    form.dataset.helpTitle ||
+                                    "Usar ajuda?";
+
+
+                                helpConfirmText.textContent =
+                                    form.dataset.helpMessage ||
+                                    "Tem certeza de que deseja usar esta ajuda?";
+
+
+                                helpConfirmWarning.textContent =
+                                    form.dataset.helpWarning || "";
+
+
+                                helpOverlay.classList.add(
+                                    "show"
+                                );
+
+
+                                document.body.style.overflow =
+                                    "hidden";
+
+
+                                setTimeout(
+                                    function () {
+
+                                        helpConfirmButton.focus();
+
+                                    },
+                                    50
+                                );
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
+
+                /* ==================================================
+                   CANCELAR AJUDA
+                ================================================== */
+
+                function closeHelpModal() {
+
+                    helpOverlay.classList.remove(
+                        "show"
+                    );
+
+
+                    document.body.style.overflow =
+                        "";
+
+
+                    pendingHelpForm = null;
+
+                }
+
+
+                helpCancelButton.addEventListener(
+                    "click",
+                    function () {
+
+                        closeHelpModal();
+
+                    }
+                );
+
+
+                /* ==================================================
+                   CONFIRMAR AJUDA
+                ================================================== */
+
+                helpConfirmButton.addEventListener(
+                    "click",
+                    function () {
+
+
+                        if (
+                            !pendingHelpForm ||
+                            helpBeingSubmitted
+                        ) {
+                            return;
+                        }
+
+
+                        helpBeingSubmitted = true;
+
+
+                        helpConfirmButton.disabled = true;
+
+                        helpCancelButton.disabled = true;
+
+
+                        helpConfirmButton.textContent =
+                            "Aplicando...";
+
+
+                        const formToSubmit =
+                            pendingHelpForm;
+
+
+                        helpOverlay.classList.remove(
+                            "show"
+                        );
+
+
+                        document.body.style.overflow =
+                            "";
+
+
+                        formToSubmit.submit();
+
+
+                    }
+                );
+
+
+                /* ==================================================
+                   CLICAR FORA FECHA O MODAL
+                ================================================== */
+
+                helpOverlay.addEventListener(
+                    "click",
+                    function (event) {
+
+
+                        if (
+                            event.target === helpOverlay &&
+                            !helpBeingSubmitted
+                        ) {
+
+                            closeHelpModal();
+
+                        }
+
+
+                    }
+                );
+
+
+                /* ==================================================
+                   ESC FECHA O MODAL
+                ================================================== */
+
+                document.addEventListener(
+                    "keydown",
+                    function (event) {
+
+
+                        if (
+                            event.key === "Escape" &&
+                            helpOverlay.classList.contains("show") &&
+                            !helpBeingSubmitted
+                        ) {
+
+                            closeHelpModal();
+
+                        }
+
+
+                    }
+                );
+
+
+                /* ==================================================
+                   EVENTOS DAS ALTERNATIVAS
+                ================================================== */
+
+                optionForms.forEach(
+                    function (form) {
+
+
+                        form.addEventListener(
+                            "submit",
+                            function (event) {
+
+
+                                event.preventDefault();
+
+
+                                if (answerSubmitted) {
+                                    return;
+                                }
+
+
+                                answerSubmitted = true;
+
+
+                                const selectedAnswer =
+                                    (
+                                        form.dataset.answer || ""
+                                    )
+                                        .trim()
+                                        .toUpperCase();
+
+
+                                const isCorrect =
+                                    selectedAnswer === correctAnswer;
+
+
+                                /* ==================================
+                                   BLOQUEIA ALTERNATIVAS
+                                ================================== */
+
+                                optionButtons.forEach(
+                                    function (button) {
+
+                                        button.disabled = true;
+
+
+                                        button.classList.add(
+                                            "answer-disabled"
+                                        );
+
+                                    }
+                                );
+
+
+                                /* ==================================
+                                   BLOQUEIA AJUDAS
+                                ================================== */
+
+                                helpButtons.forEach(
+                                    function (button) {
+
+                                        button.disabled = true;
+
+                                    }
+                                );
+
+
+                                /* ==================================
+                                   MARCA CORRETA / ERRADA
+                                ================================== */
+
+                                optionButtons.forEach(
+                                    function (button) {
+
+
+                                        const answer =
+                                            (
+                                                button.dataset.answer || ""
+                                            )
+                                                .trim()
+                                                .toUpperCase();
+
+
+                                        if (
+                                            answer === correctAnswer
+                                        ) {
+
+
+                                            button.classList.remove(
+                                                "answer-disabled"
+                                            );
+
+
+                                            button.classList.add(
+                                                "correct-answer"
+                                            );
+
+
+                                        }
+
+
+                                        if (
+                                            answer === selectedAnswer &&
+                                            !isCorrect
+                                        ) {
+
+
+                                            button.classList.remove(
+                                                "answer-disabled"
+                                            );
+
+
+                                            button.classList.add(
+                                                "wrong-answer"
+                                            );
+
+
+                                        }
+
+
+                                    }
+                                );
+
+
+                                /* ==================================
+                                   TEXTO DA RESPOSTA CORRETA
+                                ================================== */
+
+                                let correctAnswerText = "";
+
+
+                                optionButtons.forEach(
+                                    function (button) {
+
+
+                                        const answer =
+                                            (
+                                                button.dataset.answer || ""
+                                            )
+                                                .trim()
+                                                .toUpperCase();
+
+
+                                        if (
+                                            answer === correctAnswer
+                                        ) {
+
+
+                                            correctAnswerText =
+                                                button.dataset.answerText || "";
+
+
+                                        }
+
+
+                                    }
+                                );
+
+
+                                /* ==================================
+                                   FEEDBACK
+                                ================================== */
+
+                                feedback.classList.remove(
+                                    "correct",
+                                    "wrong"
+                                );
+
+
+                                feedback.classList.add(
+                                    "show"
+                                );
+
+
+                                if (isCorrect) {
+
+
+                                    feedback.classList.add(
+                                        "correct"
+                                    );
+
+
+                                    feedbackTitle.textContent =
+                                        "✓ Você acertou!";
+
+
+                                } else {
+
+
+                                    feedback.classList.add(
+                                        "wrong"
+                                    );
+
+
+                                    feedbackTitle.textContent =
+                                        "✕ Você errou!";
+
+
+                                }
+
+
+                                feedbackDescription.textContent =
+                                    "A alternativa correta é " +
+                                    correctAnswer +
+                                    " — " +
+                                    correctAnswerText +
+                                    ".";
+
+
+                                /* ==================================
+                                   CONTAGEM REGRESSIVA
+                                ================================== */
+
+                                let seconds = 5;
+
+
+                                countdownElement.textContent =
+                                    seconds;
+
+
+                                const countdownInterval =
+                                    setInterval(
+                                        function () {
+
+
+                                            seconds--;
+
+
+                                            if (seconds > 0) {
+
+
+                                                countdownElement.textContent =
+                                                    seconds;
+
+
+                                            } else {
+
+
+                                                clearInterval(
+                                                    countdownInterval
+                                                );
+
+
+                                            }
+
+
+                                        },
+                                        1000
+                                    );
+
+
+                                /* ==================================
+                                   ENVIA APÓS 5 SEGUNDOS
+                                ================================== */
+
+                                setTimeout(
+                                    function () {
+
+                                        form.submit();
+
+                                    },
+                                    5000
+                                );
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
+
+            }
+        );
+
+    </script>
+
 
 </body>
 
