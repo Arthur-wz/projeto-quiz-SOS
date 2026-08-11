@@ -27,6 +27,13 @@
                         soma seus acertos e registra o resultado da partida no sistema.
                     </p>
 
+                    {% if usuario_logado %}
+                        <p class="panel-note">
+                            Conta conectada: <strong>{{ usuario_logado.username }}</strong>.
+                            Seu acesso ao quiz, temas e modo Kahoot ja esta liberado.
+                        </p>
+                    {% endif %}
+
                     {% if messages %}
                         <div class="alerts">
                             {% for message in messages %}
@@ -49,10 +56,15 @@
                             </form>
                         {% endif %}
 
-                        <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+                        {% if not request.user.is_authenticated %}
+                            <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+                        {% endif %}
                         <a href="{% url 'ranking' %}" class="btn btn-secondary">Ranking</a>
+                        <a href="{% url 'kahoot_inicio' %}" class="btn btn-secondary">Modo Kahoot</a>
                         <a href="{% url 'temas' %}" class="btn btn-secondary">Temas</a>
-                        <a href="{% url 'criar_usuario' %}" class="btn btn-ghost">Criar usuario</a>
+                        {% if not request.user.is_authenticated %}
+                            <a href="{% url 'criar_usuario' %}" class="btn btn-ghost">Criar usuario</a>
+                        {% endif %}
                     </div>
                 </div>
 
@@ -93,9 +105,9 @@
                         <p class="panel-note">
                             Tema atual: <strong>{{ tema_visual_atual.nome }}</strong>.
                             {% if request.user.is_authenticated %}
-                                Abra a galeria para trocar o visual entre os temas disponiveis.
+                                Abra a galeria para trocar o visual entre os temas disponiveis e testar o modo Kahoot local.
                             {% else %}
-                                Entre com sua conta para personalizar o visual com os temas disponiveis.
+                                Entre com sua conta para personalizar o visual com os temas disponiveis e liberar o modo Kahoot.
                             {% endif %}
                         </p>
                     {% endif %}

@@ -12,7 +12,16 @@ from django.views.decorators.http import require_POST
 
 from django.conf import settings
 
-from .models import Partida, PerfilUsuario, Pergunta, RespostaPartida
+from .models import (
+    Partida,
+    PerguntaSalaKahoot,
+    ParticipanteSalaKahoot,
+    PerfilUsuario,
+    Pergunta,
+    RespostaPartida,
+    RespostaSalaKahoot,
+    SalaKahoot,
+)
 from .themes import DEFAULT_THEME_SLUG, listar_temas, obter_tema_por_slug
 
 QUIZ_SESSION_KEY = "quiz_state"
@@ -22,6 +31,8 @@ PONTOS_COM_AJUDA = 5
 HELP_SKIP = "skip"
 HELP_ELIMINATE = "eliminate"
 RANKING_LIMIT = 10
+KAHOOT_MIN_PERGUNTAS = 5
+KAHOOT_PONTOS_BASE = 1000
 
 
 def home(request):
@@ -35,6 +46,8 @@ def home(request):
         "partida_em_andamento": bool(queue) and answered_count < TOTAL_PERGUNTAS,
         "partida_finalizada": bool(state) and answered_count >= TOTAL_PERGUNTAS,
         "pontuacao_atual": state.get("score", 0),
+        "kahoot_disponivel": request.user.is_authenticated,
+        "usuario_logado": request.user if request.user.is_authenticated else None,
     }
     return render(request, "home.html", context)
 
@@ -50,6 +63,7 @@ def login_view(request):
 
         if user is not None:
             auth_login(request, user)
+            messages.success(request, f"Login efetuado com sucesso. Bem-vindo, {user.username}.")
             return redirect("home")
 
         erro = "Usuario ou senha invalidos."
@@ -140,8 +154,386 @@ def ranking(request):
         "ranking_mensal": _montar_ranking(inicio_mes),
         "inicio_semana": timezone.localtime(inicio_semana).date(),
         "inicio_mes": timezone.localtime(inicio_mes).date(),
+        "auto_refresh_ms": 5000,
     }
     return render(request, "ranking.html", context)
+
+
+def kahoot_inicio(request):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    salas = SalaKahoot.objects.filter(anfitriao=request.user)[:10]
+    participacoes = ParticipanteSalaKahoot.objects.filter(usuario=request.user).select_related("sala")[:10]
+    context = {
+        "salas_criadas": salas,
+        "participacoes": participacoes,
+        "total_perguntas": Pergunta.objects.count(),
+        "minimo_perguntas": KAHOOT_MIN_PERGUNTAS,
+    }
+    return render(request, "kahoot_inicio.html", context)
+
+
+@require_POST
+def criar_sala_kahoot(request):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    total_perguntas = Pergunta.objects.count()
+    if total_perguntas < KAHOOT_MIN_PERGUNTAS:
+        messages.error(
+            request,
+            f"Cadastre pelo menos {KAHOOT_MIN_PERGUNTAS} perguntas para criar uma sala Kahoot.",
+        )
+        return redirect("kahoot_inicio")
+
+    titulo = request.POST.get("titulo", "").strip() or "Sala Kahoot"
+    try:
+        rodadas = int(request.POST.get("total_rodadas", "10"))
+    except ValueError:
+        rodadas = 10
+    try:
+        tempo = int(request.POST.get("tempo_por_rodada", "20"))
+    except ValueError:
+        tempo = 20
+
+    rodadas = max(KAHOOT_MIN_PERGUNTAS, min(rodadas, min(20, total_perguntas)))
+    tempo = max(10, min(tempo, 60))
+
+    sala = SalaKahoot.objects.create(
+        anfitriao=request.user,
+        codigo=_gerar_codigo_sala_kahoot(),
+        titulo=titulo,
+        total_rodadas=rodadas,
+        tempo_por_rodada=tempo,
+    )
+    ParticipanteSalaKahoot.objects.get_or_create(
+        sala=sala,
+        usuario=request.user,
+        defaults={"apelido": request.user.username},
+    )
+    messages.success(request, f"Sala {sala.codigo} criada com sucesso.")
+    return redirect("sala_kahoot", codigo=sala.codigo)
+
+
+@require_POST
+def entrar_sala_kahoot(request):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    codigo = request.POST.get("codigo", "").strip().upper()
+    if not codigo:
+        messages.warning(request, "Informe o codigo da sala.")
+        return redirect("kahoot_inicio")
+
+    sala = SalaKahoot.objects.filter(codigo=codigo).first()
+    if not sala:
+        messages.error(request, "Sala nao encontrada.")
+        return redirect("kahoot_inicio")
+
+    ParticipanteSalaKahoot.objects.get_or_create(
+        sala=sala,
+        usuario=request.user,
+        defaults={"apelido": request.user.username},
+    )
+    messages.success(request, f"Voce entrou na sala {sala.codigo}.")
+    return redirect("sala_kahoot", codigo=sala.codigo)
+
+
+def sala_kahoot(request, codigo):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    sala = get_object_or_404(
+        SalaKahoot.objects.select_related("anfitriao", "pergunta_atual"),
+        codigo=codigo.upper(),
+    )
+    participante = ParticipanteSalaKahoot.objects.filter(sala=sala, usuario=request.user).first()
+    if not participante:
+        messages.info(request, "Entre na sala para acompanhar este modo Kahoot.")
+        return redirect("kahoot_inicio")
+
+    ranking = list(sala.participantes.select_related("usuario").order_by("-pontuacao_total", "-respostas_certas", "apelido"))
+    tempo_restante = _tempo_restante_kahoot(sala)
+    resposta_atual = None
+    if sala.rodada_atual and participante:
+        resposta_atual = RespostaSalaKahoot.objects.filter(
+            participante=participante,
+            rodada=sala.rodada_atual,
+        ).first()
+
+    context = {
+        "sala": sala,
+        "participante": participante,
+        "eh_anfitriao": sala.anfitriao_id == request.user.id,
+        "ranking": ranking,
+        "tempo_restante": tempo_restante,
+        "pergunta_atual": sala.pergunta_personalizada_atual or sala.pergunta_atual,
+        "resposta_atual": resposta_atual,
+        "rodada_fechada": sala.status != SalaKahoot.STATUS_EM_ANDAMENTO or tempo_restante == 0,
+        "auto_refresh_ms": 3000 if sala.status != SalaKahoot.STATUS_FINALIZADA else 0,
+        "total_perguntas_personalizadas": sala.perguntas_personalizadas.count(),
+    }
+    return render(request, "kahoot_sala.html", context)
+
+
+def editar_sala_kahoot(request, codigo):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    sala = get_object_or_404(SalaKahoot, codigo=codigo.upper(), anfitriao=request.user)
+    if request.method == "POST":
+        titulo = request.POST.get("titulo", "").strip() or sala.titulo
+        try:
+            rodadas = int(request.POST.get("total_rodadas", sala.total_rodadas))
+        except ValueError:
+            rodadas = sala.total_rodadas
+        try:
+            tempo = int(request.POST.get("tempo_por_rodada", sala.tempo_por_rodada))
+        except ValueError:
+            tempo = sala.tempo_por_rodada
+
+        total_disponivel = sala.perguntas_personalizadas.count() or Pergunta.objects.count()
+        rodadas = max(1, min(rodadas, max(total_disponivel, 1)))
+        tempo = max(10, min(tempo, 60))
+
+        sala.titulo = titulo
+        sala.total_rodadas = rodadas
+        sala.tempo_por_rodada = tempo
+        sala.save(update_fields=["titulo", "total_rodadas", "tempo_por_rodada", "atualizada_em"])
+        messages.success(request, "Sala atualizada com sucesso.")
+        return redirect("sala_kahoot", codigo=sala.codigo)
+
+    context = {"sala": sala}
+    return render(request, "kahoot_editar_sala.html", context)
+
+
+@require_POST
+def excluir_sala_kahoot(request, codigo):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    sala = get_object_or_404(SalaKahoot, codigo=codigo.upper(), anfitriao=request.user)
+    sala.delete()
+    messages.success(request, "Sala excluida com sucesso.")
+    return redirect("kahoot_inicio")
+
+
+@require_POST
+def criar_pergunta_personalizada_kahoot(request, codigo):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    sala = get_object_or_404(SalaKahoot, codigo=codigo.upper(), anfitriao=request.user)
+    ordem = sala.perguntas_personalizadas.count() + 1
+    pergunta = request.POST.get("pergunta", "").strip()
+    alternativa_a = request.POST.get("alternativa_a", "").strip()
+    alternativa_b = request.POST.get("alternativa_b", "").strip()
+    alternativa_c = request.POST.get("alternativa_c", "").strip()
+    alternativa_d = request.POST.get("alternativa_d", "").strip()
+    alternativa_e = request.POST.get("alternativa_e", "").strip()
+    resposta_correta = request.POST.get("resposta_correta", "").strip().upper()
+    materia = request.POST.get("materia", "").strip() or "Sala"
+    serie = request.POST.get("serie", "").strip() or "Personalizada"
+
+    campos = [pergunta, alternativa_a, alternativa_b, alternativa_c, alternativa_d, alternativa_e]
+    if not all(campos) or resposta_correta not in dict(Pergunta.OPCOES_RESPOSTA):
+        messages.error(request, "Preencha a pergunta, as 5 alternativas e a resposta correta.")
+        return redirect("gerenciar_perguntas_kahoot", codigo=sala.codigo)
+
+    PerguntaSalaKahoot.objects.create(
+        sala=sala,
+        pergunta=pergunta,
+        alternativa_a=alternativa_a,
+        alternativa_b=alternativa_b,
+        alternativa_c=alternativa_c,
+        alternativa_d=alternativa_d,
+        alternativa_e=alternativa_e,
+        resposta_correta=resposta_correta,
+        materia=materia,
+        serie=serie,
+        ordem=ordem,
+    )
+    messages.success(request, "Pergunta personalizada criada com sucesso.")
+    return redirect("gerenciar_perguntas_kahoot", codigo=sala.codigo)
+
+
+def gerenciar_perguntas_kahoot(request, codigo):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    sala = get_object_or_404(SalaKahoot, codigo=codigo.upper(), anfitriao=request.user)
+    context = {"sala": sala, "perguntas": sala.perguntas_personalizadas.all()}
+    return render(request, "kahoot_perguntas.html", context)
+
+
+@require_POST
+def excluir_pergunta_personalizada_kahoot(request, codigo, pergunta_id):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    sala = get_object_or_404(SalaKahoot, codigo=codigo.upper(), anfitriao=request.user)
+    pergunta = get_object_or_404(PerguntaSalaKahoot, pk=pergunta_id, sala=sala)
+    pergunta.delete()
+
+    for indice, item in enumerate(sala.perguntas_personalizadas.all(), start=1):
+        if item.ordem != indice:
+            item.ordem = indice
+            item.save(update_fields=["ordem"])
+
+    messages.success(request, "Pergunta removida com sucesso.")
+    return redirect("gerenciar_perguntas_kahoot", codigo=sala.codigo)
+
+
+@require_POST
+def iniciar_sala_kahoot(request, codigo):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    sala = get_object_or_404(SalaKahoot, codigo=codigo.upper())
+    if sala.anfitriao_id != request.user.id:
+        messages.error(request, "Apenas o anfitriao pode iniciar a sala.")
+        return redirect("sala_kahoot", codigo=sala.codigo)
+
+    if sala.status != SalaKahoot.STATUS_AGUARDANDO:
+        messages.info(request, "Essa sala ja foi iniciada.")
+        return redirect("sala_kahoot", codigo=sala.codigo)
+
+    if sala.participantes.count() < 1:
+        messages.warning(request, "A sala precisa ter pelo menos um participante.")
+        return redirect("sala_kahoot", codigo=sala.codigo)
+
+    if sala.perguntas_personalizadas.exists():
+        if sala.perguntas_personalizadas.count() < sala.total_rodadas:
+            messages.warning(request, "Crie perguntas personalizadas suficientes para a quantidade de rodadas.")
+            return redirect("gerenciar_perguntas_kahoot", codigo=sala.codigo)
+        perguntas_ids = list(sala.perguntas_personalizadas.values_list("id", flat=True))
+    else:
+        if Pergunta.objects.count() < sala.total_rodadas:
+            messages.warning(request, "Nao existem perguntas suficientes no banco para iniciar essa sala.")
+            return redirect("sala_kahoot", codigo=sala.codigo)
+        perguntas_ids = list(Pergunta.objects.values_list("id", flat=True))
+    random.shuffle(perguntas_ids)
+    perguntas_ids = perguntas_ids[: sala.total_rodadas]
+
+    sala.perguntas_sorteadas = perguntas_ids
+    sala.status = SalaKahoot.STATUS_EM_ANDAMENTO
+    _definir_rodada_kahoot(sala, 1)
+    messages.success(request, "Modo Kahoot iniciado.")
+    return redirect("sala_kahoot", codigo=sala.codigo)
+
+
+@require_POST
+def avancar_rodada_kahoot(request, codigo):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    sala = get_object_or_404(SalaKahoot, codigo=codigo.upper())
+    if sala.anfitriao_id != request.user.id:
+        messages.error(request, "Apenas o anfitriao pode avancar a rodada.")
+        return redirect("sala_kahoot", codigo=sala.codigo)
+
+    if sala.status != SalaKahoot.STATUS_EM_ANDAMENTO:
+        messages.info(request, "A sala ja foi encerrada.")
+        return redirect("sala_kahoot", codigo=sala.codigo)
+
+    proxima_rodada = sala.rodada_atual + 1
+    if proxima_rodada > sala.total_rodadas or proxima_rodada > len(sala.perguntas_sorteadas or []):
+        sala.status = SalaKahoot.STATUS_FINALIZADA
+        sala.pergunta_atual = None
+        sala.pergunta_personalizada_atual = None
+        sala.pergunta_iniciada_em = None
+        sala.encerrada_em = timezone.now()
+        sala.save(
+            update_fields=[
+                "status",
+                "pergunta_atual",
+                "pergunta_personalizada_atual",
+                "pergunta_iniciada_em",
+                "encerrada_em",
+                "atualizada_em",
+            ]
+        )
+        messages.success(request, "Sala finalizada. Ranking final disponivel.")
+        return redirect("sala_kahoot", codigo=sala.codigo)
+
+    _definir_rodada_kahoot(sala, proxima_rodada)
+    messages.success(request, f"Rodada {proxima_rodada} iniciada.")
+    return redirect("sala_kahoot", codigo=sala.codigo)
+
+
+@require_POST
+def responder_kahoot(request, codigo):
+    if not request.user.is_authenticated:
+        messages.info(request, "Faca login para acessar o modo Kahoot.")
+        return redirect("login")
+
+    sala = get_object_or_404(
+        SalaKahoot.objects.select_related("pergunta_atual", "pergunta_personalizada_atual"),
+        codigo=codigo.upper(),
+    )
+    participante = ParticipanteSalaKahoot.objects.filter(sala=sala, usuario=request.user).first()
+    if not participante:
+        messages.error(request, "Voce nao esta participando dessa sala.")
+        return redirect("kahoot_inicio")
+
+    pergunta_ativa = sala.pergunta_personalizada_atual or sala.pergunta_atual
+    if sala.status != SalaKahoot.STATUS_EM_ANDAMENTO or not pergunta_ativa:
+        messages.warning(request, "Nao ha rodada ativa para responder.")
+        return redirect("sala_kahoot", codigo=sala.codigo)
+
+    if _tempo_restante_kahoot(sala) <= 0:
+        messages.warning(request, "O tempo dessa rodada acabou.")
+        return redirect("sala_kahoot", codigo=sala.codigo)
+
+    resposta = request.POST.get("answer", "").upper()
+    if resposta not in dict(Pergunta.OPCOES_RESPOSTA):
+        messages.warning(request, "Escolha uma alternativa valida.")
+        return redirect("sala_kahoot", codigo=sala.codigo)
+
+    resposta_existente = RespostaSalaKahoot.objects.filter(
+        participante=participante,
+        rodada=sala.rodada_atual,
+    ).first()
+    if resposta_existente:
+        messages.info(request, "Voce ja respondeu esta rodada.")
+        return redirect("sala_kahoot", codigo=sala.codigo)
+
+    correta = pergunta_ativa.resposta_correta.upper()
+    acertou = resposta == correta
+    pontos = _calcular_pontos_kahoot(sala, acertou)
+
+    RespostaSalaKahoot.objects.create(
+        participante=participante,
+        sala=sala,
+        pergunta=sala.pergunta_atual,
+        rodada=sala.rodada_atual,
+        resposta_marcada=resposta,
+        resposta_correta=correta,
+        acertou=acertou,
+        pontos_recebidos=pontos,
+    )
+
+    participante.pontuacao_total += pontos
+    participante.respostas_certas += int(acertou)
+    participante.save(update_fields=["pontuacao_total", "respostas_certas"])
+
+    if acertou:
+        messages.success(request, f"Resposta registrada. +{pontos} pontos.")
+    else:
+        messages.error(request, "Resposta registrada, mas estava incorreta.")
+    return redirect("sala_kahoot", codigo=sala.codigo)
 
 
 def temas(request):
@@ -554,3 +946,48 @@ def _obter_perfil_usuario(usuario):
         },
     )
     return perfil
+
+
+def _gerar_codigo_sala_kahoot():
+    while True:
+        codigo = "".join(random.choices("ABCDEFGHJKLMNPQRSTUVWXYZ23456789", k=6))
+        if not SalaKahoot.objects.filter(codigo=codigo).exists():
+            return codigo
+
+
+def _definir_rodada_kahoot(sala, rodada):
+    pergunta_id = (sala.perguntas_sorteadas or [])[rodada - 1]
+    sala.pergunta_personalizada_atual = None
+    sala.pergunta_atual = None
+    sala.rodada_atual = rodada
+    if sala.perguntas_personalizadas.filter(pk=pergunta_id).exists():
+        sala.pergunta_personalizada_atual_id = pergunta_id
+    else:
+        sala.pergunta_atual_id = pergunta_id
+    sala.pergunta_iniciada_em = timezone.now()
+    sala.save(
+        update_fields=[
+            "rodada_atual",
+            "pergunta_atual",
+            "pergunta_personalizada_atual",
+            "pergunta_iniciada_em",
+            "status",
+            "perguntas_sorteadas",
+            "atualizada_em",
+        ]
+    )
+
+
+def _tempo_restante_kahoot(sala):
+    if not sala.pergunta_iniciada_em or sala.status != SalaKahoot.STATUS_EM_ANDAMENTO:
+        return 0
+    tempo_decorrido = int((timezone.now() - sala.pergunta_iniciada_em).total_seconds())
+    return max(0, sala.tempo_por_rodada - tempo_decorrido)
+
+
+def _calcular_pontos_kahoot(sala, acertou):
+    if not acertou:
+        return 0
+    tempo_restante = _tempo_restante_kahoot(sala)
+    bonus = int((tempo_restante / max(sala.tempo_por_rodada, 1)) * 500)
+    return KAHOOT_PONTOS_BASE + bonus

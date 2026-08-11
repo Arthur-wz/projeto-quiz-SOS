@@ -37,6 +37,7 @@ python manage.py migrate
 4. RODAR O PROJETO
 
 python manage.py runserver
+python manage.py runserver 0.0.0.0:8000
 
 
 5. PASTA DE BACKUP

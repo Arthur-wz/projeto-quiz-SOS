@@ -180,3 +180,154 @@ class PerfilUsuario(models.Model):
             self.save(update_fields=["tema_ativo"])
 
         return True
+
+
+class SalaKahoot(models.Model):
+    STATUS_AGUARDANDO = "aguardando"
+    STATUS_EM_ANDAMENTO = "em_andamento"
+    STATUS_FINALIZADA = "finalizada"
+    STATUS_CHOICES = [
+        (STATUS_AGUARDANDO, "Aguardando"),
+        (STATUS_EM_ANDAMENTO, "Em andamento"),
+        (STATUS_FINALIZADA, "Finalizada"),
+    ]
+
+    anfitriao = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="salas_kahoot_criadas",
+    )
+    codigo = models.CharField(max_length=8, unique=True)
+    titulo = models.CharField(max_length=120, default="Sala Kahoot")
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_AGUARDANDO)
+    total_rodadas = models.PositiveSmallIntegerField(default=10)
+    rodada_atual = models.PositiveSmallIntegerField(default=0)
+    tempo_por_rodada = models.PositiveSmallIntegerField(default=20)
+    pergunta_atual = models.ForeignKey(
+        Pergunta,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="salas_kahoot_ativas",
+    )
+    pergunta_personalizada_atual = models.ForeignKey(
+        "PerguntaSalaKahoot",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="salas_kahoot_ativas",
+    )
+    pergunta_iniciada_em = models.DateTimeField(null=True, blank=True)
+    perguntas_sorteadas = models.JSONField(default=list, blank=True)
+    criada_em = models.DateTimeField(auto_now_add=True)
+    atualizada_em = models.DateTimeField(auto_now=True)
+    encerrada_em = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["-criada_em"]
+        verbose_name = "Sala Kahoot"
+        verbose_name_plural = "Salas Kahoot"
+
+    def __str__(self):
+        return f"{self.codigo} - {self.titulo}"
+
+    def usa_perguntas_personalizadas(self):
+        return self.perguntas_personalizadas.exists()
+
+
+class ParticipanteSalaKahoot(models.Model):
+    sala = models.ForeignKey(SalaKahoot, on_delete=models.CASCADE, related_name="participantes")
+    usuario = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="participacoes_kahoot",
+    )
+    apelido = models.CharField(max_length=80)
+    pontuacao_total = models.PositiveIntegerField(default=0)
+    respostas_certas = models.PositiveSmallIntegerField(default=0)
+    entrou_em = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-pontuacao_total", "-respostas_certas", "apelido"]
+        constraints = [
+            models.UniqueConstraint(fields=["sala", "usuario"], name="unique_usuario_por_sala_kahoot")
+        ]
+        verbose_name = "Participante da sala Kahoot"
+        verbose_name_plural = "Participantes das salas Kahoot"
+
+    def __str__(self):
+        return f"{self.apelido} em {self.sala.codigo}"
+
+
+class RespostaSalaKahoot(models.Model):
+    participante = models.ForeignKey(
+        ParticipanteSalaKahoot,
+        on_delete=models.CASCADE,
+        related_name="respostas",
+    )
+    sala = models.ForeignKey(SalaKahoot, on_delete=models.CASCADE, related_name="respostas")
+    pergunta = models.ForeignKey(
+        Pergunta,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="respostas_kahoot",
+    )
+    rodada = models.PositiveSmallIntegerField()
+    resposta_marcada = models.CharField(max_length=1, choices=Pergunta.OPCOES_RESPOSTA)
+    resposta_correta = models.CharField(max_length=1, choices=Pergunta.OPCOES_RESPOSTA)
+    acertou = models.BooleanField(default=False)
+    pontos_recebidos = models.PositiveIntegerField(default=0)
+    respondida_em = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["rodada", "respondida_em"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["participante", "rodada"],
+                name="unique_resposta_por_participante_e_rodada_kahoot",
+            )
+        ]
+        verbose_name = "Resposta da sala Kahoot"
+        verbose_name_plural = "Respostas das salas Kahoot"
+
+    def __str__(self):
+        return f"Rodada {self.rodada} - {self.participante.apelido}"
+
+
+class PerguntaSalaKahoot(models.Model):
+    OPCOES_RESPOSTA = Pergunta.OPCOES_RESPOSTA
+
+    sala = models.ForeignKey(
+        SalaKahoot,
+        on_delete=models.CASCADE,
+        related_name="perguntas_personalizadas",
+    )
+    pergunta = models.TextField()
+    alternativa_a = models.CharField(max_length=200)
+    alternativa_b = models.CharField(max_length=200)
+    alternativa_c = models.CharField(max_length=200)
+    alternativa_d = models.CharField(max_length=200)
+    alternativa_e = models.CharField(max_length=200)
+    resposta_correta = models.CharField(max_length=1, choices=OPCOES_RESPOSTA)
+    serie = models.CharField(max_length=50, default="Personalizada")
+    materia = models.CharField(max_length=50, default="Sala")
+    ordem = models.PositiveSmallIntegerField(default=1)
+    criada_em = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["ordem", "id"]
+        verbose_name = "Pergunta personalizada da sala Kahoot"
+        verbose_name_plural = "Perguntas personalizadas das salas Kahoot"
+
+    def __str__(self):
+        return f"{self.sala.codigo} - {self.pergunta[:60]}"
+
+    def alternativas(self):
+        return [
+            ("A", self.alternativa_a),
+            ("B", self.alternativa_b),
+            ("C", self.alternativa_c),
+            ("D", self.alternativa_d),
+            ("E", self.alternativa_e),
+        ]

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-
     <style>
         * {
             margin: 0;
@@ -34,26 +33,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
         }
 
-        /* container geral */
         .container-login {
             width: 100%;
             max-width: 470px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 1rem;
         }
 
-        /* GIF */
         .gif-topo {
             width: 220px;
             display: block;
-            margin: -70px auto 10px auto; /* CENTRALIZA */
+            margin: -70px auto 10px auto;
         }
 
-        /* caixa */
         .box {
             background: rgba(0, 0, 0, 0.441);
             padding: 40px;
@@ -69,7 +65,8 @@
             margin-bottom: 25px;
         }
 
-        input {
+        input,
+        button {
             width: 100%;
             margin: 15px 0;
             padding: 16px;
@@ -77,15 +74,14 @@
             border-radius: 14px;
             font-size: 1rem;
             outline: none;
+        }
+
+        input {
             background: #d9dfeb;
             color: black;
         }
 
         button {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 14px;
             background: #ffbb24;
             color: black;
             font-size: 1.1rem;
@@ -116,6 +112,30 @@
             margin-top: 12px;
             font-weight: bold;
         }
+
+        .mensagem {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .mensagem-info {
+            border: 1px solid rgba(57, 194, 255, 0.28);
+            color: #bfeeff;
+        }
+
+        .mensagem-warning {
+            border: 1px solid rgba(248, 191, 75, 0.28);
+            color: #ffe4a6;
+        }
+
+        .google-area {
+            margin-top: 18px;
+            display: grid;
+            gap: 12px;
+        }
     </style>
     {% if tema_css_inline %}
         <style>{{ tema_css_inline|safe }}</style>
@@ -123,8 +143,6 @@
 </head>
 <body>
     <div class="container-login">
-
-        <!-- GIF CENTRALIZADO -->
         <img src="{% static 'css/login-top.gif' %}" class="gif-topo">
 
         <div class="box">
@@ -132,12 +150,31 @@
 
             <form method="post">
                 {% csrf_token %}
-                <input type="text" name="username" placeholder="Usuário" required>
+                <input type="text" name="username" placeholder="Usuario" required>
                 <input type="password" name="password" placeholder="Senha" required>
                 <button type="submit">Entrar</button>
             </form>
 
-            <a href="/criar-usuario/" class="criar-usuario">Criar usuário</a>
+            <div class="google-area">
+                {% if google_login_configured and google_login_url %}
+                    <form method="post" action="{{ google_login_url }}">
+                        {% csrf_token %}
+                        <button type="submit">Entrar com Google</button>
+                    </form>
+                {% else %}
+                    <div class="mensagem mensagem-warning">
+                        Configure <strong>GOOGLE_CLIENT_ID</strong> e <strong>GOOGLE_CLIENT_SECRET</strong> para ativar o login com Google.
+                    </div>
+                {% endif %}
+            </div>
+
+            <a href="/criar-usuario/" class="criar-usuario">Criar usuario</a>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="mensagem mensagem-info">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
 
             {% if erro %}
                 <p class="erro">{{ erro }}</p>

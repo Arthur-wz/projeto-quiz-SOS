@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ sala.titulo }} | Modo Kahoot</title>
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    {% if tema_css_inline %}
+        <style>{{ tema_css_inline|safe }}</style>
+    {% endif %}
+    {% if auto_refresh_ms %}
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const timerElement = document.querySelector("[data-kahoot-timer]");
+                const statusElement = document.querySelector("[data-kahoot-status]");
+                let tempoRestante = Number(timerElement?.dataset.tempoRestante || 0);
+
+                function atualizarTimer() {
+                    if (!timerElement) {
+                        return;
+                    }
+
+                    timerElement.textContent = `${Math.max(tempoRestante, 0)}s`;
+                    if (tempoRestante <= 0 && statusElement?.dataset.status === "em_andamento") {
+                        timerElement.textContent = "0s";
+                    }
+                    tempoRestante -= 1;
+                }
+
+                atualizarTimer();
+                window.setInterval(atualizarTimer, 1000);
+                window.setTimeout(function () {
+                    window.location.reload();
+                }, {{ auto_refresh_ms }});
+            });
+        </script>
+    {% endif %}
+</head>
+<body>
+    <main class="page-shell">
+        <section class="game-layout">
+            {% if messages %}
+                <div class="alerts">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="game-topbar">
+                <article class="status-card">
+                    <span class="status-label">Sala</span>
+                    <span class="status-value">{{ sala.codigo }}</span>
+                </article>
+                <article class="status-card">
+                    <span class="status-label">Status</span>
+                    <span class="status-value" data-kahoot-status data-status="{{ sala.status }}">{{ sala.get_status_display }}</span>
+                </article>
+                <article class="status-card">
+                    <span class="status-label">Rodada</span>
+                    <span class="status-value">{{ sala.rodada_atual }}/{{ sala.total_rodadas }}</span>
+                </article>
+                <article class="status-card">
+                    <span class="status-label">Tempo</span>
+                    <span class="status-value" data-kahoot-timer data-tempo-restante="{{ tempo_restante }}">{{ tempo_restante }}s</span>
+                </article>
+            </div>
+
+            <article class="game-card">
+                <div class="kahoot-header">
+                    <div>
+                        <span class="eyebrow">Modo Kahoot Local</span>
+                        <h1 class="section-title">{{ sala.titulo }}</h1>
+                        <p class="panel-note">
+                            Anfitriao: <strong>{{ sala.anfitriao.username }}</strong> |
+                            Jogador atual: <strong>{{ participante.apelido }}</strong>
+                        </p>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="{% url 'kahoot_inicio' %}" class="btn btn-secondary">Voltar</a>
+                        {% if eh_anfitriao %}
+                            <a href="{% url 'editar_sala_kahoot' sala.codigo %}" class="btn btn-ghost">Editar sala</a>
+                            <a href="{% url 'gerenciar_perguntas_kahoot' sala.codigo %}" class="btn btn-ghost">Perguntas</a>
+                        {% endif %}
+                        {% if eh_anfitriao and sala.status == "aguardando" %}
+                            <form method="post" action="{% url 'iniciar_sala_kahoot' sala.codigo %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">Iniciar sala</button>
+                            </form>
+                        {% elif eh_anfitriao and sala.status == "em_andamento" %}
+                            <form method="post" action="{% url 'avancar_rodada_kahoot' sala.codigo %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">
+                                    {% if sala.rodada_atual >= sala.total_rodadas %}Finalizar{% else %}Avancar rodada{% endif %}
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if pergunta_atual %}
+                    <div class="question-meta">
+                        <span class="chip chip-blue">{{ pergunta_atual.materia }}</span>
+                        <span class="chip chip-gold">{{ pergunta_atual.serie }}</span>
+                        {% if total_perguntas_personalizadas %}
+                            <span class="chip chip-blue">Perguntas proprias: {{ total_perguntas_personalizadas }}</span>
+                        {% endif %}
+                        {% if resposta_atual %}
+                            <span class="chip chip-blue">Resposta enviada</span>
+                        {% endif %}
+                    </div>
+
+                    <h2 class="question-text">{{ pergunta_atual.pergunta }}</h2>
+
+                    {% if sala.status == "em_andamento" and not resposta_atual and tempo_restante > 0 %}
+                        <div class="options-grid">
+                            {% for label, texto in pergunta_atual.alternativas %}
+                                <form method="post" action="{% url 'responder_kahoot' sala.codigo %}" class="option-form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="answer" value="{{ label }}">
+                                    <button type="submit" class="option-button">
+                                        <span class="option-letter">{{ label }}</span>
+                                        <span class="option-text">{{ texto }}</span>
+                                    </button>
+                                </form>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="history-item {% if resposta_atual and resposta_atual.acertou %}is-correct{% elif resposta_atual %}is-wrong{% endif %}">
+                            {% if resposta_atual %}
+                                <strong>Sua resposta: {{ resposta_atual.resposta_marcada }}</strong>
+                                <p>
+                                    Correta: {{ resposta_atual.resposta_correta }} |
+                                    Pontos recebidos: {{ resposta_atual.pontos_recebidos }}
+                                </p>
+                            {% elif tempo_restante == 0 and sala.status == "em_andamento" %}
+                                <strong>Tempo encerrado</strong>
+                                <p>Agora o anfitriao pode avancar para a proxima rodada.</p>
+                            {% else %}
+                                <strong>Sala pronta</strong>
+                                <p>Aguarde o anfitriao iniciar a partida.</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="history-item">
+                        <strong>Nenhuma pergunta ativa</strong>
+                        <p>Quando o anfitriao iniciar a sala, a rodada atual aparecera aqui.</p>
+                    </div>
+                {% endif %}
+            </article>
+
+            <article class="history-card">
+                <div class="history-header">
+                    <span class="eyebrow">Placar</span>
+                    <h2 class="section-title">Ranking da sala</h2>
+                </div>
+                <div class="ranking-list">
+                    {% for item in ranking %}
+                        <div class="ranking-item {% if item.usuario_id == request.user.id %}is-you{% endif %}">
+                            <span class="ranking-position">{{ forloop.counter }}</span>
+                            <div class="ranking-main">
+                                <strong>{{ item.apelido }}</strong>
+                                <p>{{ item.usuario.username }} | Acertos: {{ item.respostas_certas }}</p>
+                            </div>
+                            <span class="ranking-score">{{ item.pontuacao_total }} pts</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

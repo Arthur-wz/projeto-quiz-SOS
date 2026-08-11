@@ -1,6 +1,14 @@
 from django.contrib import admin
 
-from .models import Partida, PerfilUsuario, Pergunta, RespostaPartida
+from .models import (
+    Partida,
+    ParticipanteSalaKahoot,
+    PerfilUsuario,
+    Pergunta,
+    RespostaPartida,
+    RespostaSalaKahoot,
+    SalaKahoot,
+)
 
 
 @admin.register(Pergunta)
@@ -120,3 +128,69 @@ class PerfilUsuarioAdmin(admin.ModelAdmin):
     @admin.display(description="Temas liberados")
     def temas_liberados_resumo(self, obj):
         return ", ".join(obj.listar_temas_liberados())
+
+
+class ParticipanteSalaKahootInline(admin.TabularInline):
+    model = ParticipanteSalaKahoot
+    extra = 0
+    fields = ("usuario", "apelido", "pontuacao_total", "respostas_certas", "entrou_em")
+    readonly_fields = fields
+
+
+class RespostaSalaKahootInline(admin.TabularInline):
+    model = RespostaSalaKahoot
+    extra = 0
+    fields = (
+        "participante",
+        "rodada",
+        "pergunta",
+        "resposta_marcada",
+        "resposta_correta",
+        "acertou",
+        "pontos_recebidos",
+        "respondida_em",
+    )
+    readonly_fields = fields
+
+
+@admin.register(SalaKahoot)
+class SalaKahootAdmin(admin.ModelAdmin):
+    list_display = (
+        "codigo",
+        "titulo",
+        "anfitriao",
+        "status",
+        "rodada_atual",
+        "total_rodadas",
+        "tempo_por_rodada",
+        "criada_em",
+    )
+    list_filter = ("status", "tempo_por_rodada", "criada_em")
+    search_fields = ("codigo", "titulo", "anfitriao__username")
+    readonly_fields = ("codigo", "criada_em", "atualizada_em", "encerrada_em")
+    inlines = (ParticipanteSalaKahootInline, RespostaSalaKahootInline)
+
+
+@admin.register(ParticipanteSalaKahoot)
+class ParticipanteSalaKahootAdmin(admin.ModelAdmin):
+    list_display = ("apelido", "sala", "usuario", "pontuacao_total", "respostas_certas", "entrou_em")
+    list_filter = ("sala", "entrou_em")
+    search_fields = ("apelido", "usuario__username", "sala__codigo")
+    readonly_fields = ("entrou_em",)
+
+
+@admin.register(RespostaSalaKahoot)
+class RespostaSalaKahootAdmin(admin.ModelAdmin):
+    list_display = (
+        "sala",
+        "participante",
+        "rodada",
+        "resposta_marcada",
+        "resposta_correta",
+        "acertou",
+        "pontos_recebidos",
+        "respondida_em",
+    )
+    list_filter = ("sala", "acertou", "rodada")
+    search_fields = ("participante__apelido", "participante__usuario__username", "sala__codigo")
+    readonly_fields = ("respondida_em",)

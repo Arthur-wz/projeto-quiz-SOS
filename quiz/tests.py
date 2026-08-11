@@ -5,7 +5,15 @@ from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
 
-from .models import Partida, PerfilUsuario, Pergunta, RespostaPartida
+from .models import (
+    Partida,
+    ParticipanteSalaKahoot,
+    PerfilUsuario,
+    Pergunta,
+    PerguntaSalaKahoot,
+    RespostaPartida,
+    SalaKahoot,
+)
 from .themes import DEFAULT_THEME_SLUG
 from .views import QUIZ_SESSION_KEY, TOTAL_PERGUNTAS
 
@@ -251,6 +259,33 @@ class QuizFlowTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Classico SOS")
+        self.assertContains(response, "Login")
+        self.assertContains(response, "Criar usuario")
+
+    def test_home_esconde_login_e_criar_usuario_para_usuario_logado(self):
+        usuario = User.objects.create_user(username="visivel", password="senha123")
+        self.client.force_login(usuario)
+
+        response = self.client.get(reverse("home"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Conta conectada")
+        self.assertContains(response, "visivel")
+        self.assertNotContains(response, 'href="/login/"')
+        self.assertNotContains(response, 'href="/criar-usuario/"')
+
+    def test_login_com_sucesso_mostra_confirmacao_na_home(self):
+        User.objects.create_user(username="arthurx", password="senha123")
+
+        response = self.client.post(
+            reverse("login"),
+            {"username": "arthurx", "password": "senha123"},
+            follow=True,
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Login efetuado com sucesso")
+        self.assertContains(response, "arthurx")
 
     def test_temas_libera_catalogo_gratuito_para_usuario_logado(self):
         usuario = User.objects.create_user(username="temauser", password="senha123")
@@ -334,3 +369,185 @@ class QuizFlowTests(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertIn("accounts.google.com", response["Location"])
+
+    def test_kahoot_exige_login(self):
+        response = self.client.get(reverse("kahoot_inicio"), follow=True)
+
+        self.assertRedirects(response, reverse("login"))
+        self.assertContains(response, "Faca login para acessar o modo Kahoot.")
+
+    def test_usuario_logado_pode_criar_sala_kahoot(self):
+        self.criar_perguntas()
+        usuario = User.objects.create_user(username="host", password="senha123")
+        self.client.force_login(usuario)
+
+        response = self.client.post(
+            reverse("criar_sala_kahoot"),
+            {"titulo": "Historia local", "total_rodadas": 8, "tempo_por_rodada": 25},
+        )
+
+        sala = SalaKahoot.objects.get(anfitriao=usuario)
+        self.assertRedirects(response, reverse("sala_kahoot", args=[sala.codigo]))
+        self.assertEqual(sala.titulo, "Historia local")
+        self.assertEqual(sala.total_rodadas, 8)
+        self.assertEqual(sala.tempo_por_rodada, 25)
+        self.assertTrue(ParticipanteSalaKahoot.objects.filter(sala=sala, usuario=usuario).exists())
+
+    def test_usuario_logado_pode_entrar_em_sala_kahoot(self):
+        self.criar_perguntas()
+        anfitriao = User.objects.create_user(username="anfitriao", password="senha123")
+        jogador = User.objects.create_user(username="jogador", password="senha123")
+        sala = SalaKahoot.objects.create(
+            anfitriao=anfitriao,
+            codigo="ABC123",
+            titulo="Sala local",
+            total_rodadas=5,
+            tempo_por_rodada=20,
+        )
+
+        self.client.force_login(jogador)
+        response = self.client.post(reverse("entrar_sala_kahoot"), {"codigo": "abc123"})
+
+        self.assertRedirects(response, reverse("sala_kahoot", args=[sala.codigo]))
+        self.assertTrue(ParticipanteSalaKahoot.objects.filter(sala=sala, usuario=jogador).exists())
+
+    def test_anfitriao_pode_iniciar_sala_kahoot(self):
+        self.criar_perguntas()
+        anfitriao = User.objects.create_user(username="host2", password="senha123")
+        sala = SalaKahoot.objects.create(
+            anfitriao=anfitriao,
+            codigo="ZXCV12",
+            titulo="Sala ativa",
+            total_rodadas=5,
+            tempo_por_rodada=20,
+        )
+        ParticipanteSalaKahoot.objects.create(sala=sala, usuario=anfitriao, apelido="host2")
+
+        self.client.force_login(anfitriao)
+        response = self.client.post(reverse("iniciar_sala_kahoot", args=[sala.codigo]))
+
+        self.assertRedirects(response, reverse("sala_kahoot", args=[sala.codigo]))
+        sala.refresh_from_db()
+        self.assertEqual(sala.status, SalaKahoot.STATUS_EM_ANDAMENTO)
+        self.assertEqual(sala.rodada_atual, 1)
+        self.assertIsNotNone(sala.pergunta_atual)
+        self.assertEqual(len(sala.perguntas_sorteadas), 5)
+
+    def test_jogador_responde_sala_kahoot_e_recebe_pontos(self):
+        self.criar_perguntas()
+        anfitriao = User.objects.create_user(username="host3", password="senha123")
+        jogador = User.objects.create_user(username="jogador3", password="senha123")
+        pergunta = Pergunta.objects.first()
+        sala = SalaKahoot.objects.create(
+            anfitriao=anfitriao,
+            codigo="QWE789",
+            titulo="Sala pontuacao",
+            status=SalaKahoot.STATUS_EM_ANDAMENTO,
+            total_rodadas=5,
+            rodada_atual=1,
+            tempo_por_rodada=20,
+            pergunta_atual=pergunta,
+            pergunta_iniciada_em=timezone.now(),
+            perguntas_sorteadas=[pergunta.id],
+        )
+        ParticipanteSalaKahoot.objects.create(sala=sala, usuario=anfitriao, apelido="host3")
+        participante = ParticipanteSalaKahoot.objects.create(sala=sala, usuario=jogador, apelido="jogador3")
+
+        self.client.force_login(jogador)
+        response = self.client.post(
+            reverse("responder_kahoot", args=[sala.codigo]),
+            {"answer": pergunta.resposta_correta},
+        )
+
+        self.assertRedirects(response, reverse("sala_kahoot", args=[sala.codigo]))
+        participante.refresh_from_db()
+        self.assertGreater(participante.pontuacao_total, 0)
+        self.assertEqual(participante.respostas_certas, 1)
+
+    def test_anfitriao_pode_editar_sala_kahoot(self):
+        self.criar_perguntas()
+        anfitriao = User.objects.create_user(username="edithost", password="senha123")
+        sala = SalaKahoot.objects.create(
+            anfitriao=anfitriao,
+            codigo="EDIT12",
+            titulo="Sala antiga",
+            total_rodadas=5,
+            tempo_por_rodada=20,
+        )
+        ParticipanteSalaKahoot.objects.create(sala=sala, usuario=anfitriao, apelido="edithost")
+
+        self.client.force_login(anfitriao)
+        response = self.client.post(
+            reverse("editar_sala_kahoot", args=[sala.codigo]),
+            {"titulo": "Sala nova", "total_rodadas": 4, "tempo_por_rodada": 30},
+        )
+
+        self.assertRedirects(response, reverse("sala_kahoot", args=[sala.codigo]))
+        sala.refresh_from_db()
+        self.assertEqual(sala.titulo, "Sala nova")
+        self.assertEqual(sala.total_rodadas, 4)
+        self.assertEqual(sala.tempo_por_rodada, 30)
+
+    def test_anfitriao_pode_criar_pergunta_personalizada(self):
+        anfitriao = User.objects.create_user(username="perghost", password="senha123")
+        sala = SalaKahoot.objects.create(
+            anfitriao=anfitriao,
+            codigo="PER123",
+            titulo="Sala personalizada",
+            total_rodadas=1,
+            tempo_por_rodada=20,
+        )
+
+        self.client.force_login(anfitriao)
+        response = self.client.post(
+            reverse("criar_pergunta_personalizada_kahoot", args=[sala.codigo]),
+            {
+                "pergunta": "Qual a cor do ceu?",
+                "alternativa_a": "Azul",
+                "alternativa_b": "Verde",
+                "alternativa_c": "Preto",
+                "alternativa_d": "Branco",
+                "alternativa_e": "Rosa",
+                "resposta_correta": "A",
+                "materia": "Ciencias",
+                "serie": "5 ano",
+            },
+        )
+
+        self.assertRedirects(response, reverse("gerenciar_perguntas_kahoot", args=[sala.codigo]))
+        pergunta = PerguntaSalaKahoot.objects.get(sala=sala)
+        self.assertEqual(pergunta.resposta_correta, "A")
+        self.assertEqual(pergunta.materia, "Ciencias")
+
+    def test_sala_usa_pergunta_personalizada_ao_iniciar(self):
+        anfitriao = User.objects.create_user(username="customhost", password="senha123")
+        sala = SalaKahoot.objects.create(
+            anfitriao=anfitriao,
+            codigo="CUS123",
+            titulo="Sala custom",
+            total_rodadas=1,
+            tempo_por_rodada=20,
+        )
+        ParticipanteSalaKahoot.objects.create(sala=sala, usuario=anfitriao, apelido="customhost")
+        PerguntaSalaKahoot.objects.create(
+            sala=sala,
+            pergunta="Pergunta da sala?",
+            alternativa_a="A",
+            alternativa_b="B",
+            alternativa_c="C",
+            alternativa_d="D",
+            alternativa_e="E",
+            resposta_correta="B",
+            materia="Livre",
+            serie="Livre",
+            ordem=1,
+        )
+
+        self.client.force_login(anfitriao)
+        response = self.client.post(reverse("iniciar_sala_kahoot", args=[sala.codigo]))
+
+        self.assertRedirects(response, reverse("sala_kahoot", args=[sala.codigo]))
+        sala.refresh_from_db()
+        self.assertEqual(sala.status, SalaKahoot.STATUS_EM_ANDAMENTO)
+        self.assertIsNotNone(sala.pergunta_personalizada_atual)
+        self.assertIsNone(sala.pergunta_atual)

@@ -10,7 +10,7 @@ GOOGLE_LOGIN_ENABLED = bool(GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET)
 # Segurança
 SECRET_KEY = 'django-insecure-_vlajql=y5#3go@4su^x7mitxo)kxfbvn-cu9q65_b*p&en@1)'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Apps instalados
 INSTALLED_APPS = [

@@ -9,6 +9,13 @@
     {% if tema_css_inline %}
         <style>{{ tema_css_inline|safe }}</style>
     {% endif %}
+    {% if auto_refresh_ms %}
+        <script>
+            window.setTimeout(function () {
+                window.location.reload();
+            }, {{ auto_refresh_ms }});
+        </script>
+    {% endif %}
 </head>
 <body>
     <main class="page-shell">
@@ -24,6 +31,7 @@
                 <div class="ranking-meta">
                     <span class="chip chip-blue">Semana desde {{ inicio_semana|date:"d/m/Y" }}</span>
                     <span class="chip chip-gold">Mes desde {{ inicio_mes|date:"d/m/Y" }}</span>
+                    <span class="chip chip-blue">Atualizacao automatica a cada 5s</span>
                 </div>
 
                 <div class="result-actions">
