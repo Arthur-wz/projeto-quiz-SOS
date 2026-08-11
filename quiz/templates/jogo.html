@@ -797,6 +797,7 @@
 
                 <form
                     method="post"
+                    action="{% url 'jogo' %}"
                     class="help-form"
                     data-help-type="skip"
                     data-help-title="Pular esta pergunta?"
@@ -806,10 +807,14 @@
 
                     {% csrf_token %}
 
-                    <button
-                        type="submit"
+                    <input
+                        type="hidden"
                         name="action"
                         value="skip"
+                    >
+
+                    <button
+                        type="submit"
                         class="help-button"
 
                         {% if not pulo_disponivel %}
@@ -835,6 +840,7 @@
 
                 <form
                     method="post"
+                    action="{% url 'jogo' %}"
                     class="help-form"
                     data-help-type="eliminate"
                     data-help-title="Eliminar duas alternativas?"
@@ -844,10 +850,14 @@
 
                     {% csrf_token %}
 
-                    <button
-                        type="submit"
+                    <input
+                        type="hidden"
                         name="action"
                         value="eliminate"
+                    >
+
+                    <button
+                        type="submit"
                         class="help-button"
 
                         {% if not eliminar_disponivel %}
@@ -1637,3 +1647,5 @@
 
 
 </body>
+
+</html>
