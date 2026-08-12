@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$1200000$lZXeaPekHsXcF2LUPud4aT$8YpyfknvhFNMGkH5Yco9ufb4OXtG47nVmyLhfddcL/A=",
-      "last_login": "2026-05-28T11:36:51.917Z",
+      "last_login": "2026-08-12T12:58:30.136Z",
       "is_superuser": true,
       "username": "arthur",
       "first_name": "",
@@ -966,6 +966,23 @@
     }
   },
   {
+    "model": "quiz.partida",
+    "pk": 53,
+    "fields": {
+      "usuario": 1,
+      "modo": "solo",
+      "status": "finalizada",
+      "total_perguntas": 20,
+      "pontuacao_total": 140,
+      "acertos": 14,
+      "erros": 6,
+      "pulo_usado": false,
+      "eliminar_usado": false,
+      "iniciada_em": "2026-08-12T12:58:55.955Z",
+      "encerrada_em": "2026-08-12T13:05:49.312Z"
+    }
+  },
+  {
     "model": "quiz.respostapartida",
     "pk": 8,
     "fields": {
@@ -1030,7 +1047,7 @@
     "pk": 11,
     "fields": {
       "partida": 4,
-      "pergunta": 1227,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "A ßgua Ú formada por quais elementos?",
       "materia": "QuÝmica",
@@ -1050,7 +1067,7 @@
     "pk": 12,
     "fields": {
       "partida": 4,
-      "pergunta": 1341,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "Quem foi o primeiro imperador do Brasil?",
       "materia": "Hist¾ria",
@@ -1110,7 +1127,7 @@
     "pk": 15,
     "fields": {
       "partida": 7,
-      "pergunta": 1324,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Em que ano ocorreu a IndependÛncia do Brasil?",
       "materia": "Hist¾ria",
@@ -1130,7 +1147,7 @@
     "pk": 16,
     "fields": {
       "partida": 7,
-      "pergunta": 1227,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "A ßgua Ú formada por quais elementos?",
       "materia": "QuÝmica",
@@ -1150,7 +1167,7 @@
     "pk": 17,
     "fields": {
       "partida": 7,
-      "pergunta": 1219,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "InglÛs",
@@ -1170,7 +1187,7 @@
     "pk": 18,
     "fields": {
       "partida": 7,
-      "pergunta": 1228,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "Qual Ú a soluþÒo da equaþÒo 2x + 6 = 14?",
       "materia": "Matemßtica",
@@ -1190,7 +1207,7 @@
     "pk": 19,
     "fields": {
       "partida": 7,
-      "pergunta": 1342,
+      "pergunta": null,
       "numero_pergunta": 5,
       "pergunta_texto": "Qual palavra abaixo Ú um verbo no infinitivo?",
       "materia": "PortuguÛs",
@@ -1230,7 +1247,7 @@
     "pk": 21,
     "fields": {
       "partida": 7,
-      "pergunta": 1259,
+      "pergunta": null,
       "numero_pergunta": 7,
       "pergunta_texto": "A escravidÒo foi oficialmente abolida no Brasil em:",
       "materia": "Hist¾ria",
@@ -1250,7 +1267,7 @@
     "pk": 22,
     "fields": {
       "partida": 7,
-      "pergunta": 1256,
+      "pergunta": null,
       "numero_pergunta": 8,
       "pergunta_texto": "Qual Ú a ßrea de um retÔngulo de base 8 cm e altura 5 cm?",
       "materia": "Matemßtica",
@@ -1270,7 +1287,7 @@
     "pk": 23,
     "fields": {
       "partida": 7,
-      "pergunta": 1204,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "A molÚcula que carrega a informaþÒo genÚtica Ú o:",
       "materia": "Biologia",
@@ -1310,7 +1327,7 @@
     "pk": 25,
     "fields": {
       "partida": 7,
-      "pergunta": 1224,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "A ßgua Ú formada por quais elementos?",
       "materia": "QuÝmica",
@@ -1350,7 +1367,7 @@
     "pk": 27,
     "fields": {
       "partida": 7,
-      "pergunta": 1315,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Qual Ú o sÝmbolo quÝmico do s¾dio?",
       "materia": "QuÝmica",
@@ -1370,7 +1387,7 @@
     "pk": 28,
     "fields": {
       "partida": 7,
-      "pergunta": 1327,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "Qual planeta Ú conhecido como Planeta Vermelho?",
       "materia": "CiÛncias",
@@ -1390,7 +1407,7 @@
     "pk": 29,
     "fields": {
       "partida": 7,
-      "pergunta": 1267,
+      "pergunta": null,
       "numero_pergunta": 15,
       "pergunta_texto": "Quanto Ú 25% de 200?",
       "materia": "Matemßtica",
@@ -1410,7 +1427,7 @@
     "pk": 30,
     "fields": {
       "partida": 7,
-      "pergunta": 1252,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "A linha imaginßria que divide a Terra em hemisfÚrios Norte e Sul Ú o:",
       "materia": "Geografia",
@@ -1430,7 +1447,7 @@
     "pk": 31,
     "fields": {
       "partida": 7,
-      "pergunta": 1263,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "Qual Ú a traduþÒo de 'house'?",
       "materia": "InglÛs",
@@ -1450,7 +1467,7 @@
     "pk": 32,
     "fields": {
       "partida": 7,
-      "pergunta": 1293,
+      "pergunta": null,
       "numero_pergunta": 18,
       "pergunta_texto": "Os produtores em uma cadeia alimentar sÒo geralmente:",
       "materia": "Biologia",
@@ -1470,7 +1487,7 @@
     "pk": 33,
     "fields": {
       "partida": 7,
-      "pergunta": 1243,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Qual Ú o pr¾ximo n·mero da sequÛncia 2, 4, 8, 16, ...?",
       "materia": "Matemßtica",
@@ -1510,7 +1527,7 @@
     "pk": 35,
     "fields": {
       "partida": 8,
-      "pergunta": 1179,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Qual Ú a soluþÒo da equaþÒo 2x + 6 = 14?",
       "materia": "Matemßtica",
@@ -1530,7 +1547,7 @@
     "pk": 36,
     "fields": {
       "partida": 8,
-      "pergunta": 1340,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "Qual palavra abaixo Ú um verbo no infinitivo?",
       "materia": "PortuguÛs",
@@ -1550,7 +1567,7 @@
     "pk": 37,
     "fields": {
       "partida": 8,
-      "pergunta": 1206,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "O sistema predominante na Idade MÚdia europeia foi o:",
       "materia": "Hist¾ria",
@@ -1570,7 +1587,7 @@
     "pk": 38,
     "fields": {
       "partida": 8,
-      "pergunta": 1296,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "Quanto vale 3▓ + 4▓?",
       "materia": "Matemßtica",
@@ -1590,7 +1607,7 @@
     "pk": 39,
     "fields": {
       "partida": 8,
-      "pergunta": 1243,
+      "pergunta": null,
       "numero_pergunta": 5,
       "pergunta_texto": "Qual Ú o pr¾ximo n·mero da sequÛncia 2, 4, 8, 16, ...?",
       "materia": "Matemßtica",
@@ -1610,7 +1627,7 @@
     "pk": 40,
     "fields": {
       "partida": 8,
-      "pergunta": 1276,
+      "pergunta": null,
       "numero_pergunta": 6,
       "pergunta_texto": "Qual Ú o sÝmbolo quÝmico do oxigÛnio?",
       "materia": "QuÝmica",
@@ -1630,7 +1647,7 @@
     "pk": 41,
     "fields": {
       "partida": 8,
-      "pergunta": 1190,
+      "pergunta": null,
       "numero_pergunta": 7,
       "pergunta_texto": "Qual palavra abaixo Ú um verbo no infinitivo?",
       "materia": "PortuguÛs",
@@ -1650,7 +1667,7 @@
     "pk": 42,
     "fields": {
       "partida": 8,
-      "pergunta": 1304,
+      "pergunta": null,
       "numero_pergunta": 8,
       "pergunta_texto": "Qual Ú a forma correta de 'eu sou' em inglÛs?",
       "materia": "InglÛs",
@@ -1670,7 +1687,7 @@
     "pk": 43,
     "fields": {
       "partida": 8,
-      "pergunta": 1237,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "Qual Ú a traduþÒo de 'house'?",
       "materia": "InglÛs",
@@ -1710,7 +1727,7 @@
     "pk": 45,
     "fields": {
       "partida": 8,
-      "pergunta": 1352,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "Qual ¾rgÒo do corpo humano bombeia o sangue?",
       "materia": "CiÛncias",
@@ -1730,7 +1747,7 @@
     "pk": 46,
     "fields": {
       "partida": 8,
-      "pergunta": 1255,
+      "pergunta": null,
       "numero_pergunta": 12,
       "pergunta_texto": "Em que ano ocorreu a IndependÛncia do Brasil?",
       "materia": "Hist¾ria",
@@ -1750,7 +1767,7 @@
     "pk": 47,
     "fields": {
       "partida": 8,
-      "pergunta": 1299,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Qual Ú a traduþÒo de 'house'?",
       "materia": "InglÛs",
@@ -1770,7 +1787,7 @@
     "pk": 48,
     "fields": {
       "partida": 8,
-      "pergunta": 1354,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "A molÚcula que carrega a informaþÒo genÚtica Ú o:",
       "materia": "Biologia",
@@ -1810,7 +1827,7 @@
     "pk": 50,
     "fields": {
       "partida": 8,
-      "pergunta": 1337,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "InglÛs",
@@ -1830,7 +1847,7 @@
     "pk": 51,
     "fields": {
       "partida": 8,
-      "pergunta": 1288,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "A linha imaginßria que divide a Terra em hemisfÚrios Norte e Sul Ú o:",
       "materia": "Geografia",
@@ -1870,7 +1887,7 @@
     "pk": 53,
     "fields": {
       "partida": 8,
-      "pergunta": 1181,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Qual Ú a traduþÒo de 'house'?",
       "materia": "InglÛs",
@@ -1890,7 +1907,7 @@
     "pk": 54,
     "fields": {
       "partida": 8,
-      "pergunta": 1350,
+      "pergunta": null,
       "numero_pergunta": 20,
       "pergunta_texto": "Qual Ú a ßrea de um retÔngulo de base 8 cm e altura 5 cm?",
       "materia": "Matemßtica",
@@ -1950,7 +1967,7 @@
     "pk": 57,
     "fields": {
       "partida": 10,
-      "pergunta": 1270,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "Quanto vale 3▓ + 4▓?",
       "materia": "Matemßtica",
@@ -1970,7 +1987,7 @@
     "pk": 58,
     "fields": {
       "partida": 10,
-      "pergunta": 1295,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "Qual Ú a capital do Brasil?",
       "materia": "Geografia",
@@ -2010,7 +2027,7 @@
     "pk": 60,
     "fields": {
       "partida": 10,
-      "pergunta": 1330,
+      "pergunta": null,
       "numero_pergunta": 6,
       "pergunta_texto": "Qual Ú o plural correto de 'papel'?",
       "materia": "PortuguÛs",
@@ -2050,7 +2067,7 @@
     "pk": 62,
     "fields": {
       "partida": 10,
-      "pergunta": 1322,
+      "pergunta": null,
       "numero_pergunta": 8,
       "pergunta_texto": "A molÚcula que carrega a informaþÒo genÚtica Ú o:",
       "materia": "Biologia",
@@ -2070,7 +2087,7 @@
     "pk": 63,
     "fields": {
       "partida": 10,
-      "pergunta": 1198,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "Quanto Ú 25% de 200?",
       "materia": "Matemßtica",
@@ -2110,7 +2127,7 @@
     "pk": 65,
     "fields": {
       "partida": 10,
-      "pergunta": 1246,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "A ßgua Ú formada por quais elementos?",
       "materia": "QuÝmica",
@@ -2130,7 +2147,7 @@
     "pk": 66,
     "fields": {
       "partida": 10,
-      "pergunta": 1233,
+      "pergunta": null,
       "numero_pergunta": 12,
       "pergunta_texto": "Qual Ú a capital do Brasil?",
       "materia": "Geografia",
@@ -2150,7 +2167,7 @@
     "pk": 67,
     "fields": {
       "partida": 10,
-      "pergunta": 1251,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Qual palavra significa 'escola' em inglÛs?",
       "materia": "InglÛs",
@@ -2170,7 +2187,7 @@
     "pk": 68,
     "fields": {
       "partida": 10,
-      "pergunta": 1260,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "A ßgua entra em ebuliþÒo, ao nÝvel do mar, a aproximadamente:",
       "materia": "CiÛncias",
@@ -2190,7 +2207,7 @@
     "pk": 69,
     "fields": {
       "partida": 10,
-      "pergunta": 1235,
+      "pergunta": null,
       "numero_pergunta": 15,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "InglÛs",
@@ -2210,7 +2227,7 @@
     "pk": 70,
     "fields": {
       "partida": 10,
-      "pergunta": 1291,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "Qual Ú o pr¾ximo n·mero da sequÛncia 2, 4, 8, 16, ...?",
       "materia": "Matemßtica",
@@ -2230,7 +2247,7 @@
     "pk": 71,
     "fields": {
       "partida": 10,
-      "pergunta": 1347,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "Qual instrumento mede a temperatura?",
       "materia": "FÝsica",
@@ -2250,7 +2267,7 @@
     "pk": 72,
     "fields": {
       "partida": 10,
-      "pergunta": 1292,
+      "pergunta": null,
       "numero_pergunta": 18,
       "pergunta_texto": "Qual Ú a forma correta de 'eu sou' em inglÛs?",
       "materia": "InglÛs",
@@ -2290,7 +2307,7 @@
     "pk": 74,
     "fields": {
       "partida": 10,
-      "pergunta": 1256,
+      "pergunta": null,
       "numero_pergunta": 20,
       "pergunta_texto": "Qual Ú a ßrea de um retÔngulo de base 8 cm e altura 5 cm?",
       "materia": "Matemßtica",
@@ -2330,7 +2347,7 @@
     "pk": 76,
     "fields": {
       "partida": 14,
-      "pergunta": 1294,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Qual Ú a traduþÒo de 'house'?",
       "materia": "InglÛs",
@@ -2350,7 +2367,7 @@
     "pk": 77,
     "fields": {
       "partida": 14,
-      "pergunta": 1303,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "Quanto vale 3▓ + 4▓?",
       "materia": "Matemßtica",
@@ -2370,7 +2387,7 @@
     "pk": 78,
     "fields": {
       "partida": 16,
-      "pergunta": 1197,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Em que ano ocorreu a IndependÛncia do Brasil?",
       "materia": "Hist¾ria",
@@ -2390,7 +2407,7 @@
     "pk": 79,
     "fields": {
       "partida": 16,
-      "pergunta": 1246,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "A ßgua Ú formada por quais elementos?",
       "materia": "QuÝmica",
@@ -2410,7 +2427,7 @@
     "pk": 80,
     "fields": {
       "partida": 16,
-      "pergunta": 1206,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "O sistema predominante na Idade MÚdia europeia foi o:",
       "materia": "Hist¾ria",
@@ -2430,7 +2447,7 @@
     "pk": 81,
     "fields": {
       "partida": 16,
-      "pergunta": 1234,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "InglÛs",
@@ -2450,7 +2467,7 @@
     "pk": 82,
     "fields": {
       "partida": 18,
-      "pergunta": 1321,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Qual é a capital do Brasil?",
       "materia": "Geografia",
@@ -2470,7 +2487,7 @@
     "pk": 83,
     "fields": {
       "partida": 18,
-      "pergunta": 1259,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "A escravidão foi oficialmente abolida no Brasil em:",
       "materia": "História",
@@ -2490,7 +2507,7 @@
     "pk": 84,
     "fields": {
       "partida": 18,
-      "pergunta": 1202,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "Qual instrumento mede a temperatura?",
       "materia": "Física",
@@ -2510,7 +2527,7 @@
     "pk": 85,
     "fields": {
       "partida": 18,
-      "pergunta": 1214,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "A organela responsável pela respiração celular é a:",
       "materia": "Biologia",
@@ -2570,7 +2587,7 @@
     "pk": 88,
     "fields": {
       "partida": 18,
-      "pergunta": 1231,
+      "pergunta": null,
       "numero_pergunta": 7,
       "pergunta_texto": "Qual é a área de um retângulo de base 8 cm e altura 5 cm?",
       "materia": "Matemática",
@@ -2590,7 +2607,7 @@
     "pk": 89,
     "fields": {
       "partida": 18,
-      "pergunta": 1302,
+      "pergunta": null,
       "numero_pergunta": 8,
       "pergunta_texto": "Qual é a forma correta de 'eu sou' em inglês?",
       "materia": "Inglês",
@@ -2610,7 +2627,7 @@
     "pk": 90,
     "fields": {
       "partida": 18,
-      "pergunta": 1239,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "Qual é a tradução de 'house'?",
       "materia": "Inglês",
@@ -2630,7 +2647,7 @@
     "pk": 91,
     "fields": {
       "partida": 18,
-      "pergunta": 1233,
+      "pergunta": null,
       "numero_pergunta": 10,
       "pergunta_texto": "Qual é a capital do Brasil?",
       "materia": "Geografia",
@@ -2650,7 +2667,7 @@
     "pk": 92,
     "fields": {
       "partida": 18,
-      "pergunta": 1193,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -2670,7 +2687,7 @@
     "pk": 93,
     "fields": {
       "partida": 18,
-      "pergunta": 1327,
+      "pergunta": null,
       "numero_pergunta": 12,
       "pergunta_texto": "Qual planeta é conhecido como Planeta Vermelho?",
       "materia": "Ciências",
@@ -2690,7 +2707,7 @@
     "pk": 94,
     "fields": {
       "partida": 18,
-      "pergunta": 1286,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Qual oceano banha o litoral brasileiro?",
       "materia": "Geografia",
@@ -2710,7 +2727,7 @@
     "pk": 95,
     "fields": {
       "partida": 18,
-      "pergunta": 1192,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "Qual palavra abaixo é um verbo no infinitivo?",
       "materia": "Português",
@@ -2730,7 +2747,7 @@
     "pk": 96,
     "fields": {
       "partida": 18,
-      "pergunta": 1176,
+      "pergunta": null,
       "numero_pergunta": 15,
       "pergunta_texto": "Qual é a tradução de 'house'?",
       "materia": "Inglês",
@@ -2750,7 +2767,7 @@
     "pk": 97,
     "fields": {
       "partida": 18,
-      "pergunta": 1235,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "Inglês",
@@ -2770,7 +2787,7 @@
     "pk": 98,
     "fields": {
       "partida": 18,
-      "pergunta": 1227,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "A água é formada por quais elementos?",
       "materia": "Química",
@@ -2810,7 +2827,7 @@
     "pk": 100,
     "fields": {
       "partida": 18,
-      "pergunta": 1257,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Qual é o plural correto de 'papel'?",
       "materia": "Português",
@@ -2830,7 +2847,7 @@
     "pk": 101,
     "fields": {
       "partida": 18,
-      "pergunta": 1310,
+      "pergunta": null,
       "numero_pergunta": 20,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -2850,7 +2867,7 @@
     "pk": 102,
     "fields": {
       "partida": 19,
-      "pergunta": 1206,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "O sistema predominante na Idade Média europeia foi o:",
       "materia": "História",
@@ -2870,7 +2887,7 @@
     "pk": 103,
     "fields": {
       "partida": 19,
-      "pergunta": 1337,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "Inglês",
@@ -2910,7 +2927,7 @@
     "pk": 105,
     "fields": {
       "partida": 19,
-      "pergunta": 1315,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "Qual é o símbolo químico do sódio?",
       "materia": "Química",
@@ -2930,7 +2947,7 @@
     "pk": 106,
     "fields": {
       "partida": 19,
-      "pergunta": 1260,
+      "pergunta": null,
       "numero_pergunta": 5,
       "pergunta_texto": "A água entra em ebulição, ao nível do mar, a aproximadamente:",
       "materia": "Ciências",
@@ -2950,7 +2967,7 @@
     "pk": 107,
     "fields": {
       "partida": 19,
-      "pergunta": 1244,
+      "pergunta": null,
       "numero_pergunta": 6,
       "pergunta_texto": "Qual palavra significa 'escola' em inglês?",
       "materia": "Inglês",
@@ -2990,7 +3007,7 @@
     "pk": 109,
     "fields": {
       "partida": 19,
-      "pergunta": 1263,
+      "pergunta": null,
       "numero_pergunta": 8,
       "pergunta_texto": "Qual é a tradução de 'house'?",
       "materia": "Inglês",
@@ -3030,7 +3047,7 @@
     "pk": 111,
     "fields": {
       "partida": 19,
-      "pergunta": 1262,
+      "pergunta": null,
       "numero_pergunta": 10,
       "pergunta_texto": "Qual palavra significa 'escola' em inglês?",
       "materia": "Inglês",
@@ -3050,7 +3067,7 @@
     "pk": 112,
     "fields": {
       "partida": 19,
-      "pergunta": 1334,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "Qual alternativa apresenta uma palavra proparoxítona?",
       "materia": "Português",
@@ -3090,7 +3107,7 @@
     "pk": 114,
     "fields": {
       "partida": 19,
-      "pergunta": 1207,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Quem foi o primeiro imperador do Brasil?",
       "materia": "História",
@@ -3110,7 +3127,7 @@
     "pk": 115,
     "fields": {
       "partida": 19,
-      "pergunta": 1237,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "Qual é a tradução de 'house'?",
       "materia": "Inglês",
@@ -3130,7 +3147,7 @@
     "pk": 116,
     "fields": {
       "partida": 19,
-      "pergunta": 1292,
+      "pergunta": null,
       "numero_pergunta": 15,
       "pergunta_texto": "Qual é a forma correta de 'eu sou' em inglês?",
       "materia": "Inglês",
@@ -3150,7 +3167,7 @@
     "pk": 117,
     "fields": {
       "partida": 19,
-      "pergunta": 1235,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "Inglês",
@@ -3170,7 +3187,7 @@
     "pk": 118,
     "fields": {
       "partida": 19,
-      "pergunta": 1240,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "Qual é o plural correto de 'papel'?",
       "materia": "Português",
@@ -3190,7 +3207,7 @@
     "pk": 119,
     "fields": {
       "partida": 19,
-      "pergunta": 1251,
+      "pergunta": null,
       "numero_pergunta": 18,
       "pergunta_texto": "Qual palavra significa 'escola' em inglês?",
       "materia": "Inglês",
@@ -3210,7 +3227,7 @@
     "pk": 120,
     "fields": {
       "partida": 19,
-      "pergunta": 1324,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -3230,7 +3247,7 @@
     "pk": 121,
     "fields": {
       "partida": 19,
-      "pergunta": 1256,
+      "pergunta": null,
       "numero_pergunta": 20,
       "pergunta_texto": "Qual é a área de um retângulo de base 8 cm e altura 5 cm?",
       "materia": "Matemática",
@@ -3270,7 +3287,7 @@
     "pk": 123,
     "fields": {
       "partida": 20,
-      "pergunta": 1181,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "Qual é a tradução de 'house'?",
       "materia": "Inglês",
@@ -3290,7 +3307,7 @@
     "pk": 124,
     "fields": {
       "partida": 20,
-      "pergunta": 1244,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "Qual palavra significa 'escola' em inglês?",
       "materia": "Inglês",
@@ -3310,7 +3327,7 @@
     "pk": 125,
     "fields": {
       "partida": 20,
-      "pergunta": 1278,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -3330,7 +3347,7 @@
     "pk": 126,
     "fields": {
       "partida": 20,
-      "pergunta": 1253,
+      "pergunta": null,
       "numero_pergunta": 5,
       "pergunta_texto": "Qual é a solução da equação 2x + 6 = 14?",
       "materia": "Matemática",
@@ -3350,7 +3367,7 @@
     "pk": 127,
     "fields": {
       "partida": 20,
-      "pergunta": 1180,
+      "pergunta": null,
       "numero_pergunta": 6,
       "pergunta_texto": "A escravidão foi oficialmente abolida no Brasil em:",
       "materia": "História",
@@ -3370,7 +3387,7 @@
     "pk": 128,
     "fields": {
       "partida": 20,
-      "pergunta": 1316,
+      "pergunta": null,
       "numero_pergunta": 7,
       "pergunta_texto": "A escravidão foi oficialmente abolida no Brasil em:",
       "materia": "História",
@@ -3410,7 +3427,7 @@
     "pk": 130,
     "fields": {
       "partida": 20,
-      "pergunta": 1333,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -3430,7 +3447,7 @@
     "pk": 131,
     "fields": {
       "partida": 20,
-      "pergunta": 1265,
+      "pergunta": null,
       "numero_pergunta": 10,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -3450,7 +3467,7 @@
     "pk": 132,
     "fields": {
       "partida": 20,
-      "pergunta": 1319,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "Qual é o maior bioma brasileiro?",
       "materia": "Geografia",
@@ -3470,7 +3487,7 @@
     "pk": 133,
     "fields": {
       "partida": 20,
-      "pergunta": 1326,
+      "pergunta": null,
       "numero_pergunta": 12,
       "pergunta_texto": "Qual é a tradução de 'house'?",
       "materia": "Inglês",
@@ -3490,7 +3507,7 @@
     "pk": 134,
     "fields": {
       "partida": 20,
-      "pergunta": 1255,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -3530,7 +3547,7 @@
     "pk": 136,
     "fields": {
       "partida": 20,
-      "pergunta": 1354,
+      "pergunta": null,
       "numero_pergunta": 15,
       "pergunta_texto": "A molécula que carrega a informação genética é o:",
       "materia": "Biologia",
@@ -3570,7 +3587,7 @@
     "pk": 138,
     "fields": {
       "partida": 20,
-      "pergunta": 1339,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -3590,7 +3607,7 @@
     "pk": 139,
     "fields": {
       "partida": 20,
-      "pergunta": 1204,
+      "pergunta": null,
       "numero_pergunta": 18,
       "pergunta_texto": "A molécula que carrega a informação genética é o:",
       "materia": "Biologia",
@@ -3610,7 +3627,7 @@
     "pk": 140,
     "fields": {
       "partida": 20,
-      "pergunta": 1303,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -3630,7 +3647,7 @@
     "pk": 141,
     "fields": {
       "partida": 20,
-      "pergunta": 1343,
+      "pergunta": null,
       "numero_pergunta": 20,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "Inglês",
@@ -3650,7 +3667,7 @@
     "pk": 142,
     "fields": {
       "partida": 21,
-      "pergunta": 1272,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Os produtores em uma cadeia alimentar são geralmente:",
       "materia": "Biologia",
@@ -3690,7 +3707,7 @@
     "pk": 144,
     "fields": {
       "partida": 21,
-      "pergunta": 1224,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "A água é formada por quais elementos?",
       "materia": "Química",
@@ -3710,7 +3727,7 @@
     "pk": 145,
     "fields": {
       "partida": 21,
-      "pergunta": 1236,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -3730,7 +3747,7 @@
     "pk": 146,
     "fields": {
       "partida": 21,
-      "pergunta": 1327,
+      "pergunta": null,
       "numero_pergunta": 5,
       "pergunta_texto": "Qual planeta é conhecido como Planeta Vermelho?",
       "materia": "Ciências",
@@ -3750,7 +3767,7 @@
     "pk": 147,
     "fields": {
       "partida": 21,
-      "pergunta": 1179,
+      "pergunta": null,
       "numero_pergunta": 6,
       "pergunta_texto": "Qual é a solução da equação 2x + 6 = 14?",
       "materia": "Matemática",
@@ -3790,7 +3807,7 @@
     "pk": 149,
     "fields": {
       "partida": 21,
-      "pergunta": 1291,
+      "pergunta": null,
       "numero_pergunta": 8,
       "pergunta_texto": "Qual é o próximo número da sequência 2, 4, 8, 16, ...?",
       "materia": "Matemática",
@@ -3810,7 +3827,7 @@
     "pk": 150,
     "fields": {
       "partida": 21,
-      "pergunta": 1217,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "Qual palavra abaixo é um verbo no infinitivo?",
       "materia": "Português",
@@ -3850,7 +3867,7 @@
     "pk": 152,
     "fields": {
       "partida": 21,
-      "pergunta": 1278,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -3890,7 +3907,7 @@
     "pk": 154,
     "fields": {
       "partida": 21,
-      "pergunta": 1319,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Qual é o maior bioma brasileiro?",
       "materia": "Geografia",
@@ -3950,7 +3967,7 @@
     "pk": 157,
     "fields": {
       "partida": 21,
-      "pergunta": 1266,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "Qual alternativa apresenta uma palavra proparoxítona?",
       "materia": "Português",
@@ -3970,7 +3987,7 @@
     "pk": 158,
     "fields": {
       "partida": 21,
-      "pergunta": 1180,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "A escravidão foi oficialmente abolida no Brasil em:",
       "materia": "História",
@@ -3990,7 +4007,7 @@
     "pk": 159,
     "fields": {
       "partida": 21,
-      "pergunta": 1339,
+      "pergunta": null,
       "numero_pergunta": 18,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -4010,7 +4027,7 @@
     "pk": 160,
     "fields": {
       "partida": 21,
-      "pergunta": 1286,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Qual oceano banha o litoral brasileiro?",
       "materia": "Geografia",
@@ -4050,7 +4067,7 @@
     "pk": 162,
     "fields": {
       "partida": 22,
-      "pergunta": 1233,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Qual é a capital do Brasil?",
       "materia": "Geografia",
@@ -4070,7 +4087,7 @@
     "pk": 163,
     "fields": {
       "partida": 22,
-      "pergunta": 1270,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -4090,7 +4107,7 @@
     "pk": 164,
     "fields": {
       "partida": 22,
-      "pergunta": 1297,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "O movimento de rotação da Terra dura aproximadamente:",
       "materia": "Geografia",
@@ -4110,7 +4127,7 @@
     "pk": 165,
     "fields": {
       "partida": 22,
-      "pergunta": 1266,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "Qual alternativa apresenta uma palavra proparoxítona?",
       "materia": "Português",
@@ -4130,7 +4147,7 @@
     "pk": 166,
     "fields": {
       "partida": 22,
-      "pergunta": 1219,
+      "pergunta": null,
       "numero_pergunta": 5,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "Inglês",
@@ -4150,7 +4167,7 @@
     "pk": 167,
     "fields": {
       "partida": 22,
-      "pergunta": 1240,
+      "pergunta": null,
       "numero_pergunta": 6,
       "pergunta_texto": "Qual é o plural correto de 'papel'?",
       "materia": "Português",
@@ -4170,7 +4187,7 @@
     "pk": 168,
     "fields": {
       "partida": 22,
-      "pergunta": 1338,
+      "pergunta": null,
       "numero_pergunta": 7,
       "pergunta_texto": "Qual é o sujeito da frase 'Os alunos estudaram para a prova'?",
       "materia": "Português",
@@ -4190,7 +4207,7 @@
     "pk": 169,
     "fields": {
       "partida": 22,
-      "pergunta": 1339,
+      "pergunta": null,
       "numero_pergunta": 8,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -4230,7 +4247,7 @@
     "pk": 171,
     "fields": {
       "partida": 22,
-      "pergunta": 1293,
+      "pergunta": null,
       "numero_pergunta": 10,
       "pergunta_texto": "Os produtores em uma cadeia alimentar são geralmente:",
       "materia": "Biologia",
@@ -4250,7 +4267,7 @@
     "pk": 172,
     "fields": {
       "partida": 22,
-      "pergunta": 1260,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "A água entra em ebulição, ao nível do mar, a aproximadamente:",
       "materia": "Ciências",
@@ -4270,7 +4287,7 @@
     "pk": 173,
     "fields": {
       "partida": 22,
-      "pergunta": 1245,
+      "pergunta": null,
       "numero_pergunta": 12,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -4290,7 +4307,7 @@
     "pk": 174,
     "fields": {
       "partida": 22,
-      "pergunta": 1273,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Qual palavra significa 'escola' em inglês?",
       "materia": "Inglês",
@@ -4310,7 +4327,7 @@
     "pk": 175,
     "fields": {
       "partida": 22,
-      "pergunta": 1342,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "Qual palavra abaixo é um verbo no infinitivo?",
       "materia": "Português",
@@ -4330,7 +4347,7 @@
     "pk": 176,
     "fields": {
       "partida": 22,
-      "pergunta": 1236,
+      "pergunta": null,
       "numero_pergunta": 15,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -4370,7 +4387,7 @@
     "pk": 178,
     "fields": {
       "partida": 22,
-      "pergunta": 1243,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "Qual é o próximo número da sequência 2, 4, 8, 16, ...?",
       "materia": "Matemática",
@@ -4390,7 +4407,7 @@
     "pk": 179,
     "fields": {
       "partida": 22,
-      "pergunta": 1286,
+      "pergunta": null,
       "numero_pergunta": 18,
       "pergunta_texto": "Qual oceano banha o litoral brasileiro?",
       "materia": "Geografia",
@@ -4410,7 +4427,7 @@
     "pk": 180,
     "fields": {
       "partida": 22,
-      "pergunta": 1350,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Qual é a área de um retângulo de base 8 cm e altura 5 cm?",
       "materia": "Matemática",
@@ -4450,7 +4467,7 @@
     "pk": 182,
     "fields": {
       "partida": 23,
-      "pergunta": 1178,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "O processo pelo qual as plantas produzem seu próprio alimento é chamado de:",
       "materia": "Ciências",
@@ -4490,7 +4507,7 @@
     "pk": 184,
     "fields": {
       "partida": 23,
-      "pergunta": 1287,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "Qual é o símbolo químico do oxigênio?",
       "materia": "Química",
@@ -4510,7 +4527,7 @@
     "pk": 185,
     "fields": {
       "partida": 23,
-      "pergunta": 1204,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "A molécula que carrega a informação genética é o:",
       "materia": "Biologia",
@@ -4570,7 +4587,7 @@
     "pk": 188,
     "fields": {
       "partida": 23,
-      "pergunta": 1278,
+      "pergunta": null,
       "numero_pergunta": 7,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -4610,7 +4627,7 @@
     "pk": 190,
     "fields": {
       "partida": 23,
-      "pergunta": 1276,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "Qual é o símbolo químico do oxigênio?",
       "materia": "Química",
@@ -4630,7 +4647,7 @@
     "pk": 191,
     "fields": {
       "partida": 23,
-      "pergunta": 1336,
+      "pergunta": null,
       "numero_pergunta": 10,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -4650,7 +4667,7 @@
     "pk": 192,
     "fields": {
       "partida": 23,
-      "pergunta": 1348,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "Qual gás é mais abundante no ar atmosférico?",
       "materia": "Ciências",
@@ -4670,7 +4687,7 @@
     "pk": 193,
     "fields": {
       "partida": 23,
-      "pergunta": 1347,
+      "pergunta": null,
       "numero_pergunta": 12,
       "pergunta_texto": "Qual instrumento mede a temperatura?",
       "materia": "Física",
@@ -4710,7 +4727,7 @@
     "pk": 195,
     "fields": {
       "partida": 23,
-      "pergunta": 1294,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "Qual é a tradução de 'house'?",
       "materia": "Inglês",
@@ -4730,7 +4747,7 @@
     "pk": 196,
     "fields": {
       "partida": 23,
-      "pergunta": 1277,
+      "pergunta": null,
       "numero_pergunta": 15,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -4750,7 +4767,7 @@
     "pk": 197,
     "fields": {
       "partida": 23,
-      "pergunta": 1236,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -4770,7 +4787,7 @@
     "pk": 198,
     "fields": {
       "partida": 23,
-      "pergunta": 1350,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "Qual é a área de um retângulo de base 8 cm e altura 5 cm?",
       "materia": "Matemática",
@@ -4790,7 +4807,7 @@
     "pk": 199,
     "fields": {
       "partida": 23,
-      "pergunta": 1298,
+      "pergunta": null,
       "numero_pergunta": 18,
       "pergunta_texto": "Qual instrumento mede a temperatura?",
       "materia": "Física",
@@ -4810,7 +4827,7 @@
     "pk": 200,
     "fields": {
       "partida": 23,
-      "pergunta": 1203,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Qual é o símbolo químico do sódio?",
       "materia": "Química",
@@ -4850,7 +4867,7 @@
     "pk": 202,
     "fields": {
       "partida": 24,
-      "pergunta": 1301,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -4870,7 +4887,7 @@
     "pk": 203,
     "fields": {
       "partida": 24,
-      "pergunta": 1183,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "Qual gás é mais abundante no ar atmosférico?",
       "materia": "Ciências",
@@ -4890,7 +4907,7 @@
     "pk": 204,
     "fields": {
       "partida": 24,
-      "pergunta": 1344,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -4910,7 +4927,7 @@
     "pk": 205,
     "fields": {
       "partida": 24,
-      "pergunta": 1219,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "Inglês",
@@ -4930,7 +4947,7 @@
     "pk": 206,
     "fields": {
       "partida": 24,
-      "pergunta": 1227,
+      "pergunta": null,
       "numero_pergunta": 5,
       "pergunta_texto": "A água é formada por quais elementos?",
       "materia": "Química",
@@ -4950,7 +4967,7 @@
     "pk": 207,
     "fields": {
       "partida": 24,
-      "pergunta": 1263,
+      "pergunta": null,
       "numero_pergunta": 6,
       "pergunta_texto": "Qual é a tradução de 'house'?",
       "materia": "Inglês",
@@ -4970,7 +4987,7 @@
     "pk": 208,
     "fields": {
       "partida": 24,
-      "pergunta": 1191,
+      "pergunta": null,
       "numero_pergunta": 7,
       "pergunta_texto": "A molécula que carrega a informação genética é o:",
       "materia": "Biologia",
@@ -4990,7 +5007,7 @@
     "pk": 209,
     "fields": {
       "partida": 24,
-      "pergunta": 1260,
+      "pergunta": null,
       "numero_pergunta": 8,
       "pergunta_texto": "A água entra em ebulição, ao nível do mar, a aproximadamente:",
       "materia": "Ciências",
@@ -5010,7 +5027,7 @@
     "pk": 210,
     "fields": {
       "partida": 24,
-      "pergunta": 1327,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "Qual planeta é conhecido como Planeta Vermelho?",
       "materia": "Ciências",
@@ -5030,7 +5047,7 @@
     "pk": 211,
     "fields": {
       "partida": 24,
-      "pergunta": 1236,
+      "pergunta": null,
       "numero_pergunta": 10,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -5050,7 +5067,7 @@
     "pk": 212,
     "fields": {
       "partida": 24,
-      "pergunta": 1320,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "A organela responsável pela respiração celular é a:",
       "materia": "Biologia",
@@ -5070,7 +5087,7 @@
     "pk": 213,
     "fields": {
       "partida": 24,
-      "pergunta": 1309,
+      "pergunta": null,
       "numero_pergunta": 12,
       "pergunta_texto": "Qual palavra significa 'escola' em inglês?",
       "materia": "Inglês",
@@ -5090,7 +5107,7 @@
     "pk": 214,
     "fields": {
       "partida": 24,
-      "pergunta": 1233,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Qual é a capital do Brasil?",
       "materia": "Geografia",
@@ -5110,7 +5127,7 @@
     "pk": 215,
     "fields": {
       "partida": 24,
-      "pergunta": 1350,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "Qual é a área de um retângulo de base 8 cm e altura 5 cm?",
       "materia": "Matemática",
@@ -5130,7 +5147,7 @@
     "pk": 216,
     "fields": {
       "partida": 24,
-      "pergunta": 1243,
+      "pergunta": null,
       "numero_pergunta": 15,
       "pergunta_texto": "Qual é o próximo número da sequência 2, 4, 8, 16, ...?",
       "materia": "Matemática",
@@ -5150,7 +5167,7 @@
     "pk": 217,
     "fields": {
       "partida": 24,
-      "pergunta": 1193,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -5170,7 +5187,7 @@
     "pk": 218,
     "fields": {
       "partida": 24,
-      "pergunta": 1173,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -5250,7 +5267,7 @@
     "pk": 222,
     "fields": {
       "partida": 25,
-      "pergunta": 1336,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -5290,7 +5307,7 @@
     "pk": 224,
     "fields": {
       "partida": 25,
-      "pergunta": 1245,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -5310,7 +5327,7 @@
     "pk": 225,
     "fields": {
       "partida": 25,
-      "pergunta": 1276,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "Qual é o símbolo químico do oxigênio?",
       "materia": "Química",
@@ -5330,7 +5347,7 @@
     "pk": 226,
     "fields": {
       "partida": 25,
-      "pergunta": 1352,
+      "pergunta": null,
       "numero_pergunta": 5,
       "pergunta_texto": "Qual órgão do corpo humano bombeia o sangue?",
       "materia": "Ciências",
@@ -5350,7 +5367,7 @@
     "pk": 227,
     "fields": {
       "partida": 25,
-      "pergunta": 1261,
+      "pergunta": null,
       "numero_pergunta": 6,
       "pergunta_texto": "Qual instrumento mede a temperatura?",
       "materia": "Física",
@@ -5410,7 +5427,7 @@
     "pk": 230,
     "fields": {
       "partida": 25,
-      "pergunta": 1242,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "A escravidão foi oficialmente abolida no Brasil em:",
       "materia": "História",
@@ -5430,7 +5447,7 @@
     "pk": 231,
     "fields": {
       "partida": 25,
-      "pergunta": 1283,
+      "pergunta": null,
       "numero_pergunta": 10,
       "pergunta_texto": "Qual instrumento mede a temperatura?",
       "materia": "Física",
@@ -5470,7 +5487,7 @@
     "pk": 233,
     "fields": {
       "partida": 25,
-      "pergunta": 1288,
+      "pergunta": null,
       "numero_pergunta": 12,
       "pergunta_texto": "A linha imaginária que divide a Terra em hemisférios Norte e Sul é o:",
       "materia": "Geografia",
@@ -5490,7 +5507,7 @@
     "pk": 234,
     "fields": {
       "partida": 25,
-      "pergunta": 1222,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Qual é o próximo número da sequência 2, 4, 8, 16, ...?",
       "materia": "Matemática",
@@ -5510,7 +5527,7 @@
     "pk": 235,
     "fields": {
       "partida": 25,
-      "pergunta": 1327,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "Qual planeta é conhecido como Planeta Vermelho?",
       "materia": "Ciências",
@@ -5530,7 +5547,7 @@
     "pk": 236,
     "fields": {
       "partida": 25,
-      "pergunta": 1227,
+      "pergunta": null,
       "numero_pergunta": 15,
       "pergunta_texto": "A água é formada por quais elementos?",
       "materia": "Química",
@@ -5550,7 +5567,7 @@
     "pk": 237,
     "fields": {
       "partida": 25,
-      "pergunta": 1237,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "Qual é a tradução de 'house'?",
       "materia": "Inglês",
@@ -5570,7 +5587,7 @@
     "pk": 238,
     "fields": {
       "partida": 25,
-      "pergunta": 1192,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "Qual palavra abaixo é um verbo no infinitivo?",
       "materia": "Português",
@@ -5590,7 +5607,7 @@
     "pk": 239,
     "fields": {
       "partida": 25,
-      "pergunta": 1351,
+      "pergunta": null,
       "numero_pergunta": 18,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "Inglês",
@@ -5610,7 +5627,7 @@
     "pk": 240,
     "fields": {
       "partida": 25,
-      "pergunta": 1179,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Qual é a solução da equação 2x + 6 = 14?",
       "materia": "Matemática",
@@ -5650,7 +5667,7 @@
     "pk": 242,
     "fields": {
       "partida": 26,
-      "pergunta": 1240,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Qual é o plural correto de 'papel'?",
       "materia": "Português",
@@ -5690,7 +5707,7 @@
     "pk": 244,
     "fields": {
       "partida": 26,
-      "pergunta": 1338,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "Qual é o sujeito da frase 'Os alunos estudaram para a prova'?",
       "materia": "Português",
@@ -5710,7 +5727,7 @@
     "pk": 245,
     "fields": {
       "partida": 26,
-      "pergunta": 1337,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "Inglês",
@@ -5750,7 +5767,7 @@
     "pk": 247,
     "fields": {
       "partida": 26,
-      "pergunta": 1291,
+      "pergunta": null,
       "numero_pergunta": 6,
       "pergunta_texto": "Qual é o próximo número da sequência 2, 4, 8, 16, ...?",
       "materia": "Matemática",
@@ -5770,7 +5787,7 @@
     "pk": 248,
     "fields": {
       "partida": 26,
-      "pergunta": 1352,
+      "pergunta": null,
       "numero_pergunta": 7,
       "pergunta_texto": "Qual órgão do corpo humano bombeia o sangue?",
       "materia": "Ciências",
@@ -5790,7 +5807,7 @@
     "pk": 249,
     "fields": {
       "partida": 26,
-      "pergunta": 1277,
+      "pergunta": null,
       "numero_pergunta": 8,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -5810,7 +5827,7 @@
     "pk": 250,
     "fields": {
       "partida": 26,
-      "pergunta": 1180,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "A escravidão foi oficialmente abolida no Brasil em:",
       "materia": "História",
@@ -5830,7 +5847,7 @@
     "pk": 251,
     "fields": {
       "partida": 26,
-      "pergunta": 1287,
+      "pergunta": null,
       "numero_pergunta": 10,
       "pergunta_texto": "Qual é o símbolo químico do oxigênio?",
       "materia": "Química",
@@ -5870,7 +5887,7 @@
     "pk": 253,
     "fields": {
       "partida": 26,
-      "pergunta": 1306,
+      "pergunta": null,
       "numero_pergunta": 12,
       "pergunta_texto": "Qual oceano banha o litoral brasileiro?",
       "materia": "Geografia",
@@ -5890,7 +5907,7 @@
     "pk": 254,
     "fields": {
       "partida": 26,
-      "pergunta": 1286,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Qual oceano banha o litoral brasileiro?",
       "materia": "Geografia",
@@ -5910,7 +5927,7 @@
     "pk": 255,
     "fields": {
       "partida": 26,
-      "pergunta": 1318,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "O movimento de rotação da Terra dura aproximadamente:",
       "materia": "Geografia",
@@ -5950,7 +5967,7 @@
     "pk": 257,
     "fields": {
       "partida": 26,
-      "pergunta": 1236,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -5970,7 +5987,7 @@
     "pk": 258,
     "fields": {
       "partida": 26,
-      "pergunta": 1335,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "O sistema predominante na Idade Média europeia foi o:",
       "materia": "História",
@@ -5990,7 +6007,7 @@
     "pk": 259,
     "fields": {
       "partida": 26,
-      "pergunta": 1317,
+      "pergunta": null,
       "numero_pergunta": 18,
       "pergunta_texto": "Qual é o sujeito da frase 'Os alunos estudaram para a prova'?",
       "materia": "Português",
@@ -6010,7 +6027,7 @@
     "pk": 260,
     "fields": {
       "partida": 26,
-      "pergunta": 1244,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Qual palavra significa 'escola' em inglês?",
       "materia": "Inglês",
@@ -6030,7 +6047,7 @@
     "pk": 261,
     "fields": {
       "partida": 26,
-      "pergunta": 1206,
+      "pergunta": null,
       "numero_pergunta": 20,
       "pergunta_texto": "O sistema predominante na Idade Média europeia foi o:",
       "materia": "História",
@@ -6050,7 +6067,7 @@
     "pk": 262,
     "fields": {
       "partida": 27,
-      "pergunta": 1232,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Quem foi o primeiro imperador do Brasil?",
       "materia": "História",
@@ -6090,7 +6107,7 @@
     "pk": 264,
     "fields": {
       "partida": 27,
-      "pergunta": 1193,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -6110,7 +6127,7 @@
     "pk": 265,
     "fields": {
       "partida": 27,
-      "pergunta": 1310,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -6130,7 +6147,7 @@
     "pk": 266,
     "fields": {
       "partida": 27,
-      "pergunta": 1231,
+      "pergunta": null,
       "numero_pergunta": 5,
       "pergunta_texto": "Qual é a área de um retângulo de base 8 cm e altura 5 cm?",
       "materia": "Matemática",
@@ -6150,7 +6167,7 @@
     "pk": 267,
     "fields": {
       "partida": 27,
-      "pergunta": 1332,
+      "pergunta": null,
       "numero_pergunta": 6,
       "pergunta_texto": "Qual é a tradução de 'house'?",
       "materia": "Inglês",
@@ -6210,7 +6227,7 @@
     "pk": 270,
     "fields": {
       "partida": 27,
-      "pergunta": 1276,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "Qual é o símbolo químico do oxigênio?",
       "materia": "Química",
@@ -6250,7 +6267,7 @@
     "pk": 272,
     "fields": {
       "partida": 27,
-      "pergunta": 1270,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -6290,7 +6307,7 @@
     "pk": 274,
     "fields": {
       "partida": 27,
-      "pergunta": 1334,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Qual alternativa apresenta uma palavra proparoxítona?",
       "materia": "Português",
@@ -6310,7 +6327,7 @@
     "pk": 275,
     "fields": {
       "partida": 27,
-      "pergunta": 1240,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "Qual é o plural correto de 'papel'?",
       "materia": "Português",
@@ -6350,7 +6367,7 @@
     "pk": 277,
     "fields": {
       "partida": 27,
-      "pergunta": 1233,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "Qual é a capital do Brasil?",
       "materia": "Geografia",
@@ -6370,7 +6387,7 @@
     "pk": 278,
     "fields": {
       "partida": 27,
-      "pergunta": 1245,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -6390,7 +6407,7 @@
     "pk": 279,
     "fields": {
       "partida": 27,
-      "pergunta": 1349,
+      "pergunta": null,
       "numero_pergunta": 18,
       "pergunta_texto": "Qual alternativa apresenta uma palavra proparoxítona?",
       "materia": "Português",
@@ -6410,7 +6427,7 @@
     "pk": 280,
     "fields": {
       "partida": 27,
-      "pergunta": 1326,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Qual é a tradução de 'house'?",
       "materia": "Inglês",
@@ -6430,7 +6447,7 @@
     "pk": 281,
     "fields": {
       "partida": 27,
-      "pergunta": 1208,
+      "pergunta": null,
       "numero_pergunta": 20,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "Inglês",
@@ -6450,7 +6467,7 @@
     "pk": 282,
     "fields": {
       "partida": 28,
-      "pergunta": 1344,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -6470,7 +6487,7 @@
     "pk": 283,
     "fields": {
       "partida": 28,
-      "pergunta": 1353,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "Qual alternativa apresenta uma palavra proparoxítona?",
       "materia": "Português",
@@ -6490,7 +6507,7 @@
     "pk": 284,
     "fields": {
       "partida": 28,
-      "pergunta": 1223,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "O processo pelo qual as plantas produzem seu próprio alimento é chamado de:",
       "materia": "Ciências",
@@ -6510,7 +6527,7 @@
     "pk": 285,
     "fields": {
       "partida": 28,
-      "pergunta": 1339,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -6530,7 +6547,7 @@
     "pk": 286,
     "fields": {
       "partida": 28,
-      "pergunta": 1307,
+      "pergunta": null,
       "numero_pergunta": 5,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -6610,7 +6627,7 @@
     "pk": 290,
     "fields": {
       "partida": 28,
-      "pergunta": 1266,
+      "pergunta": null,
       "numero_pergunta": 9,
       "pergunta_texto": "Qual alternativa apresenta uma palavra proparoxítona?",
       "materia": "Português",
@@ -6630,7 +6647,7 @@
     "pk": 291,
     "fields": {
       "partida": 28,
-      "pergunta": 1192,
+      "pergunta": null,
       "numero_pergunta": 10,
       "pergunta_texto": "Qual palavra abaixo é um verbo no infinitivo?",
       "materia": "Português",
@@ -6650,7 +6667,7 @@
     "pk": 292,
     "fields": {
       "partida": 28,
-      "pergunta": 1333,
+      "pergunta": null,
       "numero_pergunta": 11,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -6690,7 +6707,7 @@
     "pk": 294,
     "fields": {
       "partida": 28,
-      "pergunta": 1283,
+      "pergunta": null,
       "numero_pergunta": 13,
       "pergunta_texto": "Qual instrumento mede a temperatura?",
       "materia": "Física",
@@ -6710,7 +6727,7 @@
     "pk": 295,
     "fields": {
       "partida": 28,
-      "pergunta": 1257,
+      "pergunta": null,
       "numero_pergunta": 14,
       "pergunta_texto": "Qual é o plural correto de 'papel'?",
       "materia": "Português",
@@ -6750,7 +6767,7 @@
     "pk": 297,
     "fields": {
       "partida": 28,
-      "pergunta": 1329,
+      "pergunta": null,
       "numero_pergunta": 16,
       "pergunta_texto": "A fotossíntese ocorre principalmente no:",
       "materia": "Biologia",
@@ -6770,7 +6787,7 @@
     "pk": 298,
     "fields": {
       "partida": 28,
-      "pergunta": 1178,
+      "pergunta": null,
       "numero_pergunta": 17,
       "pergunta_texto": "O processo pelo qual as plantas produzem seu próprio alimento é chamado de:",
       "materia": "Ciências",
@@ -6790,7 +6807,7 @@
     "pk": 299,
     "fields": {
       "partida": 28,
-      "pergunta": 1337,
+      "pergunta": null,
       "numero_pergunta": 18,
       "pergunta_texto": "A palavra 'because' significa:",
       "materia": "Inglês",
@@ -6810,7 +6827,7 @@
     "pk": 300,
     "fields": {
       "partida": 28,
-      "pergunta": 1296,
+      "pergunta": null,
       "numero_pergunta": 19,
       "pergunta_texto": "Quanto vale 3² + 4²?",
       "materia": "Matemática",
@@ -6830,7 +6847,7 @@
     "pk": 301,
     "fields": {
       "partida": 30,
-      "pergunta": 1321,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Qual é a capital do Brasil?",
       "materia": "Geografia",
@@ -6850,7 +6867,7 @@
     "pk": 302,
     "fields": {
       "partida": 31,
-      "pergunta": 1221,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "A unidade de força no Sistema Internacional é o:",
       "materia": "Física",
@@ -6870,7 +6887,7 @@
     "pk": 303,
     "fields": {
       "partida": 31,
-      "pergunta": 1217,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "Qual palavra abaixo é um verbo no infinitivo?",
       "materia": "Português",
@@ -6890,7 +6907,7 @@
     "pk": 304,
     "fields": {
       "partida": 31,
-      "pergunta": 1276,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "Qual é o símbolo químico do oxigênio?",
       "materia": "Química",
@@ -6910,7 +6927,7 @@
     "pk": 305,
     "fields": {
       "partida": 31,
-      "pergunta": 1184,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "O movimento de rotação da Terra dura aproximadamente:",
       "materia": "Geografia",
@@ -6930,7 +6947,7 @@
     "pk": 306,
     "fields": {
       "partida": 35,
-      "pergunta": 1260,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "A água entra em ebulição, ao nível do mar, a aproximadamente:",
       "materia": "Ciências",
@@ -6990,7 +7007,7 @@
     "pk": 309,
     "fields": {
       "partida": 35,
-      "pergunta": 1238,
+      "pergunta": null,
       "numero_pergunta": 4,
       "pergunta_texto": "Quem foi o primeiro imperador do Brasil?",
       "materia": "História",
@@ -7010,7 +7027,7 @@
     "pk": 310,
     "fields": {
       "partida": 37,
-      "pergunta": 1336,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "Quanto é 25% de 200?",
       "materia": "Matemática",
@@ -7030,7 +7047,7 @@
     "pk": 311,
     "fields": {
       "partida": 37,
-      "pergunta": 1268,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "A escravidão foi oficialmente abolida no Brasil em:",
       "materia": "História",
@@ -7050,7 +7067,7 @@
     "pk": 312,
     "fields": {
       "partida": 37,
-      "pergunta": 1293,
+      "pergunta": null,
       "numero_pergunta": 3,
       "pergunta_texto": "Os produtores em uma cadeia alimentar são geralmente:",
       "materia": "Biologia",
@@ -7070,7 +7087,7 @@
     "pk": 313,
     "fields": {
       "partida": 43,
-      "pergunta": 1289,
+      "pergunta": null,
       "numero_pergunta": 1,
       "pergunta_texto": "A energia associada ao movimento é a energia:",
       "materia": "Física",
@@ -7090,7 +7107,7 @@
     "pk": 314,
     "fields": {
       "partida": 43,
-      "pergunta": 1229,
+      "pergunta": null,
       "numero_pergunta": 2,
       "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
       "materia": "História",
@@ -7903,6 +7920,406 @@
       "valor_pergunta": 10,
       "pontos_recebidos": 0,
       "respondida_em": "2026-08-11T14:01:11.936Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 355,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 1,
+      "pergunta_texto": "Qual é a tradução de 'house'?",
+      "materia": "Inglês",
+      "serie": "8 ano",
+      "resposta_marcada": "D",
+      "resposta_correta": "D",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T12:59:38.378Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 356,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 2,
+      "pergunta_texto": "Qual é a área de um retângulo de base 8 cm e altura 5 cm?",
+      "materia": "Matemática",
+      "serie": "6 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T12:59:50.204Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 357,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 3,
+      "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
+      "materia": "História",
+      "serie": "8 ano",
+      "resposta_marcada": "D",
+      "resposta_correta": "A",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-12T13:00:19.826Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 358,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 4,
+      "pergunta_texto": "Qual é a capital do Brasil?",
+      "materia": "Geografia",
+      "serie": "1 ano EM",
+      "resposta_marcada": "B",
+      "resposta_correta": "B",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:00:28.823Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 359,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 5,
+      "pergunta_texto": "Qual oceano banha o litoral brasileiro?",
+      "materia": "Geografia",
+      "serie": "8 ano",
+      "resposta_marcada": "D",
+      "resposta_correta": "D",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:01:09.407Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 360,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 6,
+      "pergunta_texto": "Qual palavra significa 'escola' em inglês?",
+      "materia": "Inglês",
+      "serie": "7 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:01:17.674Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 361,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 7,
+      "pergunta_texto": "Qual gás é mais abundante no ar atmosférico?",
+      "materia": "Ciências",
+      "serie": "6 ano",
+      "resposta_marcada": "C",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-12T13:01:27.926Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 362,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 8,
+      "pergunta_texto": "Quem foi o primeiro imperador do Brasil?",
+      "materia": "História",
+      "serie": "7 ano",
+      "resposta_marcada": "C",
+      "resposta_correta": "A",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-12T13:01:52.198Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 363,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 9,
+      "pergunta_texto": "Em que ano ocorreu a Independência do Brasil?",
+      "materia": "História",
+      "serie": "3 ano EM",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:02:03.988Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 364,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 10,
+      "pergunta_texto": "Qual é a solução da equação 2x + 6 = 14?",
+      "materia": "Matemática",
+      "serie": "6 ano",
+      "resposta_marcada": "E",
+      "resposta_correta": "E",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:02:33.376Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 365,
+    "fields": {
+      "partida": 53,
+      "pergunta": 1165,
+      "numero_pergunta": 11,
+      "pergunta_texto": "Qual é a solução da equação 2x + 6 = 14?",
+      "materia": "Matemática",
+      "serie": "7 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:02:42.735Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 366,
+    "fields": {
+      "partida": 53,
+      "pergunta": 1164,
+      "numero_pergunta": 12,
+      "pergunta_texto": "Quanto vale 3² + 4²?",
+      "materia": "Matemática",
+      "serie": "1 ano EM",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:03:11.368Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 367,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 13,
+      "pergunta_texto": "Quanto vale 3² + 4²?",
+      "materia": "Matemática",
+      "serie": "8 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "B",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:03:24.533Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 368,
+    "fields": {
+      "partida": 53,
+      "pergunta": 1161,
+      "numero_pergunta": 14,
+      "pergunta_texto": "A unidade de força no Sistema Internacional é o:",
+      "materia": "Física",
+      "serie": "1 ano EM",
+      "resposta_marcada": "E",
+      "resposta_correta": "A",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-12T13:03:43.149Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 369,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 15,
+      "pergunta_texto": "Os produtores em uma cadeia alimentar são geralmente:",
+      "materia": "Biologia",
+      "serie": "9 ano",
+      "resposta_marcada": "E",
+      "resposta_correta": "A",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-12T13:03:54.111Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 370,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 16,
+      "pergunta_texto": "Quem foi o primeiro imperador do Brasil?",
+      "materia": "História",
+      "serie": "1 ano EM",
+      "resposta_marcada": "E",
+      "resposta_correta": "E",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:04:02.374Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 371,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 17,
+      "pergunta_texto": "Qual palavra significa 'escola' em inglês?",
+      "materia": "Inglês",
+      "serie": "2 ano EM",
+      "resposta_marcada": "B",
+      "resposta_correta": "B",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:04:11.715Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 372,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 18,
+      "pergunta_texto": "Quanto é 25% de 200?",
+      "materia": "Matemática",
+      "serie": "2 ano EM",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:05:19.186Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 373,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 19,
+      "pergunta_texto": "Qual alternativa apresenta uma palavra proparoxítona?",
+      "materia": "Português",
+      "serie": "3 ano EM",
+      "resposta_marcada": "E",
+      "resposta_correta": "D",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-12T13:05:39.179Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 374,
+    "fields": {
+      "partida": 53,
+      "pergunta": null,
+      "numero_pergunta": 20,
+      "pergunta_texto": "Qual é a capital do Brasil?",
+      "materia": "Geografia",
+      "serie": "7 ano",
+      "resposta_marcada": "D",
+      "resposta_correta": "D",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-12T13:05:49.250Z"
     }
   },
   {

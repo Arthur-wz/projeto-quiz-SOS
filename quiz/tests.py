@@ -15,7 +15,7 @@ from .models import (
     SalaKahoot,
 )
 from .themes import DEFAULT_THEME_SLUG
-from .views import QUIZ_SESSION_KEY, TOTAL_PERGUNTAS
+from .views import QUIZ_RECENT_IDS_SESSION_KEY, QUIZ_SESSION_KEY, TOTAL_PERGUNTAS
 
 
 class QuizFlowTests(TestCase):
@@ -165,6 +165,45 @@ class QuizFlowTests(TestCase):
         self.assertRedirects(response, reverse("jogo"))
         primeira_partida = Partida.objects.get(pk=primeira_partida_id)
         self.assertEqual(primeira_partida.status, Partida.STATUS_ABANDONADA)
+
+    def test_nova_partida_prioriza_perguntas_ainda_nao_usadas_recentemente(self):
+        self.criar_perguntas(total=TOTAL_PERGUNTAS + 5)
+        perguntas = list(Pergunta.objects.values("id", "pergunta").order_by("id"))
+        recentes = [item["pergunta"].strip().casefold() for item in perguntas[:TOTAL_PERGUNTAS]]
+        restantes = {item["id"] for item in perguntas[TOTAL_PERGUNTAS:]}
+        session = self.client.session
+        session[QUIZ_RECENT_IDS_SESSION_KEY] = recentes
+        session.save()
+
+        response = self.iniciar_partida()
+
+        self.assertRedirects(response, reverse("jogo"))
+        fila = self.client.session[QUIZ_SESSION_KEY]["queue"]
+        self.assertEqual(set(fila[:5]), restantes)
+
+    def test_partida_nao_repite_texto_quando_existem_ids_duplicados_da_mesma_pergunta(self):
+        for indice in range(TOTAL_PERGUNTAS):
+            texto = f"Pergunta unica {indice + 1}?"
+            for repeticao in range(3):
+                Pergunta.objects.create(
+                    pergunta=texto,
+                    alternativa_a=f"Opcao A {repeticao}",
+                    alternativa_b=f"Opcao B {repeticao}",
+                    alternativa_c=f"Opcao C {repeticao}",
+                    alternativa_d=f"Opcao D {repeticao}",
+                    alternativa_e=f"Opcao E {repeticao}",
+                    resposta_correta="A",
+                    serie="1 ano",
+                    materia="Matematica",
+                )
+
+        response = self.iniciar_partida()
+
+        self.assertRedirects(response, reverse("jogo"))
+        fila = self.client.session[QUIZ_SESSION_KEY]["queue"]
+        textos = list(Pergunta.objects.filter(id__in=fila).values_list("pergunta", flat=True))
+        self.assertEqual(len(textos), TOTAL_PERGUNTAS)
+        self.assertEqual(len(set(textos)), TOTAL_PERGUNTAS)
 
     def test_ranking_agrega_pontos_semanal_e_mensal(self):
         agora_local = timezone.localtime()

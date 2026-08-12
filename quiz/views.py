@@ -25,6 +25,7 @@ from .models import (
 from .themes import DEFAULT_THEME_SLUG, listar_temas, obter_tema_por_slug
 
 QUIZ_SESSION_KEY = "quiz_state"
+QUIZ_RECENT_IDS_SESSION_KEY = "quiz_recent_question_ids"
 TOTAL_PERGUNTAS = 20
 PONTOS_POR_PERGUNTA = 10
 PONTOS_COM_AJUDA = 5
@@ -100,7 +101,8 @@ def criar_usuario(request):
 
 @require_POST
 def iniciar_partida(request):
-    ids = list(Pergunta.objects.values_list("id", flat=True))
+    perguntas = list(Pergunta.objects.only("id", "pergunta"))
+    ids = [pergunta.id for pergunta in perguntas]
 
     if len(ids) < TOTAL_PERGUNTAS:
         messages.error(
@@ -111,7 +113,7 @@ def iniciar_partida(request):
 
     _encerrar_partida_anterior(request)
 
-    random.shuffle(ids)
+    ids = _montar_fila_sem_repeticao_recente(request, perguntas)
     partida = Partida.objects.create(
         usuario=request.user if request.user.is_authenticated else None,
         total_perguntas=TOTAL_PERGUNTAS,
@@ -991,3 +993,50 @@ def _calcular_pontos_kahoot(sala, acertou):
     tempo_restante = _tempo_restante_kahoot(sala)
     bonus = int((tempo_restante / max(sala.tempo_por_rodada, 1)) * 500)
     return KAHOOT_PONTOS_BASE + bonus
+
+
+def _montar_fila_sem_repeticao_recente(request, perguntas):
+    perguntas_por_texto = {}
+    for pergunta in perguntas:
+        texto_normalizado = pergunta.pergunta.strip().casefold()
+        perguntas_por_texto.setdefault(texto_normalizado, []).append(pergunta.id)
+
+    textos_disponiveis = list(perguntas_por_texto.keys())
+    random.shuffle(textos_disponiveis)
+
+    textos_recentes = request.session.get(QUIZ_RECENT_IDS_SESSION_KEY, [])
+    textos_recentes_validos = [texto for texto in textos_recentes if texto in perguntas_por_texto]
+
+    textos_nao_recentes = [texto for texto in textos_disponiveis if texto not in textos_recentes_validos]
+    textos_recentes_ordenados = [texto for texto in textos_disponiveis if texto in textos_recentes_validos]
+    ordem_textos = textos_nao_recentes + textos_recentes_ordenados
+
+    fila = []
+    textos_escolhidos = []
+
+    for texto in ordem_textos:
+        ids_texto = list(perguntas_por_texto[texto])
+        random.shuffle(ids_texto)
+        fila.append(ids_texto[0])
+        textos_escolhidos.append(texto)
+
+    if len(fila) < TOTAL_PERGUNTAS:
+        ids_restantes = []
+        for texto in ordem_textos:
+            ids_texto = list(perguntas_por_texto[texto])[1:]
+            random.shuffle(ids_texto)
+            ids_restantes.extend(ids_texto)
+        random.shuffle(ids_restantes)
+        fila.extend(ids_restantes)
+
+    selecionadas = fila[:TOTAL_PERGUNTAS]
+    textos_selecionados = []
+    for pergunta_id in selecionadas:
+        for texto, ids_texto in perguntas_por_texto.items():
+            if pergunta_id in ids_texto:
+                textos_selecionados.append(texto)
+                break
+
+    historico_atualizado = (textos_recentes_validos + textos_selecionados)[-len(textos_disponiveis):]
+    request.session[QUIZ_RECENT_IDS_SESSION_KEY] = historico_atualizado
+    return fila
