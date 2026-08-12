@@ -1,37 +1,102 @@
-from datetime import datetime
+import io
+import json
 from pathlib import Path
 
 from django.conf import settings
-from django.core.management import call_command
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management import BaseCommand, call_command
 
 
 class Command(BaseCommand):
-    help = "Cria um backup JSON do banco em BASE_DIR/backups."
-
-    def add_arguments(self, parser):
-        parser.add_argument(
-            "--output",
-            help="Caminho opcional do arquivo de backup.",
-        )
+    help = "Cria backups das perguntas e dos demais dados em UTF-8."
 
     def handle(self, *args, **options):
-        backup_dir = Path(settings.BASE_DIR) / "backups"
-        backup_dir.mkdir(exist_ok=True)
+        pasta_backups = Path(settings.BASE_DIR) / "backups"
+        pasta_backups.mkdir(parents=True, exist_ok=True)
 
-        output = options.get("output")
-        if output:
-            backup_path = Path(output)
-            if not backup_path.is_absolute():
-                backup_path = Path(settings.BASE_DIR) / backup_path
-            backup_path.parent.mkdir(parents=True, exist_ok=True)
-        else:
-            timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
-            backup_path = backup_dir / f"backup_{timestamp}.json"
+        arquivo_perguntas = pasta_backups / "perguntas.json"
+        arquivo_dados = pasta_backups / "dados_limpos.json"
 
-        try:
-            call_command("dumpdata", indent=2, output=str(backup_path))
-        except Exception as exc:
-            raise CommandError(f"Erro ao criar backup: {exc}") from exc
+        self.stdout.write("Criando backup das perguntas...")
 
-        self.stdout.write(self.style.SUCCESS(f"Backup criado: {backup_path}"))
+        # ==========================================================
+        # PERGUNTAS
+        # ==========================================================
+        buffer_perguntas = io.StringIO()
+
+        call_command(
+            "dumpdata",
+            "quiz.Pergunta",
+            indent=2,
+            stdout=buffer_perguntas,
+        )
+
+        dados_perguntas = json.loads(buffer_perguntas.getvalue())
+
+        with open(
+            arquivo_perguntas,
+            "w",
+            encoding="utf-8",
+            newline="\n",
+        ) as arquivo:
+            json.dump(
+                dados_perguntas,
+                arquivo,
+                ensure_ascii=False,
+                indent=2,
+            )
+
+        self.stdout.write(
+            self.style.SUCCESS(
+                f"Perguntas salvas: {arquivo_perguntas}"
+            )
+        )
+
+        # ==========================================================
+        # OUTROS DADOS
+        # ==========================================================
+        self.stdout.write("Criando backup dos demais dados...")
+
+        buffer_dados = io.StringIO()
+
+        call_command(
+            "dumpdata",
+            exclude=[
+                "quiz.pergunta",
+                "contenttypes.contenttype",
+                "auth.permission",
+                "admin.logentry",
+                "sessions.session",
+            ],
+            indent=2,
+            stdout=buffer_dados,
+        )
+
+        dados = json.loads(buffer_dados.getvalue())
+
+        with open(
+            arquivo_dados,
+            "w",
+            encoding="utf-8",
+            newline="\n",
+        ) as arquivo:
+            json.dump(
+                dados,
+                arquivo,
+                ensure_ascii=False,
+                indent=2,
+            )
+
+        self.stdout.write(
+            self.style.SUCCESS(
+                f"Dados salvos: {arquivo_dados}"
+            )
+        )
+
+        self.stdout.write("")
+        self.stdout.write(
+            self.style.SUCCESS(
+                f"Backup concluído! "
+                f"{len(dados_perguntas)} perguntas e "
+                f"{len(dados)} outros registros."
+            )
+        )
