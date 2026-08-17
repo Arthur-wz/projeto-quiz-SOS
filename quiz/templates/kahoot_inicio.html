@@ -4,122 +4,414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Modo Kahoot | Quiz SOS</title>
+
     <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+
     {% if tema_css_inline %}
-        <style>{{ tema_css_inline|safe }}</style>
+        <style>
+            {{ tema_css_inline|safe }}
+        </style>
     {% endif %}
+
+    <style>
+        /*
+         * Ajustes específicos da página do Modo Kahoot.
+         * Se quiser subir ainda mais o botão de voltar,
+         * aumente o valor negativo do translateY.
+         */
+        .kahoot-back-actions {
+            margin-top: 12px;
+            margin-bottom: 10px;
+            transform: translateY(-10px);
+        }
+
+        .kahoot-back-actions .btn {
+            width: fit-content;
+        }
+
+        .kahoot-grid {
+            width: 100%;
+        }
+
+        .inline-form {
+            display: inline-flex;
+            margin: 0;
+        }
+    </style>
 </head>
+
 <body>
+
     <main class="page-shell">
+
         <section class="result-layout">
+
+            <!-- =========================
+                 ÁREA PRINCIPAL
+            ========================== -->
             <article class="result-card">
-                <span class="eyebrow">Modo Kahoot</span>
-                <h1 class="section-title">Salas locais para competir em grupo</h1>
+
+                <span class="eyebrow">
+                    Modo Kahoot
+                </span>
+
+                <h1 class="section-title">
+                    Salas locais para competir em grupo
+                </h1>
+
                 <p class="hero-copy">
-                    Este modo foi pensado para rodar no servidor local do Django. Todo mundo precisa estar logado para criar,
-                    entrar e responder nas salas.
+                    Este modo foi pensado para rodar no servidor local do Django.
+                    Todo mundo precisa estar logado para criar, entrar e responder
+                    nas salas.
                 </p>
-                <div class="hero-actions">
-                    <a href="{% url 'home' %}" class="btn btn-secondary">Voltar ao inicio</a>
+
+                <!-- BOTÃO VOLTAR -->
+                <div class="hero-actions kahoot-back-actions">
+                    <a
+                        href="{% url 'home' %}"
+                        class="btn btn-secondary"
+                    >
+                        Voltar ao início
+                    </a>
                 </div>
 
+
+                <!-- =========================
+                     MENSAGENS DO DJANGO
+                ========================== -->
                 {% if messages %}
+
                     <div class="alerts">
+
                         {% for message in messages %}
-                            <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
+
+                            <div class="alert alert-{{ message.tags|default:'info' }}">
+                                {{ message }}
+                            </div>
+
                         {% endfor %}
+
                     </div>
+
                 {% endif %}
 
+
+                <!-- =========================
+                     CRIAR / ENTRAR EM SALA
+                ========================== -->
                 <div class="kahoot-grid">
+
+                    <!-- CRIAR SALA -->
                     <article class="kahoot-panel">
-                        <h2>Criar sala</h2>
-                        <p>Monte uma partida local com codigo de acesso, cronometro e placar por rodada.</p>
-                        <form method="post" action="{% url 'criar_sala_kahoot' %}" class="kahoot-form">
+
+                        <h2>
+                            Criar sala
+                        </h2>
+
+                        <p>
+                            Monte uma partida local com código de acesso,
+                            cronômetro e placar por rodada.
+                        </p>
+
+                        <form
+                            method="post"
+                            action="{% url 'criar_sala_kahoot' %}"
+                            class="kahoot-form"
+                        >
+
                             {% csrf_token %}
+
                             <label>
-                                <span>Titulo da sala</span>
-                                <input type="text" name="titulo" value="Sala Kahoot" maxlength="120">
+
+                                <span>
+                                    Título da sala
+                                </span>
+
+                                <input
+                                    type="text"
+                                    name="titulo"
+                                    value="Sala Kahoot"
+                                    maxlength="120"
+                                >
+
                             </label>
+
+
                             <label>
-                                <span>Rodadas</span>
-                                <input type="number" name="total_rodadas" min="{{ minimo_perguntas }}" max="20" value="10">
+
+                                <span>
+                                    Rodadas
+                                </span>
+
+                                <input
+                                    type="number"
+                                    name="total_rodadas"
+                                    min="{{ minimo_perguntas }}"
+                                    max="20"
+                                    value="10"
+                                >
+
                             </label>
+
+
                             <label>
-                                <span>Tempo por rodada</span>
-                                <input type="number" name="tempo_por_rodada" min="10" max="60" value="20">
+
+                                <span>
+                                    Tempo por rodada
+                                </span>
+
+                                <input
+                                    type="number"
+                                    name="tempo_por_rodada"
+                                    min="10"
+                                    max="60"
+                                    value="20"
+                                >
+
                             </label>
-                            <button type="submit" class="btn btn-primary">Criar sala</button>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Criar sala
+                            </button>
+
                         </form>
+
                     </article>
 
+
+                    <!-- ENTRAR EM SALA -->
                     <article class="kahoot-panel">
-                        <h2>Entrar em sala</h2>
-                        <p>Se outra pessoa criou a sala localmente, use o codigo para entrar com seu usuario.</p>
-                        <form method="post" action="{% url 'entrar_sala_kahoot' %}" class="kahoot-form">
+
+                        <h2>
+                            Entrar em sala
+                        </h2>
+
+                        <p>
+                            Se outra pessoa criou a sala localmente,
+                            use o código para entrar com seu usuário.
+                        </p>
+
+                        <form
+                            method="post"
+                            action="{% url 'entrar_sala_kahoot' %}"
+                            class="kahoot-form"
+                        >
+
                             {% csrf_token %}
+
                             <label>
-                                <span>Codigo da sala</span>
-                                <input type="text" name="codigo" maxlength="8" placeholder="Ex.: AB23CD" style="text-transform: uppercase;">
+
+                                <span>
+                                    Código da sala
+                                </span>
+
+                                <input
+                                    type="text"
+                                    name="codigo"
+                                    maxlength="8"
+                                    placeholder="Ex.: AB23CD"
+                                    autocomplete="off"
+                                    style="text-transform: uppercase;"
+                                >
+
                             </label>
-                            <button type="submit" class="btn btn-secondary">Entrar</button>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-secondary"
+                            >
+                                Entrar
+                            </button>
+
                         </form>
+
                     </article>
+
                 </div>
+
             </article>
 
+
+            <!-- =========================
+                 HISTÓRICO DAS SALAS
+            ========================== -->
             <div class="kahoot-grid">
+
+                <!-- SALAS CRIADAS -->
                 <article class="history-card">
+
                     <div class="history-header">
-                        <span class="eyebrow">Suas salas</span>
-                        <h2 class="section-title">Salas criadas</h2>
+
+                        <span class="eyebrow">
+                            Suas salas
+                        </span>
+
+                        <h2 class="section-title">
+                            Salas criadas
+                        </h2>
+
                     </div>
+
+
                     <div class="history-list">
+
                         {% for sala in salas_criadas %}
+
                             <div class="history-item">
-                                <strong>{{ sala.titulo }}</strong>
-                                <p>Codigo: {{ sala.codigo }} | Status: {{ sala.get_status_display }} | Rodadas: {{ sala.total_rodadas }}</p>
+
+                                <strong>
+                                    {{ sala.titulo }}
+                                </strong>
+
+                                <p>
+                                    Código: {{ sala.codigo }}
+                                    |
+                                    Status: {{ sala.get_status_display }}
+                                    |
+                                    Rodadas: {{ sala.total_rodadas }}
+                                </p>
+
+
                                 <div class="inline-actions">
-                                    <a href="{% url 'sala_kahoot' sala.codigo %}" class="btn btn-secondary">Abrir</a>
-                                    <a href="{% url 'editar_sala_kahoot' sala.codigo %}" class="btn btn-ghost">Editar</a>
-                                    <a href="{% url 'gerenciar_perguntas_kahoot' sala.codigo %}" class="btn btn-ghost">Perguntas</a>
-                                    <form method="post" action="{% url 'excluir_sala_kahoot' sala.codigo %}" class="inline-form">
+
+                                    <a
+                                        href="{% url 'sala_kahoot' sala.codigo %}"
+                                        class="btn btn-secondary"
+                                    >
+                                        Abrir
+                                    </a>
+
+
+                                    <a
+                                        href="{% url 'editar_sala_kahoot' sala.codigo %}"
+                                        class="btn btn-ghost"
+                                    >
+                                        Editar
+                                    </a>
+
+
+                                    <a
+                                        href="{% url 'gerenciar_perguntas_kahoot' sala.codigo %}"
+                                        class="btn btn-ghost"
+                                    >
+                                        Perguntas
+                                    </a>
+
+
+                                    <form
+                                        method="post"
+                                        action="{% url 'excluir_sala_kahoot' sala.codigo %}"
+                                        class="inline-form"
+                                    >
+
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-ghost">Excluir</button>
+
+                                        <button
+                                            type="submit"
+                                            class="btn btn-ghost"
+                                        >
+                                            Excluir
+                                        </button>
+
                                     </form>
+
                                 </div>
+
                             </div>
+
                         {% empty %}
+
                             <div class="history-item">
-                                <strong>Nenhuma sala criada ainda</strong>
-                                <p>Crie sua primeira sala para liberar o modo competitivo local.</p>
+
+                                <strong>
+                                    Nenhuma sala criada ainda
+                                </strong>
+
+                                <p>
+                                    Crie sua primeira sala para liberar
+                                    o modo competitivo local.
+                                </p>
+
                             </div>
+
                         {% endfor %}
+
                     </div>
+
                 </article>
 
+
+                <!-- PARTICIPAÇÕES -->
                 <article class="history-card">
+
                     <div class="history-header">
-                        <span class="eyebrow">Participacao</span>
-                        <h2 class="section-title">Salas em que voce entrou</h2>
+
+                        <span class="eyebrow">
+                            Participação
+                        </span>
+
+                        <h2 class="section-title">
+                            Salas em que você entrou
+                        </h2>
+
                     </div>
+
+
                     <div class="history-list">
+
                         {% for item in participacoes %}
-                            <a href="{% url 'sala_kahoot' item.sala.codigo %}" class="history-item">
-                                <strong>{{ item.sala.titulo }}</strong>
-                                <p>Codigo: {{ item.sala.codigo }} | Apelido: {{ item.apelido }} | Pontos: {{ item.pontuacao_total }}</p>
+
+                            <a
+                                href="{% url 'sala_kahoot' item.sala.codigo %}"
+                                class="history-item"
+                            >
+
+                                <strong>
+                                    {{ item.sala.titulo }}
+                                </strong>
+
+                                <p>
+                                    Código: {{ item.sala.codigo }}
+                                    |
+                                    Apelido: {{ item.apelido }}
+                                    |
+                                    Pontos: {{ item.pontuacao_total }}
+                                </p>
+
                             </a>
+
                         {% empty %}
+
                             <div class="history-item">
-                                <strong>Nenhuma participacao ainda</strong>
-                                <p>Entre em uma sala local para aparecer aqui.</p>
+
+                                <strong>
+                                    Nenhuma participação ainda
+                                </strong>
+
+                                <p>
+                                    Entre em uma sala local para aparecer aqui.
+                                </p>
+
                             </div>
+
                         {% endfor %}
+
                     </div>
+
                 </article>
+
             </div>
+
         </section>
+
     </main>
+
 </body>
 </html>

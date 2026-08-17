@@ -2,7 +2,7 @@ import random
 from datetime import datetime, time, timedelta
 
 from django.contrib import messages
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 from django.db.models import Count, Sum
 from django.shortcuts import get_object_or_404, redirect, render
@@ -75,6 +75,13 @@ def login_view(request):
         "google_login_url": _obter_url_login_google(),
     }
     return render(request, "login.html", context)
+
+
+@require_POST
+def logout_view(request):
+    auth_logout(request)
+    messages.success(request, "Voce saiu da sua conta com sucesso.")
+    return redirect("home")
 
 
 def criar_usuario(request):
