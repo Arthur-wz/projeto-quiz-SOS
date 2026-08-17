@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path("", views.home, name="home"),
     path("login/", views.login_view, name="login"),
+    path("logout/", views.logout_view, name="logout"),
     path("criar-usuario/", views.criar_usuario, name="criar_usuario"),
     path("ranking/", views.ranking, name="ranking"),
     path("kahoot/", views.kahoot_inicio, name="kahoot_inicio"),

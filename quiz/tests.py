@@ -313,6 +313,22 @@ class QuizFlowTests(TestCase):
         self.assertNotContains(response, 'href="/login/"')
         self.assertNotContains(response, 'href="/criar-usuario/"')
 
+    def test_logout_na_home_encerra_a_sessao_do_usuario(self):
+        usuario = User.objects.create_user(username="sair", password="senha123")
+        self.client.force_login(usuario)
+
+        response = self.client.get(reverse("home"))
+
+        self.assertContains(response, "Sair da conta")
+
+        response = self.client.post(reverse("logout"), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Voce saiu da sua conta com sucesso.")
+        self.assertContains(response, "Login")
+        self.assertNotContains(response, "Sair da conta")
+        self.assertNotIn("_auth_user_id", self.client.session)
+
     def test_login_com_sucesso_mostra_confirmacao_na_home(self):
         User.objects.create_user(username="arthurx", password="senha123")
 
