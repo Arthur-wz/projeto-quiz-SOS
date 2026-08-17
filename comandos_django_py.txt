@@ -48,12 +48,8 @@ py manage.py runserver 0.0.0.0:8000
 
 6. EXPORTAR OS DADOS PARA O GRUPO
 
-# Recomendado: exportar so as perguntas do quiz
-py manage.py dumpdata quiz.Pergunta --indent 2 > backups\perguntas.json
-
-# Se quiser exportar o banco inteiro
-py manage.py dumpdata --indent 2 > backups\dados.json
-
+# Rode o seguinte comando
+py manage.py backup
 
 7. IMPORTAR OS DADOS EM OUTRA MAQUINA
 
@@ -64,7 +60,7 @@ py manage.py migrate
 py manage.py loaddata backups\perguntas.json
 
 # Se o grupo estiver usando o banco inteiro em JSON
-py manage.py loaddata backups\dados.json
+py manage.py loaddata backups\dados_limpos.json
 
 
 8. FLUXO CERTO PARA O GRUPO

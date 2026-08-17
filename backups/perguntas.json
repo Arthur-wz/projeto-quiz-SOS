@@ -166,21 +166,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1166,
-    "fields": {
-      "pergunta": "Quanto vale 3² + 4²?",
-      "alternativa_a": "7",
-      "alternativa_b": "25",
-      "alternativa_c": "24",
-      "alternativa_d": "49",
-      "alternativa_e": "12",
-      "resposta_correta": "B",
-      "serie": "1 ano EM",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1167,
     "fields": {
       "pergunta": "Qual é a tradução de 'house'?",
@@ -241,21 +226,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1171,
-    "fields": {
-      "pergunta": "Qual é a tradução de 'house'?",
-      "alternativa_a": "Janela",
-      "alternativa_b": "Rua",
-      "alternativa_c": "Casa",
-      "alternativa_d": "Porta",
-      "alternativa_e": "Carro",
-      "resposta_correta": "C",
-      "serie": "2 ano EM",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1172,
     "fields": {
       "pergunta": "O processo pelo qual as plantas produzem seu próprio alimento é chamado de:",
@@ -267,21 +237,6 @@
       "resposta_correta": "B",
       "serie": "8 ano",
       "materia": "Ciências"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1173,
-    "fields": {
-      "pergunta": "Quanto é 25% de 200?",
-      "alternativa_a": "100",
-      "alternativa_b": "40",
-      "alternativa_c": "50",
-      "alternativa_d": "25",
-      "alternativa_e": "20",
-      "resposta_correta": "C",
-      "serie": "2 ano EM",
-      "materia": "Matemática"
     }
   },
   {
@@ -316,21 +271,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1176,
-    "fields": {
-      "pergunta": "Qual é a tradução de 'house'?",
-      "alternativa_a": "Porta",
-      "alternativa_b": "Janela",
-      "alternativa_c": "Carro",
-      "alternativa_d": "Casa",
-      "alternativa_e": "Rua",
-      "resposta_correta": "D",
-      "serie": "6 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1177,
     "fields": {
       "pergunta": "Qual instrumento mede a temperatura?",
@@ -342,66 +282,6 @@
       "resposta_correta": "C",
       "serie": "3 ano EM",
       "materia": "Física"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1178,
-    "fields": {
-      "pergunta": "O processo pelo qual as plantas produzem seu próprio alimento é chamado de:",
-      "alternativa_a": "fermentação",
-      "alternativa_b": "evaporação",
-      "alternativa_c": "respiração",
-      "alternativa_d": "digestão",
-      "alternativa_e": "fotossíntese",
-      "resposta_correta": "E",
-      "serie": "7 ano",
-      "materia": "Ciências"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1179,
-    "fields": {
-      "pergunta": "Qual é a solução da equação 2x + 6 = 14?",
-      "alternativa_a": "6",
-      "alternativa_b": "4",
-      "alternativa_c": "5",
-      "alternativa_d": "2",
-      "alternativa_e": "3",
-      "resposta_correta": "B",
-      "serie": "8 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1180,
-    "fields": {
-      "pergunta": "A escravidão foi oficialmente abolida no Brasil em:",
-      "alternativa_a": "1930",
-      "alternativa_b": "1888",
-      "alternativa_c": "1822",
-      "alternativa_d": "1850",
-      "alternativa_e": "1889",
-      "resposta_correta": "B",
-      "serie": "2 ano EM",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1181,
-    "fields": {
-      "pergunta": "Qual é a tradução de 'house'?",
-      "alternativa_a": "Carro",
-      "alternativa_b": "Casa",
-      "alternativa_c": "Janela",
-      "alternativa_d": "Porta",
-      "alternativa_e": "Rua",
-      "resposta_correta": "B",
-      "serie": "1 ano EM",
-      "materia": "Inglês"
     }
   },
   {
@@ -421,36 +301,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1183,
-    "fields": {
-      "pergunta": "Qual gás é mais abundante no ar atmosférico?",
-      "alternativa_a": "Oxigênio",
-      "alternativa_b": "Ozônio",
-      "alternativa_c": "Nitrogênio",
-      "alternativa_d": "Gás carbônico",
-      "alternativa_e": "Hidrogênio",
-      "resposta_correta": "C",
-      "serie": "7 ano",
-      "materia": "Ciências"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1184,
-    "fields": {
-      "pergunta": "O movimento de rotação da Terra dura aproximadamente:",
-      "alternativa_a": "24 horas",
-      "alternativa_b": "365 dias",
-      "alternativa_c": "48 horas",
-      "alternativa_d": "30 dias",
-      "alternativa_e": "12 horas",
-      "resposta_correta": "A",
-      "serie": "1 ano EM",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1185,
     "fields": {
       "pergunta": "Qual é o próximo número da sequência 2, 4, 8, 16, ...?",
@@ -462,36 +312,6 @@
       "resposta_correta": "E",
       "serie": "2 ano EM",
       "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1186,
-    "fields": {
-      "pergunta": "Qual é a forma correta de 'eu sou' em inglês?",
-      "alternativa_a": "We are",
-      "alternativa_b": "You are",
-      "alternativa_c": "They be",
-      "alternativa_d": "I am",
-      "alternativa_e": "He is",
-      "resposta_correta": "D",
-      "serie": "3 ano EM",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1187,
-    "fields": {
-      "pergunta": "O movimento de rotação da Terra dura aproximadamente:",
-      "alternativa_a": "12 horas",
-      "alternativa_b": "48 horas",
-      "alternativa_c": "30 dias",
-      "alternativa_d": "24 horas",
-      "alternativa_e": "365 dias",
-      "resposta_correta": "D",
-      "serie": "8 ano",
-      "materia": "Geografia"
     }
   },
   {
@@ -526,66 +346,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1190,
-    "fields": {
-      "pergunta": "Qual palavra abaixo é um verbo no infinitivo?",
-      "alternativa_a": "correr",
-      "alternativa_b": "caneta",
-      "alternativa_c": "feliz",
-      "alternativa_d": "janela",
-      "alternativa_e": "mesa",
-      "resposta_correta": "A",
-      "serie": "9 ano",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1191,
-    "fields": {
-      "pergunta": "A molécula que carrega a informação genética é o:",
-      "alternativa_a": "amido",
-      "alternativa_b": "DNA",
-      "alternativa_c": "lipídio",
-      "alternativa_d": "RNA",
-      "alternativa_e": "ATP",
-      "resposta_correta": "B",
-      "serie": "2 ano EM",
-      "materia": "Biologia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1192,
-    "fields": {
-      "pergunta": "Qual palavra abaixo é um verbo no infinitivo?",
-      "alternativa_a": "correr",
-      "alternativa_b": "caneta",
-      "alternativa_c": "janela",
-      "alternativa_d": "mesa",
-      "alternativa_e": "feliz",
-      "resposta_correta": "A",
-      "serie": "6 ano",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1193,
-    "fields": {
-      "pergunta": "Quanto é 25% de 200?",
-      "alternativa_a": "20",
-      "alternativa_b": "40",
-      "alternativa_c": "50",
-      "alternativa_d": "100",
-      "alternativa_e": "25",
-      "resposta_correta": "C",
-      "serie": "1 ano EM",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1194,
     "fields": {
       "pergunta": "A água entra em ebulição, ao nível do mar, a aproximadamente:",
@@ -612,51 +372,6 @@
       "resposta_correta": "E",
       "serie": "8 ano",
       "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1196,
-    "fields": {
-      "pergunta": "Qual é a capital do Brasil?",
-      "alternativa_a": "Rio de Janeiro",
-      "alternativa_b": "São Paulo",
-      "alternativa_c": "Salvador",
-      "alternativa_d": "Brasília",
-      "alternativa_e": "Recife",
-      "resposta_correta": "D",
-      "serie": "7 ano",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1197,
-    "fields": {
-      "pergunta": "Em que ano ocorreu a Independência do Brasil?",
-      "alternativa_a": "1930",
-      "alternativa_b": "1964",
-      "alternativa_c": "1822",
-      "alternativa_d": "1500",
-      "alternativa_e": "1889",
-      "resposta_correta": "C",
-      "serie": "3 ano EM",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1198,
-    "fields": {
-      "pergunta": "Quanto é 25% de 200?",
-      "alternativa_a": "20",
-      "alternativa_b": "100",
-      "alternativa_c": "25",
-      "alternativa_d": "50",
-      "alternativa_e": "40",
-      "resposta_correta": "D",
-      "serie": "3 ano EM",
-      "materia": "Matemática"
     }
   },
   {
@@ -706,111 +421,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1202,
-    "fields": {
-      "pergunta": "Qual instrumento mede a temperatura?",
-      "alternativa_a": "barômetro",
-      "alternativa_b": "velocímetro",
-      "alternativa_c": "amperímetro",
-      "alternativa_d": "dínamo",
-      "alternativa_e": "termômetro",
-      "resposta_correta": "E",
-      "serie": "3 ano EM",
-      "materia": "Física"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1203,
-    "fields": {
-      "pergunta": "Qual é o símbolo químico do sódio?",
-      "alternativa_a": "Na",
-      "alternativa_b": "S",
-      "alternativa_c": "So",
-      "alternativa_d": "Sd",
-      "alternativa_e": "Sn",
-      "resposta_correta": "A",
-      "serie": "1 ano EM",
-      "materia": "Química"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1204,
-    "fields": {
-      "pergunta": "A molécula que carrega a informação genética é o:",
-      "alternativa_a": "lipídio",
-      "alternativa_b": "ATP",
-      "alternativa_c": "DNA",
-      "alternativa_d": "RNA",
-      "alternativa_e": "amido",
-      "resposta_correta": "C",
-      "serie": "2 ano EM",
-      "materia": "Biologia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1205,
-    "fields": {
-      "pergunta": "Qual gás é mais abundante no ar atmosférico?",
-      "alternativa_a": "Oxigênio",
-      "alternativa_b": "Ozônio",
-      "alternativa_c": "Gás carbônico",
-      "alternativa_d": "Hidrogênio",
-      "alternativa_e": "Nitrogênio",
-      "resposta_correta": "E",
-      "serie": "8 ano",
-      "materia": "Ciências"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1206,
-    "fields": {
-      "pergunta": "O sistema predominante na Idade Média europeia foi o:",
-      "alternativa_a": "socialismo",
-      "alternativa_b": "mercantilismo",
-      "alternativa_c": "capitalismo",
-      "alternativa_d": "industrialismo",
-      "alternativa_e": "feudalismo",
-      "resposta_correta": "E",
-      "serie": "8 ano",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1207,
-    "fields": {
-      "pergunta": "Quem foi o primeiro imperador do Brasil?",
-      "alternativa_a": "José Bonifácio",
-      "alternativa_b": "Tiradentes",
-      "alternativa_c": "Dom Pedro II",
-      "alternativa_d": "Getúlio Vargas",
-      "alternativa_e": "Dom Pedro I",
-      "resposta_correta": "E",
-      "serie": "7 ano",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1208,
-    "fields": {
-      "pergunta": "A palavra 'because' significa:",
-      "alternativa_a": "então",
-      "alternativa_b": "porque",
-      "alternativa_c": "antes",
-      "alternativa_d": "embora",
-      "alternativa_e": "mas",
-      "resposta_correta": "B",
-      "serie": "8 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1209,
     "fields": {
       "pergunta": "Os produtores em uma cadeia alimentar são geralmente:",
@@ -841,36 +451,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1211,
-    "fields": {
-      "pergunta": "Quem foi o primeiro imperador do Brasil?",
-      "alternativa_a": "Dom Pedro II",
-      "alternativa_b": "Getúlio Vargas",
-      "alternativa_c": "Dom Pedro I",
-      "alternativa_d": "Tiradentes",
-      "alternativa_e": "José Bonifácio",
-      "resposta_correta": "C",
-      "serie": "1 ano EM",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1212,
-    "fields": {
-      "pergunta": "Qual oceano banha o litoral brasileiro?",
-      "alternativa_a": "Pacífico",
-      "alternativa_b": "Antártico",
-      "alternativa_c": "Ártico",
-      "alternativa_d": "Atlântico",
-      "alternativa_e": "Índico",
-      "resposta_correta": "D",
-      "serie": "9 ano",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1213,
     "fields": {
       "pergunta": "Qual é o maior bioma brasileiro?",
@@ -880,36 +460,6 @@
       "alternativa_d": "Amazônia",
       "alternativa_e": "Cerrado",
       "resposta_correta": "D",
-      "serie": "8 ano",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1214,
-    "fields": {
-      "pergunta": "A organela responsável pela respiração celular é a:",
-      "alternativa_a": "cloroplasto",
-      "alternativa_b": "núcleo",
-      "alternativa_c": "lisossomo",
-      "alternativa_d": "vacúolo",
-      "alternativa_e": "mitocôndria",
-      "resposta_correta": "E",
-      "serie": "2 ano EM",
-      "materia": "Biologia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1215,
-    "fields": {
-      "pergunta": "Qual é a capital do Brasil?",
-      "alternativa_a": "Salvador",
-      "alternativa_b": "Recife",
-      "alternativa_c": "Brasília",
-      "alternativa_d": "Rio de Janeiro",
-      "alternativa_e": "São Paulo",
-      "resposta_correta": "C",
       "serie": "8 ano",
       "materia": "Geografia"
     }
@@ -931,126 +481,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1217,
-    "fields": {
-      "pergunta": "Qual palavra abaixo é um verbo no infinitivo?",
-      "alternativa_a": "janela",
-      "alternativa_b": "correr",
-      "alternativa_c": "mesa",
-      "alternativa_d": "caneta",
-      "alternativa_e": "feliz",
-      "resposta_correta": "B",
-      "serie": "1 ano EM",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1218,
-    "fields": {
-      "pergunta": "Qual é o maior bioma brasileiro?",
-      "alternativa_a": "Pampa",
-      "alternativa_b": "Caatinga",
-      "alternativa_c": "Pantanal",
-      "alternativa_d": "Cerrado",
-      "alternativa_e": "Amazônia",
-      "resposta_correta": "E",
-      "serie": "3 ano EM",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1219,
-    "fields": {
-      "pergunta": "A palavra 'because' significa:",
-      "alternativa_a": "antes",
-      "alternativa_b": "mas",
-      "alternativa_c": "embora",
-      "alternativa_d": "então",
-      "alternativa_e": "porque",
-      "resposta_correta": "E",
-      "serie": "1 ano EM",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1220,
-    "fields": {
-      "pergunta": "Quanto vale 3² + 4²?",
-      "alternativa_a": "49",
-      "alternativa_b": "25",
-      "alternativa_c": "7",
-      "alternativa_d": "24",
-      "alternativa_e": "12",
-      "resposta_correta": "B",
-      "serie": "8 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1221,
-    "fields": {
-      "pergunta": "A unidade de força no Sistema Internacional é o:",
-      "alternativa_a": "volt",
-      "alternativa_b": "joule",
-      "alternativa_c": "pascal",
-      "alternativa_d": "watt",
-      "alternativa_e": "newton",
-      "resposta_correta": "E",
-      "serie": "1 ano EM",
-      "materia": "Física"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1222,
-    "fields": {
-      "pergunta": "Qual é o próximo número da sequência 2, 4, 8, 16, ...?",
-      "alternativa_a": "20",
-      "alternativa_b": "30",
-      "alternativa_c": "24",
-      "alternativa_d": "32",
-      "alternativa_e": "18",
-      "resposta_correta": "D",
-      "serie": "8 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1223,
-    "fields": {
-      "pergunta": "O processo pelo qual as plantas produzem seu próprio alimento é chamado de:",
-      "alternativa_a": "digestão",
-      "alternativa_b": "evaporação",
-      "alternativa_c": "fermentação",
-      "alternativa_d": "respiração",
-      "alternativa_e": "fotossíntese",
-      "resposta_correta": "E",
-      "serie": "8 ano",
-      "materia": "Ciências"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1224,
-    "fields": {
-      "pergunta": "A água é formada por quais elementos?",
-      "alternativa_a": "sódio e cloro",
-      "alternativa_b": "oxigênio e nitrogênio",
-      "alternativa_c": "hidrogênio e oxigênio",
-      "alternativa_d": "hidrogênio e hélio",
-      "alternativa_e": "carbono e oxigênio",
-      "resposta_correta": "C",
-      "serie": "2 ano EM",
-      "materia": "Química"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1225,
     "fields": {
       "pergunta": "Qual é o plural correto de 'papel'?",
@@ -1062,66 +492,6 @@
       "resposta_correta": "D",
       "serie": "6 ano",
       "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1226,
-    "fields": {
-      "pergunta": "Qual partícula possui carga elétrica negativa?",
-      "alternativa_a": "elétron",
-      "alternativa_b": "núcleo",
-      "alternativa_c": "íon positivo",
-      "alternativa_d": "nêutron",
-      "alternativa_e": "próton",
-      "resposta_correta": "A",
-      "serie": "1 ano EM",
-      "materia": "Química"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1227,
-    "fields": {
-      "pergunta": "A água é formada por quais elementos?",
-      "alternativa_a": "hidrogênio e oxigênio",
-      "alternativa_b": "oxigênio e nitrogênio",
-      "alternativa_c": "sódio e cloro",
-      "alternativa_d": "carbono e oxigênio",
-      "alternativa_e": "hidrogênio e hélio",
-      "resposta_correta": "A",
-      "serie": "2 ano EM",
-      "materia": "Química"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1228,
-    "fields": {
-      "pergunta": "Qual é a solução da equação 2x + 6 = 14?",
-      "alternativa_a": "6",
-      "alternativa_b": "3",
-      "alternativa_c": "2",
-      "alternativa_d": "4",
-      "alternativa_e": "5",
-      "resposta_correta": "D",
-      "serie": "7 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1229,
-    "fields": {
-      "pergunta": "Em que ano ocorreu a Independência do Brasil?",
-      "alternativa_a": "1889",
-      "alternativa_b": "1500",
-      "alternativa_c": "1964",
-      "alternativa_d": "1930",
-      "alternativa_e": "1822",
-      "resposta_correta": "E",
-      "serie": "9 ano",
-      "materia": "História"
     }
   },
   {
@@ -1141,156 +511,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1231,
-    "fields": {
-      "pergunta": "Qual é a área de um retângulo de base 8 cm e altura 5 cm?",
-      "alternativa_a": "40 cm²",
-      "alternativa_b": "13 cm²",
-      "alternativa_c": "26 cm²",
-      "alternativa_d": "80 cm²",
-      "alternativa_e": "20 cm²",
-      "resposta_correta": "A",
-      "serie": "6 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1232,
-    "fields": {
-      "pergunta": "Quem foi o primeiro imperador do Brasil?",
-      "alternativa_a": "Dom Pedro I",
-      "alternativa_b": "Tiradentes",
-      "alternativa_c": "José Bonifácio",
-      "alternativa_d": "Getúlio Vargas",
-      "alternativa_e": "Dom Pedro II",
-      "resposta_correta": "A",
-      "serie": "7 ano",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1233,
-    "fields": {
-      "pergunta": "Qual é a capital do Brasil?",
-      "alternativa_a": "Salvador",
-      "alternativa_b": "Brasília",
-      "alternativa_c": "São Paulo",
-      "alternativa_d": "Recife",
-      "alternativa_e": "Rio de Janeiro",
-      "resposta_correta": "B",
-      "serie": "3 ano EM",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1234,
-    "fields": {
-      "pergunta": "A palavra 'because' significa:",
-      "alternativa_a": "antes",
-      "alternativa_b": "mas",
-      "alternativa_c": "porque",
-      "alternativa_d": "então",
-      "alternativa_e": "embora",
-      "resposta_correta": "C",
-      "serie": "2 ano EM",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1235,
-    "fields": {
-      "pergunta": "A palavra 'because' significa:",
-      "alternativa_a": "embora",
-      "alternativa_b": "porque",
-      "alternativa_c": "antes",
-      "alternativa_d": "mas",
-      "alternativa_e": "então",
-      "resposta_correta": "B",
-      "serie": "1 ano EM",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1236,
-    "fields": {
-      "pergunta": "Em que ano ocorreu a Independência do Brasil?",
-      "alternativa_a": "1500",
-      "alternativa_b": "1889",
-      "alternativa_c": "1822",
-      "alternativa_d": "1964",
-      "alternativa_e": "1930",
-      "resposta_correta": "C",
-      "serie": "7 ano",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1237,
-    "fields": {
-      "pergunta": "Qual é a tradução de 'house'?",
-      "alternativa_a": "Carro",
-      "alternativa_b": "Rua",
-      "alternativa_c": "Porta",
-      "alternativa_d": "Casa",
-      "alternativa_e": "Janela",
-      "resposta_correta": "D",
-      "serie": "9 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1238,
-    "fields": {
-      "pergunta": "Quem foi o primeiro imperador do Brasil?",
-      "alternativa_a": "José Bonifácio",
-      "alternativa_b": "Getúlio Vargas",
-      "alternativa_c": "Dom Pedro II",
-      "alternativa_d": "Tiradentes",
-      "alternativa_e": "Dom Pedro I",
-      "resposta_correta": "E",
-      "serie": "1 ano EM",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1239,
-    "fields": {
-      "pergunta": "Qual é a tradução de 'house'?",
-      "alternativa_a": "Porta",
-      "alternativa_b": "Carro",
-      "alternativa_c": "Casa",
-      "alternativa_d": "Rua",
-      "alternativa_e": "Janela",
-      "resposta_correta": "C",
-      "serie": "2 ano EM",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1240,
-    "fields": {
-      "pergunta": "Qual é o plural correto de 'papel'?",
-      "alternativa_a": "papels",
-      "alternativa_b": "papelos",
-      "alternativa_c": "papelz",
-      "alternativa_d": "papeis",
-      "alternativa_e": "papéis",
-      "resposta_correta": "E",
-      "serie": "9 ano",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1241,
     "fields": {
       "pergunta": "A linha imaginária que divide a Terra em hemisférios Norte e Sul é o:",
@@ -1302,81 +522,6 @@
       "resposta_correta": "A",
       "serie": "6 ano",
       "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1242,
-    "fields": {
-      "pergunta": "A escravidão foi oficialmente abolida no Brasil em:",
-      "alternativa_a": "1930",
-      "alternativa_b": "1822",
-      "alternativa_c": "1889",
-      "alternativa_d": "1850",
-      "alternativa_e": "1888",
-      "resposta_correta": "E",
-      "serie": "3 ano EM",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1243,
-    "fields": {
-      "pergunta": "Qual é o próximo número da sequência 2, 4, 8, 16, ...?",
-      "alternativa_a": "18",
-      "alternativa_b": "24",
-      "alternativa_c": "32",
-      "alternativa_d": "20",
-      "alternativa_e": "30",
-      "resposta_correta": "C",
-      "serie": "6 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1244,
-    "fields": {
-      "pergunta": "Qual palavra significa 'escola' em inglês?",
-      "alternativa_a": "window",
-      "alternativa_b": "school",
-      "alternativa_c": "garden",
-      "alternativa_d": "chair",
-      "alternativa_e": "street",
-      "resposta_correta": "B",
-      "serie": "9 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1245,
-    "fields": {
-      "pergunta": "Quanto é 25% de 200?",
-      "alternativa_a": "50",
-      "alternativa_b": "25",
-      "alternativa_c": "100",
-      "alternativa_d": "40",
-      "alternativa_e": "20",
-      "resposta_correta": "A",
-      "serie": "9 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1246,
-    "fields": {
-      "pergunta": "A água é formada por quais elementos?",
-      "alternativa_a": "sódio e cloro",
-      "alternativa_b": "oxigênio e nitrogênio",
-      "alternativa_c": "hidrogênio e oxigênio",
-      "alternativa_d": "hidrogênio e hélio",
-      "alternativa_e": "carbono e oxigênio",
-      "resposta_correta": "C",
-      "serie": "3 ano EM",
-      "materia": "Química"
     }
   },
   {
@@ -1411,21 +556,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1249,
-    "fields": {
-      "pergunta": "Quanto vale 3² + 4²?",
-      "alternativa_a": "12",
-      "alternativa_b": "24",
-      "alternativa_c": "25",
-      "alternativa_d": "49",
-      "alternativa_e": "7",
-      "resposta_correta": "C",
-      "serie": "6 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1250,
     "fields": {
       "pergunta": "A energia associada ao movimento é a energia:",
@@ -1441,366 +571,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1251,
-    "fields": {
-      "pergunta": "Qual palavra significa 'escola' em inglês?",
-      "alternativa_a": "garden",
-      "alternativa_b": "school",
-      "alternativa_c": "street",
-      "alternativa_d": "chair",
-      "alternativa_e": "window",
-      "resposta_correta": "B",
-      "serie": "2 ano EM",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1252,
-    "fields": {
-      "pergunta": "A linha imaginária que divide a Terra em hemisférios Norte e Sul é o:",
-      "alternativa_a": "Círculo Polar Ártico",
-      "alternativa_b": "Equador",
-      "alternativa_c": "Greenwich",
-      "alternativa_d": "Trópico de Câncer",
-      "alternativa_e": "Trópico de Capricórnio",
-      "resposta_correta": "B",
-      "serie": "8 ano",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1253,
-    "fields": {
-      "pergunta": "Qual é a solução da equação 2x + 6 = 14?",
-      "alternativa_a": "4",
-      "alternativa_b": "5",
-      "alternativa_c": "3",
-      "alternativa_d": "2",
-      "alternativa_e": "6",
-      "resposta_correta": "A",
-      "serie": "7 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1254,
-    "fields": {
-      "pergunta": "Qual é a solução da equação 2x + 6 = 14?",
-      "alternativa_a": "4",
-      "alternativa_b": "3",
-      "alternativa_c": "6",
-      "alternativa_d": "2",
-      "alternativa_e": "5",
-      "resposta_correta": "A",
-      "serie": "8 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1255,
-    "fields": {
-      "pergunta": "Em que ano ocorreu a Independência do Brasil?",
-      "alternativa_a": "1822",
-      "alternativa_b": "1930",
-      "alternativa_c": "1500",
-      "alternativa_d": "1889",
-      "alternativa_e": "1964",
-      "resposta_correta": "A",
-      "serie": "7 ano",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1256,
-    "fields": {
-      "pergunta": "Qual é a área de um retângulo de base 8 cm e altura 5 cm?",
-      "alternativa_a": "26 cm²",
-      "alternativa_b": "40 cm²",
-      "alternativa_c": "20 cm²",
-      "alternativa_d": "80 cm²",
-      "alternativa_e": "13 cm²",
-      "resposta_correta": "B",
-      "serie": "8 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1257,
-    "fields": {
-      "pergunta": "Qual é o plural correto de 'papel'?",
-      "alternativa_a": "papelz",
-      "alternativa_b": "papeis",
-      "alternativa_c": "papelos",
-      "alternativa_d": "papéis",
-      "alternativa_e": "papels",
-      "resposta_correta": "D",
-      "serie": "7 ano",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1258,
-    "fields": {
-      "pergunta": "Qual palavra abaixo é um verbo no infinitivo?",
-      "alternativa_a": "correr",
-      "alternativa_b": "janela",
-      "alternativa_c": "feliz",
-      "alternativa_d": "mesa",
-      "alternativa_e": "caneta",
-      "resposta_correta": "A",
-      "serie": "7 ano",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1259,
-    "fields": {
-      "pergunta": "A escravidão foi oficialmente abolida no Brasil em:",
-      "alternativa_a": "1889",
-      "alternativa_b": "1850",
-      "alternativa_c": "1930",
-      "alternativa_d": "1888",
-      "alternativa_e": "1822",
-      "resposta_correta": "D",
-      "serie": "2 ano EM",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1260,
-    "fields": {
-      "pergunta": "A água entra em ebulição, ao nível do mar, a aproximadamente:",
-      "alternativa_a": "100 °C",
-      "alternativa_b": "120 °C",
-      "alternativa_c": "95 °C",
-      "alternativa_d": "90 °C",
-      "alternativa_e": "110 °C",
-      "resposta_correta": "A",
-      "serie": "6 ano",
-      "materia": "Ciências"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1261,
-    "fields": {
-      "pergunta": "Qual instrumento mede a temperatura?",
-      "alternativa_a": "velocímetro",
-      "alternativa_b": "dínamo",
-      "alternativa_c": "amperímetro",
-      "alternativa_d": "termômetro",
-      "alternativa_e": "barômetro",
-      "resposta_correta": "D",
-      "serie": "2 ano EM",
-      "materia": "Física"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1262,
-    "fields": {
-      "pergunta": "Qual palavra significa 'escola' em inglês?",
-      "alternativa_a": "street",
-      "alternativa_b": "school",
-      "alternativa_c": "chair",
-      "alternativa_d": "garden",
-      "alternativa_e": "window",
-      "resposta_correta": "B",
-      "serie": "9 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1263,
-    "fields": {
-      "pergunta": "Qual é a tradução de 'house'?",
-      "alternativa_a": "Carro",
-      "alternativa_b": "Porta",
-      "alternativa_c": "Casa",
-      "alternativa_d": "Rua",
-      "alternativa_e": "Janela",
-      "resposta_correta": "C",
-      "serie": "1 ano EM",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1264,
-    "fields": {
-      "pergunta": "Qual oceano banha o litoral brasileiro?",
-      "alternativa_a": "Índico",
-      "alternativa_b": "Ártico",
-      "alternativa_c": "Antártico",
-      "alternativa_d": "Pacífico",
-      "alternativa_e": "Atlântico",
-      "resposta_correta": "E",
-      "serie": "2 ano EM",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1265,
-    "fields": {
-      "pergunta": "Quanto vale 3² + 4²?",
-      "alternativa_a": "12",
-      "alternativa_b": "49",
-      "alternativa_c": "7",
-      "alternativa_d": "24",
-      "alternativa_e": "25",
-      "resposta_correta": "E",
-      "serie": "3 ano EM",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1266,
-    "fields": {
-      "pergunta": "Qual alternativa apresenta uma palavra proparoxítona?",
-      "alternativa_a": "abacaxi",
-      "alternativa_b": "hotel",
-      "alternativa_c": "papel",
-      "alternativa_d": "cafe",
-      "alternativa_e": "matemática",
-      "resposta_correta": "E",
-      "serie": "7 ano",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1267,
-    "fields": {
-      "pergunta": "Quanto é 25% de 200?",
-      "alternativa_a": "40",
-      "alternativa_b": "50",
-      "alternativa_c": "100",
-      "alternativa_d": "25",
-      "alternativa_e": "20",
-      "resposta_correta": "B",
-      "serie": "7 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1268,
-    "fields": {
-      "pergunta": "A escravidão foi oficialmente abolida no Brasil em:",
-      "alternativa_a": "1850",
-      "alternativa_b": "1888",
-      "alternativa_c": "1889",
-      "alternativa_d": "1822",
-      "alternativa_e": "1930",
-      "resposta_correta": "B",
-      "serie": "9 ano",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1269,
-    "fields": {
-      "pergunta": "Qual é o plural correto de 'papel'?",
-      "alternativa_a": "papeis",
-      "alternativa_b": "papelz",
-      "alternativa_c": "papelos",
-      "alternativa_d": "papels",
-      "alternativa_e": "papéis",
-      "resposta_correta": "E",
-      "serie": "2 ano EM",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1270,
-    "fields": {
-      "pergunta": "Quanto vale 3² + 4²?",
-      "alternativa_a": "25",
-      "alternativa_b": "49",
-      "alternativa_c": "12",
-      "alternativa_d": "7",
-      "alternativa_e": "24",
-      "resposta_correta": "A",
-      "serie": "6 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1271,
-    "fields": {
-      "pergunta": "Qual é o sujeito da frase 'Os alunos estudaram para a prova'?",
-      "alternativa_a": "prova",
-      "alternativa_b": "Os alunos",
-      "alternativa_c": "estudaram",
-      "alternativa_d": "frase",
-      "alternativa_e": "para a prova",
-      "resposta_correta": "B",
-      "serie": "6 ano",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1272,
-    "fields": {
-      "pergunta": "Os produtores em uma cadeia alimentar são geralmente:",
-      "alternativa_a": "plantas",
-      "alternativa_b": "decompositores",
-      "alternativa_c": "fungos",
-      "alternativa_d": "carnívoros",
-      "alternativa_e": "bactérias",
-      "resposta_correta": "A",
-      "serie": "9 ano",
-      "materia": "Biologia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1273,
-    "fields": {
-      "pergunta": "Qual palavra significa 'escola' em inglês?",
-      "alternativa_a": "school",
-      "alternativa_b": "window",
-      "alternativa_c": "street",
-      "alternativa_d": "chair",
-      "alternativa_e": "garden",
-      "resposta_correta": "A",
-      "serie": "7 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1274,
-    "fields": {
-      "pergunta": "O processo pelo qual as plantas produzem seu próprio alimento é chamado de:",
-      "alternativa_a": "fotossíntese",
-      "alternativa_b": "digestão",
-      "alternativa_c": "respiração",
-      "alternativa_d": "fermentação",
-      "alternativa_e": "evaporação",
-      "resposta_correta": "A",
-      "serie": "6 ano",
-      "materia": "Ciências"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1275,
     "fields": {
       "pergunta": "A unidade de velocidade é:",
@@ -1812,66 +582,6 @@
       "resposta_correta": "C",
       "serie": "1 ano EM",
       "materia": "Física"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1276,
-    "fields": {
-      "pergunta": "Qual é o símbolo químico do oxigênio?",
-      "alternativa_a": "Ox",
-      "alternativa_b": "Om",
-      "alternativa_c": "Oo",
-      "alternativa_d": "O",
-      "alternativa_e": "Og",
-      "resposta_correta": "D",
-      "serie": "2 ano EM",
-      "materia": "Química"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1277,
-    "fields": {
-      "pergunta": "Quanto é 25% de 200?",
-      "alternativa_a": "100",
-      "alternativa_b": "40",
-      "alternativa_c": "20",
-      "alternativa_d": "25",
-      "alternativa_e": "50",
-      "resposta_correta": "E",
-      "serie": "6 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1278,
-    "fields": {
-      "pergunta": "Quanto vale 3² + 4²?",
-      "alternativa_a": "12",
-      "alternativa_b": "49",
-      "alternativa_c": "7",
-      "alternativa_d": "24",
-      "alternativa_e": "25",
-      "resposta_correta": "E",
-      "serie": "6 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1279,
-    "fields": {
-      "pergunta": "Qual é a solução da equação 2x + 6 = 14?",
-      "alternativa_a": "3",
-      "alternativa_b": "5",
-      "alternativa_c": "2",
-      "alternativa_d": "6",
-      "alternativa_e": "4",
-      "resposta_correta": "E",
-      "serie": "2 ano EM",
-      "materia": "Matemática"
     }
   },
   {
@@ -1906,126 +616,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1282,
-    "fields": {
-      "pergunta": "A unidade de velocidade é:",
-      "alternativa_a": "J",
-      "alternativa_b": "Pa",
-      "alternativa_c": "m/s",
-      "alternativa_d": "N",
-      "alternativa_e": "kg",
-      "resposta_correta": "C",
-      "serie": "3 ano EM",
-      "materia": "Física"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1283,
-    "fields": {
-      "pergunta": "Qual instrumento mede a temperatura?",
-      "alternativa_a": "dínamo",
-      "alternativa_b": "velocímetro",
-      "alternativa_c": "amperímetro",
-      "alternativa_d": "termômetro",
-      "alternativa_e": "barômetro",
-      "resposta_correta": "D",
-      "serie": "3 ano EM",
-      "materia": "Física"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1284,
-    "fields": {
-      "pergunta": "A Proclamação da República no Brasil aconteceu em:",
-      "alternativa_a": "1889",
-      "alternativa_b": "1888",
-      "alternativa_c": "1822",
-      "alternativa_d": "1964",
-      "alternativa_e": "1932",
-      "resposta_correta": "A",
-      "serie": "1 ano EM",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1285,
-    "fields": {
-      "pergunta": "O sistema predominante na Idade Média europeia foi o:",
-      "alternativa_a": "capitalismo",
-      "alternativa_b": "industrialismo",
-      "alternativa_c": "feudalismo",
-      "alternativa_d": "mercantilismo",
-      "alternativa_e": "socialismo",
-      "resposta_correta": "C",
-      "serie": "2 ano EM",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1286,
-    "fields": {
-      "pergunta": "Qual oceano banha o litoral brasileiro?",
-      "alternativa_a": "Antártico",
-      "alternativa_b": "Pacífico",
-      "alternativa_c": "Ártico",
-      "alternativa_d": "Atlântico",
-      "alternativa_e": "Índico",
-      "resposta_correta": "D",
-      "serie": "8 ano",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1287,
-    "fields": {
-      "pergunta": "Qual é o símbolo químico do oxigênio?",
-      "alternativa_a": "Om",
-      "alternativa_b": "Oo",
-      "alternativa_c": "Og",
-      "alternativa_d": "Ox",
-      "alternativa_e": "O",
-      "resposta_correta": "E",
-      "serie": "1 ano EM",
-      "materia": "Química"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1288,
-    "fields": {
-      "pergunta": "A linha imaginária que divide a Terra em hemisférios Norte e Sul é o:",
-      "alternativa_a": "Trópico de Capricórnio",
-      "alternativa_b": "Círculo Polar Ártico",
-      "alternativa_c": "Trópico de Câncer",
-      "alternativa_d": "Greenwich",
-      "alternativa_e": "Equador",
-      "resposta_correta": "E",
-      "serie": "8 ano",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1289,
-    "fields": {
-      "pergunta": "A energia associada ao movimento é a energia:",
-      "alternativa_a": "potencial",
-      "alternativa_b": "química",
-      "alternativa_c": "elétrica",
-      "alternativa_d": "nuclear",
-      "alternativa_e": "cinética",
-      "resposta_correta": "E",
-      "serie": "2 ano EM",
-      "materia": "Física"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1290,
     "fields": {
       "pergunta": "A fotossíntese ocorre principalmente no:",
@@ -2037,216 +627,6 @@
       "resposta_correta": "A",
       "serie": "2 ano EM",
       "materia": "Biologia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1291,
-    "fields": {
-      "pergunta": "Qual é o próximo número da sequência 2, 4, 8, 16, ...?",
-      "alternativa_a": "24",
-      "alternativa_b": "18",
-      "alternativa_c": "20",
-      "alternativa_d": "30",
-      "alternativa_e": "32",
-      "resposta_correta": "E",
-      "serie": "9 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1292,
-    "fields": {
-      "pergunta": "Qual é a forma correta de 'eu sou' em inglês?",
-      "alternativa_a": "He is",
-      "alternativa_b": "We are",
-      "alternativa_c": "I am",
-      "alternativa_d": "They be",
-      "alternativa_e": "You are",
-      "resposta_correta": "C",
-      "serie": "7 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1293,
-    "fields": {
-      "pergunta": "Os produtores em uma cadeia alimentar são geralmente:",
-      "alternativa_a": "carnívoros",
-      "alternativa_b": "bactérias",
-      "alternativa_c": "decompositores",
-      "alternativa_d": "plantas",
-      "alternativa_e": "fungos",
-      "resposta_correta": "D",
-      "serie": "2 ano EM",
-      "materia": "Biologia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1294,
-    "fields": {
-      "pergunta": "Qual é a tradução de 'house'?",
-      "alternativa_a": "Rua",
-      "alternativa_b": "Porta",
-      "alternativa_c": "Janela",
-      "alternativa_d": "Casa",
-      "alternativa_e": "Carro",
-      "resposta_correta": "D",
-      "serie": "8 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1295,
-    "fields": {
-      "pergunta": "Qual é a capital do Brasil?",
-      "alternativa_a": "São Paulo",
-      "alternativa_b": "Rio de Janeiro",
-      "alternativa_c": "Recife",
-      "alternativa_d": "Salvador",
-      "alternativa_e": "Brasília",
-      "resposta_correta": "E",
-      "serie": "1 ano EM",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1296,
-    "fields": {
-      "pergunta": "Quanto vale 3² + 4²?",
-      "alternativa_a": "49",
-      "alternativa_b": "24",
-      "alternativa_c": "12",
-      "alternativa_d": "7",
-      "alternativa_e": "25",
-      "resposta_correta": "E",
-      "serie": "9 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1297,
-    "fields": {
-      "pergunta": "O movimento de rotação da Terra dura aproximadamente:",
-      "alternativa_a": "365 dias",
-      "alternativa_b": "48 horas",
-      "alternativa_c": "12 horas",
-      "alternativa_d": "24 horas",
-      "alternativa_e": "30 dias",
-      "resposta_correta": "D",
-      "serie": "9 ano",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1298,
-    "fields": {
-      "pergunta": "Qual instrumento mede a temperatura?",
-      "alternativa_a": "dínamo",
-      "alternativa_b": "amperímetro",
-      "alternativa_c": "velocímetro",
-      "alternativa_d": "barômetro",
-      "alternativa_e": "termômetro",
-      "resposta_correta": "E",
-      "serie": "2 ano EM",
-      "materia": "Física"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1299,
-    "fields": {
-      "pergunta": "Qual é a tradução de 'house'?",
-      "alternativa_a": "Porta",
-      "alternativa_b": "Carro",
-      "alternativa_c": "Janela",
-      "alternativa_d": "Casa",
-      "alternativa_e": "Rua",
-      "resposta_correta": "D",
-      "serie": "8 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1300,
-    "fields": {
-      "pergunta": "Qual é a capital do Brasil?",
-      "alternativa_a": "São Paulo",
-      "alternativa_b": "Brasília",
-      "alternativa_c": "Salvador",
-      "alternativa_d": "Recife",
-      "alternativa_e": "Rio de Janeiro",
-      "resposta_correta": "B",
-      "serie": "1 ano EM",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1301,
-    "fields": {
-      "pergunta": "Quanto é 25% de 200?",
-      "alternativa_a": "20",
-      "alternativa_b": "40",
-      "alternativa_c": "50",
-      "alternativa_d": "25",
-      "alternativa_e": "100",
-      "resposta_correta": "C",
-      "serie": "2 ano EM",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1302,
-    "fields": {
-      "pergunta": "Qual é a forma correta de 'eu sou' em inglês?",
-      "alternativa_a": "They be",
-      "alternativa_b": "We are",
-      "alternativa_c": "He is",
-      "alternativa_d": "I am",
-      "alternativa_e": "You are",
-      "resposta_correta": "D",
-      "serie": "8 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1303,
-    "fields": {
-      "pergunta": "Quanto vale 3² + 4²?",
-      "alternativa_a": "25",
-      "alternativa_b": "7",
-      "alternativa_c": "49",
-      "alternativa_d": "12",
-      "alternativa_e": "24",
-      "resposta_correta": "A",
-      "serie": "9 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1304,
-    "fields": {
-      "pergunta": "Qual é a forma correta de 'eu sou' em inglês?",
-      "alternativa_a": "He is",
-      "alternativa_b": "You are",
-      "alternativa_c": "We are",
-      "alternativa_d": "I am",
-      "alternativa_e": "They be",
-      "resposta_correta": "D",
-      "serie": "1 ano EM",
-      "materia": "Inglês"
     }
   },
   {
@@ -2266,261 +646,6 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1306,
-    "fields": {
-      "pergunta": "Qual oceano banha o litoral brasileiro?",
-      "alternativa_a": "Índico",
-      "alternativa_b": "Antártico",
-      "alternativa_c": "Pacífico",
-      "alternativa_d": "Ártico",
-      "alternativa_e": "Atlântico",
-      "resposta_correta": "E",
-      "serie": "1 ano EM",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1307,
-    "fields": {
-      "pergunta": "Quanto é 25% de 200?",
-      "alternativa_a": "25",
-      "alternativa_b": "20",
-      "alternativa_c": "100",
-      "alternativa_d": "40",
-      "alternativa_e": "50",
-      "resposta_correta": "E",
-      "serie": "7 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1308,
-    "fields": {
-      "pergunta": "Qual é a solução da equação 2x + 6 = 14?",
-      "alternativa_a": "3",
-      "alternativa_b": "6",
-      "alternativa_c": "2",
-      "alternativa_d": "5",
-      "alternativa_e": "4",
-      "resposta_correta": "E",
-      "serie": "6 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1309,
-    "fields": {
-      "pergunta": "Qual palavra significa 'escola' em inglês?",
-      "alternativa_a": "window",
-      "alternativa_b": "school",
-      "alternativa_c": "chair",
-      "alternativa_d": "garden",
-      "alternativa_e": "street",
-      "resposta_correta": "B",
-      "serie": "2 ano EM",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1310,
-    "fields": {
-      "pergunta": "Quanto é 25% de 200?",
-      "alternativa_a": "40",
-      "alternativa_b": "20",
-      "alternativa_c": "25",
-      "alternativa_d": "100",
-      "alternativa_e": "50",
-      "resposta_correta": "E",
-      "serie": "9 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1311,
-    "fields": {
-      "pergunta": "Em que ano ocorreu a Independência do Brasil?",
-      "alternativa_a": "1964",
-      "alternativa_b": "1500",
-      "alternativa_c": "1889",
-      "alternativa_d": "1822",
-      "alternativa_e": "1930",
-      "resposta_correta": "D",
-      "serie": "6 ano",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1312,
-    "fields": {
-      "pergunta": "Qual oceano banha o litoral brasileiro?",
-      "alternativa_a": "Antártico",
-      "alternativa_b": "Pacífico",
-      "alternativa_c": "Índico",
-      "alternativa_d": "Ártico",
-      "alternativa_e": "Atlântico",
-      "resposta_correta": "E",
-      "serie": "2 ano EM",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1313,
-    "fields": {
-      "pergunta": "A molécula que carrega a informação genética é o:",
-      "alternativa_a": "amido",
-      "alternativa_b": "ATP",
-      "alternativa_c": "DNA",
-      "alternativa_d": "lipídio",
-      "alternativa_e": "RNA",
-      "resposta_correta": "C",
-      "serie": "3 ano EM",
-      "materia": "Biologia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1314,
-    "fields": {
-      "pergunta": "Qual alternativa apresenta uma palavra proparoxítona?",
-      "alternativa_a": "abacaxi",
-      "alternativa_b": "papel",
-      "alternativa_c": "matemática",
-      "alternativa_d": "hotel",
-      "alternativa_e": "cafe",
-      "resposta_correta": "C",
-      "serie": "3 ano EM",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1315,
-    "fields": {
-      "pergunta": "Qual é o símbolo químico do sódio?",
-      "alternativa_a": "Na",
-      "alternativa_b": "So",
-      "alternativa_c": "Sd",
-      "alternativa_d": "S",
-      "alternativa_e": "Sn",
-      "resposta_correta": "A",
-      "serie": "1 ano EM",
-      "materia": "Química"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1316,
-    "fields": {
-      "pergunta": "A escravidão foi oficialmente abolida no Brasil em:",
-      "alternativa_a": "1888",
-      "alternativa_b": "1822",
-      "alternativa_c": "1930",
-      "alternativa_d": "1850",
-      "alternativa_e": "1889",
-      "resposta_correta": "A",
-      "serie": "9 ano",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1317,
-    "fields": {
-      "pergunta": "Qual é o sujeito da frase 'Os alunos estudaram para a prova'?",
-      "alternativa_a": "para a prova",
-      "alternativa_b": "estudaram",
-      "alternativa_c": "Os alunos",
-      "alternativa_d": "frase",
-      "alternativa_e": "prova",
-      "resposta_correta": "C",
-      "serie": "1 ano EM",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1318,
-    "fields": {
-      "pergunta": "O movimento de rotação da Terra dura aproximadamente:",
-      "alternativa_a": "48 horas",
-      "alternativa_b": "365 dias",
-      "alternativa_c": "24 horas",
-      "alternativa_d": "12 horas",
-      "alternativa_e": "30 dias",
-      "resposta_correta": "C",
-      "serie": "8 ano",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1319,
-    "fields": {
-      "pergunta": "Qual é o maior bioma brasileiro?",
-      "alternativa_a": "Caatinga",
-      "alternativa_b": "Pantanal",
-      "alternativa_c": "Amazônia",
-      "alternativa_d": "Cerrado",
-      "alternativa_e": "Pampa",
-      "resposta_correta": "C",
-      "serie": "8 ano",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1320,
-    "fields": {
-      "pergunta": "A organela responsável pela respiração celular é a:",
-      "alternativa_a": "cloroplasto",
-      "alternativa_b": "vacúolo",
-      "alternativa_c": "lisossomo",
-      "alternativa_d": "núcleo",
-      "alternativa_e": "mitocôndria",
-      "resposta_correta": "E",
-      "serie": "1 ano EM",
-      "materia": "Biologia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1321,
-    "fields": {
-      "pergunta": "Qual é a capital do Brasil?",
-      "alternativa_a": "São Paulo",
-      "alternativa_b": "Salvador",
-      "alternativa_c": "Brasília",
-      "alternativa_d": "Rio de Janeiro",
-      "alternativa_e": "Recife",
-      "resposta_correta": "C",
-      "serie": "1 ano EM",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1322,
-    "fields": {
-      "pergunta": "A molécula que carrega a informação genética é o:",
-      "alternativa_a": "RNA",
-      "alternativa_b": "amido",
-      "alternativa_c": "ATP",
-      "alternativa_d": "lipídio",
-      "alternativa_e": "DNA",
-      "resposta_correta": "E",
-      "serie": "9 ano",
-      "materia": "Biologia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
     "pk": 1323,
     "fields": {
       "pergunta": "A unidade básica da vida é a:",
@@ -2536,359 +661,1739 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1324,
+    "pk": 1356,
     "fields": {
-      "pergunta": "Em que ano ocorreu a Independência do Brasil?",
-      "alternativa_a": "1822",
-      "alternativa_b": "1500",
-      "alternativa_c": "1930",
-      "alternativa_d": "1889",
-      "alternativa_e": "1964",
-      "resposta_correta": "A",
-      "serie": "8 ano",
-      "materia": "História"
+      "pergunta": "Quanto é 7 × 8?",
+      "alternativa_a": "54",
+      "alternativa_b": "56",
+      "alternativa_c": "58",
+      "alternativa_d": "64",
+      "alternativa_e": "48",
+      "resposta_correta": "B",
+      "serie": "6 ano",
+      "materia": "Matemática"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1325,
+    "pk": 1357,
     "fields": {
-      "pergunta": "Qual alternativa apresenta uma palavra proparoxítona?",
-      "alternativa_a": "abacaxi",
-      "alternativa_b": "matemática",
-      "alternativa_c": "hotel",
-      "alternativa_d": "papel",
-      "alternativa_e": "cafe",
+      "pergunta": "Qual é o resultado de 144 ÷ 12?",
+      "alternativa_a": "10",
+      "alternativa_b": "11",
+      "alternativa_c": "12",
+      "alternativa_d": "13",
+      "alternativa_e": "14",
+      "resposta_correta": "C",
+      "serie": "6 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1358,
+    "fields": {
+      "pergunta": "Qual fração é equivalente a 1/2?",
+      "alternativa_a": "2/3",
+      "alternativa_b": "3/6",
+      "alternativa_c": "4/5",
+      "alternativa_d": "5/8",
+      "alternativa_e": "6/10",
       "resposta_correta": "B",
+      "serie": "6 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1359,
+    "fields": {
+      "pergunta": "Qual é o perímetro de um quadrado de lado 6 cm?",
+      "alternativa_a": "12 cm",
+      "alternativa_b": "18 cm",
+      "alternativa_c": "24 cm",
+      "alternativa_d": "30 cm",
+      "alternativa_e": "36 cm",
+      "resposta_correta": "C",
+      "serie": "6 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1360,
+    "fields": {
+      "pergunta": "Quanto é 15% de 300?",
+      "alternativa_a": "30",
+      "alternativa_b": "35",
+      "alternativa_c": "40",
+      "alternativa_d": "45",
+      "alternativa_e": "50",
+      "resposta_correta": "D",
+      "serie": "7 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1361,
+    "fields": {
+      "pergunta": "Resolva: x + 9 = 23.",
+      "alternativa_a": "12",
+      "alternativa_b": "13",
+      "alternativa_c": "14",
+      "alternativa_d": "15",
+      "alternativa_e": "16",
+      "resposta_correta": "C",
+      "serie": "7 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1362,
+    "fields": {
+      "pergunta": "Qual é o valor de 5²?",
+      "alternativa_a": "10",
+      "alternativa_b": "15",
+      "alternativa_c": "20",
+      "alternativa_d": "25",
+      "alternativa_e": "30",
+      "resposta_correta": "D",
+      "serie": "7 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1363,
+    "fields": {
+      "pergunta": "Qual é a média aritmética de 6, 8 e 10?",
+      "alternativa_a": "7",
+      "alternativa_b": "8",
+      "alternativa_c": "9",
+      "alternativa_d": "10",
+      "alternativa_e": "11",
+      "resposta_correta": "B",
+      "serie": "7 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1364,
+    "fields": {
+      "pergunta": "Resolva: 3x = 27.",
+      "alternativa_a": "6",
+      "alternativa_b": "7",
+      "alternativa_c": "8",
+      "alternativa_d": "9",
+      "alternativa_e": "10",
+      "resposta_correta": "D",
+      "serie": "8 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1365,
+    "fields": {
+      "pergunta": "Qual é a área de um triângulo de base 10 cm e altura 6 cm?",
+      "alternativa_a": "16 cm²",
+      "alternativa_b": "30 cm²",
+      "alternativa_c": "36 cm²",
+      "alternativa_d": "60 cm²",
+      "alternativa_e": "80 cm²",
+      "resposta_correta": "B",
+      "serie": "8 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1366,
+    "fields": {
+      "pergunta": "Quanto é 2³ × 2²?",
+      "alternativa_a": "16",
+      "alternativa_b": "24",
+      "alternativa_c": "32",
+      "alternativa_d": "48",
+      "alternativa_e": "64",
+      "resposta_correta": "C",
+      "serie": "8 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1367,
+    "fields": {
+      "pergunta": "Qual é o valor de √81?",
+      "alternativa_a": "7",
+      "alternativa_b": "8",
+      "alternativa_c": "9",
+      "alternativa_d": "10",
+      "alternativa_e": "11",
+      "resposta_correta": "C",
+      "serie": "8 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1368,
+    "fields": {
+      "pergunta": "Resolva: 2x - 5 = 13.",
+      "alternativa_a": "7",
+      "alternativa_b": "8",
+      "alternativa_c": "9",
+      "alternativa_d": "10",
+      "alternativa_e": "11",
+      "resposta_correta": "C",
+      "serie": "9 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1369,
+    "fields": {
+      "pergunta": "Qual é a soma dos ângulos internos de um triângulo?",
+      "alternativa_a": "90°",
+      "alternativa_b": "120°",
+      "alternativa_c": "180°",
+      "alternativa_d": "270°",
+      "alternativa_e": "360°",
+      "resposta_correta": "C",
+      "serie": "9 ano",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1370,
+    "fields": {
+      "pergunta": "Qual é o valor de (x + 2)(x - 2) quando x = 5?",
+      "alternativa_a": "19",
+      "alternativa_b": "20",
+      "alternativa_c": "21",
+      "alternativa_d": "22",
+      "alternativa_e": "23",
+      "resposta_correta": "C",
+      "serie": "1 ano EM",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1371,
+    "fields": {
+      "pergunta": "Qual é a raiz positiva de x² = 49?",
+      "alternativa_a": "5",
+      "alternativa_b": "6",
+      "alternativa_c": "7",
+      "alternativa_d": "8",
+      "alternativa_e": "9",
+      "resposta_correta": "C",
+      "serie": "1 ano EM",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1372,
+    "fields": {
+      "pergunta": "Em uma função f(x)=2x+3, quanto vale f(4)?",
+      "alternativa_a": "9",
+      "alternativa_b": "10",
+      "alternativa_c": "11",
+      "alternativa_d": "12",
+      "alternativa_e": "13",
+      "resposta_correta": "C",
+      "serie": "2 ano EM",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1373,
+    "fields": {
+      "pergunta": "Qual é o valor de log10(1000)?",
+      "alternativa_a": "1",
+      "alternativa_b": "2",
+      "alternativa_c": "3",
+      "alternativa_d": "10",
+      "alternativa_e": "100",
+      "resposta_correta": "C",
+      "serie": "3 ano EM",
+      "materia": "Matemática"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1374,
+    "fields": {
+      "pergunta": "Qual palavra é um substantivo?",
+      "alternativa_a": "correr",
+      "alternativa_b": "bonito",
+      "alternativa_c": "cidade",
+      "alternativa_d": "rapidamente",
+      "alternativa_e": "azul",
+      "resposta_correta": "C",
+      "serie": "6 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1375,
+    "fields": {
+      "pergunta": "Qual palavra está escrita corretamente?",
+      "alternativa_a": "excessão",
+      "alternativa_b": "exceção",
+      "alternativa_c": "esceção",
+      "alternativa_d": "exeção",
+      "alternativa_e": "excesssão",
+      "resposta_correta": "B",
+      "serie": "6 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1376,
+    "fields": {
+      "pergunta": "Em 'O menino correu', qual é o verbo?",
+      "alternativa_a": "O",
+      "alternativa_b": "menino",
+      "alternativa_c": "correu",
+      "alternativa_d": "o menino",
+      "alternativa_e": "nenhuma",
+      "resposta_correta": "C",
+      "serie": "6 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1377,
+    "fields": {
+      "pergunta": "Qual palavra é oxítona?",
+      "alternativa_a": "árvore",
+      "alternativa_b": "lâmpada",
+      "alternativa_c": "café",
+      "alternativa_d": "médico",
+      "alternativa_e": "pássaro",
+      "resposta_correta": "C",
+      "serie": "6 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1378,
+    "fields": {
+      "pergunta": "Qual é o antônimo de 'claro'?",
+      "alternativa_a": "luminoso",
+      "alternativa_b": "escuro",
+      "alternativa_c": "branco",
+      "alternativa_d": "leve",
+      "alternativa_e": "aberto",
+      "resposta_correta": "B",
+      "serie": "7 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1379,
+    "fields": {
+      "pergunta": "Qual é o plural de 'cidadão'?",
+      "alternativa_a": "cidadãos",
+      "alternativa_b": "cidadões",
+      "alternativa_c": "cidadães",
+      "alternativa_d": "cidadans",
+      "alternativa_e": "cidadãoes",
+      "resposta_correta": "A",
+      "serie": "7 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1380,
+    "fields": {
+      "pergunta": "Na frase 'Ela comprou um livro', qual é o objeto direto?",
+      "alternativa_a": "Ela",
+      "alternativa_b": "comprou",
+      "alternativa_c": "um livro",
+      "alternativa_d": "livro comprou",
+      "alternativa_e": "nenhum",
+      "resposta_correta": "C",
+      "serie": "7 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1381,
+    "fields": {
+      "pergunta": "Qual palavra contém ditongo?",
+      "alternativa_a": "saída",
+      "alternativa_b": "pai",
+      "alternativa_c": "poeta",
+      "alternativa_d": "juiz",
+      "alternativa_e": "baú",
+      "resposta_correta": "B",
+      "serie": "7 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1382,
+    "fields": {
+      "pergunta": "Qual alternativa apresenta uma conjunção adversativa?",
+      "alternativa_a": "porque",
+      "alternativa_b": "portanto",
+      "alternativa_c": "mas",
+      "alternativa_d": "quando",
+      "alternativa_e": "se",
+      "resposta_correta": "C",
       "serie": "8 ano",
       "materia": "Português"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1326,
+    "pk": 1383,
     "fields": {
-      "pergunta": "Qual é a tradução de 'house'?",
-      "alternativa_a": "Janela",
-      "alternativa_b": "Rua",
-      "alternativa_c": "Carro",
-      "alternativa_d": "Casa",
-      "alternativa_e": "Porta",
+      "pergunta": "Em 'Os alunos chegaram cedo', a palavra 'cedo' é:",
+      "alternativa_a": "substantivo",
+      "alternativa_b": "adjetivo",
+      "alternativa_c": "advérbio",
+      "alternativa_d": "verbo",
+      "alternativa_e": "pronome",
+      "resposta_correta": "C",
+      "serie": "8 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1384,
+    "fields": {
+      "pergunta": "Qual palavra é paroxítona?",
+      "alternativa_a": "café",
+      "alternativa_b": "também",
+      "alternativa_c": "fácil",
+      "alternativa_d": "sabiá",
+      "alternativa_e": "você",
+      "resposta_correta": "C",
+      "serie": "8 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1385,
+    "fields": {
+      "pergunta": "Qual é o sujeito de 'Choveu muito ontem'?",
+      "alternativa_a": "choveu",
+      "alternativa_b": "muito",
+      "alternativa_c": "ontem",
+      "alternativa_d": "sujeito inexistente",
+      "alternativa_e": "oculto",
       "resposta_correta": "D",
-      "serie": "7 ano",
-      "materia": "Inglês"
+      "serie": "8 ano",
+      "materia": "Português"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1327,
+    "pk": 1386,
     "fields": {
-      "pergunta": "Qual planeta é conhecido como Planeta Vermelho?",
-      "alternativa_a": "Júpiter",
-      "alternativa_b": "Vênus",
-      "alternativa_c": "Saturno",
-      "alternativa_d": "Mercúrio",
-      "alternativa_e": "Marte",
-      "resposta_correta": "E",
-      "serie": "6 ano",
-      "materia": "Ciências"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1328,
-    "fields": {
-      "pergunta": "Qual é o sujeito da frase 'Os alunos estudaram para a prova'?",
-      "alternativa_a": "estudaram",
-      "alternativa_b": "Os alunos",
-      "alternativa_c": "frase",
-      "alternativa_d": "prova",
-      "alternativa_e": "para a prova",
+      "pergunta": "Qual figura de linguagem ocorre em 'Estou morrendo de fome'?",
+      "alternativa_a": "metáfora",
+      "alternativa_b": "hipérbole",
+      "alternativa_c": "ironia",
+      "alternativa_d": "eufemismo",
+      "alternativa_e": "antítese",
       "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1387,
+    "fields": {
+      "pergunta": "Em 'Embora estivesse cansado, continuou estudando', 'Embora' indica:",
+      "alternativa_a": "causa",
+      "alternativa_b": "concessão",
+      "alternativa_c": "conclusão",
+      "alternativa_d": "condição",
+      "alternativa_e": "finalidade",
+      "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1388,
+    "fields": {
+      "pergunta": "Qual alternativa contém um pronome demonstrativo?",
+      "alternativa_a": "meu",
+      "alternativa_b": "ele",
+      "alternativa_c": "aquele",
+      "alternativa_d": "quem",
+      "alternativa_e": "nós",
+      "resposta_correta": "C",
+      "serie": "1 ano EM",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1389,
+    "fields": {
+      "pergunta": "Qual é a função de 'de matemática' em 'livro de matemática'?",
+      "alternativa_a": "objeto direto",
+      "alternativa_b": "adjunto adnominal",
+      "alternativa_c": "predicativo",
+      "alternativa_d": "vocativo",
+      "alternativa_e": "aposto",
+      "resposta_correta": "B",
+      "serie": "1 ano EM",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1390,
+    "fields": {
+      "pergunta": "Em 'Precisa-se de funcionários', o sujeito é:",
+      "alternativa_a": "simples",
+      "alternativa_b": "composto",
+      "alternativa_c": "oculto",
+      "alternativa_d": "indeterminado",
+      "alternativa_e": "inexistente",
+      "resposta_correta": "D",
       "serie": "2 ano EM",
       "materia": "Português"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1329,
+    "pk": 1391,
     "fields": {
-      "pergunta": "A fotossíntese ocorre principalmente no:",
-      "alternativa_a": "mitocôndria",
-      "alternativa_b": "vacúolo",
-      "alternativa_c": "núcleo",
-      "alternativa_d": "cloroplasto",
-      "alternativa_e": "ribossomo",
+      "pergunta": "Qual movimento literário brasileiro teve Machado de Assis como principal nome?",
+      "alternativa_a": "Romantismo",
+      "alternativa_b": "Realismo",
+      "alternativa_c": "Arcadismo",
+      "alternativa_d": "Parnasianismo",
+      "alternativa_e": "Modernismo",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Português"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1392,
+    "fields": {
+      "pergunta": "Qual civilização antiga construiu as pirâmides de Gizé?",
+      "alternativa_a": "Romana",
+      "alternativa_b": "Egípcia",
+      "alternativa_c": "Grega",
+      "alternativa_d": "Persa",
+      "alternativa_e": "Fenícia",
+      "resposta_correta": "B",
+      "serie": "6 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1393,
+    "fields": {
+      "pergunta": "A democracia ateniense surgiu em qual cidade-Estado?",
+      "alternativa_a": "Esparta",
+      "alternativa_b": "Atenas",
+      "alternativa_c": "Roma",
+      "alternativa_d": "Tebas",
+      "alternativa_e": "Corinto",
+      "resposta_correta": "B",
+      "serie": "6 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1394,
+    "fields": {
+      "pergunta": "Quem foi o primeiro imperador romano?",
+      "alternativa_a": "Júlio César",
+      "alternativa_b": "Augusto",
+      "alternativa_c": "Nero",
+      "alternativa_d": "Trajano",
+      "alternativa_e": "Constantino",
+      "resposta_correta": "B",
+      "serie": "6 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1395,
+    "fields": {
+      "pergunta": "A escrita cuneiforme foi desenvolvida principalmente pelos:",
+      "alternativa_a": "sumérios",
+      "alternativa_b": "egípcios",
+      "alternativa_c": "romanos",
+      "alternativa_d": "gregos",
+      "alternativa_e": "maias",
+      "resposta_correta": "A",
+      "serie": "6 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1396,
+    "fields": {
+      "pergunta": "Qual movimento europeu dos séculos XV e XVI valorizou a cultura clássica?",
+      "alternativa_a": "Feudalismo",
+      "alternativa_b": "Renascimento",
+      "alternativa_c": "Mercantilismo",
+      "alternativa_d": "Absolutismo",
+      "alternativa_e": "Iluminismo",
+      "resposta_correta": "B",
+      "serie": "7 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1397,
+    "fields": {
+      "pergunta": "Quem liderou a Reforma Protestante iniciada em 1517?",
+      "alternativa_a": "Martinho Lutero",
+      "alternativa_b": "Calvino",
+      "alternativa_c": "Henrique VIII",
+      "alternativa_d": "Erasmo",
+      "alternativa_e": "Copérnico",
+      "resposta_correta": "A",
+      "serie": "7 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1398,
+    "fields": {
+      "pergunta": "Qual país iniciou a expansão marítima europeia no século XV?",
+      "alternativa_a": "França",
+      "alternativa_b": "Portugal",
+      "alternativa_c": "Alemanha",
+      "alternativa_d": "Itália",
+      "alternativa_e": "Holanda",
+      "resposta_correta": "B",
+      "serie": "7 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1399,
+    "fields": {
+      "pergunta": "A chegada de Pedro Álvares Cabral ao território brasileiro ocorreu em:",
+      "alternativa_a": "1492",
+      "alternativa_b": "1500",
+      "alternativa_c": "1530",
+      "alternativa_d": "1549",
+      "alternativa_e": "1580",
+      "resposta_correta": "B",
+      "serie": "7 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1400,
+    "fields": {
+      "pergunta": "A Revolução Francesa começou em:",
+      "alternativa_a": "1750",
+      "alternativa_b": "1776",
+      "alternativa_c": "1789",
+      "alternativa_d": "1815",
+      "alternativa_e": "1848",
+      "resposta_correta": "C",
+      "serie": "8 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1401,
+    "fields": {
+      "pergunta": "Qual documento proclamou a independência das Treze Colônias em 1776?",
+      "alternativa_a": "Carta Magna",
+      "alternativa_b": "Declaração de Independência",
+      "alternativa_c": "Código Napoleônico",
+      "alternativa_d": "Bill of Rights inglês",
+      "alternativa_e": "Tratado de Versalhes",
+      "resposta_correta": "B",
+      "serie": "8 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1402,
+    "fields": {
+      "pergunta": "Quem foi coroado imperador da França em 1804?",
+      "alternativa_a": "Luís XVI",
+      "alternativa_b": "Robespierre",
+      "alternativa_c": "Napoleão Bonaparte",
+      "alternativa_d": "Carlos X",
+      "alternativa_e": "Luís XVIII",
+      "resposta_correta": "C",
+      "serie": "8 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1403,
+    "fields": {
+      "pergunta": "A Inconfidência Mineira ocorreu no contexto da:",
+      "alternativa_a": "República Velha",
+      "alternativa_b": "Colônia portuguesa",
+      "alternativa_c": "Era Vargas",
+      "alternativa_d": "Ditadura Militar",
+      "alternativa_e": "Nova República",
+      "resposta_correta": "B",
+      "serie": "8 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1404,
+    "fields": {
+      "pergunta": "A Proclamação da República no Brasil ocorreu em:",
+      "alternativa_a": "1822",
+      "alternativa_b": "1888",
+      "alternativa_c": "1889",
+      "alternativa_d": "1930",
+      "alternativa_e": "1964",
+      "resposta_correta": "C",
+      "serie": "9 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1405,
+    "fields": {
+      "pergunta": "Qual conflito ocorreu entre 1914 e 1918?",
+      "alternativa_a": "Guerra Fria",
+      "alternativa_b": "Primeira Guerra Mundial",
+      "alternativa_c": "Segunda Guerra Mundial",
+      "alternativa_d": "Guerra do Vietnã",
+      "alternativa_e": "Guerra da Coreia",
+      "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "História"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1406,
+    "fields": {
+      "pergunta": "A crise de 1929 teve início com a quebra da bolsa de valores de:",
+      "alternativa_a": "Londres",
+      "alternativa_b": "Paris",
+      "alternativa_c": "Berlim",
+      "alternativa_d": "Nova York",
+      "alternativa_e": "Tóquio",
       "resposta_correta": "D",
       "serie": "1 ano EM",
-      "materia": "Biologia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1330,
-    "fields": {
-      "pergunta": "Qual é o plural correto de 'papel'?",
-      "alternativa_a": "papéis",
-      "alternativa_b": "papels",
-      "alternativa_c": "papelz",
-      "alternativa_d": "papeis",
-      "alternativa_e": "papelos",
-      "resposta_correta": "A",
-      "serie": "6 ano",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1331,
-    "fields": {
-      "pergunta": "O movimento de rotação da Terra dura aproximadamente:",
-      "alternativa_a": "365 dias",
-      "alternativa_b": "48 horas",
-      "alternativa_c": "24 horas",
-      "alternativa_d": "12 horas",
-      "alternativa_e": "30 dias",
-      "resposta_correta": "C",
-      "serie": "9 ano",
-      "materia": "Geografia"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1332,
-    "fields": {
-      "pergunta": "Qual é a tradução de 'house'?",
-      "alternativa_a": "Rua",
-      "alternativa_b": "Janela",
-      "alternativa_c": "Casa",
-      "alternativa_d": "Carro",
-      "alternativa_e": "Porta",
-      "resposta_correta": "C",
-      "serie": "6 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1333,
-    "fields": {
-      "pergunta": "Em que ano ocorreu a Independência do Brasil?",
-      "alternativa_a": "1889",
-      "alternativa_b": "1500",
-      "alternativa_c": "1964",
-      "alternativa_d": "1930",
-      "alternativa_e": "1822",
-      "resposta_correta": "E",
-      "serie": "8 ano",
       "materia": "História"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1334,
+    "pk": 1407,
     "fields": {
-      "pergunta": "Qual alternativa apresenta uma palavra proparoxítona?",
-      "alternativa_a": "cafe",
-      "alternativa_b": "abacaxi",
-      "alternativa_c": "papel",
-      "alternativa_d": "hotel",
-      "alternativa_e": "matemática",
-      "resposta_correta": "E",
-      "serie": "8 ano",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1335,
-    "fields": {
-      "pergunta": "O sistema predominante na Idade Média europeia foi o:",
-      "alternativa_a": "socialismo",
-      "alternativa_b": "capitalismo",
-      "alternativa_c": "industrialismo",
-      "alternativa_d": "feudalismo",
-      "alternativa_e": "mercantilismo",
+      "pergunta": "A Segunda Guerra Mundial terminou em:",
+      "alternativa_a": "1939",
+      "alternativa_b": "1941",
+      "alternativa_c": "1943",
+      "alternativa_d": "1945",
+      "alternativa_e": "1948",
       "resposta_correta": "D",
-      "serie": "7 ano",
+      "serie": "1 ano EM",
       "materia": "História"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1336,
+    "pk": 1408,
     "fields": {
-      "pergunta": "Quanto é 25% de 200?",
-      "alternativa_a": "25",
-      "alternativa_b": "40",
-      "alternativa_c": "100",
-      "alternativa_d": "50",
-      "alternativa_e": "20",
-      "resposta_correta": "D",
-      "serie": "7 ano",
-      "materia": "Matemática"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1337,
-    "fields": {
-      "pergunta": "A palavra 'because' significa:",
-      "alternativa_a": "então",
-      "alternativa_b": "mas",
-      "alternativa_c": "antes",
-      "alternativa_d": "embora",
-      "alternativa_e": "porque",
-      "resposta_correta": "E",
-      "serie": "7 ano",
-      "materia": "Inglês"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1338,
-    "fields": {
-      "pergunta": "Qual é o sujeito da frase 'Os alunos estudaram para a prova'?",
-      "alternativa_a": "prova",
-      "alternativa_b": "frase",
-      "alternativa_c": "estudaram",
-      "alternativa_d": "para a prova",
-      "alternativa_e": "Os alunos",
-      "resposta_correta": "E",
-      "serie": "9 ano",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1339,
-    "fields": {
-      "pergunta": "Quanto vale 3² + 4²?",
-      "alternativa_a": "25",
-      "alternativa_b": "7",
-      "alternativa_c": "12",
-      "alternativa_d": "24",
-      "alternativa_e": "49",
-      "resposta_correta": "A",
+      "pergunta": "O Estado Novo de Getúlio Vargas começou em:",
+      "alternativa_a": "1930",
+      "alternativa_b": "1932",
+      "alternativa_c": "1937",
+      "alternativa_d": "1945",
+      "alternativa_e": "1950",
+      "resposta_correta": "C",
       "serie": "2 ano EM",
-      "materia": "Matemática"
+      "materia": "História"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1340,
+    "pk": 1409,
     "fields": {
-      "pergunta": "Qual palavra abaixo é um verbo no infinitivo?",
-      "alternativa_a": "feliz",
-      "alternativa_b": "caneta",
-      "alternativa_c": "janela",
-      "alternativa_d": "correr",
-      "alternativa_e": "mesa",
+      "pergunta": "A Constituição brasileira atualmente em vigor foi promulgada em:",
+      "alternativa_a": "1967",
+      "alternativa_b": "1979",
+      "alternativa_c": "1985",
+      "alternativa_d": "1988",
+      "alternativa_e": "1994",
       "resposta_correta": "D",
-      "serie": "2 ano EM",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1341,
-    "fields": {
-      "pergunta": "Quem foi o primeiro imperador do Brasil?",
-      "alternativa_a": "Tiradentes",
-      "alternativa_b": "Dom Pedro I",
-      "alternativa_c": "Dom Pedro II",
-      "alternativa_d": "Getúlio Vargas",
-      "alternativa_e": "José Bonifácio",
-      "resposta_correta": "B",
       "serie": "3 ano EM",
       "materia": "História"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1342,
+    "pk": 1410,
     "fields": {
-      "pergunta": "Qual palavra abaixo é um verbo no infinitivo?",
-      "alternativa_a": "correr",
-      "alternativa_b": "caneta",
-      "alternativa_c": "feliz",
-      "alternativa_d": "janela",
-      "alternativa_e": "mesa",
-      "resposta_correta": "A",
-      "serie": "7 ano",
-      "materia": "Português"
+      "pergunta": "Qual é o maior continente em extensão territorial?",
+      "alternativa_a": "África",
+      "alternativa_b": "América",
+      "alternativa_c": "Ásia",
+      "alternativa_d": "Europa",
+      "alternativa_e": "Oceania",
+      "resposta_correta": "C",
+      "serie": "6 ano",
+      "materia": "Geografia"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1343,
+    "pk": 1411,
     "fields": {
-      "pergunta": "A palavra 'because' significa:",
-      "alternativa_a": "então",
-      "alternativa_b": "embora",
-      "alternativa_c": "porque",
-      "alternativa_d": "antes",
-      "alternativa_e": "mas",
+      "pergunta": "Qual linha imaginária divide a Terra em hemisférios Oriental e Ocidental por convenção?",
+      "alternativa_a": "Equador",
+      "alternativa_b": "Trópico de Câncer",
+      "alternativa_c": "Meridiano de Greenwich",
+      "alternativa_d": "Trópico de Capricórnio",
+      "alternativa_e": "Círculo Polar Antártico",
+      "resposta_correta": "C",
+      "serie": "6 ano",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1412,
+    "fields": {
+      "pergunta": "Qual instrumento indica os pontos cardeais?",
+      "alternativa_a": "termômetro",
+      "alternativa_b": "bússola",
+      "alternativa_c": "barômetro",
+      "alternativa_d": "pluviômetro",
+      "alternativa_e": "anemômetro",
+      "resposta_correta": "B",
+      "serie": "6 ano",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1413,
+    "fields": {
+      "pergunta": "Qual região brasileira possui o maior número de estados?",
+      "alternativa_a": "Norte",
+      "alternativa_b": "Nordeste",
+      "alternativa_c": "Centro-Oeste",
+      "alternativa_d": "Sudeste",
+      "alternativa_e": "Sul",
+      "resposta_correta": "B",
+      "serie": "7 ano",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1414,
+    "fields": {
+      "pergunta": "Qual é a capital do estado de Minas Gerais?",
+      "alternativa_a": "Vitória",
+      "alternativa_b": "Belo Horizonte",
+      "alternativa_c": "Goiânia",
+      "alternativa_d": "Curitiba",
+      "alternativa_e": "Campinas",
+      "resposta_correta": "B",
+      "serie": "7 ano",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1415,
+    "fields": {
+      "pergunta": "Qual bioma brasileiro é caracterizado por vegetação adaptada à seca no Nordeste?",
+      "alternativa_a": "Amazônia",
+      "alternativa_b": "Mata Atlântica",
+      "alternativa_c": "Caatinga",
+      "alternativa_d": "Pampa",
+      "alternativa_e": "Pantanal",
+      "resposta_correta": "C",
+      "serie": "7 ano",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1416,
+    "fields": {
+      "pergunta": "Qual país possui a maior população da América do Sul?",
+      "alternativa_a": "Argentina",
+      "alternativa_b": "Colômbia",
+      "alternativa_c": "Brasil",
+      "alternativa_d": "Peru",
+      "alternativa_e": "Chile",
       "resposta_correta": "C",
       "serie": "8 ano",
-      "materia": "Inglês"
+      "materia": "Geografia"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1344,
+    "pk": 1417,
     "fields": {
-      "pergunta": "Em que ano ocorreu a Independência do Brasil?",
-      "alternativa_a": "1822",
-      "alternativa_b": "1964",
-      "alternativa_c": "1500",
-      "alternativa_d": "1889",
-      "alternativa_e": "1930",
-      "resposta_correta": "A",
-      "serie": "8 ano",
-      "materia": "História"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1345,
-    "fields": {
-      "pergunta": "Qual é a tradução de 'book'?",
-      "alternativa_a": "Mesa",
-      "alternativa_b": "Livro",
-      "alternativa_c": "Cadeira",
-      "alternativa_d": "Caneta",
-      "alternativa_e": "Janela",
+      "pergunta": "A Cordilheira dos Andes localiza-se principalmente na porção:",
+      "alternativa_a": "leste da América do Sul",
+      "alternativa_b": "oeste da América do Sul",
+      "alternativa_c": "norte da Europa",
+      "alternativa_d": "sul da Ásia",
+      "alternativa_e": "centro da África",
       "resposta_correta": "B",
-      "serie": "2 ano EM",
-      "materia": "Inglês"
+      "serie": "8 ano",
+      "materia": "Geografia"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1346,
+    "pk": 1418,
     "fields": {
-      "pergunta": "Qual é a capital do Brasil?",
-      "alternativa_a": "São Paulo",
-      "alternativa_b": "Salvador",
-      "alternativa_c": "Recife",
-      "alternativa_d": "Rio de Janeiro",
-      "alternativa_e": "Brasília",
-      "resposta_correta": "E",
+      "pergunta": "Qual é o maior país do mundo em extensão territorial?",
+      "alternativa_a": "Canadá",
+      "alternativa_b": "China",
+      "alternativa_c": "Estados Unidos",
+      "alternativa_d": "Rússia",
+      "alternativa_e": "Brasil",
+      "resposta_correta": "D",
+      "serie": "8 ano",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1419,
+    "fields": {
+      "pergunta": "Qual organização reúne países como Brasil, Argentina, Paraguai e Uruguai?",
+      "alternativa_a": "OTAN",
+      "alternativa_b": "Mercosul",
+      "alternativa_c": "OPEP",
+      "alternativa_d": "União Europeia",
+      "alternativa_e": "ASEAN",
+      "resposta_correta": "B",
       "serie": "9 ano",
       "materia": "Geografia"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1347,
+    "pk": 1420,
     "fields": {
-      "pergunta": "Qual instrumento mede a temperatura?",
-      "alternativa_a": "velocímetro",
-      "alternativa_b": "barômetro",
-      "alternativa_c": "amperímetro",
-      "alternativa_d": "dínamo",
-      "alternativa_e": "termômetro",
+      "pergunta": "O processo de crescimento das cidades é chamado de:",
+      "alternativa_a": "industrialização",
+      "alternativa_b": "urbanização",
+      "alternativa_c": "globalização",
+      "alternativa_d": "desertificação",
+      "alternativa_e": "êxodo rural",
+      "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1421,
+    "fields": {
+      "pergunta": "Qual fonte de energia é renovável?",
+      "alternativa_a": "carvão mineral",
+      "alternativa_b": "petróleo",
+      "alternativa_c": "gás natural",
+      "alternativa_d": "energia solar",
+      "alternativa_e": "urânio",
+      "resposta_correta": "D",
+      "serie": "9 ano",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1422,
+    "fields": {
+      "pergunta": "Qual camada da atmosfera concentra a maior parte dos fenômenos meteorológicos?",
+      "alternativa_a": "estratosfera",
+      "alternativa_b": "mesosfera",
+      "alternativa_c": "troposfera",
+      "alternativa_d": "termosfera",
+      "alternativa_e": "exosfera",
+      "resposta_correta": "C",
+      "serie": "1 ano EM",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1423,
+    "fields": {
+      "pergunta": "O deslocamento diário de pessoas entre casa e trabalho é chamado de migração:",
+      "alternativa_a": "internacional",
+      "alternativa_b": "sazonal",
+      "alternativa_c": "pendular",
+      "alternativa_d": "de retorno",
+      "alternativa_e": "forçada",
+      "resposta_correta": "C",
+      "serie": "1 ano EM",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1424,
+    "fields": {
+      "pergunta": "Qual indicador mede a média de anos que uma população pode esperar viver?",
+      "alternativa_a": "PIB",
+      "alternativa_b": "IDH",
+      "alternativa_c": "expectativa de vida",
+      "alternativa_d": "taxa de natalidade",
+      "alternativa_e": "densidade demográfica",
+      "resposta_correta": "C",
+      "serie": "2 ano EM",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1425,
+    "fields": {
+      "pergunta": "A concentração de indústrias em grandes centros urbanos está associada principalmente à:",
+      "alternativa_a": "desindustrialização",
+      "alternativa_b": "aglomeração industrial",
+      "alternativa_c": "erosão",
+      "alternativa_d": "ruralização",
+      "alternativa_e": "sedimentação",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1426,
+    "fields": {
+      "pergunta": "A globalização intensificou principalmente os fluxos de:",
+      "alternativa_a": "pessoas, capitais, mercadorias e informações",
+      "alternativa_b": "apenas produtos agrícolas",
+      "alternativa_c": "somente moedas nacionais",
+      "alternativa_d": "somente energia elétrica",
+      "alternativa_e": "apenas recursos minerais",
+      "resposta_correta": "A",
+      "serie": "3 ano EM",
+      "materia": "Geografia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1427,
+    "fields": {
+      "pergunta": "Qual é o estado físico da água a 25 °C, em condições ambientes?",
+      "alternativa_a": "sólido",
+      "alternativa_b": "líquido",
+      "alternativa_c": "gasoso",
+      "alternativa_d": "plasma",
+      "alternativa_e": "vapor superaquecido",
+      "resposta_correta": "B",
+      "serie": "6 ano",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1428,
+    "fields": {
+      "pergunta": "Qual órgão é responsável principalmente pela respiração humana?",
+      "alternativa_a": "coração",
+      "alternativa_b": "pulmões",
+      "alternativa_c": "rins",
+      "alternativa_d": "fígado",
+      "alternativa_e": "estômago",
+      "resposta_correta": "B",
+      "serie": "6 ano",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1429,
+    "fields": {
+      "pergunta": "Qual é a principal função das raízes nas plantas?",
+      "alternativa_a": "produzir sementes",
+      "alternativa_b": "absorver água e sais minerais",
+      "alternativa_c": "realizar a polinização",
+      "alternativa_d": "produzir frutos",
+      "alternativa_e": "liberar oxigênio apenas",
+      "resposta_correta": "B",
+      "serie": "7 ano",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1430,
+    "fields": {
+      "pergunta": "Qual animal é um mamífero?",
+      "alternativa_a": "sapo",
+      "alternativa_b": "tubarão",
+      "alternativa_c": "morcego",
+      "alternativa_d": "tartaruga",
+      "alternativa_e": "galinha",
+      "resposta_correta": "C",
+      "serie": "7 ano",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1431,
+    "fields": {
+      "pergunta": "Qual gás é utilizado pelas plantas na fotossíntese?",
+      "alternativa_a": "oxigênio",
+      "alternativa_b": "nitrogênio",
+      "alternativa_c": "dióxido de carbono",
+      "alternativa_d": "hidrogênio",
+      "alternativa_e": "hélio",
+      "resposta_correta": "C",
+      "serie": "7 ano",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1432,
+    "fields": {
+      "pergunta": "Qual sistema do corpo humano transporta sangue, oxigênio e nutrientes?",
+      "alternativa_a": "digestório",
+      "alternativa_b": "circulatório",
+      "alternativa_c": "nervoso",
+      "alternativa_d": "reprodutor",
+      "alternativa_e": "endócrino",
+      "resposta_correta": "B",
+      "serie": "8 ano",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1433,
+    "fields": {
+      "pergunta": "Qual vitamina é produzida na pele com ajuda da luz solar?",
+      "alternativa_a": "A",
+      "alternativa_b": "B12",
+      "alternativa_c": "C",
+      "alternativa_d": "D",
+      "alternativa_e": "K",
+      "resposta_correta": "D",
+      "serie": "8 ano",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1434,
+    "fields": {
+      "pergunta": "Qual estrutura protege o cérebro?",
+      "alternativa_a": "coluna vertebral",
+      "alternativa_b": "caixa torácica",
+      "alternativa_c": "crânio",
+      "alternativa_d": "pelve",
+      "alternativa_e": "fêmur",
+      "resposta_correta": "C",
+      "serie": "8 ano",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1435,
+    "fields": {
+      "pergunta": "Qual grandeza mede a quantidade de matéria de um corpo?",
+      "alternativa_a": "peso",
+      "alternativa_b": "massa",
+      "alternativa_c": "volume",
+      "alternativa_d": "densidade",
+      "alternativa_e": "temperatura",
+      "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1436,
+    "fields": {
+      "pergunta": "Qual processo transforma um líquido em gás?",
+      "alternativa_a": "fusão",
+      "alternativa_b": "condensação",
+      "alternativa_c": "vaporização",
+      "alternativa_d": "solidificação",
+      "alternativa_e": "sublimação inversa",
+      "resposta_correta": "C",
+      "serie": "9 ano",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1437,
+    "fields": {
+      "pergunta": "Misturar sal completamente em água forma uma mistura:",
+      "alternativa_a": "heterogênea",
+      "alternativa_b": "homogênea",
+      "alternativa_c": "suspensa",
+      "alternativa_d": "gasosa",
+      "alternativa_e": "coloidal obrigatoriamente",
+      "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1438,
+    "fields": {
+      "pergunta": "Qual organela realiza a fotossíntese nas células vegetais?",
+      "alternativa_a": "mitocôndria",
+      "alternativa_b": "ribossomo",
+      "alternativa_c": "cloroplasto",
+      "alternativa_d": "lisossomo",
+      "alternativa_e": "complexo golgiense",
+      "resposta_correta": "C",
+      "serie": "1 ano EM",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1439,
+    "fields": {
+      "pergunta": "Qual molécula é a principal fonte imediata de energia celular?",
+      "alternativa_a": "DNA",
+      "alternativa_b": "ATP",
+      "alternativa_c": "RNA",
+      "alternativa_d": "glicogênio",
+      "alternativa_e": "colágeno",
+      "resposta_correta": "B",
+      "serie": "1 ano EM",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1440,
+    "fields": {
+      "pergunta": "Qual nível trófico é ocupado pelos organismos autotróficos?",
+      "alternativa_a": "consumidores primários",
+      "alternativa_b": "produtores",
+      "alternativa_c": "decompositores",
+      "alternativa_d": "predadores de topo",
+      "alternativa_e": "detritívoros",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1441,
+    "fields": {
+      "pergunta": "A relação ecológica em que ambos os organismos se beneficiam é chamada de:",
+      "alternativa_a": "predação",
+      "alternativa_b": "parasitismo",
+      "alternativa_c": "mutualismo",
+      "alternativa_d": "competição",
+      "alternativa_e": "canibalismo",
+      "resposta_correta": "C",
+      "serie": "2 ano EM",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1442,
+    "fields": {
+      "pergunta": "Qual processo celular produz gametas com metade do número de cromossomos?",
+      "alternativa_a": "mitose",
+      "alternativa_b": "meiose",
+      "alternativa_c": "brotamento",
+      "alternativa_d": "fissão binária",
+      "alternativa_e": "clonagem",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Ciências"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1443,
+    "fields": {
+      "pergunta": "Qual estrutura celular controla a entrada e saída de substâncias?",
+      "alternativa_a": "núcleo",
+      "alternativa_b": "membrana plasmática",
+      "alternativa_c": "ribossomo",
+      "alternativa_d": "centríolo",
+      "alternativa_e": "lisossomo",
+      "resposta_correta": "B",
+      "serie": "1 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1444,
+    "fields": {
+      "pergunta": "Os ribossomos participam diretamente da síntese de:",
+      "alternativa_a": "lipídios",
+      "alternativa_b": "proteínas",
+      "alternativa_c": "DNA",
+      "alternativa_d": "glicose",
+      "alternativa_e": "água",
+      "resposta_correta": "B",
+      "serie": "1 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1445,
+    "fields": {
+      "pergunta": "Qual tecido vegetal transporta água e sais minerais?",
+      "alternativa_a": "floema",
+      "alternativa_b": "xilema",
+      "alternativa_c": "epiderme",
+      "alternativa_d": "meristema",
+      "alternativa_e": "parênquima",
+      "resposta_correta": "B",
+      "serie": "1 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1446,
+    "fields": {
+      "pergunta": "Qual reino inclui os fungos?",
+      "alternativa_a": "Plantae",
+      "alternativa_b": "Animalia",
+      "alternativa_c": "Fungi",
+      "alternativa_d": "Protista",
+      "alternativa_e": "Monera",
+      "resposta_correta": "C",
+      "serie": "1 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1447,
+    "fields": {
+      "pergunta": "Qual componente do sangue atua principalmente na defesa do organismo?",
+      "alternativa_a": "hemácias",
+      "alternativa_b": "leucócitos",
+      "alternativa_c": "plaquetas",
+      "alternativa_d": "plasma apenas",
+      "alternativa_e": "hemoglobina",
+      "resposta_correta": "B",
+      "serie": "1 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1448,
+    "fields": {
+      "pergunta": "Qual molécula armazena a informação genética nos seres vivos?",
+      "alternativa_a": "ATP",
+      "alternativa_b": "DNA",
+      "alternativa_c": "glicose",
+      "alternativa_d": "amido",
+      "alternativa_e": "colesterol",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1449,
+    "fields": {
+      "pergunta": "Na genética mendeliana, um alelo dominante é representado geralmente por:",
+      "alternativa_a": "letra maiúscula",
+      "alternativa_b": "letra minúscula",
+      "alternativa_c": "número romano",
+      "alternativa_d": "símbolo químico",
+      "alternativa_e": "fração",
+      "resposta_correta": "A",
+      "serie": "2 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1450,
+    "fields": {
+      "pergunta": "Qual processo garante a duplicação do DNA antes da divisão celular?",
+      "alternativa_a": "tradução",
+      "alternativa_b": "transcrição",
+      "alternativa_c": "replicação",
+      "alternativa_d": "fermentação",
+      "alternativa_e": "difusão",
+      "resposta_correta": "C",
+      "serie": "2 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1451,
+    "fields": {
+      "pergunta": "Qual estrutura do sistema nervoso central coordena equilíbrio e movimentos?",
+      "alternativa_a": "cerebelo",
+      "alternativa_b": "pâncreas",
+      "alternativa_c": "baço",
+      "alternativa_d": "hipófise",
+      "alternativa_e": "tireoide",
+      "resposta_correta": "A",
+      "serie": "2 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1452,
+    "fields": {
+      "pergunta": "Qual hormônio reduz a glicemia?",
+      "alternativa_a": "adrenalina",
+      "alternativa_b": "insulina",
+      "alternativa_c": "glucagon",
+      "alternativa_d": "tiroxina",
+      "alternativa_e": "melatonina",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1453,
+    "fields": {
+      "pergunta": "A seleção natural é associada principalmente às ideias de:",
+      "alternativa_a": "Mendel",
+      "alternativa_b": "Darwin",
+      "alternativa_c": "Pasteur",
+      "alternativa_d": "Watson",
+      "alternativa_e": "Harvey",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1454,
+    "fields": {
+      "pergunta": "Estruturas com mesma origem evolutiva e funções diferentes são chamadas de:",
+      "alternativa_a": "análogas",
+      "alternativa_b": "homólogas",
+      "alternativa_c": "vestigiais apenas",
+      "alternativa_d": "artificiais",
+      "alternativa_e": "mutantes",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1455,
+    "fields": {
+      "pergunta": "Qual processo converte nitrogênio atmosférico em formas utilizáveis por plantas?",
+      "alternativa_a": "fotossíntese",
+      "alternativa_b": "fixação do nitrogênio",
+      "alternativa_c": "respiração",
+      "alternativa_d": "transpiração",
+      "alternativa_e": "digestão",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1456,
+    "fields": {
+      "pergunta": "Qual bioma apresenta alta biodiversidade e grande umidade durante boa parte do ano?",
+      "alternativa_a": "deserto",
+      "alternativa_b": "floresta tropical",
+      "alternativa_c": "tundra",
+      "alternativa_d": "estepe",
+      "alternativa_e": "taiga seca",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1457,
+    "fields": {
+      "pergunta": "Qual tipo sanguíneo do sistema ABO possui antígenos A e B nas hemácias?",
+      "alternativa_a": "A",
+      "alternativa_b": "B",
+      "alternativa_c": "AB",
+      "alternativa_d": "O",
+      "alternativa_e": "Rh negativo",
+      "resposta_correta": "C",
+      "serie": "3 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1458,
+    "fields": {
+      "pergunta": "Qual estrutura conecta o feto à placenta?",
+      "alternativa_a": "traqueia",
+      "alternativa_b": "cordão umbilical",
+      "alternativa_c": "uretra",
+      "alternativa_d": "tendão",
+      "alternativa_e": "esôfago",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1459,
+    "fields": {
+      "pergunta": "Qual doença é causada pelo protozoário Plasmodium?",
+      "alternativa_a": "dengue",
+      "alternativa_b": "malária",
+      "alternativa_c": "tuberculose",
+      "alternativa_d": "sarampo",
+      "alternativa_e": "gripe",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Biologia"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1460,
+    "fields": {
+      "pergunta": "Qual unidade mede energia no Sistema Internacional?",
+      "alternativa_a": "watt",
+      "alternativa_b": "joule",
+      "alternativa_c": "pascal",
+      "alternativa_d": "newton",
+      "alternativa_e": "volt",
+      "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1461,
+    "fields": {
+      "pergunta": "Qual grandeza é calculada por distância dividida pelo tempo?",
+      "alternativa_a": "força",
+      "alternativa_b": "velocidade média",
+      "alternativa_c": "aceleração",
+      "alternativa_d": "energia",
+      "alternativa_e": "potência",
+      "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1462,
+    "fields": {
+      "pergunta": "Qual fenômeno explica a formação de sombras?",
+      "alternativa_a": "refração",
+      "alternativa_b": "propagação retilínea da luz",
+      "alternativa_c": "difração",
+      "alternativa_d": "interferência",
+      "alternativa_e": "polarização",
+      "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1463,
+    "fields": {
+      "pergunta": "Um corpo percorre 100 m em 20 s. Qual é sua velocidade média?",
+      "alternativa_a": "2 m/s",
+      "alternativa_b": "4 m/s",
+      "alternativa_c": "5 m/s",
+      "alternativa_d": "10 m/s",
+      "alternativa_e": "20 m/s",
+      "resposta_correta": "C",
+      "serie": "1 ano EM",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1464,
+    "fields": {
+      "pergunta": "A aceleração da gravidade na superfície da Terra vale aproximadamente:",
+      "alternativa_a": "1 m/s²",
+      "alternativa_b": "5 m/s²",
+      "alternativa_c": "9,8 m/s²",
+      "alternativa_d": "20 m/s²",
+      "alternativa_e": "98 m/s²",
+      "resposta_correta": "C",
+      "serie": "1 ano EM",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1465,
+    "fields": {
+      "pergunta": "Qual lei relaciona força, massa e aceleração por F = m·a?",
+      "alternativa_a": "Primeira lei de Newton",
+      "alternativa_b": "Segunda lei de Newton",
+      "alternativa_c": "Terceira lei de Newton",
+      "alternativa_d": "Lei de Ohm",
+      "alternativa_e": "Lei de Coulomb",
+      "resposta_correta": "B",
+      "serie": "1 ano EM",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1466,
+    "fields": {
+      "pergunta": "Se a velocidade de um corpo permanece constante em linha reta, sua aceleração é:",
+      "alternativa_a": "positiva",
+      "alternativa_b": "negativa",
+      "alternativa_c": "zero",
+      "alternativa_d": "infinita",
+      "alternativa_e": "variável obrigatoriamente",
+      "resposta_correta": "C",
+      "serie": "1 ano EM",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1467,
+    "fields": {
+      "pergunta": "Qual é a unidade de potência no SI?",
+      "alternativa_a": "joule",
+      "alternativa_b": "watt",
+      "alternativa_c": "newton",
+      "alternativa_d": "pascal",
+      "alternativa_e": "coulomb",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1468,
+    "fields": {
+      "pergunta": "A energia potencial gravitacional depende da massa, da gravidade e da:",
+      "alternativa_a": "velocidade",
+      "alternativa_b": "altura",
+      "alternativa_c": "temperatura",
+      "alternativa_d": "pressão",
+      "alternativa_e": "corrente elétrica",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1469,
+    "fields": {
+      "pergunta": "Qual processo de transferência de calor ocorre por contato direto entre partículas?",
+      "alternativa_a": "radiação",
+      "alternativa_b": "condução",
+      "alternativa_c": "convecção",
+      "alternativa_d": "reflexão",
+      "alternativa_e": "refração",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1470,
+    "fields": {
+      "pergunta": "Em um espelho plano, a imagem formada é:",
+      "alternativa_a": "real e invertida",
+      "alternativa_b": "virtual e direita",
+      "alternativa_c": "real e maior",
+      "alternativa_d": "virtual e invertida",
+      "alternativa_e": "sempre menor",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1471,
+    "fields": {
+      "pergunta": "Qual cor de luz visível possui maior frequência?",
+      "alternativa_a": "vermelha",
+      "alternativa_b": "laranja",
+      "alternativa_c": "amarela",
+      "alternativa_d": "verde",
+      "alternativa_e": "violeta",
       "resposta_correta": "E",
       "serie": "2 ano EM",
       "materia": "Física"
@@ -2896,107 +2401,602 @@
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1348,
+    "pk": 1472,
     "fields": {
-      "pergunta": "Qual gás é mais abundante no ar atmosférico?",
-      "alternativa_a": "Gás carbônico",
-      "alternativa_b": "Nitrogênio",
-      "alternativa_c": "Oxigênio",
-      "alternativa_d": "Ozônio",
-      "alternativa_e": "Hidrogênio",
+      "pergunta": "A relação V = R·I corresponde à:",
+      "alternativa_a": "Lei de Newton",
+      "alternativa_b": "Lei de Ohm",
+      "alternativa_c": "Lei de Faraday",
+      "alternativa_d": "Lei de Snell",
+      "alternativa_e": "Lei de Hooke",
       "resposta_correta": "B",
-      "serie": "6 ano",
-      "materia": "Ciências"
+      "serie": "3 ano EM",
+      "materia": "Física"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1349,
+    "pk": 1473,
     "fields": {
-      "pergunta": "Qual alternativa apresenta uma palavra proparoxítona?",
-      "alternativa_a": "hotel",
-      "alternativa_b": "cafe",
-      "alternativa_c": "papel",
-      "alternativa_d": "matemática",
-      "alternativa_e": "abacaxi",
+      "pergunta": "Qual unidade mede corrente elétrica?",
+      "alternativa_a": "volt",
+      "alternativa_b": "ampere",
+      "alternativa_c": "ohm",
+      "alternativa_d": "watt",
+      "alternativa_e": "tesla",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1474,
+    "fields": {
+      "pergunta": "Dois resistores de 2 Ω ligados em série têm resistência equivalente de:",
+      "alternativa_a": "1 Ω",
+      "alternativa_b": "2 Ω",
+      "alternativa_c": "3 Ω",
+      "alternativa_d": "4 Ω",
+      "alternativa_e": "8 Ω",
       "resposta_correta": "D",
       "serie": "3 ano EM",
-      "materia": "Português"
+      "materia": "Física"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1350,
+    "pk": 1475,
     "fields": {
-      "pergunta": "Qual é a área de um retângulo de base 8 cm e altura 5 cm?",
-      "alternativa_a": "40 cm²",
-      "alternativa_b": "13 cm²",
-      "alternativa_c": "26 cm²",
-      "alternativa_d": "80 cm²",
-      "alternativa_e": "20 cm²",
-      "resposta_correta": "A",
+      "pergunta": "Qual partícula do átomo tem carga positiva?",
+      "alternativa_a": "elétron",
+      "alternativa_b": "próton",
+      "alternativa_c": "nêutron",
+      "alternativa_d": "fóton",
+      "alternativa_e": "neutrino",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1476,
+    "fields": {
+      "pergunta": "A frequência é medida em:",
+      "alternativa_a": "metros",
+      "alternativa_b": "hertz",
+      "alternativa_c": "joules",
+      "alternativa_d": "newtons",
+      "alternativa_e": "teslas",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Física"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1477,
+    "fields": {
+      "pergunta": "Qual é o símbolo químico do carbono?",
+      "alternativa_a": "Ca",
+      "alternativa_b": "C",
+      "alternativa_c": "Co",
+      "alternativa_d": "Cr",
+      "alternativa_e": "Cb",
+      "resposta_correta": "B",
       "serie": "9 ano",
-      "materia": "Matemática"
+      "materia": "Química"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1351,
+    "pk": 1478,
     "fields": {
-      "pergunta": "A palavra 'because' significa:",
-      "alternativa_a": "antes",
-      "alternativa_b": "embora",
-      "alternativa_c": "porque",
-      "alternativa_d": "então",
-      "alternativa_e": "mas",
+      "pergunta": "Qual substância possui fórmula O₂?",
+      "alternativa_a": "ozônio",
+      "alternativa_b": "gás oxigênio",
+      "alternativa_c": "água",
+      "alternativa_d": "dióxido de carbono",
+      "alternativa_e": "hidrogênio",
+      "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1479,
+    "fields": {
+      "pergunta": "Uma solução com pH menor que 7 é:",
+      "alternativa_a": "básica",
+      "alternativa_b": "ácida",
+      "alternativa_c": "neutra",
+      "alternativa_d": "metálica",
+      "alternativa_e": "salina obrigatoriamente",
+      "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1480,
+    "fields": {
+      "pergunta": "Qual é o número atômico do hidrogênio?",
+      "alternativa_a": "0",
+      "alternativa_b": "1",
+      "alternativa_c": "2",
+      "alternativa_d": "8",
+      "alternativa_e": "10",
+      "resposta_correta": "B",
+      "serie": "1 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1481,
+    "fields": {
+      "pergunta": "Qual partícula determina o número atômico de um elemento?",
+      "alternativa_a": "nêutron",
+      "alternativa_b": "próton",
+      "alternativa_c": "elétron",
+      "alternativa_d": "fóton",
+      "alternativa_e": "íon",
+      "resposta_correta": "B",
+      "serie": "1 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1482,
+    "fields": {
+      "pergunta": "Qual elemento pertence ao grupo dos gases nobres?",
+      "alternativa_a": "sódio",
+      "alternativa_b": "cloro",
+      "alternativa_c": "neônio",
+      "alternativa_d": "cálcio",
+      "alternativa_e": "ferro",
       "resposta_correta": "C",
+      "serie": "1 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1483,
+    "fields": {
+      "pergunta": "Qual fórmula representa o dióxido de carbono?",
+      "alternativa_a": "CO",
+      "alternativa_b": "CO₂",
+      "alternativa_c": "C₂O",
+      "alternativa_d": "O₂",
+      "alternativa_e": "CH₄",
+      "resposta_correta": "B",
+      "serie": "1 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1484,
+    "fields": {
+      "pergunta": "Qual é a massa molar aproximada da água (H₂O)?",
+      "alternativa_a": "10 g/mol",
+      "alternativa_b": "18 g/mol",
+      "alternativa_c": "20 g/mol",
+      "alternativa_d": "32 g/mol",
+      "alternativa_e": "44 g/mol",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1485,
+    "fields": {
+      "pergunta": "Uma ligação entre dois átomos não metálicos é geralmente:",
+      "alternativa_a": "iônica",
+      "alternativa_b": "covalente",
+      "alternativa_c": "metálica",
+      "alternativa_d": "nuclear",
+      "alternativa_e": "eletrolítica",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1486,
+    "fields": {
+      "pergunta": "Qual composto é um ácido?",
+      "alternativa_a": "NaOH",
+      "alternativa_b": "HCl",
+      "alternativa_c": "NaCl",
+      "alternativa_d": "CaO",
+      "alternativa_e": "NH₃",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1487,
+    "fields": {
+      "pergunta": "Qual substância é uma base?",
+      "alternativa_a": "H₂SO₄",
+      "alternativa_b": "HNO₃",
+      "alternativa_c": "NaOH",
+      "alternativa_d": "CO₂",
+      "alternativa_e": "HCl",
+      "resposta_correta": "C",
+      "serie": "2 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1488,
+    "fields": {
+      "pergunta": "A reação entre um ácido e uma base é chamada de:",
+      "alternativa_a": "combustão",
+      "alternativa_b": "neutralização",
+      "alternativa_c": "oxidação apenas",
+      "alternativa_d": "sublimação",
+      "alternativa_e": "fusão",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1489,
+    "fields": {
+      "pergunta": "Qual hidrocarboneto possui apenas ligações simples entre carbonos?",
+      "alternativa_a": "alcano",
+      "alternativa_b": "alceno",
+      "alternativa_c": "alcino",
+      "alternativa_d": "aromático",
+      "alternativa_e": "álcool",
+      "resposta_correta": "A",
+      "serie": "3 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1490,
+    "fields": {
+      "pergunta": "O grupo funcional -OH caracteriza principalmente os:",
+      "alternativa_a": "aldeídos",
+      "alternativa_b": "álcoois",
+      "alternativa_c": "ésteres",
+      "alternativa_d": "cetonas",
+      "alternativa_e": "aminas",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1491,
+    "fields": {
+      "pergunta": "Qual gás é liberado na combustão completa de hidrocarbonetos, além de vapor d'água?",
+      "alternativa_a": "CO₂",
+      "alternativa_b": "N₂",
+      "alternativa_c": "H₂",
+      "alternativa_d": "Cl₂",
+      "alternativa_e": "NH₃",
+      "resposta_correta": "A",
+      "serie": "3 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1492,
+    "fields": {
+      "pergunta": "Qual processo separa líquidos com diferentes pontos de ebulição?",
+      "alternativa_a": "filtração",
+      "alternativa_b": "destilação",
+      "alternativa_c": "decantação",
+      "alternativa_d": "peneiração",
+      "alternativa_e": "imantação",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1493,
+    "fields": {
+      "pergunta": "Qual elemento é o principal componente dos compostos orgânicos?",
+      "alternativa_a": "ferro",
+      "alternativa_b": "carbono",
+      "alternativa_c": "sódio",
+      "alternativa_d": "cálcio",
+      "alternativa_e": "hélio",
+      "resposta_correta": "B",
+      "serie": "3 ano EM",
+      "materia": "Química"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1494,
+    "fields": {
+      "pergunta": "Qual é a tradução de 'cat'?",
+      "alternativa_a": "cachorro",
+      "alternativa_b": "gato",
+      "alternativa_c": "pássaro",
+      "alternativa_d": "peixe",
+      "alternativa_e": "cavalo",
+      "resposta_correta": "B",
+      "serie": "6 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1495,
+    "fields": {
+      "pergunta": "Qual é a tradução de 'school'?",
+      "alternativa_a": "casa",
+      "alternativa_b": "escola",
+      "alternativa_c": "rua",
+      "alternativa_d": "cidade",
+      "alternativa_e": "janela",
+      "resposta_correta": "B",
+      "serie": "6 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1496,
+    "fields": {
+      "pergunta": "Qual palavra significa 'água' em inglês?",
+      "alternativa_a": "water",
+      "alternativa_b": "fire",
+      "alternativa_c": "earth",
+      "alternativa_d": "air",
+      "alternativa_e": "food",
+      "resposta_correta": "A",
+      "serie": "6 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1497,
+    "fields": {
+      "pergunta": "Qual é o passado de 'go'?",
+      "alternativa_a": "goed",
+      "alternativa_b": "gone",
+      "alternativa_c": "went",
+      "alternativa_d": "goes",
+      "alternativa_e": "going",
+      "resposta_correta": "C",
+      "serie": "7 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1498,
+    "fields": {
+      "pergunta": "Qual pronome significa 'nós'?",
+      "alternativa_a": "they",
+      "alternativa_b": "we",
+      "alternativa_c": "he",
+      "alternativa_d": "she",
+      "alternativa_e": "it",
+      "resposta_correta": "B",
+      "serie": "7 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1499,
+    "fields": {
+      "pergunta": "Qual é a tradução de 'beautiful'?",
+      "alternativa_a": "rápido",
+      "alternativa_b": "bonito",
+      "alternativa_c": "fraco",
+      "alternativa_d": "longe",
+      "alternativa_e": "caro",
+      "resposta_correta": "B",
+      "serie": "7 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1500,
+    "fields": {
+      "pergunta": "Complete: 'She ___ a student.'",
+      "alternativa_a": "am",
+      "alternativa_b": "are",
+      "alternativa_c": "is",
+      "alternativa_d": "be",
+      "alternativa_e": "were",
+      "resposta_correta": "C",
+      "serie": "8 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1501,
+    "fields": {
+      "pergunta": "Qual é o plural de 'child'?",
+      "alternativa_a": "childs",
+      "alternativa_b": "children",
+      "alternativa_c": "childes",
+      "alternativa_d": "childrens",
+      "alternativa_e": "childer",
+      "resposta_correta": "B",
+      "serie": "8 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1502,
+    "fields": {
+      "pergunta": "Qual palavra significa 'ontem'?",
+      "alternativa_a": "today",
+      "alternativa_b": "tomorrow",
+      "alternativa_c": "yesterday",
+      "alternativa_d": "tonight",
+      "alternativa_e": "always",
+      "resposta_correta": "C",
+      "serie": "8 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1503,
+    "fields": {
+      "pergunta": "Qual é o comparativo de 'good'?",
+      "alternativa_a": "gooder",
+      "alternativa_b": "more good",
+      "alternativa_c": "better",
+      "alternativa_d": "best",
+      "alternativa_e": "well",
+      "resposta_correta": "C",
+      "serie": "9 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1504,
+    "fields": {
+      "pergunta": "Complete: 'I have ___ my homework.'",
+      "alternativa_a": "do",
+      "alternativa_b": "did",
+      "alternativa_c": "done",
+      "alternativa_d": "does",
+      "alternativa_e": "doing",
+      "resposta_correta": "C",
+      "serie": "9 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1505,
+    "fields": {
+      "pergunta": "Qual expressão significa 'com frequência'?",
+      "alternativa_a": "never",
+      "alternativa_b": "often",
+      "alternativa_c": "rarely",
+      "alternativa_d": "yesterday",
+      "alternativa_e": "now",
+      "resposta_correta": "B",
+      "serie": "9 ano",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1506,
+    "fields": {
+      "pergunta": "Qual é a forma correta do futuro com 'will'?",
+      "alternativa_a": "I will study",
+      "alternativa_b": "I will studied",
+      "alternativa_c": "I will studying",
+      "alternativa_d": "I wills study",
+      "alternativa_e": "I studied will",
+      "resposta_correta": "A",
+      "serie": "1 ano EM",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1507,
+    "fields": {
+      "pergunta": "Qual frase está no present continuous?",
+      "alternativa_a": "She studies every day",
+      "alternativa_b": "She is studying now",
+      "alternativa_c": "She studied yesterday",
+      "alternativa_d": "She will study",
+      "alternativa_e": "She has studied",
+      "resposta_correta": "B",
+      "serie": "1 ano EM",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1508,
+    "fields": {
+      "pergunta": "Qual é o significado de 'although'?",
+      "alternativa_a": "porque",
+      "alternativa_b": "embora",
+      "alternativa_c": "portanto",
+      "alternativa_d": "antes",
+      "alternativa_e": "durante",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1509,
+    "fields": {
+      "pergunta": "Complete: 'If I had more time, I ___ travel more.'",
+      "alternativa_a": "will",
+      "alternativa_b": "would",
+      "alternativa_c": "am",
+      "alternativa_d": "did",
+      "alternativa_e": "have",
+      "resposta_correta": "B",
+      "serie": "2 ano EM",
+      "materia": "Inglês"
+    }
+  },
+  {
+    "model": "quiz.pergunta",
+    "pk": 1510,
+    "fields": {
+      "pergunta": "Qual alternativa está na voz passiva?",
+      "alternativa_a": "The chef cooked the meal",
+      "alternativa_b": "The meal was cooked by the chef",
+      "alternativa_c": "The chef is cooking",
+      "alternativa_d": "The chef cooks well",
+      "alternativa_e": "The chef will cook",
+      "resposta_correta": "B",
       "serie": "3 ano EM",
       "materia": "Inglês"
     }
   },
   {
     "model": "quiz.pergunta",
-    "pk": 1352,
+    "pk": 1511,
     "fields": {
-      "pergunta": "Qual órgão do corpo humano bombeia o sangue?",
-      "alternativa_a": "Estômago",
-      "alternativa_b": "Rim",
-      "alternativa_c": "Fígado",
-      "alternativa_d": "Coração",
-      "alternativa_e": "Pulmão",
-      "resposta_correta": "D",
-      "serie": "6 ano",
-      "materia": "Ciências"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1353,
-    "fields": {
-      "pergunta": "Qual alternativa apresenta uma palavra proparoxítona?",
-      "alternativa_a": "matemática",
-      "alternativa_b": "cafe",
-      "alternativa_c": "hotel",
-      "alternativa_d": "papel",
-      "alternativa_e": "abacaxi",
-      "resposta_correta": "A",
-      "serie": "8 ano",
-      "materia": "Português"
-    }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1354,
-    "fields": {
-      "pergunta": "A molécula que carrega a informação genética é o:",
-      "alternativa_a": "amido",
-      "alternativa_b": "RNA",
-      "alternativa_c": "lipídio",
-      "alternativa_d": "DNA",
-      "alternativa_e": "ATP",
-      "resposta_correta": "D",
-      "serie": "1 ano EM",
-      "materia": "Biologia"
+      "pergunta": "O beto é gay?",
+      "alternativa_a": "Sim",
+      "alternativa_b": "Certeza",
+      "alternativa_c": "As vezes",
+      "alternativa_d": "O João sim",
+      "alternativa_e": "Não",
+      "resposta_correta": "C",
+      "serie": "67 ano",
+      "materia": "vida"
     }
   }
 ]
