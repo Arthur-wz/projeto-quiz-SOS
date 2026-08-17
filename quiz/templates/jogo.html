@@ -194,20 +194,16 @@
 
 
         /* ==================================================
-           FEEDBACK
+           FEEDBACK DA RESPOSTA
         ================================================== */
 
         .answer-feedback {
             display: none;
-
-            margin-top: 24px;
-            padding: 20px;
-
-            border-radius: 16px;
-
+            margin-top: 18px;
+            padding: 14px 16px;
+            border-radius: 14px;
             text-align: center;
-
-            animation: feedbackEnter 0.35s ease;
+            animation: feedbackEnter 0.25s ease;
         }
 
         .answer-feedback.show {
@@ -215,91 +211,51 @@
         }
 
         .answer-feedback.correct {
-            background: rgba(34, 197, 94, 0.14);
-
-            border: 1px solid rgba(74, 222, 128, 0.55);
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(74, 222, 128, 0.45);
         }
 
         .answer-feedback.wrong {
-            background: rgba(239, 68, 68, 0.14);
-
-            border: 1px solid rgba(248, 113, 113, 0.55);
-        }
-
-
-        /* ==================================================
-           TEXTO DO FEEDBACK
-        ================================================== */
-
-        .feedback-title {
-            display: block;
-
-            margin-bottom: 8px;
-
-            color: #ffffff;
-
-            font-size: 1.5rem;
-            font-weight: 800;
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(248, 113, 113, 0.45);
         }
 
         .feedback-description {
             margin: 0;
-
-            color: rgba(255, 255, 255, 0.88);
-
-            font-size: 1rem;
-            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 0.98rem;
+            font-weight: 700;
+            line-height: 1.45;
         }
 
-
-        /* ==================================================
-           CONTAGEM
-        ================================================== */
-
         .next-question-timer {
-            margin-top: 12px;
-
-            color: rgba(255, 255, 255, 0.7);
-
-            font-size: 0.9rem;
+            margin: 8px 0 0;
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 0.84rem;
         }
 
         .next-question-timer strong {
             color: #ffffff;
         }
 
-
-        /* ==================================================
-           BARRA DE TEMPO
-        ================================================== */
-
         .timer-progress {
             position: relative;
-
             width: 100%;
-            max-width: 400px;
-            height: 5px;
-
-            margin: 14px auto 0;
-
+            max-width: 360px;
+            height: 4px;
+            margin: 10px auto 0;
             overflow: hidden;
-
             border-radius: 999px;
-
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.14);
         }
 
         .timer-progress span {
             display: block;
-
             width: 100%;
             height: 100%;
-
             background: #ffffff;
-
             transform-origin: left center;
-
-            animation: countdownBar 5s linear forwards;
+            animation: countdownBar 3s linear forwards;
         }
 
 
@@ -560,10 +516,6 @@
                 width: 135px;
             }
 
-            .feedback-title {
-                font-size: 1.3rem;
-            }
-
             .feedback-description {
                 font-size: 0.92rem;
             }
@@ -617,32 +569,8 @@
         </header>
 
 
-        <!-- ==================================================
-             MENSAGENS DJANGO
-        ================================================== -->
-
-        {% if messages %}
-
-            <section
-                class="alerts"
-                aria-live="polite"
-                aria-label="Mensagens"
-            >
-
-                {% for message in messages %}
-
-                    <div
-                        class="alert alert-{{ message.tags|default:'info' }}"
-                        role="alert"
-                    >
-                        {{ message }}
-                    </div>
-
-                {% endfor %}
-
-            </section>
-
-        {% endif %}
+        {# Consome mensagens do Django sem exibi-las na tela. #}
+        {% for message in messages %}{% endfor %}
 
 
         <!-- ==================================================
@@ -949,42 +877,26 @@
                 {% endfor %}
 
             </section>
-
-
             <!-- ==================================================
-                 FEEDBACK
+                 FEEDBACK DA RESPOSTA
             ================================================== -->
 
             <section
                 id="answerFeedback"
                 class="answer-feedback"
-                aria-live="assertive"
+                aria-live="polite"
+                aria-atomic="true"
             >
-
-                <strong
-                    id="feedbackTitle"
-                    class="feedback-title"
-                ></strong>
-
-
                 <p
                     id="feedbackDescription"
                     class="feedback-description"
                 ></p>
 
-
                 <p class="next-question-timer">
-
                     Próxima pergunta em
-
-                    <strong id="countdown">
-                        5
-                    </strong>
-
+                    <strong id="countdown">3</strong>
                     segundos...
-
                 </p>
-
 
                 <div
                     class="timer-progress"
@@ -992,7 +904,6 @@
                 >
                     <span></span>
                 </div>
-
             </section>
 
         </article>
@@ -1106,10 +1017,6 @@
                     document.getElementById("answerFeedback");
 
 
-                const feedbackTitle =
-                    document.getElementById("feedbackTitle");
-
-
                 const feedbackDescription =
                     document.getElementById("feedbackDescription");
 
@@ -1198,6 +1105,10 @@
 
 
                                 pendingHelpForm = form;
+
+                                helpConfirmButton.disabled = false;
+                                helpCancelButton.disabled = false;
+                                helpConfirmButton.textContent = "Confirmar ajuda";
 
 
                                 helpConfirmTitle.textContent =
@@ -1389,6 +1300,7 @@
 
 
                                 answerSubmitted = true;
+                                form.setAttribute("aria-busy", "true");
 
 
                                 const selectedAnswer =
@@ -1492,95 +1404,50 @@
 
 
                                 /* ==================================
-                                   TEXTO DA RESPOSTA CORRETA
+                                   FEEDBACK VISUAL
                                 ================================== */
 
                                 let correctAnswerText = "";
 
-
                                 optionButtons.forEach(
                                     function (button) {
-
-
                                         const answer =
-                                            (
-                                                button.dataset.answer || ""
-                                            )
+                                            (button.dataset.answer || "")
                                                 .trim()
                                                 .toUpperCase();
 
-
-                                        if (
-                                            answer === correctAnswer
-                                        ) {
-
-
+                                        if (answer === correctAnswer) {
                                             correctAnswerText =
                                                 button.dataset.answerText || "";
-
-
                                         }
-
-
                                     }
                                 );
-
-
-                                /* ==================================
-                                   FEEDBACK
-                                ================================== */
 
                                 feedback.classList.remove(
                                     "correct",
                                     "wrong"
                                 );
 
-
                                 feedback.classList.add(
-                                    "show"
+                                    "show",
+                                    isCorrect ? "correct" : "wrong"
                                 );
 
-
-                                if (isCorrect) {
-
-
-                                    feedback.classList.add(
-                                        "correct"
-                                    );
-
-
-                                    feedbackTitle.textContent =
-                                        "✓ Você acertou!";
-
-
-                                } else {
-
-
-                                    feedback.classList.add(
-                                        "wrong"
-                                    );
-
-
-                                    feedbackTitle.textContent =
-                                        "✕ Você errou!";
-
-
-                                }
-
-
                                 feedbackDescription.textContent =
-                                    "A alternativa correta é " +
-                                    correctAnswer +
-                                    " — " +
-                                    correctAnswerText +
-                                    ".";
+                                    isCorrect
+                                        ? "✓ Correto! Próxima pergunta em instantes."
+                                        : "✕ Incorreto. A resposta certa é " +
+                                          correctAnswer +
+                                          " — " +
+                                          correctAnswerText +
+                                          ".";
 
 
                                 /* ==================================
                                    CONTAGEM REGRESSIVA
                                 ================================== */
 
-                                let seconds = 5;
+                                let seconds = 3;
 
 
                                 countdownElement.textContent =
@@ -1619,7 +1486,7 @@
 
 
                                 /* ==================================
-                                   ENVIA APÓS 5 SEGUNDOS
+                                   ENVIA APÓS 3 SEGUNDOS
                                 ================================== */
 
                                 setTimeout(
@@ -1628,7 +1495,7 @@
                                         form.submit();
 
                                     },
-                                    5000
+                                    3000
                                 );
 
 
