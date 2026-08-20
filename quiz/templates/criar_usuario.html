@@ -2,8 +2,17 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Usuario | Quiz SOS</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Criar Usuário | Quiz SOS</title>
+
+    <!-- =====================================================
+         CSS DA PÁGINA
+    ====================================================== -->
     <style>
         * {
             margin: 0;
@@ -14,49 +23,101 @@
         :root {
             --bg-soft: rgba(8, 18, 38, 0.42);
             --border-soft: rgba(255, 255, 255, 0.12);
+
             --text-main: #f5f7fb;
             --text-soft: rgba(245, 247, 251, 0.78);
+
             --accent: #ffbb24;
+            --accent-secondary: #ffcf63;
+
             --input-bg: rgba(255, 255, 255, 0.10);
+
             --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-            --auth-background: radial-gradient(circle at top left, rgba(255, 187, 36, 0.10), transparent 28%), radial-gradient(circle at bottom right, rgba(82, 135, 255, 0.12), transparent 28%), linear-gradient(135deg, #000814, #001133 55%, #071b36);
+
+            --auth-background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(255, 187, 36, 0.10),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(82, 135, 255, 0.12),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #000814,
+                    #001133 55%,
+                    #071b36
+                );
+
             --auth-overlay: rgba(0, 0, 0, 0.18);
         }
 
+        /* =====================================================
+           BODY
+        ====================================================== */
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
+
             min-height: 100vh;
+
             color: var(--text-main);
+
             background: var(--auth-background);
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             padding: 30px 18px;
+
             position: relative;
+
             overflow: auto;
         }
 
         body::before {
             content: "";
+
             position: fixed;
             inset: 0;
+
             background: var(--auth-overlay);
+
             pointer-events: none;
         }
+
+        /* =====================================================
+           CARD PRINCIPAL
+        ====================================================== */
 
         .box {
             width: 100%;
             max-width: 700px;
+
             background: var(--bg-soft);
+
             border: 1px solid var(--border-soft);
+
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
+
             border-radius: 28px;
+
             padding: 36px 30px 28px;
+
             box-shadow: var(--shadow);
+
             position: relative;
             z-index: 1;
         }
+
+        /* =====================================================
+           CABEÇALHO
+        ====================================================== */
 
         .header {
             text-align: center;
@@ -70,9 +131,15 @@
 
         .header p {
             color: var(--text-soft);
+
             line-height: 1.5;
+
             font-size: 0.97rem;
         }
+
+        /* =====================================================
+           FORMULÁRIO
+        ====================================================== */
 
         .form-group {
             margin-bottom: 16px;
@@ -80,21 +147,35 @@
 
         label {
             display: block;
+
             margin-bottom: 8px;
+
             font-size: 0.92rem;
+
             color: var(--text-soft);
+
             font-weight: 600;
         }
 
         input {
             width: 100%;
+
             padding: 15px 16px;
+
             border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.10);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.10);
+
             background: var(--input-bg);
+
             color: white;
+
             font-size: 1rem;
+
             outline: none;
+
             transition: 0.25s ease;
         }
 
@@ -104,121 +185,607 @@
 
         input:focus {
             border-color: rgba(255, 187, 36, 0.55);
-            box-shadow: 0 0 0 4px rgba(255, 187, 36, 0.12);
-            background: rgba(255, 255, 255, 0.13);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(255, 187, 36, 0.12);
+
+            background:
+                rgba(255, 255, 255, 0.13);
         }
+
+        /* =====================================================
+           BOTÃO NORMAL
+        ====================================================== */
 
         .btn {
             width: 100%;
+
             margin-top: 10px;
+
             padding: 15px 18px;
+
             border: none;
+
             border-radius: 14px;
-            background: linear-gradient(135deg, var(--accent), #ffcf63);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--accent),
+                    var(--accent-secondary)
+                );
+
             color: #111;
+
             font-size: 1rem;
+
             font-weight: 700;
+
             cursor: pointer;
+
             transition: 0.25s ease;
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(255, 187, 36, 0.22);
+
+            box-shadow:
+                0 12px 24px
+                rgba(255, 187, 36, 0.22);
         }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* =====================================================
+           DIVISOR "OU"
+        ====================================================== */
+
+        .divider {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin: 25px 0 18px;
+
+            color:
+                rgba(255, 255, 255, 0.55);
+
+            font-size: 0.85rem;
+
+            font-weight: 600;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background:
+                rgba(255, 255, 255, 0.14);
+        }
+
+        /* =====================================================
+           BOTÃO GOOGLE
+        ====================================================== */
+
+        .google-btn {
+            width: 100%;
+
+            min-height: 54px;
+
+            padding: 13px 18px;
+
+            border-radius: 14px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.14);
+
+            background:
+                rgba(255, 255, 255, 0.08);
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 12px;
+
+            font-size: 1rem;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .google-btn:hover {
+            background:
+                rgba(255, 255, 255, 0.13);
+
+            border-color:
+                rgba(255, 255, 255, 0.25);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(0, 0, 0, 0.20);
+        }
+
+        .google-btn:active {
+            transform: translateY(0);
+        }
+
+        .google-btn:disabled {
+            opacity: 0.6;
+            cursor: wait;
+            transform: none;
+        }
+
+        /* =====================================================
+           ÍCONE DO GOOGLE
+        ====================================================== */
+
+        .google-icon {
+            width: 22px;
+            height: 22px;
+
+            display: block;
+        }
+
+        /* =====================================================
+           MENSAGENS
+        ====================================================== */
 
         .mensagem {
             margin-top: 18px;
+
             padding: 12px 14px;
+
             border-radius: 12px;
+
             font-weight: 600;
+
             text-align: center;
         }
 
         .erro {
             color: #ff8a8a;
-            background: rgba(255, 77, 77, 0.10);
-            border: 1px solid rgba(255, 77, 77, 0.18);
+
+            background:
+                rgba(255, 77, 77, 0.10);
+
+            border:
+                1px solid
+                rgba(255, 77, 77, 0.18);
         }
 
         .sucesso {
             color: #80ffad;
-            background: rgba(97, 255, 139, 0.10);
-            border: 1px solid rgba(97, 255, 139, 0.18);
+
+            background:
+                rgba(97, 255, 139, 0.10);
+
+            border:
+                1px solid
+                rgba(97, 255, 139, 0.18);
         }
+
+        /* =====================================================
+           VOLTAR PRO LOGIN
+        ====================================================== */
 
         .footer-link {
             text-align: center;
-            margin-top: 20px;
+
+            margin-top: 22px;
         }
 
         .footer-link a {
             color: var(--text-main);
+
             text-decoration: none;
+
             font-weight: 600;
+
             opacity: 0.9;
+
             transition: 0.2s ease;
         }
 
         .footer-link a:hover {
             color: var(--accent);
+
             opacity: 1;
         }
 
+        /* =====================================================
+           RESPONSIVO
+        ====================================================== */
+
         @media (max-width: 520px) {
             .box {
-                padding: 28px 20px 24px;
+                padding:
+                    28px 20px
+                    24px;
+
                 border-radius: 22px;
             }
 
             .header h1 {
                 font-size: 1.7rem;
             }
+
+            .google-btn {
+                min-height: 52px;
+            }
         }
     </style>
+
     {% if tema_css_inline %}
-        <style>{{ tema_css_inline|safe }}</style>
+        <style>
+            {{ tema_css_inline|safe }}
+        </style>
     {% endif %}
 </head>
+
 <body>
+
     <div class="box">
+
+        <!-- =====================================================
+             CABEÇALHO
+        ====================================================== -->
+
         <div class="header">
-            <h1>Criar Usuario</h1>
-            <p>Cadastre sua conta para jogar, acompanhar seu desempenho e evoluir no sistema.</p>
+            <h1>Criar Usuário</h1>
+
+            <p>
+                Cadastre sua conta para jogar,
+                acompanhar seu desempenho e evoluir no sistema.
+            </p>
         </div>
 
+        <!-- =====================================================
+             CADASTRO NORMAL DO DJANGO
+        ====================================================== -->
+
         <form method="post">
+
             {% csrf_token %}
 
             <div class="form-group">
-                <label for="username">Usuario</label>
-                <input id="username" type="text" name="username" placeholder="Escolha um nome de usuario" required>
+
+                <label for="username">
+                    Usuário
+                </label>
+
+                <input
+                    id="username"
+                    type="text"
+                    name="username"
+                    placeholder="Escolha um nome de usuário"
+                    required
+                >
+
             </div>
 
             <div class="form-group">
-                <label for="password">Senha</label>
-                <input id="password" type="password" name="password" placeholder="Crie uma senha" required>
+
+                <label for="password">
+                    Senha
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    placeholder="Crie uma senha"
+                    required
+                >
+
             </div>
 
             <div class="form-group">
-                <label for="confirmar">Confirmar senha</label>
-                <input id="confirmar" type="password" name="confirmar" placeholder="Repita a senha" required>
+
+                <label for="confirmar">
+                    Confirmar senha
+                </label>
+
+                <input
+                    id="confirmar"
+                    type="password"
+                    name="confirmar"
+                    placeholder="Repita a senha"
+                    required
+                >
+
             </div>
 
-            <button type="submit" class="btn">Criar conta</button>
+            <button
+                type="submit"
+                class="btn"
+            >
+                Criar conta
+            </button>
+
         </form>
 
+        <!-- =====================================================
+             DIVISOR
+        ====================================================== -->
+
+        <div class="divider">
+            OU
+        </div>
+
+        <!-- =====================================================
+             LOGIN COM GOOGLE VIA SUPABASE
+        ====================================================== -->
+
+        <button
+            id="googleLoginButton"
+            type="button"
+            class="google-btn"
+        >
+
+            <!-- ÍCONE DO GOOGLE -->
+            <svg
+                class="google-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+                <path
+                    fill="#4285F4"
+                    d="M21.35 12.2c0-.74-.07-1.45-.19-2.14H12v4.05h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.3z"
+                />
+                <path
+                    fill="#34A853"
+                    d="M12 21.7c2.62 0 4.82-.87 6.43-2.36l-3.14-2.45c-.87.58-1.98.92-3.29.92-2.53 0-4.67-1.71-5.44-4.01H3.31v2.53A9.7 9.7 0 0 0 12 21.7z"
+                />
+                <path
+                    fill="#FBBC05"
+                    d="M6.56 13.8A5.83 5.83 0 0 1 6.25 12c0-.63.11-1.24.31-1.8V7.67H3.31A9.7 9.7 0 0 0 2.3 12c0 1.56.37 3.03 1.01 4.33l3.25-2.53z"
+                />
+                <path
+                    fill="#EA4335"
+                    d="M12 6.19c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.82 3.28 14.62 2.3 12 2.3a9.7 9.7 0 0 0-8.69 5.37l3.25 2.53C7.33 7.9 9.47 6.19 12 6.19z"
+                />
+            </svg>
+
+            <span id="googleButtonText">
+                Continuar com Google
+            </span>
+
+        </button>
+
+        <!-- =====================================================
+             MENSAGENS DO DJANGO
+        ====================================================== -->
+
         {% if erro %}
-            <p class="mensagem erro">{{ erro }}</p>
+            <p class="mensagem erro">
+                {{ erro }}
+            </p>
         {% endif %}
 
         {% if sucesso %}
-            <p class="mensagem sucesso">{{ sucesso }}</p>
+            <p class="mensagem sucesso">
+                {{ sucesso }}
+            </p>
         {% endif %}
 
+        <!-- Mensagem do Supabase -->
+        <p
+            id="supabaseError"
+            class="mensagem erro"
+            style="display: none;"
+        ></p>
+
+        <!-- =====================================================
+             VOLTAR
+        ====================================================== -->
+
         <div class="footer-link">
-            <a href="{% url 'login' %}">Voltar para login</a>
+
+            <a href="{% url 'login' %}">
+                Voltar para login
+            </a>
+
         </div>
+
     </div>
+
+
+    <!-- =========================================================
+         SUPABASE JS
+    ========================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- =========================================================
+         LOGIN GOOGLE
+    ========================================================== -->
+
+    <script>
+
+        /*
+        ===========================================================
+        CONFIGURAÇÃO DO SUPABASE
+
+        ALTERE APENAS A PUBLISHABLE KEY ABAIXO.
+
+        NÃO COLOQUE:
+        - senha do banco
+        - service_role
+        - Google Client Secret
+        ===========================================================
+        */
+
+        const SUPABASE_URL =
+            "https://icrzdzfjjlhrykqsdvsj.supabase.co";
+
+
+        const SUPABASE_PUBLISHABLE_KEY =
+            "sb_publishable_KZ_5KdVASgfgoLiRSFrw9g_ABMZV0s2";
+
+
+        /*
+        ===========================================================
+        CRIA O CLIENTE SUPABASE
+        ===========================================================
+        */
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_PUBLISHABLE_KEY
+            );
+
+
+        /*
+        ===========================================================
+        ELEMENTOS
+        ===========================================================
+        */
+
+        const googleButton =
+            document.getElementById(
+                "googleLoginButton"
+            );
+
+
+        const googleButtonText =
+            document.getElementById(
+                "googleButtonText"
+            );
+
+
+        const supabaseError =
+            document.getElementById(
+                "supabaseError"
+            );
+
+
+        /*
+        ===========================================================
+        LOGIN COM GOOGLE
+        ===========================================================
+        */
+
+        googleButton.addEventListener(
+            "click",
+
+            async function () {
+
+                /*
+                Limpa erros anteriores
+                */
+
+                supabaseError.style.display =
+                    "none";
+
+                supabaseError.textContent =
+                    "";
+
+
+                /*
+                Bloqueia o botão enquanto
+                o login começa
+                */
+
+                googleButton.disabled =
+                    true;
+
+                googleButtonText.textContent =
+                    "Abrindo Google...";
+
+
+                try {
+
+                    /*
+                    ===============================================
+                    INICIA LOGIN GOOGLE
+                    ===============================================
+                    */
+
+                    const {
+                        data,
+                        error
+                    } =
+                    await supabaseClient
+                        .auth
+                        .signInWithOAuth({
+
+                            provider:
+                                "google",
+
+                            options: {
+
+                                /*
+                                Depois do Google,
+                                o Supabase volta para cá.
+                                */
+
+                                redirectTo:
+                                 window.location.origin + "/login/?supabase=1"
+                            }
+                        });
+
+
+                    /*
+                    ===============================================
+                    ERRO DO SUPABASE
+                    ===============================================
+                    */
+
+                    if (error) {
+
+                        throw error;
+
+                    }
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Erro no login Google:",
+                        error
+                    );
+
+
+                    supabaseError.textContent =
+                        "Não foi possível iniciar o login com Google.";
+
+
+                    supabaseError.style.display =
+                        "block";
+
+
+                    googleButton.disabled =
+                        false;
+
+
+                    googleButtonText.textContent =
+                        "Continuar com Google";
+                }
+            }
+        );
+
+    </script>
+
 </body>
 </html>

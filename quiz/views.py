@@ -1,3 +1,5 @@
+import json
+import os
 import random
 from datetime import datetime, time, timedelta
 
@@ -9,6 +11,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import NoReverseMatch, reverse
 from django.utils import timezone
 from django.views.decorators.http import require_POST
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 from django.conf import settings
 
@@ -54,27 +58,78 @@ def home(request):
 
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect("home")
+
     erro = None
 
     if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
+        supabase_access_token = request.POST.get("supabase_access_token", "").strip()
 
-        user = authenticate(request, username=username, password=password)
+        # Login Google/Supabase -> cria/encontra um User do Django e abre a sessao Django.
+        if supabase_access_token:
+            dados_supabase = _validar_usuario_supabase(supabase_access_token)
 
-        if user is not None:
-            auth_login(request, user)
-            messages.success(request, f"Login efetuado com sucesso. Bem-vindo, {user.username}.")
-            return redirect("home")
+            if dados_supabase:
+                email = (dados_supabase.get("email") or "").strip().lower()
 
-        erro = "Usuario ou senha invalidos."
+                if not email:
+                    erro = "O Google nao retornou um email valido."
+                else:
+                    user = User.objects.filter(email__iexact=email).first()
 
-    context = {
-        "erro": erro,
-        "google_login_configured": _google_login_esta_configurado(),
-        "google_login_url": _obter_url_login_google(),
-    }
-    return render(request, "login.html", context)
+                    if user is None:
+                        username = _gerar_username_google(email)
+
+                        user = User.objects.create_user(
+                            username=username,
+                            email=email,
+                        )
+                        user.set_unusable_password()
+                        user.save(update_fields=["password"])
+
+                    auth_login(
+                        request,
+                        user,
+                        backend="django.contrib.auth.backends.ModelBackend",
+                    )
+
+                    messages.success(
+                        request,
+                        f"Login com Google efetuado com sucesso. Bem-vindo, {user.username}.",
+                    )
+
+                    return redirect("home")
+            else:
+                erro = "Nao foi possivel validar o login do Google. Tente novamente."
+
+        else:
+            # Login tradicional do Django.
+            username = request.POST.get("username", "").strip()
+            password = request.POST.get("password", "")
+
+            if not username or not password:
+                erro = "Preencha usuario e senha."
+            else:
+                user = authenticate(
+                    request,
+                    username=username,
+                    password=password,
+                )
+
+                if user is not None:
+                    auth_login(request, user)
+
+                    messages.success(
+                        request,
+                        f"Login efetuado com sucesso. Bem-vindo, {user.username}.",
+                    )
+
+                    return redirect("home")
+
+                erro = "Usuario ou senha invalidos."
+
+    return render(request, "login.html", {"erro": erro})
 
 
 @require_POST
@@ -85,13 +140,15 @@ def logout_view(request):
 
 
 def criar_usuario(request):
+    if request.user.is_authenticated:
+        return redirect("home")
+
     erro = None
-    sucesso = None
 
     if request.method == "POST":
         username = request.POST.get("username", "").strip()
-        password = request.POST.get("password", "").strip()
-        confirmar = request.POST.get("confirmar", "").strip()
+        password = request.POST.get("password", "")
+        confirmar = request.POST.get("confirmar", "")
 
         if not username or not password or not confirmar:
             erro = "Preencha todos os campos."
@@ -100,10 +157,23 @@ def criar_usuario(request):
         elif User.objects.filter(username=username).exists():
             erro = "Esse usuario ja existe."
         else:
-            User.objects.create_user(username=username, password=password)
-            sucesso = "Usuario criado com sucesso!"
+            user = User.objects.create_user(
+                username=username,
+                password=password,
+            )
 
-    return render(request, "criar_usuario.html", {"erro": erro, "sucesso": sucesso})
+            auth_login(
+                request,
+                user,
+                backend="django.contrib.auth.backends.ModelBackend",
+            )
+            messages.success(
+                request,
+                f"Conta criada com sucesso. Bem-vindo, {user.username}!",
+            )
+            return redirect("home")
+
+    return render(request, "criar_usuario.html", {"erro": erro})
 
 
 @require_POST
@@ -933,6 +1003,56 @@ def _inicio_do_dia(data):
     fuso = timezone.get_current_timezone()
     return timezone.make_aware(datetime.combine(data, time.min), fuso)
 
+
+
+def _validar_usuario_supabase(access_token):
+    supabase_url = os.getenv(
+        "SUPABASE_URL",
+        "https://icrzdzfjjlhrykqsdvsj.supabase.co",
+    ).rstrip("/")
+
+    publishable_key = os.getenv("SUPABASE_PUBLISHABLE_KEY", "").strip()
+
+    if not access_token or not publishable_key:
+        return None
+
+    requisicao = Request(
+        f"{supabase_url}/auth/v1/user",
+        headers={
+            "Authorization": f"Bearer {access_token}",
+            "apikey": publishable_key,
+            "Accept": "application/json",
+        },
+        method="GET",
+    )
+
+    try:
+        with urlopen(requisicao, timeout=10) as resposta:
+            return json.loads(resposta.read().decode("utf-8"))
+    except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+        return None
+
+
+def _gerar_username_google(email):
+    base = email.split("@", 1)[0].strip() or "usuario"
+    base = "".join(
+        caractere
+        for caractere in base
+        if caractere.isalnum() or caractere in "._-"
+    )[:140]
+
+    if not base:
+        base = "usuario"
+
+    username = base
+    contador = 1
+
+    while User.objects.filter(username=username).exists():
+        sufixo = f"-{contador}"
+        username = f"{base[:150 - len(sufixo)]}{sufixo}"
+        contador += 1
+
+    return username
 
 def _google_login_esta_configurado():
     google_settings = getattr(settings, "SOCIALACCOUNT_PROVIDERS", {}).get("google", {})
