@@ -34,14 +34,6 @@
                         </p>
                     {% endif %}
 
-                    {% if messages %}
-                        <div class="alerts">
-                            {% for message in messages %}
-                                <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-
                     <div class="hero-actions">
                         <form method="post" action="{% url 'iniciar_partida' %}">
                             {% csrf_token %}
