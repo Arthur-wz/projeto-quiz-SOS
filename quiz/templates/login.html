@@ -3,8 +3,14 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login | Quiz SOS</title>
+
     <style>
         * {
             margin: 0;
@@ -14,172 +20,1030 @@
 
         :root {
             --bg-dark: #06101f;
-            --bg-soft: rgba(8, 18, 38, 0.42);
-            --border-soft: rgba(255, 255, 255, 0.12);
-            --text-main: #f5f7fb;
-            --text-soft: rgba(245, 247, 251, 0.78);
-            --accent: #ffbb24;
-            --input-bg: rgba(255, 255, 255, 0.10);
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-            --auth-background: radial-gradient(circle at top left, rgba(255, 187, 36, 0.12), transparent 30%), radial-gradient(circle at bottom right, rgba(82, 135, 255, 0.12), transparent 28%), linear-gradient(135deg, #000814, #001133 55%, #071b36);
-            --auth-overlay: rgba(0, 0, 0, 0.18);
+
+            --bg-soft:
+                rgba(8, 18, 38, 0.48);
+
+            --border-soft:
+                rgba(255, 255, 255, 0.12);
+
+            --text-main:
+                #f5f7fb;
+
+            --text-soft:
+                rgba(245, 247, 251, 0.75);
+
+            --accent:
+                #ffbb24;
+
+            --accent-light:
+                #ffd56b;
+
+            --input-bg:
+                rgba(255, 255, 255, 0.10);
+
+            --shadow:
+                0 20px 60px rgba(0, 0, 0, 0.38);
+
+            --auth-background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(255, 187, 36, 0.12),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(82, 135, 255, 0.12),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #000814,
+                    #001133 55%,
+                    #071b36
+                );
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             min-height: 100vh;
-            color: var(--text-main);
-            background: var(--auth-background);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+            color:
+                var(--text-main);
+
+            background:
+                var(--auth-background);
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            padding:
+                30px 18px;
+
+            position:
+                relative;
         }
+
+        body::before {
+            content: "";
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            background:
+                rgba(0, 0, 0, 0.18);
+
+            pointer-events:
+                none;
+        }
+
+        /* =====================================================
+           CONTAINER
+        ====================================================== */
 
         .container-login {
-            width: 100%;
-            max-width: 470px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem;
+            width:
+                100%;
+
+            max-width:
+                470px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            position:
+                relative;
+
+            z-index:
+                1;
         }
+
+        /* =====================================================
+           GIF
+        ====================================================== */
 
         .gif-topo {
-            width: 220px;
-            display: block;
-            margin: -70px auto 10px auto;
+            width:
+                220px;
+
+            max-width:
+                75%;
+
+            display:
+                block;
+
+            margin:
+                -60px auto 8px;
+
+            pointer-events:
+                none;
         }
+
+        /* =====================================================
+           CARD
+        ====================================================== */
 
         .box {
-            background: rgba(0, 0, 0, 0.441);
-            padding: 40px;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: 0 0 25px #ffbb24;
-            width: 460px;
-            max-width: 90%;
+            width:
+                100%;
+
+            padding:
+                38px 34px 30px;
+
+            border-radius:
+                26px;
+
+            text-align:
+                center;
+
+            background:
+                var(--bg-soft);
+
+            border:
+                1px solid
+                var(--border-soft);
+
+            backdrop-filter:
+                blur(16px);
+
+            -webkit-backdrop-filter:
+                blur(16px);
+
+            box-shadow:
+                var(--shadow);
         }
 
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
+        .box h2 {
+            font-size:
+                2.3rem;
+
+            margin-bottom:
+                8px;
         }
 
-        input,
-        button {
-            width: 100%;
-            margin: 15px 0;
-            padding: 16px;
-            border: none;
-            border-radius: 14px;
-            font-size: 1rem;
-            outline: none;
+        .subtitle {
+            color:
+                var(--text-soft);
+
+            font-size:
+                0.95rem;
+
+            line-height:
+                1.5;
+
+            margin-bottom:
+                24px;
         }
 
-        input {
-            background: #d9dfeb;
-            color: black;
+        /* =====================================================
+           CAMPOS
+        ====================================================== */
+
+        .input-group {
+            margin-bottom:
+                15px;
+
+            text-align:
+                left;
         }
 
-        button {
-            background: #ffbb24;
-            color: black;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
+        .input-group label {
+            display:
+                block;
+
+            margin-bottom:
+                7px;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                0.9rem;
+
+            font-weight:
+                600;
         }
 
-        button:hover {
-            background: whitesmoke;
-            transform: scale(1.02);
+        .input-group input {
+            width:
+                100%;
+
+            padding:
+                15px 16px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.12);
+
+            border-radius:
+                14px;
+
+            background:
+                var(--input-bg);
+
+            color:
+                white;
+
+            font-size:
+                1rem;
+
+            outline:
+                none;
+
+            transition:
+                0.25s ease;
+        }
+
+        .input-group input::placeholder {
+            color:
+                rgba(255, 255, 255, 0.42);
+        }
+
+        .input-group input:focus {
+            border-color:
+                rgba(255, 187, 36, 0.60);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(255, 187, 36, 0.11);
+
+            background:
+                rgba(255, 255, 255, 0.13);
+        }
+
+        /* =====================================================
+           BOTÃO ENTRAR
+        ====================================================== */
+
+        .btn-login {
+            width:
+                100%;
+
+            padding:
+                15px 18px;
+
+            margin-top:
+                4px;
+
+            border:
+                none;
+
+            border-radius:
+                14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--accent),
+                    var(--accent-light)
+                );
+
+            color:
+                #101010;
+
+            font-size:
+                1rem;
+
+            font-weight:
+                800;
+
+            cursor:
+                pointer;
+
+            transition:
+                0.25s ease;
+        }
+
+        .btn-login:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 12px 26px
+                rgba(255, 187, 36, 0.23);
+        }
+
+        .btn-login:active {
+            transform:
+                translateY(0);
+        }
+
+        /* =====================================================
+           DIVISOR
+        ====================================================== */
+
+        .divider {
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                14px;
+
+            margin:
+                24px 0 18px;
+
+            color:
+                rgba(255, 255, 255, 0.50);
+
+            font-size:
+                0.83rem;
+
+            font-weight:
+                700;
+        }
+
+        .divider::before,
+        .divider::after {
+            content:
+                "";
+
+            flex:
+                1;
+
+            height:
+                1px;
+
+            background:
+                rgba(255, 255, 255, 0.13);
+        }
+
+        /* =====================================================
+           GOOGLE
+        ====================================================== */
+
+        .google-btn {
+            width:
+                100%;
+
+            min-height:
+                54px;
+
+            padding:
+                13px 18px;
+
+            border-radius:
+                14px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.15);
+
+            background:
+                rgba(255, 255, 255, 0.08);
+
+            color:
+                white;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            gap:
+                11px;
+
+            font-size:
+                1rem;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
+            transition:
+                0.25s ease;
+        }
+
+        .google-btn:hover {
+            background:
+                rgba(255, 255, 255, 0.13);
+
+            border-color:
+                rgba(255, 255, 255, 0.26);
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 12px 28px
+                rgba(0, 0, 0, 0.22);
+        }
+
+        .google-btn:active {
+            transform:
+                translateY(0);
+        }
+
+        .google-btn:disabled {
+            opacity:
+                0.60;
+
+            cursor:
+                wait;
+
+            transform:
+                none;
+        }
+
+        .google-icon {
+            width:
+                22px;
+
+            height:
+                22px;
+
+            flex-shrink:
+                0;
+        }
+
+        /* =====================================================
+           CRIAR CONTA
+        ====================================================== */
+
+        .cadastro-area {
+            margin-top:
+                22px;
+
+            padding-top:
+                18px;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+        }
+
+        .cadastro-area p {
+            color:
+                var(--text-soft);
+
+            font-size:
+                0.9rem;
+
+            margin-bottom:
+                8px;
         }
 
         .criar-usuario {
-            display: inline-block;
-            margin-top: 15px;
-            color: whitesmoke;
-            text-decoration: none;
-            font-weight: bold;
+            color:
+                var(--accent);
+
+            text-decoration:
+                none;
+
+            font-weight:
+                700;
+
+            transition:
+                0.2s ease;
         }
 
         .criar-usuario:hover {
-            text-decoration: underline;
+            color:
+                #ffd878;
+
+            text-decoration:
+                underline;
         }
 
-        .erro {
-            color: #ff4d4d;
-            margin-top: 12px;
-            font-weight: bold;
-        }
+        /* =====================================================
+           MENSAGENS
+        ====================================================== */
 
         .mensagem {
-            margin-top: 14px;
-            padding: 12px 14px;
-            border-radius: 14px;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.08);
+            margin-top:
+                16px;
+
+            padding:
+                12px 14px;
+
+            border-radius:
+                12px;
+
+            font-size:
+                0.92rem;
+
+            font-weight:
+                700;
         }
 
         .mensagem-info {
-            border: 1px solid rgba(57, 194, 255, 0.28);
-            color: #bfeeff;
+            color:
+                #bfeeff;
+
+            background:
+                rgba(57, 194, 255, 0.09);
+
+            border:
+                1px solid
+                rgba(57, 194, 255, 0.22);
         }
 
-        .mensagem-warning {
-            border: 1px solid rgba(248, 191, 75, 0.28);
-            color: #ffe4a6;
+        .mensagem-warning,
+        .erro {
+            color:
+                #ff9c9c;
+
+            background:
+                rgba(255, 77, 77, 0.09);
+
+            border:
+                1px solid
+                rgba(255, 77, 77, 0.20);
         }
 
-        .google-area {
-            margin-top: 18px;
-            display: grid;
-            gap: 12px;
+        /* =====================================================
+           RESPONSIVO
+        ====================================================== */
+
+        @media (max-width: 520px) {
+            body {
+                padding:
+                    24px 14px;
+            }
+
+            .gif-topo {
+                width:
+                    185px;
+
+                margin-top:
+                    -30px;
+            }
+
+            .box {
+                padding:
+                    30px 21px 24px;
+
+                border-radius:
+                    22px;
+            }
+
+            .box h2 {
+                font-size:
+                    1.9rem;
+            }
         }
     </style>
+
     {% if tema_css_inline %}
-        <style>{{ tema_css_inline|safe }}</style>
+        <style>
+            {{ tema_css_inline|safe }}
+        </style>
     {% endif %}
 </head>
+
 <body>
+
     <div class="container-login">
-        <img src="{% static 'css/login-top.gif' %}" class="gif-topo">
+
+        <!-- =====================================================
+             GIF
+        ====================================================== -->
+
+        <img
+            src="{% static 'css/login-top.gif' %}"
+            class="gif-topo"
+            alt="Quiz SOS"
+        >
+
 
         <div class="box">
+
+            <!-- =================================================
+                 CABEÇALHO
+            ================================================== -->
+
             <h2>Login</h2>
 
+            <p class="subtitle">
+                Entre na sua conta para continuar sua partida
+                e acompanhar seu desempenho.
+            </p>
+
+
+            <!-- =================================================
+                 LOGIN NORMAL DJANGO
+            ================================================== -->
+
             <form method="post">
+
                 {% csrf_token %}
-                <input type="text" name="username" placeholder="Usuario" required>
-                <input type="password" name="password" placeholder="Senha" required>
-                <button type="submit">Entrar</button>
+
+                <div class="input-group">
+
+                    <label for="username">
+                        Usuário
+                    </label>
+
+                    <input
+                        id="username"
+                        type="text"
+                        name="username"
+                        placeholder="Digite seu usuário"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Senha
+                    </label>
+
+                    <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn-login"
+                >
+                    Entrar
+                </button>
+
             </form>
 
-            <div class="google-area">
-                {% if google_login_configured and google_login_url %}
-                    <form method="post" action="{{ google_login_url }}">
-                        {% csrf_token %}
-                        <button type="submit">Entrar com Google</button>
-                    </form>
-                {% else %}
-                    <div class="mensagem mensagem-warning">
-                        Configure <strong>GOOGLE_CLIENT_ID</strong> e <strong>GOOGLE_CLIENT_SECRET</strong> para ativar o login com Google.
-                    </div>
-                {% endif %}
+
+            <!-- =================================================
+                 DIVISOR
+            ================================================== -->
+
+            <div class="divider">
+                OU
             </div>
 
-            <a href="/criar-usuario/" class="criar-usuario">Criar usuario</a>
+
+            <!-- =================================================
+                 LOGIN GOOGLE VIA SUPABASE
+            ================================================== -->
+
+            <button
+                id="googleLoginButton"
+                type="button"
+                class="google-btn"
+            >
+
+                <svg
+                    class="google-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        fill="#4285F4"
+                        d="M21.35 12.2c0-.74-.07-1.45-.19-2.14H12v4.05h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.3z"
+                    />
+
+                    <path
+                        fill="#34A853"
+                        d="M12 21.7c2.62 0 4.82-.87 6.43-2.36l-3.14-2.45c-.87.58-1.98.92-3.29.92-2.53 0-4.67-1.71-5.44-4.01H3.31v2.53A9.7 9.7 0 0 0 12 21.7z"
+                    />
+
+                    <path
+                        fill="#FBBC05"
+                        d="M6.56 13.8A5.83 5.83 0 0 1 6.25 12c0-.63.11-1.24.31-1.8V7.67H3.31A9.7 9.7 0 0 0 2.3 12c0 1.56.37 3.03 1.01 4.33l3.25-2.53z"
+                    />
+
+                    <path
+                        fill="#EA4335"
+                        d="M12 6.19c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.82 3.28 14.62 2.3 12 2.3a9.7 9.7 0 0 0-8.69 5.37l3.25 2.53C7.33 7.9 9.47 6.19 12 6.19z"
+                    />
+
+                </svg>
+
+
+                <span id="googleButtonText">
+                    Continuar com Google
+                </span>
+
+            </button>
+
+
+            <!-- =================================================
+                 MENSAGEM SUPABASE
+            ================================================== -->
+
+            <p
+                id="supabaseError"
+                class="mensagem erro"
+                style="display: none;"
+            ></p>
+
+
+            <!-- =================================================
+                 CRIAR USUÁRIO
+            ================================================== -->
+
+            <div class="cadastro-area">
+
+                <p>
+                    Ainda não possui uma conta?
+                </p>
+
+                <a
+                    href="/criar-usuario/"
+                    class="criar-usuario"
+                >
+                    Criar usuário
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+                 MENSAGENS DJANGO
+            ================================================== -->
 
             {% if messages %}
+
                 {% for message in messages %}
-                    <p class="mensagem mensagem-info">{{ message }}</p>
+
+                    <p class="mensagem mensagem-info">
+                        {{ message }}
+                    </p>
+
                 {% endfor %}
+
             {% endif %}
 
+
             {% if erro %}
-                <p class="erro">{{ erro }}</p>
+
+                <p class="mensagem erro">
+                    {{ erro }}
+                </p>
+
             {% endif %}
+
         </div>
+
     </div>
+
+
+    <!-- =========================================================
+         SUPABASE JS
+    ========================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- =========================================================
+         LOGIN GOOGLE
+    ========================================================== -->
+
+    <script>
+
+        /*
+        ===========================================================
+        CONFIGURAÇÃO SUPABASE
+
+        COLOQUE A MESMA PUBLISHABLE KEY
+        QUE VOCÊ USOU NO CADASTRO.
+
+        NÃO COLOQUE:
+        - service_role
+        - senha do banco
+        - Google Client Secret
+        ===========================================================
+        */
+
+        const SUPABASE_URL =
+            "https://icrzdzfjjlhrykqsdvsj.supabase.co";
+
+
+        const SUPABASE_PUBLISHABLE_KEY =
+            "sb_publishable_KZ_5KdVASgfgoLiRSFrw9g_ABMZV0s2";
+
+
+        /*
+        ===========================================================
+        CLIENTE SUPABASE
+        ===========================================================
+        */
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_PUBLISHABLE_KEY
+            );
+
+
+        /*
+        ===========================================================
+        ELEMENTOS
+        ===========================================================
+        */
+
+        const googleButton =
+            document.getElementById(
+                "googleLoginButton"
+            );
+
+
+        const googleButtonText =
+            document.getElementById(
+                "googleButtonText"
+            );
+
+
+        const supabaseError =
+            document.getElementById(
+                "supabaseError"
+            );
+
+
+        /*
+        ===========================================================
+        LOGIN GOOGLE
+        ===========================================================
+        */
+
+        googleButton.addEventListener(
+            "click",
+
+            async function () {
+
+                supabaseError.style.display =
+                    "none";
+
+                supabaseError.textContent =
+                    "";
+
+
+                googleButton.disabled =
+                    true;
+
+                googleButtonText.textContent =
+                    "Abrindo Google...";
+
+
+                try {
+
+                    const {
+                        data,
+                        error
+                    } =
+                    await supabaseClient
+                        .auth
+                        .signInWithOAuth({
+
+                            provider:
+                                "google",
+
+                            options: {
+
+                                redirectTo:
+                                    window.location.origin + "/login/?supabase=1"
+                            }
+
+                        });
+
+
+                    if (error) {
+                        throw error;
+                    }
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Erro no login Google:",
+                        error
+                    );
+
+
+                    supabaseError.textContent =
+                        "Não foi possível iniciar o login com Google.";
+
+
+                    supabaseError.style.display =
+                        "block";
+
+
+                    googleButton.disabled =
+                        false;
+
+
+                    googleButtonText.textContent =
+                        "Continuar com Google";
+                }
+
+            }
+        );
+
+
+        /*
+        ===========================================================
+        PONTE SUPABASE -> DJANGO
+        ===========================================================
+        */
+
+        async function conectarSupabaseComDjango() {
+            const params = new URLSearchParams(window.location.search);
+
+            if (params.get("supabase") !== "1") {
+                return;
+            }
+
+            googleButton.disabled = true;
+            googleButtonText.textContent = "Entrando...";
+
+            try {
+                const {
+                    data: { session },
+                    error
+                } = await supabaseClient.auth.getSession();
+
+                if (error) {
+                    throw error;
+                }
+
+                if (!session?.access_token) {
+                    throw new Error("Sessão do Supabase não encontrada.");
+                }
+
+                const form = document.createElement("form");
+                form.method = "POST";
+                form.action = window.location.pathname;
+
+                const csrfOriginal = document.querySelector(
+                    'input[name="csrfmiddlewaretoken"]'
+                );
+
+                if (!csrfOriginal) {
+                    throw new Error("Token CSRF do Django não encontrado.");
+                }
+
+                const csrfInput = document.createElement("input");
+                csrfInput.type = "hidden";
+                csrfInput.name = "csrfmiddlewaretoken";
+                csrfInput.value = csrfOriginal.value;
+                form.appendChild(csrfInput);
+
+                const tokenInput = document.createElement("input");
+                tokenInput.type = "hidden";
+                tokenInput.name = "supabase_access_token";
+                tokenInput.value = session.access_token;
+                form.appendChild(tokenInput);
+
+                document.body.appendChild(form);
+                form.submit();
+
+            } catch (error) {
+                console.error(
+                    "Erro ao conectar Supabase ao Django:",
+                    error
+                );
+
+                supabaseError.textContent =
+                    "O Google autenticou, mas não foi possível entrar no Quiz SOS.";
+
+                supabaseError.style.display = "block";
+                googleButton.disabled = false;
+                googleButtonText.textContent = "Continuar com Google";
+            }
+        }
+
+        conectarSupabaseComDjango();
+
+    </script>
+
 </body>
 </html>

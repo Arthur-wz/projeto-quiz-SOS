@@ -32,14 +32,4 @@ class Migration(migrations.Migration):
             name="alternativa_d",
             field=models.CharField(max_length=200),
         ),
-        migrations.AddField(
-            model_name="pergunta",
-            name="serie",
-            field=models.CharField(default="Nao informada", max_length=50),
-        ),
-        migrations.AddField(
-            model_name="pergunta",
-            name="materia",
-            field=models.CharField(default="Geral", max_length=50),
-        ),
     ]
