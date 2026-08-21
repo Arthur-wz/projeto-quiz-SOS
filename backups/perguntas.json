@@ -2983,20 +2983,5 @@
       "serie": "3 ano EM",
       "materia": "Inglês"
     }
-  },
-  {
-    "model": "quiz.pergunta",
-    "pk": 1511,
-    "fields": {
-      "pergunta": "O beto é gay?",
-      "alternativa_a": "Sim",
-      "alternativa_b": "Certeza",
-      "alternativa_c": "As vezes",
-      "alternativa_d": "O João sim",
-      "alternativa_e": "Não",
-      "resposta_correta": "C",
-      "serie": "67 ano",
-      "materia": "vida"
-    }
   }
 ]
