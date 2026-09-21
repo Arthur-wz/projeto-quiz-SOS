@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas da sala | Quiz SOS</title>
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    {% if tema_css_inline %}
+        <style>{{ tema_css_inline|safe }}</style>
+    {% endif %}
+</head>
+<body>
+    <main class="page-shell">
+        <section class="result-layout">
+            <article class="result-card">
+                <span class="eyebrow">Perguntas personalizadas</span>
+                <h1 class="section-title">{{ sala.titulo }}</h1>
+                <p class="hero-copy">
+                    Se voce cadastrar perguntas aqui, essa sala passa a usar essas perguntas no lugar do banco geral.
+                </p>
+
+                {% if messages %}
+                    <div class="alerts">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <form method="post" action="{% url 'criar_pergunta_personalizada_kahoot' sala.codigo %}" class="kahoot-form">
+                    {% csrf_token %}
+                    <label>
+                        <span>Pergunta</span>
+                        <input type="text" name="pergunta" maxlength="500">
+                    </label>
+                    <label><span>Alternativa A</span><input type="text" name="alternativa_a" maxlength="200"></label>
+                    <label><span>Alternativa B</span><input type="text" name="alternativa_b" maxlength="200"></label>
+                    <label><span>Alternativa C</span><input type="text" name="alternativa_c" maxlength="200"></label>
+                    <label><span>Alternativa D</span><input type="text" name="alternativa_d" maxlength="200"></label>
+                    <label><span>Alternativa E</span><input type="text" name="alternativa_e" maxlength="200"></label>
+                    <label>
+                        <span>Resposta correta</span>
+                        <input type="text" name="resposta_correta" maxlength="1" placeholder="A, B, C, D ou E">
+                    </label>
+                    <label><span>Materia</span><input type="text" name="materia" maxlength="50" value="Sala"></label>
+                    <label><span>Serie</span><input type="text" name="serie" maxlength="50" value="Personalizada"></label>
+                    <div class="hero-actions">
+                        <button type="submit" class="btn btn-primary">Adicionar pergunta</button>
+                        <a href="{% url 'sala_kahoot' sala.codigo %}" class="btn btn-secondary">Voltar para sala</a>
+                        <a href="{% url 'kahoot_inicio' %}" class="btn btn-ghost">Voltar ao Kahoot</a>
+                    </div>
+                </form>
+            </article>
+
+            <article class="history-card">
+                <div class="history-header">
+                    <span class="eyebrow">Lista atual</span>
+                    <h2 class="section-title">Perguntas da sala</h2>
+                </div>
+                <div class="history-list">
+                    {% for pergunta in perguntas %}
+                        <div class="history-item">
+                            <strong>{{ pergunta.ordem }}. {{ pergunta.pergunta }}</strong>
+                            <p>{{ pergunta.materia }} | {{ pergunta.serie }} | Correta: {{ pergunta.resposta_correta }}</p>
+                            <div class="inline-actions">
+                                <form method="post" action="{% url 'excluir_pergunta_personalizada_kahoot' sala.codigo pergunta.id %}" class="inline-form">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-ghost">Excluir pergunta</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="history-item">
+                            <strong>Nenhuma pergunta personalizada ainda</strong>
+                            <p>Se voce nao criar perguntas aqui, a sala continua usando as perguntas gerais do projeto.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

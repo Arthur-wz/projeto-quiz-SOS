@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar sala | Quiz SOS</title>
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    {% if tema_css_inline %}
+        <style>{{ tema_css_inline|safe }}</style>
+    {% endif %}
+</head>
+<body>
+    <main class="page-shell">
+        <section class="result-layout">
+            <article class="result-card">
+                <span class="eyebrow">CRUD da sala</span>
+                <h1 class="section-title">Editar {{ sala.titulo }}</h1>
+                <p class="hero-copy">Aqui voce consegue ajustar os dados principais da sala sem recriar tudo do zero.</p>
+
+                {% if messages %}
+                    <div class="alerts">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <form method="post" class="kahoot-form">
+                    {% csrf_token %}
+                    <label>
+                        <span>Titulo da sala</span>
+                        <input type="text" name="titulo" value="{{ sala.titulo }}" maxlength="120">
+                    </label>
+                    <label>
+                        <span>Rodadas</span>
+                        <input type="number" name="total_rodadas" min="1" value="{{ sala.total_rodadas }}">
+                    </label>
+                    <label>
+                        <span>Tempo por rodada</span>
+                        <input type="number" name="tempo_por_rodada" min="10" max="60" value="{{ sala.tempo_por_rodada }}">
+                    </label>
+
+                    <div class="hero-actions">
+                        <button type="submit" class="btn btn-primary">Salvar alteracoes</button>
+                        <a href="{% url 'sala_kahoot' sala.codigo %}" class="btn btn-secondary">Voltar para sala</a>
+                        <a href="{% url 'kahoot_inicio' %}" class="btn btn-ghost">Voltar ao Kahoot</a>
+                    </div>
+                </form>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

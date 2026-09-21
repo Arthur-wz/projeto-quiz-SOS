@@ -1,0 +1,1704 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$Mf7lPTBX1CspIFZmackt5J$XVQIG+x3z/uZb/Eswvs2l5C85Z/9a7WtMJC4i56SGRs=",
+      "last_login": "2026-08-17T12:31:11.873Z",
+      "is_superuser": true,
+      "username": "kauandelimasilva",
+      "first_name": "",
+      "last_name": "",
+      "email": "neymar@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-08-17T12:30:19.416Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$dug4XDL9kPfCoAek6dTO2L$quMPRdWE7tNmsgkr2hGb3D0CoIW4Q+ElXMBqIu/chcU=",
+      "last_login": "2026-08-17T13:49:57.240Z",
+      "is_superuser": false,
+      "username": "gustavolima",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-08-17T12:46:27.266Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$uKOam86C0SmE71iZ9mHLcT$WQAfhtUMZfkyk3wnqnjssMZbtIESjKyONPWXLSDdvaM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "ala",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-08-17T12:53:24.352Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$qtOWxZTaOmsyypebTdMEyd$XdFD/ir5F9MjamjUrAPRvx72j5jZHOa43OOfuFeoXJQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "ala1",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-08-17T12:55:56.701Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$InewraIPf0nbFc9i9DZCOr$K65z2i7YZvcXkKOJ3KgKsf43tq/3mBOhTjg77bbK1EA=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "Kaka",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-08-17T13:03:04.833Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+      "password": "!uS9QuJrpLZuhvqyFVXPSLMggsO9RyjSr6BbqWcYB",
+      "last_login": "2026-08-20T13:49:52.296Z",
+      "is_superuser": false,
+      "username": "tukomedina0518",
+      "first_name": "",
+      "last_name": "",
+      "email": "tukomedina0518@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-08-19T13:06:24.698Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+      "password": "!5737feilufdeEcH7vVbFXuYgeTBUKsEsnlEZsSjy",
+      "last_login": "2026-08-20T13:06:56.648Z",
+      "is_superuser": false,
+      "username": "speedflip1110",
+      "first_name": "",
+      "last_name": "",
+      "email": "speedflip1110@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-08-20T11:06:55.651Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$is690FTZYMw2NlKgVJgmD7$TFjELCuwKDiIjuGSXZ8uYfGuG8griq80OHT3brVB7sg=",
+      "last_login": "2026-08-20T12:53:42.043Z",
+      "is_superuser": false,
+      "username": "arthur",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-08-20T12:53:39.994Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$M7esas2eIxsETUmxwS5kUy$ualCYyXPwbpm869o541sEQ6P+bHWA7nTu7y+llkOo3o=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "teste",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-08-21T10:03:24.555Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 12,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$5cBisLVcU1k6QcauPALrtF$ElLpu/ryrGLVVPxyHaqqTO4xeB5Oo9gM4MCMPyNNTIo=",
+      "last_login": "2026-08-21T10:11:03.819Z",
+      "is_superuser": true,
+      "username": "ronaldo",
+      "first_name": "",
+      "last_name": "",
+      "email": "tukomedina0518@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-08-21T10:10:17.025Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+      "domain": "example.com",
+      "name": "example.com"
+    }
+  },
+  {
+    "model": "quiz.partida",
+    "pk": 1,
+    "fields": {
+      "usuario": null,
+      "modo": "solo",
+      "status": "abandonada",
+      "total_perguntas": 20,
+      "pontuacao_total": 10,
+      "acertos": 1,
+      "erros": 1,
+      "pulo_usado": true,
+      "eliminar_usado": true,
+      "iniciada_em": "2026-08-18T14:47:26.914Z",
+      "encerrada_em": "2026-08-18T14:50:27.501Z"
+    }
+  },
+  {
+    "model": "quiz.partida",
+    "pk": 2,
+    "fields": {
+      "usuario": null,
+      "modo": "solo",
+      "status": "abandonada",
+      "total_perguntas": 20,
+      "pontuacao_total": 0,
+      "acertos": 0,
+      "erros": 0,
+      "pulo_usado": false,
+      "eliminar_usado": false,
+      "iniciada_em": "2026-08-19T12:14:43.150Z",
+      "encerrada_em": "2026-08-19T12:14:49.427Z"
+    }
+  },
+  {
+    "model": "quiz.partida",
+    "pk": 3,
+    "fields": {
+      "usuario": 8,
+      "modo": "solo",
+      "status": "finalizada",
+      "total_perguntas": 20,
+      "pontuacao_total": 70,
+      "acertos": 7,
+      "erros": 13,
+      "pulo_usado": true,
+      "eliminar_usado": true,
+      "iniciada_em": "2026-08-19T13:15:22.243Z",
+      "encerrada_em": "2026-08-19T13:18:45.230Z"
+    }
+  },
+  {
+    "model": "quiz.partida",
+    "pk": 4,
+    "fields": {
+      "usuario": 8,
+      "modo": "solo",
+      "status": "finalizada",
+      "total_perguntas": 20,
+      "pontuacao_total": 80,
+      "acertos": 8,
+      "erros": 12,
+      "pulo_usado": false,
+      "eliminar_usado": true,
+      "iniciada_em": "2026-08-20T10:55:04.190Z",
+      "encerrada_em": "2026-08-20T11:12:56.136Z"
+    }
+  },
+  {
+    "model": "quiz.partida",
+    "pk": 5,
+    "fields": {
+      "usuario": null,
+      "modo": "solo",
+      "status": "abandonada",
+      "total_perguntas": 20,
+      "pontuacao_total": 0,
+      "acertos": 0,
+      "erros": 0,
+      "pulo_usado": false,
+      "eliminar_usado": false,
+      "iniciada_em": "2026-08-20T11:01:22.721Z",
+      "encerrada_em": "2026-08-20T11:01:37.248Z"
+    }
+  },
+  {
+    "model": "quiz.partida",
+    "pk": 6,
+    "fields": {
+      "usuario": 8,
+      "modo": "solo",
+      "status": "finalizada",
+      "total_perguntas": 20,
+      "pontuacao_total": 80,
+      "acertos": 8,
+      "erros": 12,
+      "pulo_usado": true,
+      "eliminar_usado": true,
+      "iniciada_em": "2026-08-20T11:12:56.152Z",
+      "encerrada_em": "2026-08-20T11:17:04.335Z"
+    }
+  },
+  {
+    "model": "quiz.partida",
+    "pk": 7,
+    "fields": {
+      "usuario": 8,
+      "modo": "solo",
+      "status": "abandonada",
+      "total_perguntas": 20,
+      "pontuacao_total": 20,
+      "acertos": 2,
+      "erros": 1,
+      "pulo_usado": false,
+      "eliminar_usado": false,
+      "iniciada_em": "2026-08-20T11:19:24.414Z",
+      "encerrada_em": "2026-08-20T13:01:21.656Z"
+    }
+  },
+  {
+    "model": "quiz.partida",
+    "pk": 8,
+    "fields": {
+      "usuario": 9,
+      "modo": "solo",
+      "status": "abandonada",
+      "total_perguntas": 20,
+      "pontuacao_total": 0,
+      "acertos": 0,
+      "erros": 0,
+      "pulo_usado": false,
+      "eliminar_usado": false,
+      "iniciada_em": "2026-08-20T11:40:55.584Z",
+      "encerrada_em": "2026-08-20T11:43:43.917Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 1,
+    "fields": {
+      "partida": 1,
+      "pergunta": 1165,
+      "numero_pergunta": 1,
+      "pergunta_texto": "Qual é a solução da equação 2x + 6 = 14?",
+      "materia": "Matemática",
+      "serie": "7 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-18T14:47:38.980Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 2,
+    "fields": {
+      "partida": 1,
+      "pergunta": 1439,
+      "numero_pergunta": 2,
+      "pergunta_texto": "Qual molécula é a principal fonte imediata de energia celular?",
+      "materia": "Ciências",
+      "serie": "1 ano EM",
+      "resposta_marcada": "C",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": true,
+      "ajudas_utilizadas": "skip,eliminate",
+      "valor_pergunta": 5,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-18T14:48:01.127Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 3,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1411,
+      "numero_pergunta": 1,
+      "pergunta_texto": "Qual linha imaginária divide a Terra em hemisférios Oriental e Ocidental por convenção?",
+      "materia": "Geografia",
+      "serie": "6 ano",
+      "resposta_marcada": "D",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": true,
+      "ajudas_utilizadas": "skip,eliminate",
+      "valor_pergunta": 5,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:15:35.332Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 4,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1157,
+      "numero_pergunta": 2,
+      "pergunta_texto": "Quem foi o primeiro imperador do Brasil?",
+      "materia": "História",
+      "serie": "9 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-19T13:15:48.188Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 5,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1507,
+      "numero_pergunta": 3,
+      "pergunta_texto": "Qual frase está no present continuous?",
+      "materia": "Inglês",
+      "serie": "1 ano EM",
+      "resposta_marcada": "A",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:16:11.638Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 6,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1460,
+      "numero_pergunta": 4,
+      "pergunta_texto": "Qual unidade mede energia no Sistema Internacional?",
+      "materia": "Física",
+      "serie": "9 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:16:22.604Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 7,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1366,
+      "numero_pergunta": 5,
+      "pergunta_texto": "Quanto é 2³ × 2²?",
+      "materia": "Matemática",
+      "serie": "8 ano",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-19T13:16:32.404Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 8,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1400,
+      "numero_pergunta": 6,
+      "pergunta_texto": "A Revolução Francesa começou em:",
+      "materia": "História",
+      "serie": "8 ano",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-19T13:16:45.206Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 9,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1414,
+      "numero_pergunta": 7,
+      "pergunta_texto": "Qual é a capital do estado de Minas Gerais?",
+      "materia": "Geografia",
+      "serie": "7 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "B",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-19T13:16:58.624Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 10,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1478,
+      "numero_pergunta": 8,
+      "pergunta_texto": "Qual substância possui fórmula O₂?",
+      "materia": "Química",
+      "serie": "9 ano",
+      "resposta_marcada": "E",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:17:19.187Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 11,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1457,
+      "numero_pergunta": 9,
+      "pergunta_texto": "Qual tipo sanguíneo do sistema ABO possui antígenos A e B nas hemácias?",
+      "materia": "Biologia",
+      "serie": "3 ano EM",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-19T13:17:34.061Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 12,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1441,
+      "numero_pergunta": 10,
+      "pergunta_texto": "A relação ecológica em que ambos os organismos se beneficiam é chamada de:",
+      "materia": "Ciências",
+      "serie": "2 ano EM",
+      "resposta_marcada": "B",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:17:48.603Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 13,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1415,
+      "numero_pergunta": 11,
+      "pergunta_texto": "Qual bioma brasileiro é caracterizado por vegetação adaptada à seca no Nordeste?",
+      "materia": "Geografia",
+      "serie": "7 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:17:55.365Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 14,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1382,
+      "numero_pergunta": 12,
+      "pergunta_texto": "Qual alternativa apresenta uma conjunção adversativa?",
+      "materia": "Português",
+      "serie": "8 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:18:01.310Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 15,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1280,
+      "numero_pergunta": 13,
+      "pergunta_texto": "Qual órgão do corpo humano bombeia o sangue?",
+      "materia": "Ciências",
+      "serie": "8 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-19T13:18:05.437Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 16,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1357,
+      "numero_pergunta": 14,
+      "pergunta_texto": "Qual é o resultado de 144 ÷ 12?",
+      "materia": "Matemática",
+      "serie": "6 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:18:10.086Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 17,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1399,
+      "numero_pergunta": 15,
+      "pergunta_texto": "A chegada de Pedro Álvares Cabral ao território brasileiro ocorreu em:",
+      "materia": "História",
+      "serie": "7 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:18:19.170Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 18,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1367,
+      "numero_pergunta": 16,
+      "pergunta_texto": "Qual é o valor de √81?",
+      "materia": "Matemática",
+      "serie": "8 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:18:23.973Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 19,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1159,
+      "numero_pergunta": 17,
+      "pergunta_texto": "O movimento de rotação da Terra dura aproximadamente:",
+      "materia": "Geografia",
+      "serie": "9 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-19T13:18:28.581Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 20,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1394,
+      "numero_pergunta": 18,
+      "pergunta_texto": "Quem foi o primeiro imperador romano?",
+      "materia": "História",
+      "serie": "6 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:18:33.088Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 21,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1509,
+      "numero_pergunta": 19,
+      "pergunta_texto": "Complete: 'If I had more time, I ___ travel more.'",
+      "materia": "Inglês",
+      "serie": "2 ano EM",
+      "resposta_marcada": "A",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:18:37.999Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 22,
+    "fields": {
+      "partida": 3,
+      "pergunta": 1376,
+      "numero_pergunta": 20,
+      "pergunta_texto": "Em 'O menino correu', qual é o verbo?",
+      "materia": "Português",
+      "serie": "6 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-19T13:18:44.278Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 23,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1490,
+      "numero_pergunta": 1,
+      "pergunta_texto": "O grupo funcional -OH caracteriza principalmente os:",
+      "materia": "Química",
+      "serie": "3 ano EM",
+      "resposta_marcada": "E",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": true,
+      "ajudas_utilizadas": "eliminate",
+      "valor_pergunta": 5,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T10:55:52.509Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 24,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1447,
+      "numero_pergunta": 2,
+      "pergunta_texto": "Qual componente do sangue atua principalmente na defesa do organismo?",
+      "materia": "Biologia",
+      "serie": "1 ano EM",
+      "resposta_marcada": "D",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T10:56:08.010Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 25,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1423,
+      "numero_pergunta": 3,
+      "pergunta_texto": "O deslocamento diário de pessoas entre casa e trabalho é chamado de migração:",
+      "materia": "Geografia",
+      "serie": "1 ano EM",
+      "resposta_marcada": "A",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T10:56:24.209Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 26,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1404,
+      "numero_pergunta": 4,
+      "pergunta_texto": "A Proclamação da República no Brasil ocorreu em:",
+      "materia": "História",
+      "serie": "9 ano",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T10:57:38.277Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 27,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1474,
+      "numero_pergunta": 5,
+      "pergunta_texto": "Dois resistores de 2 Ω ligados em série têm resistência equivalente de:",
+      "materia": "Física",
+      "serie": "3 ano EM",
+      "resposta_marcada": "B",
+      "resposta_correta": "D",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T10:58:11.374Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 28,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1494,
+      "numero_pergunta": 6,
+      "pergunta_texto": "Qual é a tradução de 'cat'?",
+      "materia": "Inglês",
+      "serie": "6 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "B",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T10:58:47.814Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 29,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1422,
+      "numero_pergunta": 7,
+      "pergunta_texto": "Qual camada da atmosfera concentra a maior parte dos fenômenos meteorológicos?",
+      "materia": "Geografia",
+      "serie": "1 ano EM",
+      "resposta_marcada": "D",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:00:01.405Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 30,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1373,
+      "numero_pergunta": 8,
+      "pergunta_texto": "Qual é o valor de log10(1000)?",
+      "materia": "Matemática",
+      "serie": "3 ano EM",
+      "resposta_marcada": "E",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:00:11.476Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 31,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1397,
+      "numero_pergunta": 9,
+      "pergunta_texto": "Quem liderou a Reforma Protestante iniciada em 1517?",
+      "materia": "História",
+      "serie": "7 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "A",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:00:21.323Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 32,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1194,
+      "numero_pergunta": 10,
+      "pergunta_texto": "A água entra em ebulição, ao nível do mar, a aproximadamente:",
+      "materia": "Ciências",
+      "serie": "6 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "D",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:04:43.367Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 33,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1382,
+      "numero_pergunta": 11,
+      "pergunta_texto": "Qual alternativa apresenta uma conjunção adversativa?",
+      "materia": "Português",
+      "serie": "8 ano",
+      "resposta_marcada": "D",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:04:53.813Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 34,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1495,
+      "numero_pergunta": 12,
+      "pergunta_texto": "Qual é a tradução de 'school'?",
+      "materia": "Inglês",
+      "serie": "6 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "B",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:05:08.980Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 35,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1199,
+      "numero_pergunta": 13,
+      "pergunta_texto": "Qual oceano banha o litoral brasileiro?",
+      "materia": "Geografia",
+      "serie": "2 ano EM",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:07:18.744Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 36,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1434,
+      "numero_pergunta": 14,
+      "pergunta_texto": "Qual estrutura protege o cérebro?",
+      "materia": "Ciências",
+      "serie": "8 ano",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:10:33.283Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 37,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1379,
+      "numero_pergunta": 15,
+      "pergunta_texto": "Qual é o plural de 'cidadão'?",
+      "materia": "Português",
+      "serie": "7 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "A",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:10:50.025Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 38,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1487,
+      "numero_pergunta": 16,
+      "pergunta_texto": "Qual substância é uma base?",
+      "materia": "Química",
+      "serie": "2 ano EM",
+      "resposta_marcada": "A",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:11:02.772Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 39,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1493,
+      "numero_pergunta": 17,
+      "pergunta_texto": "Qual elemento é o principal componente dos compostos orgânicos?",
+      "materia": "Química",
+      "serie": "3 ano EM",
+      "resposta_marcada": "E",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:11:27.998Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 40,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1463,
+      "numero_pergunta": 18,
+      "pergunta_texto": "Um corpo percorre 100 m em 20 s. Qual é sua velocidade média?",
+      "materia": "Física",
+      "serie": "1 ano EM",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:11:44.840Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 41,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1393,
+      "numero_pergunta": 19,
+      "pergunta_texto": "A democracia ateniense surgiu em qual cidade-Estado?",
+      "materia": "História",
+      "serie": "6 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "B",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:11:56.383Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 42,
+    "fields": {
+      "partida": 4,
+      "pergunta": 1209,
+      "numero_pergunta": 20,
+      "pergunta_texto": "Os produtores em uma cadeia alimentar são geralmente:",
+      "materia": "Biologia",
+      "serie": "3 ano EM",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:12:06.028Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 43,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1405,
+      "numero_pergunta": 1,
+      "pergunta_texto": "Qual conflito ocorreu entre 1914 e 1918?",
+      "materia": "História",
+      "serie": "9 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "B",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:13:04.771Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 44,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1477,
+      "numero_pergunta": 2,
+      "pergunta_texto": "Qual é o símbolo químico do carbono?",
+      "materia": "Química",
+      "serie": "9 ano",
+      "resposta_marcada": "C",
+      "resposta_correta": "B",
+      "acertou": false,
+      "ajuda_utilizada": true,
+      "ajudas_utilizadas": "skip",
+      "valor_pergunta": 5,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:13:19.705Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 45,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1156,
+      "numero_pergunta": 3,
+      "pergunta_texto": "A escravidão foi oficialmente abolida no Brasil em:",
+      "materia": "História",
+      "serie": "9 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "E",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:13:31.116Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 46,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1428,
+      "numero_pergunta": 4,
+      "pergunta_texto": "Qual órgão é responsável principalmente pela respiração humana?",
+      "materia": "Ciências",
+      "serie": "6 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "B",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:13:39.536Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 47,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1433,
+      "numero_pergunta": 5,
+      "pergunta_texto": "Qual vitamina é produzida na pele com ajuda da luz solar?",
+      "materia": "Ciências",
+      "serie": "8 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "D",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:13:47.827Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 48,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1457,
+      "numero_pergunta": 6,
+      "pergunta_texto": "Qual tipo sanguíneo do sistema ABO possui antígenos A e B nas hemácias?",
+      "materia": "Biologia",
+      "serie": "3 ano EM",
+      "resposta_marcada": "B",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": true,
+      "ajudas_utilizadas": "eliminate",
+      "valor_pergunta": 5,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:14:18.598Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 49,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1161,
+      "numero_pergunta": 7,
+      "pergunta_texto": "A unidade de força no Sistema Internacional é o:",
+      "materia": "Física",
+      "serie": "1 ano EM",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:14:30.642Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 50,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1497,
+      "numero_pergunta": 8,
+      "pergunta_texto": "Qual é o passado de 'go'?",
+      "materia": "Inglês",
+      "serie": "7 ano",
+      "resposta_marcada": "E",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:14:38.613Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 51,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1374,
+      "numero_pergunta": 9,
+      "pergunta_texto": "Qual palavra é um substantivo?",
+      "materia": "Português",
+      "serie": "6 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:14:45.416Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 52,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1159,
+      "numero_pergunta": 10,
+      "pergunta_texto": "O movimento de rotação da Terra dura aproximadamente:",
+      "materia": "Geografia",
+      "serie": "9 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:14:55.468Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 53,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1471,
+      "numero_pergunta": 11,
+      "pergunta_texto": "Qual cor de luz visível possui maior frequência?",
+      "materia": "Física",
+      "serie": "2 ano EM",
+      "resposta_marcada": "B",
+      "resposta_correta": "E",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:15:05.403Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 54,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1424,
+      "numero_pergunta": 12,
+      "pergunta_texto": "Qual indicador mede a média de anos que uma população pode esperar viver?",
+      "materia": "Geografia",
+      "serie": "2 ano EM",
+      "resposta_marcada": "B",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:15:19.867Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 55,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1451,
+      "numero_pergunta": 13,
+      "pergunta_texto": "Qual estrutura do sistema nervoso central coordena equilíbrio e movimentos?",
+      "materia": "Biologia",
+      "serie": "2 ano EM",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:15:46.645Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 56,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1241,
+      "numero_pergunta": 14,
+      "pergunta_texto": "A linha imaginária que divide a Terra em hemisférios Norte e Sul é o:",
+      "materia": "Geografia",
+      "serie": "6 ano",
+      "resposta_marcada": "A",
+      "resposta_correta": "A",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:15:59.751Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 57,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1478,
+      "numero_pergunta": 15,
+      "pergunta_texto": "Qual substância possui fórmula O₂?",
+      "materia": "Química",
+      "serie": "9 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "B",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:16:10.247Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 58,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1366,
+      "numero_pergunta": 16,
+      "pergunta_texto": "Quanto é 2³ × 2²?",
+      "materia": "Matemática",
+      "serie": "8 ano",
+      "resposta_marcada": "B",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:16:25.619Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 59,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1458,
+      "numero_pergunta": 17,
+      "pergunta_texto": "Qual estrutura conecta o feto à placenta?",
+      "materia": "Biologia",
+      "serie": "3 ano EM",
+      "resposta_marcada": "B",
+      "resposta_correta": "B",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:16:33.255Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 60,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1466,
+      "numero_pergunta": 18,
+      "pergunta_texto": "Se a velocidade de um corpo permanece constante em linha reta, sua aceleração é:",
+      "materia": "Física",
+      "serie": "1 ano EM",
+      "resposta_marcada": "E",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:16:43.766Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 61,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1370,
+      "numero_pergunta": 19,
+      "pergunta_texto": "Qual é o valor de (x + 2)(x - 2) quando x = 5?",
+      "materia": "Matemática",
+      "serie": "1 ano EM",
+      "resposta_marcada": "D",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:16:53.547Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 62,
+    "fields": {
+      "partida": 6,
+      "pergunta": 1275,
+      "numero_pergunta": 20,
+      "pergunta_texto": "A unidade de velocidade é:",
+      "materia": "Física",
+      "serie": "1 ano EM",
+      "resposta_marcada": "B",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:17:04.149Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 63,
+    "fields": {
+      "partida": 7,
+      "pergunta": 1359,
+      "numero_pergunta": 1,
+      "pergunta_texto": "Qual é o perímetro de um quadrado de lado 6 cm?",
+      "materia": "Matemática",
+      "serie": "6 ano",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:19:42.396Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 64,
+    "fields": {
+      "partida": 7,
+      "pergunta": 1416,
+      "numero_pergunta": 2,
+      "pergunta_texto": "Qual país possui a maior população da América do Sul?",
+      "materia": "Geografia",
+      "serie": "8 ano",
+      "resposta_marcada": "C",
+      "resposta_correta": "C",
+      "acertou": true,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 10,
+      "respondida_em": "2026-08-20T11:19:49.888Z"
+    }
+  },
+  {
+    "model": "quiz.respostapartida",
+    "pk": 65,
+    "fields": {
+      "partida": 7,
+      "pergunta": null,
+      "numero_pergunta": 3,
+      "pergunta_texto": "O beto é gay?",
+      "materia": "vida",
+      "serie": "67 ano",
+      "resposta_marcada": "D",
+      "resposta_correta": "C",
+      "acertou": false,
+      "ajuda_utilizada": false,
+      "ajudas_utilizadas": "",
+      "valor_pergunta": 10,
+      "pontos_recebidos": 0,
+      "respondida_em": "2026-08-20T11:20:20.602Z"
+    }
+  },
+  {
+    "model": "quiz.perfilusuario",
+    "pk": 1,
+    "fields": {
+      "usuario": 3,
+      "tema_ativo": "oceano-vivo",
+      "temas_liberados": [
+        "classico-sos",
+        "oceano-vivo",
+        "solar-premium"
+      ]
+    }
+  },
+  {
+    "model": "quiz.perfilusuario",
+    "pk": 2,
+    "fields": {
+      "usuario": 4,
+      "tema_ativo": "classico-sos",
+      "temas_liberados": [
+        "classico-sos",
+        "oceano-vivo",
+        "solar-premium"
+      ]
+    }
+  },
+  {
+    "model": "quiz.perfilusuario",
+    "pk": 3,
+    "fields": {
+      "usuario": 8,
+      "tema_ativo": "solar-premium",
+      "temas_liberados": [
+        "classico-sos",
+        "oceano-vivo",
+        "solar-premium"
+      ]
+    }
+  },
+  {
+    "model": "quiz.perfilusuario",
+    "pk": 4,
+    "fields": {
+      "usuario": 9,
+      "tema_ativo": "solar-premium",
+      "temas_liberados": [
+        "classico-sos",
+        "oceano-vivo",
+        "solar-premium"
+      ]
+    }
+  },
+  {
+    "model": "quiz.perfilusuario",
+    "pk": 5,
+    "fields": {
+      "usuario": 10,
+      "tema_ativo": "classico-sos",
+      "temas_liberados": [
+        "classico-sos",
+        "oceano-vivo",
+        "solar-premium"
+      ]
+    }
+  },
+  {
+    "model": "quiz.perfilusuario",
+    "pk": 6,
+    "fields": {
+      "usuario": 12,
+      "tema_ativo": "classico-sos",
+      "temas_liberados": [
+        "classico-sos",
+        "oceano-vivo",
+        "solar-premium"
+      ]
+    }
+  }
+]
