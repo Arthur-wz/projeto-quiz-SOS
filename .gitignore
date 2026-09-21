@@ -2,6 +2,8 @@ venv/
 env/
 
 db.sqlite3
+.env
+supabasechat.env
 
 __pycache__/
 *.pyc
