@@ -1,4 +1,4 @@
-﻿{% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -291,7 +291,7 @@
         }
 
         /* =====================================================
-           BOTÃƒO ENTRAR
+           BOTÃO ENTRAR
         ====================================================== */
 
         .btn-login {
@@ -636,7 +636,7 @@
         <div class="box">
 
             <!-- =================================================
-                 CABEÃ‡ALHO
+                 CABEÇALHO
             ================================================== -->
 
             <h2>Login</h2>
@@ -658,14 +658,14 @@
                 <div class="input-group">
 
                     <label for="username">
-                        UsuÃ¡rio
+                        Usuário
                     </label>
 
                     <input
                         id="username"
                         type="text"
                         name="username"
-                        placeholder="Digite seu usuÃ¡rio"
+                        placeholder="Digite seu usuário"
                         autocomplete="username"
                         required
                     >
@@ -768,20 +768,20 @@
 
 
             <!-- =================================================
-                 CRIAR USUÃRIO
+                 CRIAR USUÁRIO
             ================================================== -->
 
             <div class="cadastro-area">
 
                 <p>
-                    Ainda nÃ£o possui uma conta?
+                    Ainda não possui uma conta?
                 </p>
 
                 <a
                     href="/criar-usuario/"
                     class="criar-usuario"
                 >
-                    Criar usuÃ¡rio
+                    Criar usuário
                 </a>
 
             </div>
@@ -832,12 +832,12 @@
 
         /*
         ===========================================================
-        CONFIGURAÃ‡ÃƒO SUPABASE
+        CONFIGURAÇÃO SUPABASE
 
         COLOQUE A MESMA PUBLISHABLE KEY
-        QUE VOCÃŠ USOU NO CADASTRO.
+        QUE VOCÊ USOU NO CADASTRO.
 
-        NÃƒO COLOQUE:
+        NÃO COLOQUE:
         - service_role
         - senha do banco
         - Google Client Secret
@@ -845,11 +845,11 @@
         */
 
         const SUPABASE_URL =
-            "https://iceodbbcaccrxdwdptds.supabase.co";
+            "https://icrzdzfjjlhrykqsdvsj.supabase.co";
 
 
         const SUPABASE_PUBLISHABLE_KEY =
-            "sb_publishable_scs_uiTLWZtRqEOXXHCFNQ_JEZ3BY2H";
+            "sb_publishable_KZ_5KdVASgfgoLiRSFrw9g_ABMZV0s2";
 
 
         /*
@@ -950,7 +950,7 @@
 
 
                     supabaseError.textContent =
-                        "NÃ£o foi possÃ­vel iniciar o login com Google.";
+                        "Não foi possível iniciar o login com Google.";
 
 
                     supabaseError.style.display =
@@ -996,7 +996,7 @@
                 }
 
                 if (!session?.access_token) {
-                    throw new Error("SessÃ£o do Supabase nÃ£o encontrada.");
+                    throw new Error("Sessão do Supabase não encontrada.");
                 }
 
                 const form = document.createElement("form");
@@ -1008,7 +1008,7 @@
                 );
 
                 if (!csrfOriginal) {
-                    throw new Error("Token CSRF do Django nÃ£o encontrado.");
+                    throw new Error("Token CSRF do Django não encontrado.");
                 }
 
                 const csrfInput = document.createElement("input");
@@ -1033,7 +1033,7 @@
                 );
 
                 supabaseError.textContent =
-                    "O Google autenticou, mas nÃ£o foi possÃ­vel entrar no Quiz SOS.";
+                    "O Google autenticou, mas não foi possível entrar no Quiz SOS.";
 
                 supabaseError.style.display = "block";
                 googleButton.disabled = false;
