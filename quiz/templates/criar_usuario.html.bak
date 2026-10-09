@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -8,10 +8,10 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Criar UsuÃ¡rio | Quiz SOS</title>
+    <title>Criar Usuário | Quiz SOS</title>
 
     <!-- =====================================================
-         CSS DA PÃGINA
+         CSS DA PÁGINA
     ====================================================== -->
     <style>
         * {
@@ -116,7 +116,7 @@
         }
 
         /* =====================================================
-           CABEÃ‡ALHO
+           CABEÇALHO
         ====================================================== */
 
         .header {
@@ -138,7 +138,7 @@
         }
 
         /* =====================================================
-           FORMULÃRIO
+           FORMULÁRIO
         ====================================================== */
 
         .form-group {
@@ -195,7 +195,7 @@
         }
 
         /* =====================================================
-           BOTÃƒO NORMAL
+           BOTÃO NORMAL
         ====================================================== */
 
         .btn {
@@ -273,7 +273,7 @@
         }
 
         /* =====================================================
-           BOTÃƒO GOOGLE
+           BOTÃO GOOGLE
         ====================================================== */
 
         .google-btn {
@@ -335,7 +335,7 @@
         }
 
         /* =====================================================
-           ÃCONE DO GOOGLE
+           ÍCONE DO GOOGLE
         ====================================================== */
 
         .google-icon {
@@ -446,11 +446,11 @@
     <div class="box">
 
         <!-- =====================================================
-             CABEÃ‡ALHO
+             CABEÇALHO
         ====================================================== -->
 
         <div class="header">
-            <h1>Criar UsuÃ¡rio</h1>
+            <h1>Criar Usuário</h1>
 
             <p>
                 Cadastre sua conta para jogar,
@@ -469,14 +469,14 @@
             <div class="form-group">
 
                 <label for="username">
-                    UsuÃ¡rio
+                    Usuário
                 </label>
 
                 <input
                     id="username"
                     type="text"
                     name="username"
-                    placeholder="Escolha um nome de usuÃ¡rio"
+                    placeholder="Escolha um nome de usuário"
                     required
                 >
 
@@ -541,7 +541,7 @@
             class="google-btn"
         >
 
-            <!-- ÃCONE DO GOOGLE -->
+            <!-- ÍCONE DO GOOGLE -->
             <svg
                 class="google-icon"
                 viewBox="0 0 24 24"
@@ -624,11 +624,11 @@
 
         /*
         ===========================================================
-        CONFIGURAÃ‡ÃƒO DO SUPABASE
+        CONFIGURAÇÃO DO SUPABASE
 
         ALTERE APENAS A PUBLISHABLE KEY ABAIXO.
 
-        NÃƒO COLOQUE:
+        NÃO COLOQUE:
         - senha do banco
         - service_role
         - Google Client Secret
@@ -636,11 +636,11 @@
         */
 
         const SUPABASE_URL =
-            "https://iceodbbcaccrxdwdptds.supabase.co";
+            "https://icrzdzfjjlhrykqsdvsj.supabase.co";
 
 
         const SUPABASE_PUBLISHABLE_KEY =
-            "sb_publishable_scs_uiTLWZtRqEOXXHCFNQ_JEZ3BY2H";
+            "sb_publishable_KZ_5KdVASgfgoLiRSFrw9g_ABMZV0s2";
 
 
         /*
@@ -703,8 +703,8 @@
 
 
                 /*
-                Bloqueia o botÃ£o enquanto
-                o login comeÃ§a
+                Bloqueia o botão enquanto
+                o login começa
                 */
 
                 googleButton.disabled =
@@ -737,7 +737,7 @@
 
                                 /*
                                 Depois do Google,
-                                o Supabase volta para cÃ¡.
+                                o Supabase volta para cá.
                                 */
 
                                 redirectTo:
@@ -768,7 +768,7 @@
 
 
                     supabaseError.textContent =
-                        "NÃ£o foi possÃ­vel iniciar o login com Google.";
+                        "Não foi possível iniciar o login com Google.";
 
 
                     supabaseError.style.display =

@@ -1,4 +1,4 @@
-﻿import json
+import json
 import os
 import random
 from datetime import datetime, time, timedelta
@@ -1008,7 +1008,7 @@ def _inicio_do_dia(data):
 def _validar_usuario_supabase(access_token):
     supabase_url = os.getenv(
         "SUPABASE_URL",
-        "https://iceodbbcaccrxdwdptds.supabase.co",
+        "https://icrzdzfjjlhrykqsdvsj.supabase.co",
     ).rstrip("/")
 
     publishable_key = os.getenv("SUPABASE_PUBLISHABLE_KEY", "").strip()
