@@ -1,0 +1,14 @@
+@'
+.git
+.env
+supabasechat.env
+venv
+env
+__pycache__
+*.pyc
+*.log
+db.sqlite3
+backups.zip
+*.sql
+*.backup
+'@ | Set-Content -Encoding utf8 .dockerignore
