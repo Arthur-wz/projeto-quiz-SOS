@@ -79,13 +79,22 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Banco de dados
 
-DATABASES = {
-    "default": dj_database_url.config(
-        default=os.getenv("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True,
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
+
+if DATABASE_URL.startswith(("postgres://", "postgresql://")):
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True,
+        )
+    }
+else:
+    raise RuntimeError(
+        "DATABASE_URL não configurada para PostgreSQL. "
+        "Confira o arquivo .env."
     )
-}
+
 
 SITE_ID = 1
 

@@ -1,11 +1,12 @@
+
 services:
   quiz-sos:
     build: .
     container_name: quiz-sos
     ports:
       - "8000:8000"
-    environment:
-      DATABASE_URL: "sqlite:////data/db.sqlite3"
+    env_file:
+      - .env
     volumes:
       - quiz_data:/data
     restart: unless-stopped
