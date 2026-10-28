@@ -1,4 +1,3 @@
-@'
 .git
 .env
 supabasechat.env
@@ -11,4 +10,3 @@ db.sqlite3
 backups.zip
 *.sql
 *.backup
-'@ | Set-Content -Encoding utf8 .dockerignore
